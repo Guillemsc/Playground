@@ -1,0 +1,23 @@
+{
+    "name": "Playground.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:9a64ff96d3b16d7498c8f46b660d81a0",
+        "GUID:9e2a0871e420eb64685e511167cd0d57",
+        "GUID:66f84fddbd56756439bdf88a8207ce7e",
+        "GUID:1765b9cf2ac90c24c957166617f61cc1",
+        "GUID:8bc451827501f8e45a97f2e2d20a6338",
+        "GUID:4307f53044263cf4b835bd812fc161a4",
+        "GUID:9e24947de15b9834991c9d8411ea37cf",
+        "GUID:84651a3751eca9349aac36a66bba901b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
