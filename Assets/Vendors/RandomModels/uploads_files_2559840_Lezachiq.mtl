@@ -1,0 +1,24 @@
+# Blender MTL File: 'Lezachiq.blend'
+# Material Count: 2
+
+newmtl Material.001
+Ns 42.250012
+Ka 0.883333 0.883333 0.883333
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Admin\\Downloads\\TexturesCom_Wall_CobblestoneDark_2x2_1K_albedo.tif
+
+newmtl Material.002
+Ns 76.562510
+Ka 0.633333 0.633333 0.633333
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:\\Users\\Admin\\Downloads\\TexturesCom_Pavement_Tactile4_1K_albedo.tif
