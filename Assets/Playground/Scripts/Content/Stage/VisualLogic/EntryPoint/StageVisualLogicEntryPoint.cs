@@ -63,12 +63,21 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
 
                 new CheckPointCrossedUseCase(
                     eventDispatcher
+                    ),
+
+                new CurrentCheckPointChangedUseCase(
+                    sequencer
                     )
                 );
 
             eventReceiver.Subscribe((LoadStageOutEvent ev) =>
             {
                 useCasesRepository.LoadStageUseCase.Execute();
+            });
+
+            eventReceiver.Subscribe((CurrentCheckPointChangedOutEvent ev) =>
+            {
+                useCasesRepository.CurrentCheckPointChangedUseCase.Execute(ev.CheckPointIndex);
             });
 
             checkPointCrossedSignal.OnTrigger += (CheckPointsView checkPointsView, CheckPointView checkPointView) =>

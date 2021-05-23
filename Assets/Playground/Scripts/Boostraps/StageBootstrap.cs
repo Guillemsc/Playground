@@ -1,6 +1,5 @@
 ﻿using Juce.CoreUnity.Contexts;
 using Juce.CoreUnity.Scenes;
-using Juce.CoreUnity.Service;
 using Playground.Contexts;
 using Playground.Content.Stage.Configuration;
 using System.Threading.Tasks;
@@ -41,7 +40,7 @@ namespace Playground.Boostraps
 
             await stageScenesLoader.Load();
 
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName(StageContext.SceneName));
+            ScenesLoader.SetActiveScene(StageContext.SceneName);
 
             StageContext stageContext = ContextsProvider.GetContext<StageContext>();
 

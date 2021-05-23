@@ -4,14 +4,17 @@
     {
         public ILoadStageUseCase LoadStageUseCase { get; }
         public ICheckPointCrossedUseCase CheckPointCrossedUseCase { get; }
+        public ICurrentCheckPointChangedUseCase CurrentCheckPointChangedUseCase { get; }
 
         public UseCasesRepository(
             ILoadStageUseCase loadStageUseCase,
-            ICheckPointCrossedUseCase checkPointCrossedUseCase
+            ICheckPointCrossedUseCase checkPointCrossedUseCase,
+            ICurrentCheckPointChangedUseCase currentCheckPointChangedUseCase
             )
         {
             LoadStageUseCase = loadStageUseCase;
             CheckPointCrossedUseCase = checkPointCrossedUseCase;
+            CurrentCheckPointChangedUseCase = currentCheckPointChangedUseCase;
         }
     }
 }

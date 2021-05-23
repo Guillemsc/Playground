@@ -3,12 +3,15 @@
     public class UseCaseRepository
     {
         public ILoadStageUseCase LoadStageUseCase { get; }
+        public ICheckPointCrossedUseCase CheckPointCrossedUseCase { get; }
 
         public UseCaseRepository(
-            ILoadStageUseCase loadStageUseCase
+            ILoadStageUseCase loadStageUseCase,
+            ICheckPointCrossedUseCase checkPointCrossedUseCase
             )
         {
             LoadStageUseCase = loadStageUseCase;
+            CheckPointCrossedUseCase = checkPointCrossedUseCase;
         }
     }
 }

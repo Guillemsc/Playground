@@ -1,6 +1,7 @@
 ﻿using Juce.Core.Events;
 using Juce.Core.State;
 using Playground.Content.Stage.Logic.CheckPoints;
+using Playground.Content.Stage.Logic.State;
 using Playground.Content.Stage.Logic.StateMachine;
 using Playground.Content.Stage.Logic.UseCases;
 
@@ -24,8 +25,18 @@ namespace Playground.Content.Stage.Logic.EntryPoint
             this.eventReceiver = eventReceiver;
             this.checkPointRepository = checkPointRepository;
 
+            CheckPointsState checkPointState = new CheckPointsState();
+
             useCaseRepository = new UseCaseRepository(
-                new LoadStageUseCase(eventDispatcher)
+                new LoadStageUseCase(
+                    eventDispatcher
+                    ),
+
+                new CheckPointCrossedUseCase(
+                    eventDispatcher,
+                    checkPointRepository,
+                    checkPointState
+                    )
                 );
         }
 

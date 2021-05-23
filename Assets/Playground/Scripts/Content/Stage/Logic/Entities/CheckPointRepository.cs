@@ -7,6 +7,8 @@ namespace Playground.Content.Stage.Logic.CheckPoints
     {
         private readonly List<CheckPoint> items = new List<CheckPoint>();
 
+        public IReadOnlyList<CheckPoint> Items => items;
+
         public void Add(CheckPoint item)
         {
             items.Add(item);

@@ -38,7 +38,7 @@ namespace Playground.Content.Stage.Logic.StateMachine
 
         private void CheckPointCrossedInEvent(CheckPointCrossedInEvent ev)
         {
-            UnityEngine.Debug.Log("Passed");
+            useCaseRepository.CheckPointCrossedUseCase.Execute(ev.CheckPointIndex);
         }
     }
 }
