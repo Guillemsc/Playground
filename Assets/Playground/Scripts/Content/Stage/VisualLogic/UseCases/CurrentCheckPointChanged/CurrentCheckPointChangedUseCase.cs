@@ -28,8 +28,6 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             StageView stageView = stageViewRepository.StageView;
 
             new SetCheckPointAsCrossed(stageView.CheckPointsView, checkPointIndex).Execute();
-
-            new SetCheckPointAsActive(stageView.CheckPointsView, checkPointIndex + 1).Execute();
         }
     }
 }

@@ -50,6 +50,13 @@ namespace Playground.Content.Stage.Logic.StateMachine
         {
             useCaseRepository.FinishLineCrossedUseCase.Execute();
 
+            bool completed = useCaseRepository.IsStageCompletedUseCase.Execute();
+
+            if(!completed)
+            {
+                return;
+            }
+
             stateMachine.SetNextState(LogicState.Dispose);
         }
     }

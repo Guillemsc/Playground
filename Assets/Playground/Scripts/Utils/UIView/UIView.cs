@@ -16,6 +16,8 @@ namespace Playground.Utils.UIAnimations
         private void Awake()
         {
             TryHideOnAwake();
+
+            OnAwake();
         }
 
         public void Show(bool instantly)
@@ -59,5 +61,7 @@ namespace Playground.Utils.UIAnimations
 
             Hide(instantly: true, default);
         }
+
+        protected virtual void OnAwake() { }
     }
 }

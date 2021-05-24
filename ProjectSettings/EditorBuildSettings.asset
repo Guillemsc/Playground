@@ -12,10 +12,13 @@ EditorBuildSettings:
     path: Assets/Playground/Scenes/ServicesContext.unity
     guid: 3e41b2c1d0aff484da84400d351b1fac
   - enabled: 1
-    path: Assets/Playground/Scenes/StageContext.unity
-    guid: f8c4bd8502aa4e944ae7903c12847d05
-  - enabled: 1
     path: Assets/Playground/Scenes/LoadingScreenContext.unity
     guid: f46cc4a35bb130343a5327e85ddfa8f9
+  - enabled: 1
+    path: Assets/Playground/Scenes/StageUIContext.unity
+    guid: aa9bd073eea2ba94eae8ffbe1b6a542a
+  - enabled: 1
+    path: Assets/Playground/Scenes/StageContext.unity
+    guid: f8c4bd8502aa4e944ae7903c12847d05
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 651086d05b036b845b5551c48fa68919, type: 2}

@@ -1,10 +1,9 @@
-﻿using Juce.CoreUnity.Contexts;
-using Juce.CoreUnity.Scenes;
-using Playground.Contexts;
-using Playground.Content.Stage.Configuration;
+﻿using Playground.Content.Stage.Configuration;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Playground.Flow.UseCases;
+using Playground.Services;
+using Juce.CoreUnity.Service;
 using Playground.Content.LoadingScreen.UI;
 
 namespace Playground.Boostraps
@@ -20,31 +19,21 @@ namespace Playground.Boostraps
 
         private async Task Run()
         {
-            ScenesLoader esentialScenesLoader = new ScenesLoader(
-               ServicesContext.SceneName,
-               LoadingScreenContext.SceneName
-               );
-
-            await esentialScenesLoader.Load();
-
-            LoadingScreenContext loadingScreenContext = ContextsProvider.GetContext<LoadingScreenContext>();
-            loadingScreenContext.LoadingScreenContextReferences.LoadingScreenUIView.Show(instantly: true);
-
-            ILoadingToken loadingToken = new CallbackLoadingToken(
-                () => loadingScreenContext.LoadingScreenContextReferences.LoadingScreenUIView.Hide(instantly: false)
+            FlowUseCases flowUseCases = new FlowUseCases(
+                new LoadEssentialScenesFlowUseCase(),
+                new ShowLoadingScreenFlowUseCase(),
+                new StageBootstrapPlayScenarioFlowUseCase(stageConfiguration),
+                new StageBootstrapReplayScenarioFlowUseCase()
                 );
 
-            ScenesLoader stageScenesLoader = new ScenesLoader(
-                StageContext.SceneName
-                );
+            FlowService flowService = new FlowService(flowUseCases);
+            ServicesProvider.Register(flowService);
 
-            await stageScenesLoader.Load();
+            await flowUseCases.LoadEssentialScenesFlowUseCase.Execute();
 
-            ScenesLoader.SetActiveScene(StageContext.SceneName);
+            ILoadingToken loadingToken = await flowUseCases.ShowLoadingScreenFlowUseCase.Execute(instantly: true);
 
-            StageContext stageContext = ContextsProvider.GetContext<StageContext>();
-
-            await stageContext.Execute(stageConfiguration, loadingToken);
+            await flowUseCases.PlayScenarioFlowUseCase.Execute(loadingToken);
         }    
     }
 }

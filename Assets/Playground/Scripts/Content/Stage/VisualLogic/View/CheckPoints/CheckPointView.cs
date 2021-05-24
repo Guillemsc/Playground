@@ -23,6 +23,7 @@ namespace Playground.Content.Stage.VisualLogic.View.CheckPoints
         private void Awake()
         {
             Contract.IsNotNull(physicsCallbacks, this);
+            Contract.IsNotNull(setActiveFeedback, this);
             Contract.IsNotNull(setCrossedFeedback, this);
 
             physicsCallbacks.OnPhysicsTriggerEnter += OnPhysicsCallbacksTriggerEnter;

@@ -25,6 +25,7 @@ namespace Playground.Content.Stage.Logic.EntryPoint
             this.eventReceiver = eventReceiver;
             this.checkPointRepository = checkPointRepository;
 
+            StageState stageState = new StageState();
             CheckPointsState checkPointState = new CheckPointsState();
 
             useCaseRepository = new UseCaseRepository(
@@ -40,7 +41,12 @@ namespace Playground.Content.Stage.Logic.EntryPoint
 
                 new FinishLineCrossedUseCase(
                     eventDispatcher,
+                    stageState,
                     checkPointState
+                    ),
+
+                new IsStageCompletedUseCase(
+                    stageState
                     )
                 );
         }

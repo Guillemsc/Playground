@@ -7,14 +7,17 @@ namespace Playground.Content.Stage.Logic.UseCases
     public class FinishLineCrossedUseCase : IFinishLineCrossedUseCase
     {
         private readonly IEventDispatcher eventDispatcher;
+        private readonly StageState stageState;
         private readonly CheckPointsState checkPointState;
 
         public FinishLineCrossedUseCase(
             IEventDispatcher eventDispatcher,
+            StageState stageState,
             CheckPointsState checkPointState
             )
         {
             this.eventDispatcher = eventDispatcher;
+            this.stageState = stageState;
             this.checkPointState = checkPointState;
         }
 
@@ -24,6 +27,8 @@ namespace Playground.Content.Stage.Logic.UseCases
             {
                 return;
             }
+
+            stageState.Completed = true;
 
             eventDispatcher.Dispatch(new StageFinishedOutEvent());
         }

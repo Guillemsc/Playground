@@ -36,13 +36,20 @@ namespace Playground.Content.Stage.Logic.UseCases
                 return;
             }
 
+            int nextCheckPointIndex = checkPointIndex + 1;
+
             checkPointState.CurrentCheckPointIndex = checkPointIndex;
 
             int maxCheckPointIndex = checkPointRepository.Items.Count - 1;
 
             eventDispatcher.Dispatch(new CurrentCheckPointChangedOutEvent(checkPointIndex, maxCheckPointIndex));
 
-            if(checkPointIndex == maxCheckPointIndex)
+            if(nextCheckPointIndex <= maxCheckPointIndex)
+            {
+                eventDispatcher.Dispatch(new NextCheckPointChangedOutEvent(nextCheckPointIndex, maxCheckPointIndex));
+            }
+
+            if (checkPointIndex == maxCheckPointIndex)
             {
                 checkPointState.AllCheckPointsCompleted = true;
             }

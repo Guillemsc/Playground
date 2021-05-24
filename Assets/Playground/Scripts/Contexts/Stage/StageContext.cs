@@ -1,4 +1,5 @@
-﻿using Juce.Core.Events;
+﻿using Juce.Core.Disposables;
+using Juce.Core.Events;
 using Juce.CoreUnity.Contexts;
 using Juce.CoreUnity.Service;
 using Juce.CoreUnity.Services;
@@ -22,8 +23,13 @@ namespace Playground.Contexts
 
         [SerializeField] private StageContextReferences stageContextReferences;
 
+        private StageUIContext stageUIContext;
+        private StageConfiguration stageConfiguration;
+
         private EventDispatcherAndReceiverTickable logicToViewTickable;
         private EventDispatcherAndReceiverTickable viewToLogicTickable;
+
+        private IDisposable<GameObject> stageAddressable; 
 
         protected override void Init()
         {
@@ -37,20 +43,25 @@ namespace Playground.Contexts
             tickablesService.RemoveTickable(logicToViewTickable);
             tickablesService.RemoveTickable(viewToLogicTickable);
 
+            if (stageAddressable != null)
+            {
+                stageAddressable.Dispose();
+            }
+
             ContextsProvider.Unregister(this);
         }
 
-        public async Task Execute(StageConfiguration stageConfiguration, ILoadingToken loadingToken)
+        public async Task RunStage(
+            StageUIContext stageUIContext,
+            StageConfiguration stageConfiguration, 
+            ILoadingToken loadingToken
+            )
         {
-            GameObject gameObject = await AddressablesUtils.Load<GameObject>(stageConfiguration.StageAddressablePath);
+            this.stageConfiguration = stageConfiguration;
 
-            if(gameObject == null)
-            {
-                UnityEngine.Debug.LogError($"Stage with path {stageConfiguration.StageAddressablePath} could not be found");
-                return;
-            }
+            await LoadStageAddressable();
   
-            StageView stageViewPrefab = gameObject.GetComponent<StageView>();
+            StageView stageViewPrefab = stageAddressable.Value.GetComponent<StageView>();
 
             bool created = new CheckPointsRepositoryFactory().Create(
                 stageViewPrefab.CheckPointsView, 
@@ -83,6 +94,8 @@ namespace Playground.Contexts
                 viewToLogicEventDispatcherAndReceiver,
                 logicToViewEventDispatcherAndReceiver,
                 timeService,
+                stageUIContext.StageUIContextReferences.StageOverlayUIView,
+                stageUIContext.StageUIContextReferences.StageCompletedUIView,
                 stageViewPrefab,
                 stageContextReferences.CarLibrary,
                 stageContextReferences.FollowCarVirtualCamera
@@ -92,6 +105,26 @@ namespace Playground.Contexts
 
             tickablesService.AddTickable(logicToViewTickable);
             tickablesService.AddTickable(viewToLogicTickable);
+        }
+
+        private async Task LoadStageAddressable()
+        {
+            if(stageAddressable != null)
+            {
+                return;
+            }
+
+            if(stageConfiguration == null)
+            {
+                UnityEngine.Debug.LogError($"Null {nameof(StageConfiguration)} at {nameof(StageContext)}");
+            }
+
+            stageAddressable = await AddressablesUtils.Load<GameObject>(stageConfiguration.StageAddressablePath);
+
+            if (stageAddressable == null)
+            {
+                UnityEngine.Debug.LogError($"Stage with path {stageConfiguration.StageAddressablePath} could not be found");
+            }
         }
     }
 }
