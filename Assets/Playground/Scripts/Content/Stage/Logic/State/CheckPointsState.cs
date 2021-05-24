@@ -2,7 +2,7 @@
 {
     public class CheckPointsState 
     {
-        public int CurrentCheckPointIndex { get; set; }
+        public int CurrentCheckPointIndex { get; set; } = -1;
         public bool AllCheckPointsCompleted { get; set; }
     }
 }

@@ -31,7 +31,7 @@ namespace Playground.Content.Stage.Logic.UseCases
                 return;
             }
 
-            if(checkPointState.CurrentCheckPointIndex > checkPointIndex)
+            if(checkPointState.CurrentCheckPointIndex + 1 != checkPointIndex)
             {
                 return;
             }

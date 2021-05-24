@@ -47,6 +47,21 @@ namespace Playground.Content.Stage.VisualLogic.View.CheckPoints
             }
         }
 
+        public bool TryGet(int index, out CheckPointView foundCheckPointView)
+        {
+            foreach(CheckPointView checkPointView in checkPoints)
+            {
+                if(checkPointView.Index == index)
+                {
+                    foundCheckPointView = checkPointView;
+                    return transform;
+                }
+            }
+
+            foundCheckPointView = null;
+            return false;
+        }
+
         private void SetupCheckPoints()
         {
             int index = 0;
