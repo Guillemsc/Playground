@@ -94,6 +94,7 @@ namespace Playground.Contexts
                 viewToLogicEventDispatcherAndReceiver,
                 logicToViewEventDispatcherAndReceiver,
                 timeService,
+                stageUIContext.StageUIContextReferences.ScreenCarControlsUIView,
                 stageUIContext.StageUIContextReferences.StageOverlayUIView,
                 stageUIContext.StageUIContextReferences.StageCompletedUIView,
                 stageViewPrefab,
@@ -119,11 +120,11 @@ namespace Playground.Contexts
                 UnityEngine.Debug.LogError($"Null {nameof(StageConfiguration)} at {nameof(StageContext)}");
             }
 
-            stageAddressable = await AddressablesUtils.Load<GameObject>(stageConfiguration.StageAddressablePath);
+            stageAddressable = await AddressablesUtils.Load<GameObject>(stageConfiguration.AssetReference);
 
             if (stageAddressable == null)
             {
-                UnityEngine.Debug.LogError($"Stage with path {stageConfiguration.StageAddressablePath} could not be found");
+                UnityEngine.Debug.LogError($"Stage with path {stageConfiguration.AssetReference} could not be found");
             }
         }
     }

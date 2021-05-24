@@ -44,6 +44,8 @@ namespace Playground.Content.StageUI.UI.StageCompleted
 
         private async Task PlayAgain()
         {
+            await Hide(instantly: false, default);
+
             FlowService flowService = ServicesProvider.GetService<FlowService>();
 
             ILoadingToken loadingToken = await flowService.FlowUseCases.ShowLoadingScreenFlowUseCase.Execute(instantly: false);

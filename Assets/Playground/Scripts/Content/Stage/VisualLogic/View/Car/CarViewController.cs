@@ -43,10 +43,7 @@ namespace Playground.Content.Stage.VisualLogic.View.Car
 
             SetWheelsTorque();
             SetWheelsSteering();
-        }
 
-        private void LateUpdate()
-        {
             ClearFrame();
         }
 

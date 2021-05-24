@@ -3,6 +3,7 @@ using Juce.CoreUnity.Scenes;
 using Playground.Content.LoadingScreen.UI;
 using Playground.Content.Stage.Configuration;
 using Playground.Contexts;
+using System;
 using System.Threading.Tasks;
 
 namespace Playground.Flow.UseCases
@@ -20,6 +21,8 @@ namespace Playground.Flow.UseCases
 
         public async Task Execute(ILoadingToken loadingToken)
         {
+            GC.Collect();
+
             ScenesLoader stageScenesLoader = new ScenesLoader(
                 StageUIContext.SceneName,
                 StageContext.SceneName

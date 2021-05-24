@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e85f36025033540926295e7694eb66, type: 3}
   m_Name: StageConfiguration
   m_EditorClassIdentifier: 
-  stageAddressablePath: Assets/Playground/Prefabs/View/Stage.prefab
+  assetReference:
+    m_AssetGUID: 12f8691d59cca4d4ab45d24c613a1333
+    m_SubObjectName: 
+    m_SubObjectType: 

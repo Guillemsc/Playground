@@ -1,14 +1,17 @@
 ﻿using Cinemachine;
 using Juce.Core.Events;
 using Juce.Core.Sequencing;
+using Juce.CoreUnity.PointerCallback;
 using Playground.Content.LoadingScreen.UI;
 using Playground.Content.Stage.Libraries;
 using Playground.Content.Stage.Logic.Events;
+using Playground.Content.Stage.VisualLogic.Sequences;
 using Playground.Content.Stage.VisualLogic.UseCases;
 using Playground.Content.Stage.VisualLogic.View.Car;
 using Playground.Content.Stage.VisualLogic.View.CheckPoints;
 using Playground.Content.Stage.VisualLogic.View.Signals;
 using Playground.Content.Stage.VisualLogic.View.Stage;
+using Playground.Content.StageUI.UI.ScreenCarControls;
 using Playground.Content.StageUI.UI.StageCompleted;
 using Playground.Content.StageUI.UI.StageOverlay;
 using Playground.Services;
@@ -23,6 +26,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
         private readonly IEventDispatcher eventDispatcher;
         private readonly IEventReceiver eventReceiver;
         private readonly TimeService timeService;
+        private readonly ScreenCarControlsUIView screenCarControlsUIView;
         private readonly StageOverlayUIView stageOverlayUIView;
         private readonly StageCompletedUIView stageCompletedUIView;
         private readonly StageView stageViewPrefab;
@@ -34,6 +38,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             IEventDispatcher eventDispatcher,
             IEventReceiver eventReceiver,
             TimeService timeService,
+            ScreenCarControlsUIView screenCarControlsUIView,
             StageOverlayUIView stageOverlayUIView,
             StageCompletedUIView stageCompletedUIView,
             StageView stageViewPrefab,
@@ -45,6 +50,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             this.eventDispatcher = eventDispatcher;
             this.eventReceiver = eventReceiver;
             this.timeService = timeService;
+            this.screenCarControlsUIView = screenCarControlsUIView;
             this.stageOverlayUIView = stageOverlayUIView;
             this.stageCompletedUIView = stageCompletedUIView;
             this.stageViewPrefab = stageViewPrefab;
@@ -56,18 +62,28 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             StageViewRepository stageViewRepository = new StageViewRepository();
             CarViewRepository carViewRepository = new CarViewRepository();
 
+            CarControllerSignals carControllerSignals = new CarControllerSignals();
+
             GenericSignal<CheckPointsView, CheckPointView> checkPointCrossedSignal = new GenericSignal<CheckPointsView, CheckPointView>();
             GenericSignal<FinishLineView, EventArgs> finishLineCrossedSignal = new GenericSignal<FinishLineView, EventArgs>();
+
+            StopCarAndHideUISequence stopCarAndHideUISequence = new StopCarAndHideUISequence(
+                screenCarControlsUIView,
+                stageOverlayUIView,
+                carViewRepository
+                );
 
             UseCasesRepository useCasesRepository = new UseCasesRepository(
                 new LoadStageUseCase(
                     sequencer,
                     timeService,
+                    screenCarControlsUIView,
                     stageOverlayUIView,
                     stageViewRepository,
                     stageViewPrefab,
                     carLibrary,
                     carViewRepository,
+                    carControllerSignals,
                     checkPointCrossedSignal,
                     finishLineCrossedSignal,
                     followCarVirtualCamera,
@@ -100,7 +116,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                             timeService,
                             stageCompletedUIView,
                             stageViewRepository,
-                            carViewRepository
+                            stopCarAndHideUISequence
                             ),
 
                         new UnloadStageStageFinishedUseCase(
@@ -117,7 +133,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                      timeService,
                      stageOverlayUIView,
                      stageViewRepository,
-                     carViewRepository
+                     stopCarAndHideUISequence
                     )
                 );
 
@@ -149,6 +165,26 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             finishLineCrossedSignal.OnTrigger += (FinishLineView finishLineView, EventArgs eventArgs) =>
             {
                 useCasesRepository.FinishLineCrossedUseCase.Execute(finishLineView);
+            };
+
+            screenCarControlsUIView.OnLeftPointerCallbacksDown += (ScreenCarControlsUIView screenCarControlsUIView, PointerCallbacks pointerCallbacks) =>
+            {
+                carControllerSignals.LeftSignal.Trigger(carControllerSignals, EventArgs.Empty);
+            };
+
+            screenCarControlsUIView.OnRightPointerCallbacksDown += (ScreenCarControlsUIView screenCarControlsUIView, PointerCallbacks pointerCallbacks) =>
+            {
+                carControllerSignals.RightSignal.Trigger(carControllerSignals, EventArgs.Empty);
+            };
+
+            screenCarControlsUIView.OnAcceleratePointerCallbacksDown += (ScreenCarControlsUIView screenCarControlsUIView, PointerCallbacks pointerCallbacks) =>
+            {
+                carControllerSignals.AccelerateSignal.Trigger(carControllerSignals, EventArgs.Empty);
+            };
+
+            screenCarControlsUIView.OnBreakPointerCallbacksDown += (ScreenCarControlsUIView screenCarControlsUIView, PointerCallbacks pointerCallbacks) =>
+            {
+                carControllerSignals.BreakSignal.Trigger(carControllerSignals, EventArgs.Empty);
             };
 
             stageOverlayUIView.OnRestartClicked += (StageOverlayUIView stageOverlayUIView, PointerEventData pointerEventData) =>

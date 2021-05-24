@@ -1,5 +1,6 @@
 ﻿using Juce.Core.Sequencing;
 using Playground.Content.Stage.VisualLogic.Instructions;
+using Playground.Content.Stage.VisualLogic.Sequences;
 using Playground.Content.Stage.VisualLogic.View.Car;
 using Playground.Content.Stage.VisualLogic.View.Signals;
 using Playground.Content.Stage.VisualLogic.View.Stage;
@@ -17,7 +18,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         private readonly TimeService timeService;
         private readonly StageCompletedUIView stageCompletedUIView;
         private readonly StageViewRepository stageViewRepository;
-        private readonly CarViewRepository carViewRepository;
+        private readonly StopCarAndHideUISequence stopCarAndHideUISequence;
 
         private TaskCompletionSource<object> taskCompletitionSource = new TaskCompletionSource<object>();
 
@@ -26,14 +27,14 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             TimeService timeService,
             StageCompletedUIView stageCompletedUIView,
             StageViewRepository stageViewRepository,
-            CarViewRepository carViewRepository
+            StopCarAndHideUISequence stopCarAndHideUISequence
             )
         {
             this.sequencer = sequencer;
             this.timeService = timeService;
             this.stageCompletedUIView = stageCompletedUIView;
             this.stageViewRepository = stageViewRepository;
-            this.carViewRepository = carViewRepository;
+            this.stopCarAndHideUISequence = stopCarAndHideUISequence;
         }
 
         public void Execute()
@@ -44,9 +45,8 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         private async Task ExecuteSequence(CancellationToken cancellationToken)
         {
             StageView stageView = stageViewRepository.StageView;
-            CarView carView = carViewRepository.CarView;
 
-            new SetCarViewControllerStateInstruction(carView.CarViewController, CarViewControllerState.AutoBreak).Execute();
+            await stopCarAndHideUISequence.Execute(cancellationToken);
 
             await new WaitTimeInstruction(timeService.UnscaledTimeContext, TimeSpan.FromSeconds(1.0f)).Execute(cancellationToken);
 

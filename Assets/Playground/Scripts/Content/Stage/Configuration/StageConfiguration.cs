@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Playground.Content.Stage.Configuration
 {
     [CreateAssetMenu(fileName = "StageConfiguration", menuName = "Playground/Configuration/StageConfiguration", order = 1)]
     public class StageConfiguration : ScriptableObject
     {
-        [SerializeField] private string stageAddressablePath = default;
+        [SerializeField] private AssetReference assetReference = default;
 
-        public string StageAddressablePath => stageAddressablePath;
+        public AssetReference AssetReference => assetReference;
     }
 }

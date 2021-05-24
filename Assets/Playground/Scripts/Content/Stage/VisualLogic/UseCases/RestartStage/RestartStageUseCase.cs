@@ -2,6 +2,7 @@
 using Juce.CoreUnity.Service;
 using Playground.Content.LoadingScreen.UI;
 using Playground.Content.Stage.VisualLogic.Instructions;
+using Playground.Content.Stage.VisualLogic.Sequences;
 using Playground.Content.Stage.VisualLogic.View.Car;
 using Playground.Content.Stage.VisualLogic.View.Signals;
 using Playground.Content.Stage.VisualLogic.View.Stage;
@@ -20,21 +21,21 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         private readonly TimeService timeService;
         private readonly StageOverlayUIView stageOverlayUIView;
         private readonly StageViewRepository stageViewRepository;
-        private readonly CarViewRepository carViewRepository;
+        private readonly StopCarAndHideUISequence stopCarAndHideUISequence;
 
         public RestartStageUseCase(
             Sequencer sequencer,
             TimeService timeService,
             StageOverlayUIView stageOverlayUIView,
             StageViewRepository stageViewRepository,
-            CarViewRepository carViewRepository
+            StopCarAndHideUISequence stopCarAndHideUISequence
             )
         {
             this.sequencer = sequencer;
             this.timeService = timeService;
             this.stageOverlayUIView = stageOverlayUIView;
             this.stageViewRepository = stageViewRepository;
-            this.carViewRepository = carViewRepository;
+            this.stopCarAndHideUISequence = stopCarAndHideUISequence;
         }
 
         public void Execute()
@@ -49,13 +50,8 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         private async Task ExecuteSequence(CancellationToken cancellationToken)
         {
             StageView stageView = stageViewRepository.StageView;
-            CarView carView = carViewRepository.CarView;
 
-            new SetCarViewControllerStateInstruction(carView.CarViewController, CarViewControllerState.AutoBreak).Execute();
-
-            await new SetStageOverlayVisibleInstruction(stageOverlayUIView, visible: true, instantly: false).Execute(cancellationToken);
-
-            await new WaitTimeInstruction(timeService.UnscaledTimeContext, TimeSpan.FromSeconds(1.0f)).Execute(cancellationToken);
+            await stopCarAndHideUISequence.Execute(cancellationToken);
 
             FlowService flowService = ServicesProvider.GetService<FlowService>();
 

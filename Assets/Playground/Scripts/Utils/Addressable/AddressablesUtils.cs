@@ -15,5 +15,14 @@ namespace Playground.Utils.Addressable
 
             return new Disposable<T>(result, () => Addressables.Release(asyncOperation));
         }
+
+        public static async Task<IDisposable<T>> Load<T>(AssetReference assetReference)
+        {
+            AsyncOperationHandle<T> asyncOperation = assetReference.LoadAssetAsync<T>();
+
+            T result = await asyncOperation.Task;
+
+            return new Disposable<T>(result, () => Addressables.Release(asyncOperation));
+        }
     }
 }
