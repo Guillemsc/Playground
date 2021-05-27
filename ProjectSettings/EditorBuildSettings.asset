@@ -6,22 +6,31 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Playground/Scenes/StageBootstrap.unity
+    path: Assets/Playground/Scenes/Bootstraps/StageBootstrap.unity
     guid: 25594ce8f5865a14687f5ba510b0fbe0
   - enabled: 1
-    path: Assets/Playground/Scenes/ServicesContext.unity
+    path: Assets/Playground/Scenes/Bootstraps/MainBootstrap.unity
+    guid: 82e6cce6b0023664e9438ec0761cabcc
+  - enabled: 1
+    path: Assets/Playground/Scenes/Contexts/ServicesContext.unity
     guid: 3e41b2c1d0aff484da84400d351b1fac
   - enabled: 1
-    path: Assets/Playground/Scenes/CameraContext.unity
+    path: Assets/Playground/Scenes/Contexts/CameraContext.unity
     guid: 8af6024c832e9c44281db33c56d9759b
   - enabled: 1
-    path: Assets/Playground/Scenes/LoadingScreenContext.unity
+    path: Assets/Playground/Scenes/Contexts/LoadingScreenContext.unity
     guid: f46cc4a35bb130343a5327e85ddfa8f9
   - enabled: 1
-    path: Assets/Playground/Scenes/StageUIContext.unity
+    path: Assets/Playground/Scenes/Contexts/MetaContext.unity
+    guid: 209470a4beedb1f449e2abe54f2ab5bc
+  - enabled: 1
+    path: Assets/Playground/Scenes/Contexts/StageUIContext.unity
     guid: aa9bd073eea2ba94eae8ffbe1b6a542a
   - enabled: 1
-    path: Assets/Playground/Scenes/StageContext.unity
+    path: Assets/Playground/Scenes/Contexts/StageContext.unity
     guid: f8c4bd8502aa4e944ae7903c12847d05
+  - enabled: 1
+    path: Assets/Playground/Scenes/Stages/TestStage.unity
+    guid: 8788fe8aa14a7ef42b7a9146e7c018ea
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 651086d05b036b845b5551c48fa68919, type: 2}

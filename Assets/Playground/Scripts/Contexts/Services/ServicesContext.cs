@@ -2,6 +2,7 @@
 using Juce.CoreUnity.Service;
 using Juce.CoreUnity.Services;
 using Playground.Services;
+using Playground.Utils.UIViewStack;
 
 namespace Playground.Contexts
 {
@@ -11,6 +12,7 @@ namespace Playground.Contexts
 
         private TickablesService tickablesService;
         private TimeService timeService;
+        private UIViewStackService uiViewStackService;
 
         protected override void Init()
         {
@@ -21,10 +23,14 @@ namespace Playground.Contexts
 
             timeService = new TimeService();
             ServicesProvider.Register(timeService);
+
+            uiViewStackService = new UIViewStackService();
+            ServicesProvider.Register(uiViewStackService);
         }
 
         protected override void CleanUp()
         {
+            ServicesProvider.Unregister(uiViewStackService);
             ServicesProvider.Unregister(tickablesService);
             ServicesProvider.Unregister(timeService);
 

@@ -23,7 +23,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         private readonly ScreenCarControlsUIView screenCarControlsUIView;
         private readonly StageOverlayUIView stageOverlayUIView;
         private readonly StageViewRepository stageViewRepository;
-        private readonly StageView stageViewPrefab;
+        private readonly StageView stageView;
         private readonly CarLibrary carLibrary;
         private readonly CarViewRepository carViewRepository;
         private readonly CarControllerSignals carControllerSignals;
@@ -38,7 +38,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             ScreenCarControlsUIView screenCarControlsUIView,
             StageOverlayUIView stageOverlayUIView,
             StageViewRepository stageViewRepository,
-            StageView stageViewPrefab,
+            StageView stageView,
             CarLibrary carLibrary,
             CarViewRepository carViewRepository,
             CarControllerSignals carControllerSignals,
@@ -53,7 +53,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             this.screenCarControlsUIView = screenCarControlsUIView;
             this.stageOverlayUIView = stageOverlayUIView;
             this.stageViewRepository = stageViewRepository;
-            this.stageViewPrefab = stageViewPrefab;
+            this.stageView = stageView;
             this.carLibrary = carLibrary;
             this.carViewRepository = carViewRepository;
             this.carControllerSignals = carControllerSignals;
@@ -70,10 +70,9 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
 
         private async Task ExecuteSequence(CancellationToken cancellationToken)
         {
-            new LoadStageInstruction(stageViewRepository, stageViewPrefab).Execute();
-            new LoadCarInstruction(carLibrary, carViewRepository).Execute();
+            stageViewRepository.StageView = stageView;
 
-            StageView stageView = stageViewRepository.StageView;
+            new LoadCarInstruction(carLibrary, carViewRepository).Execute();
             CarView carView = carViewRepository.CarView;
 
             new RegisterCheckPointsSignalsInstruction(stageView.CheckPointsView, checkPointCrossedSignal).Execute();
@@ -84,10 +83,10 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             new SetCarViewControllerStateInstruction(carView.CarViewController, CarViewControllerState.AutoBreak).Execute();
             new BindCarControllerSignalsInstruction(carControllerSignals, carView.CarViewController).Execute();
 
-            new TeleportCarToTransformInstruction(carViewRepository, stageViewPrefab.CarStartPosition).Execute();
+            new TeleportCarToTransformInstruction(carViewRepository, stageView.CarStartPosition).Execute();
             new AttachCameraToCarInstruction(carViewRepository, followCarVirtualCamera).Execute();
 
-            await new WaitTimeInstruction(timeService.UnscaledTimeContext, TimeSpan.FromSeconds(0.4f)).Execute(cancellationToken);
+            await new WaitTimeInstruction(timeService.UnscaledTimeContext, TimeSpan.FromSeconds(2.4f)).Execute(cancellationToken);
 
             new SetLoadingTokenAsCompletedInstruction(loadingToken).Execute();
 

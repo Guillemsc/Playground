@@ -19,6 +19,7 @@ namespace Playground.Utils.UIAnimations
                 if(tweenPlayer == null)
                 {
                     UnityEngine.Debug.LogError($"Null {nameof(TweenPlayer) }at {nameof(TweenPlayerUIViewAnimation)}", this);
+                    continue;
                 }
 
                 tweenPlayer.Complete();
@@ -29,6 +30,7 @@ namespace Playground.Utils.UIAnimations
                 if (tweenPlayer == null)
                 {
                     UnityEngine.Debug.LogError($"Null {nameof(TweenPlayer) }at {nameof(TweenPlayerUIViewAnimation)}", this);
+                    continue;
                 }
 
                 tweenPlayer.Kill();
@@ -42,7 +44,8 @@ namespace Playground.Utils.UIAnimations
 
                 if (tweenPlayer == null)
                 {
-                    UnityEngine.Debug.LogError($"Null {nameof(TweenPlayer) }at {nameof(TweenPlayerUIViewAnimation)}", this);
+                    UnityEngine.Debug.LogError($"Null {nameof(TweenPlayer)} at {nameof(TweenPlayerUIViewAnimation)}", this);
+                    continue;
                 }
 
                 tasks.Add(tweenPlayer.Play(instantly, cancellationToken));

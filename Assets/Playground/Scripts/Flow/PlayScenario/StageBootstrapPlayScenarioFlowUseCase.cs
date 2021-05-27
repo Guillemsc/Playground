@@ -2,9 +2,13 @@
 using Juce.CoreUnity.Scenes;
 using Playground.Content.LoadingScreen.UI;
 using Playground.Content.Stage.Configuration;
+using Playground.Content.Stage.VisualLogic.View.Stage;
 using Playground.Contexts;
 using System;
+using System.IO;
 using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Playground.Flow.UseCases
 {
@@ -32,14 +36,53 @@ namespace Playground.Flow.UseCases
 
             ScenesLoader.SetActiveScene(StageContext.SceneName);
 
+            string sceneName = Path.GetFileNameWithoutExtension(stageConfiguration.StageScene.ScenePath);
+
+            SceneLoadResult sceneLoadResult = await stageScenesLoader.LoadScene(
+                sceneName, 
+                LoadSceneMode.Additive
+                );
+
+            if(!sceneLoadResult.Success)
+            {
+                UnityEngine.Debug.LogError($"Stage scene with path {stageConfiguration.StageScene.ScenePath} could not be loaded, " +
+                    $"at {nameof(StageBootstrapPlayScenarioFlowUseCase)}");
+                return;
+            }
+
+            bool found = TryGetStageView(sceneLoadResult.Scene, out StageView stageView);
+
+            if(!found)
+            {
+                UnityEngine.Debug.LogError($"Stage scene with path {stageConfiguration.StageScene.ScenePath} does not contain a" +
+                    $"{nameof(StageView)} component on one of its roots game objects, and the stage cannot be played, " +
+                    $"at {nameof(StageBootstrapPlayScenarioFlowUseCase)}");
+            }
+
             StageUIContext stageUIContext = ContextsProvider.GetContext<StageUIContext>();
             StageContext stageContext = ContextsProvider.GetContext<StageContext>();
 
-            await stageContext.RunStage(
+            stageContext.RunStage(
                 stageUIContext,
-                stageConfiguration,
+                stageView,
                 loadingToken
                 );
+        }
+
+        public bool TryGetStageView(Scene scene, out StageView stageView)
+        {
+            foreach(GameObject gameObject in scene.GetRootGameObjects())
+            {
+                stageView = gameObject.GetComponent<StageView>();
+
+                if(stageView != null)
+                {
+                    return true;
+                }
+            }
+
+            stageView = null;
+            return false;
         }
     }
 }

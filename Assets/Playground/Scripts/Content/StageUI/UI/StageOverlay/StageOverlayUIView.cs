@@ -1,7 +1,7 @@
 ﻿using Juce.Core.Events.Generic;
 using Juce.CoreUnity.Contracts;
 using Juce.CoreUnity.PointerCallback;
-using Playground.Utils.UIAnimations;
+using Playground.Utils.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -14,7 +14,7 @@ namespace Playground.Content.StageUI.UI.StageOverlay
 
         public event GenericEvent<StageOverlayUIView, PointerEventData> OnRestartClicked;
 
-        protected override void OnAwake()
+        protected override void OnUIViewAwake()
         {
             Contract.IsNotNull(restartPointerCallbacks, this);
 

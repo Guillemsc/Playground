@@ -1,8 +1,11 @@
-﻿using System.Threading;
+﻿using Juce.CoreUnity.Service;
+using Playground.Utils.UIAnimations;
+using Playground.Utils.UIViewStack;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Playground.Utils.UIAnimations
+namespace Playground.Utils.UI
 {
     public class UIView : MonoBehaviour
     {
@@ -17,7 +20,12 @@ namespace Playground.Utils.UIAnimations
         {
             TryHideOnAwake();
 
-            OnAwake();
+            OnUIViewAwake();
+        }
+
+        private void OnDestroy()
+        {
+            OnUIViewDestroy();
         }
 
         public void Show(bool instantly)
@@ -62,6 +70,7 @@ namespace Playground.Utils.UIAnimations
             Hide(instantly: true, default);
         }
 
-        protected virtual void OnAwake() { }
+        protected virtual void OnUIViewAwake() { }
+        protected virtual void OnUIViewDestroy() { }
     }
 }

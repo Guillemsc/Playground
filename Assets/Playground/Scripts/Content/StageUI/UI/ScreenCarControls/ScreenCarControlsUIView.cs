@@ -1,6 +1,7 @@
 ﻿using Juce.Core.Events.Generic;
 using Juce.CoreUnity.Contracts;
 using Juce.CoreUnity.PointerCallback;
+using Playground.Utils.UI;
 using Playground.Utils.UIAnimations;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -20,7 +21,7 @@ namespace Playground.Content.StageUI.UI.ScreenCarControls
         public event GenericEvent<ScreenCarControlsUIView, PointerCallbacks> OnAcceleratePointerCallbacksDown;
         public event GenericEvent<ScreenCarControlsUIView, PointerCallbacks> OnBreakPointerCallbacksDown;
 
-        protected override void OnAwake()
+        protected override void OnUIViewAwake()
         {
             Contract.IsNotNull(leftPointerCallbacks, this);
             Contract.IsNotNull(rightPointerCallbacks, this);

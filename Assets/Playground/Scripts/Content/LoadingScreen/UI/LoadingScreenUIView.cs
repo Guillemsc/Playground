@@ -1,4 +1,4 @@
-﻿using Playground.Utils.UIAnimations;
+﻿using Playground.Utils.UI;
 
 namespace Playground.Content.LoadingScreen.UI
 {

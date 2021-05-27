@@ -18,10 +18,9 @@ MonoBehaviour:
   m_GUID: f478c6a0b0ca4d0458a0ef842153084f
   m_SerializeEntries:
   - m_GUID: 12f8691d59cca4d4ab45d24c613a1333
-    m_Address: Assets/Playground/Prefabs/View/Stage.prefab
+    m_Address: Assets/Playground/Prefabs/View/Stages/StageView.prefab
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - default
+    m_SerializedLabels: []
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0

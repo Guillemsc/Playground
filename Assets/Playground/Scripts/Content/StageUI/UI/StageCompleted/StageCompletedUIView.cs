@@ -1,11 +1,10 @@
-﻿using Juce.Core.Events.Generic;
-using Juce.CoreUnity.Contracts;
+﻿using Juce.CoreUnity.Contracts;
 using Juce.CoreUnity.PointerCallback;
 using Juce.CoreUnity.Service;
 using Playground.Content.LoadingScreen.UI;
 using Playground.Content.Stage.VisualLogic.View.Signals;
 using Playground.Services;
-using Playground.Utils.UIAnimations;
+using Playground.Utils.UI;
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -20,7 +19,7 @@ namespace Playground.Content.StageUI.UI.StageCompleted
 
         private GenericSignal<StageCompletedUIView, EventArgs> canUnloadStageSignal;
 
-        protected override void OnAwake()
+        protected override void OnUIViewAwake()
         {
             Contract.IsNotNull(tryAgainPointerCallbacks, this);
 
