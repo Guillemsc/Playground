@@ -19,7 +19,7 @@ namespace Playground.Content.StageUI.UI.StageCompleted
 
         private GenericSignal<StageCompletedUIView, EventArgs> canUnloadStageSignal;
 
-        protected override void OnUIViewAwake()
+        private void Awake()
         {
             Contract.IsNotNull(tryAgainPointerCallbacks, this);
 

@@ -3,6 +3,7 @@ using Juce.CoreUnity.Service;
 using Juce.CoreUnity.Services;
 using Playground.Services;
 using Playground.Utils.UIViewStack;
+using UnityEngine;
 
 namespace Playground.Contexts
 {
@@ -10,9 +11,12 @@ namespace Playground.Contexts
     {
         public readonly static string SceneName = "ServicesContext";
 
+        [SerializeField] private ServicesContextReferences servicesContextReferences = default;
+
         private TickablesService tickablesService;
         private TimeService timeService;
         private UIViewStackService uiViewStackService;
+        private ConfigurationService configurationService;
 
         protected override void Init()
         {
@@ -26,6 +30,11 @@ namespace Playground.Contexts
 
             uiViewStackService = new UIViewStackService();
             ServicesProvider.Register(uiViewStackService);
+
+            configurationService = new ConfigurationService(
+                servicesContextReferences.DemoStagesConfiguration
+                );
+            ServicesProvider.Register(configurationService);
         }
 
         protected override void CleanUp()

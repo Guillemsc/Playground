@@ -14,7 +14,7 @@ namespace Playground.Content.StageUI.UI.StageOverlay
 
         public event GenericEvent<StageOverlayUIView, PointerEventData> OnRestartClicked;
 
-        protected override void OnUIViewAwake()
+        private void Awake()
         {
             Contract.IsNotNull(restartPointerCallbacks, this);
 

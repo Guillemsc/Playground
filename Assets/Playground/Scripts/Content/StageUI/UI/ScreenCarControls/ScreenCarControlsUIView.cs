@@ -21,7 +21,7 @@ namespace Playground.Content.StageUI.UI.ScreenCarControls
         public event GenericEvent<ScreenCarControlsUIView, PointerCallbacks> OnAcceleratePointerCallbacksDown;
         public event GenericEvent<ScreenCarControlsUIView, PointerCallbacks> OnBreakPointerCallbacksDown;
 
-        protected override void OnUIViewAwake()
+        private void Awake()
         {
             Contract.IsNotNull(leftPointerCallbacks, this);
             Contract.IsNotNull(rightPointerCallbacks, this);

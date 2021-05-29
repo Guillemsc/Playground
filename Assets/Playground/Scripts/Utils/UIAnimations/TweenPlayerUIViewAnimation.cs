@@ -8,9 +8,28 @@ namespace Playground.Utils.UIAnimations
 {
     public class TweenPlayerUIViewAnimation : UIViewAnimation
     {
+        [Header("Settings")]
+        [SerializeField] private bool executeInstantlyOnAwake = default;
+
+        [Header("Feedbacks")]
         [SerializeField] private List<TweenPlayer> tweenPlayersToPlay = default;
         [SerializeField] private List<TweenPlayer> tweenPlayersToKill = default;
         [SerializeField] private List<TweenPlayer> tweenPlayersToComplete = default;
+
+        private void Awake()
+        {
+            TryExecuteInstantlyOnAwake();
+        }
+
+        private void TryExecuteInstantlyOnAwake()
+        {
+            if(!executeInstantlyOnAwake)
+            {
+                return;
+            }
+
+            Execute(instantly: true, default).RunAsync();
+        }
 
         public override Task Execute(bool instantly, CancellationToken cancellationToken)
         {

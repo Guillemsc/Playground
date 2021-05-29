@@ -1,6 +1,4 @@
-﻿using Juce.CoreUnity.Service;
-using Playground.Utils.UIAnimations;
-using Playground.Utils.UIViewStack;
+﻿using Playground.Utils.UIAnimations;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -9,24 +7,9 @@ namespace Playground.Utils.UI
 {
     public class UIView : MonoBehaviour
     {
-        [Header("Settings")]
-        [SerializeField] private bool hideOnAwake = default;
-
         [Header("Animations")]
         [SerializeField] private UIViewAnimation showAnimation = default;
         [SerializeField] private UIViewAnimation hideAnimation = default;
-
-        private void Awake()
-        {
-            TryHideOnAwake();
-
-            OnUIViewAwake();
-        }
-
-        private void OnDestroy()
-        {
-            OnUIViewDestroy();
-        }
 
         public void Show(bool instantly)
         {
@@ -59,18 +42,5 @@ namespace Playground.Utils.UI
 
             return hideAnimation.Execute(instantly, cancellationToken);
         }
-
-        private void TryHideOnAwake()
-        {
-            if(!hideOnAwake)
-            {
-                return;
-            }
-
-            Hide(instantly: true, default);
-        }
-
-        protected virtual void OnUIViewAwake() { }
-        protected virtual void OnUIViewDestroy() { }
     }
 }
