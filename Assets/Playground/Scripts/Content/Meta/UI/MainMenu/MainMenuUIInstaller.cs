@@ -15,7 +15,7 @@ namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
         private MainMenuUIController controller;
         private MainMenuUIInteractor interactor;
 
-        private void Awake()
+        private void Start()
         {
             GatherDependences();
             GenerateDependences();

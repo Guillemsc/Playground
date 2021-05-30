@@ -25,7 +25,7 @@ namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
         private DemoStagesUIController controller;
         private DemoStagesUIInteractor interactor;
 
-        private void Awake()
+        private void Start()
         {
             GatherDependences();
             GenerateDependences();

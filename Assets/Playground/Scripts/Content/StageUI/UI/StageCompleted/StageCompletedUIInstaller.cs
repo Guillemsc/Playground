@@ -15,7 +15,7 @@ namespace Playground.Content.StageUI.UI.StageCompleted
         private StageCompletedUIController controller;
         private StageCompletedUIInteractor interactor;
 
-        private void Awake()
+        private void Start()
         {
             GatherDependences();
             GenerateDependences();

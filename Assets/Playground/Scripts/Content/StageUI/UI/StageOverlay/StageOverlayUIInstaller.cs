@@ -15,7 +15,7 @@ namespace Playground.Content.StageUI.UI.StageOverlay
         private StageOverlayUIController controller;
         private StageOverlayUIInteractor interactor;
 
-        private void Awake()
+        private void Start()
         {
             GatherDependences();
             GenerateDependences();

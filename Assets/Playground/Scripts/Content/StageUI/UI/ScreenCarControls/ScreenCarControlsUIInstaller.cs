@@ -15,7 +15,7 @@ namespace Playground.Content.StageUI.UI.ScreenCarControls
         private ScreenCarControlsUIController controller;
         private ScreenCarControlsUIInteractor interactor;
 
-        private void Awake()
+        private void Start()
         {
             GatherDependences();
             GenerateDependences();
