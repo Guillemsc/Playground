@@ -17,7 +17,7 @@ namespace Playground.Content.StageUI.UI.StageCompleted
         [Header("References")]
         [SerializeField] private PointerCallbacks tryAgainPointerCallbacks = default;
 
-        private GenericSignal<StageCompletedUIView, EventArgs> canUnloadStageSignal;
+        private StageCompletedUIViewModel viewModel;
 
         private void Awake()
         {
@@ -31,27 +31,14 @@ namespace Playground.Content.StageUI.UI.StageCompleted
             tryAgainPointerCallbacks.OnClick -= OnTryAgainPointerCallbacksClick;
         }
 
-        public void Init(GenericSignal<StageCompletedUIView, EventArgs> canUnloadStageSignal)
+        public void Init(StageCompletedUIViewModel viewModel)
         {
-            this.canUnloadStageSignal = canUnloadStageSignal;
+            this.viewModel = viewModel;
         }
 
         private void OnTryAgainPointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)
         {
-            PlayAgain().RunAsync();
-        }
-
-        private async Task PlayAgain()
-        {
-            await Hide(instantly: false, default);
-
-            FlowService flowService = ServicesProvider.GetService<FlowService>();
-
-            ILoadingToken loadingToken = await flowService.FlowUseCases.ShowLoadingScreenFlowUseCase.Execute(instantly: false);
-
-            canUnloadStageSignal.Trigger(this, EventArgs.Empty);
-
-            await flowService.FlowUseCases.ReplayScenarioFlowUseCase.Execute(loadingToken);
+            viewModel.OnPlayAgainClickedEvent.Execute(this, pointerCallbacks);
         }
     }
 }

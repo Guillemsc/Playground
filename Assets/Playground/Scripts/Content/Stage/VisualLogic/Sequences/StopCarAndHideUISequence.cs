@@ -2,6 +2,7 @@
 using Playground.Content.Stage.VisualLogic.View.Car;
 using Playground.Content.StageUI.UI.ScreenCarControls;
 using Playground.Content.StageUI.UI.StageOverlay;
+using Playground.Services.ViewStack;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,17 +10,17 @@ namespace Playground.Content.Stage.VisualLogic.Sequences
 {
     public class StopCarAndHideUISequence
     {
-        private readonly ScreenCarControlsUIView screenCarControlsUIView;
+        private readonly UIViewStackService uiViewStackService;
         private readonly StageOverlayUIView stageOverlayUIView;
         private readonly CarViewRepository carViewRepository;
 
         public StopCarAndHideUISequence(
-            ScreenCarControlsUIView screenCarControlsUIView,
+            UIViewStackService uiViewStackService,
             StageOverlayUIView stageOverlayUIView,
             CarViewRepository carViewRepository
             )
         {
-            this.screenCarControlsUIView = screenCarControlsUIView;
+            this.uiViewStackService = uiViewStackService;
             this.stageOverlayUIView = stageOverlayUIView;
             this.carViewRepository = carViewRepository;
         }
@@ -36,8 +37,8 @@ namespace Playground.Content.Stage.VisualLogic.Sequences
         private Task HideUI(CancellationToken cancellationToken)
         {
             return Task.WhenAll(
-                new SetScreenCarControlsVisibleInstruction(screenCarControlsUIView, visible: false, instantly: false).Execute(cancellationToken),
-                new SetStageOverlayVisibleInstruction(stageOverlayUIView, visible: false, instantly: false).Execute(cancellationToken)
+                new SetUIViewVisibleInstruction<ScreenCarControlsUIView>(uiViewStackService, visible: false, instantly: false).Execute(cancellationToken),
+                new SetUIViewVisibleInstruction<StageOverlayUIView>(uiViewStackService, visible: false, instantly: false).Execute(cancellationToken)
                 );
         }
     }

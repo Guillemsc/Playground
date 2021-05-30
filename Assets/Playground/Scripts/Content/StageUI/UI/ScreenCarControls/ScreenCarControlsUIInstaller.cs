@@ -2,24 +2,24 @@
 using Playground.Services.ViewStack;
 using UnityEngine;
 
-namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
+namespace Playground.Content.StageUI.UI.ScreenCarControls
 {
-    [RequireComponent(typeof(MainMenuUIView))]
-    public class MainMenuUIInstaller : MonoBehaviour
+    [RequireComponent(typeof(ScreenCarControlsUIView))]
+    public class ScreenCarControlsUIInstaller : MonoBehaviour
     {
         private UIViewStackService uiViewStackService;
 
-        private MainMenuUIViewModel viewModel;
-        private MainMenuUIView view;
-        private MainMenuUIUseCases useCases;
-        private MainMenuUIController controller;
-        private MainMenuUIInteractor interactor;
+        private ScreenCarControlsUIViewModel viewModel;
+        private ScreenCarControlsUIView view;
+        private ScreenCarControlsUIUseCases useCases;
+        private ScreenCarControlsUIController controller;
+        private ScreenCarControlsUIInteractor interactor;
 
         private void Awake()
         {
             GatherDependences();
             GenerateDependences();
-
+            GenerateUseCases();
             Install();
         }
 
@@ -35,17 +35,21 @@ namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
 
         private void GenerateDependences()
         {
-            viewModel = new MainMenuUIViewModel();
+    
+        }
+
+        private void GenerateUseCases()
+        {
+            useCases = new ScreenCarControlsUIUseCases(
+                );
         }
 
         private void Install()
         {
-            view = GetComponent<MainMenuUIView>();
+            view = GetComponent<ScreenCarControlsUIView>();
 
-            useCases = new MainMenuUIUseCases();
-
-            controller = new MainMenuUIController(viewModel, useCases);
-            interactor = new MainMenuUIInteractor(viewModel, useCases);
+            controller = new ScreenCarControlsUIController(viewModel, useCases);
+            interactor = new ScreenCarControlsUIInteractor(viewModel, useCases);
 
             view.Init(viewModel);
 

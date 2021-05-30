@@ -19,6 +19,8 @@ namespace Playground.Content.StageUI.UI.ScreenCarControls
         public event GenericEvent<ScreenCarControlsUIView, PointerCallbacks> OnAcceleratePointerCallbacksDown;
         public event GenericEvent<ScreenCarControlsUIView, PointerCallbacks> OnBreakPointerCallbacksDown;
 
+        private ScreenCarControlsUIViewModel viewModel;
+
         private void Awake()
         {
             Contract.IsNotNull(leftPointerCallbacks, this);
@@ -48,6 +50,11 @@ namespace Playground.Content.StageUI.UI.ScreenCarControls
             {
                 OnBreakPointerCallbacksDown?.Invoke(this, breakPointerCallbacks);
             }
+        }
+
+        public void Init(ScreenCarControlsUIViewModel viewModel)
+        {
+            this.viewModel = viewModel;
         }
     }
 }

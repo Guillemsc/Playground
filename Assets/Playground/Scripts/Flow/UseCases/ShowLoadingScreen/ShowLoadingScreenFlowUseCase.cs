@@ -1,6 +1,7 @@
 ﻿using Juce.CoreUnity.Contexts;
 using Playground.Content.LoadingScreen.UI;
 using Playground.Contexts;
+using System;
 using System.Threading.Tasks;
 
 namespace Playground.Flow.UseCases
@@ -12,6 +13,8 @@ namespace Playground.Flow.UseCases
             LoadingScreenContext loadingScreenContext = ContextsProvider.GetContext<LoadingScreenContext>();
 
             await loadingScreenContext.LoadingScreenContextReferences.LoadingScreenUIView.Show(instantly, cancellationToken: default);
+
+            GC.Collect();
 
             ILoadingToken loadingToken = new CallbackLoadingToken(
                 () => loadingScreenContext.LoadingScreenContextReferences.LoadingScreenUIView.Hide(instantly: false)

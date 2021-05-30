@@ -230,9 +230,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3325827100585227510}
+  - component: {fileID: 2991787666752421393}
   - component: {fileID: 1288089354507011724}
   - component: {fileID: 3449668780111445811}
   - component: {fileID: 7462425091591997518}
+  - component: {fileID: 6793356465559861352}
   m_Layer: 5
   m_Name: ScreenCarControlsUI
   m_TagString: Untagged
@@ -261,6 +263,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2991787666752421393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325827100585227509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1fc6d9f13d34a24c86ca772f59115bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1288089354507011724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,7 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8c21b24d3f69ca4685ee95a7018425a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hideOnAwake: 1
+  isPopup: 0
   showAnimation: {fileID: 3449668780111445811}
   hideAnimation: {fileID: 7462425091591997518}
   leftPointerCallbacks: {fileID: 7160847729329768017}
@@ -292,6 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a09fcb0e8e43064581b19538d46ef89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  executeInstantlyOnAwake: 0
   tweenPlayersToPlay:
   - {fileID: 8281840680371133223}
   tweenPlayersToKill:
@@ -309,11 +324,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a09fcb0e8e43064581b19538d46ef89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  executeInstantlyOnAwake: 1
   tweenPlayersToPlay:
   - {fileID: 2614287027565965163}
   tweenPlayersToKill:
   - {fileID: 8281840680371133223}
   tweenPlayersToComplete: []
+--- !u!114 &6793356465559861352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3325827100585227509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 482b158475a8a7b44aea54ef318790c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6585445254579960289
 GameObject:
   m_ObjectHideFlags: 0

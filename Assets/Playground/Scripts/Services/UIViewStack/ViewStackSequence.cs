@@ -12,11 +12,11 @@ namespace Playground.Services.ViewStack
         private readonly List<Instruction> instructionsToPlay = new List<Instruction>(); 
         private readonly Sequencer sequencer = new Sequencer();
 
-        private readonly RegisteredViewsRepository registeredViewsRepository;
+        private readonly UIViewRepository registeredViewsRepository;
         private readonly ViewContexRepository viewContexRepository;
 
         public ViewStackSequence(
-            RegisteredViewsRepository registeredViewsRepository,
+            UIViewRepository registeredViewsRepository,
             ViewContexRepository viewContexRepository
             )
         {

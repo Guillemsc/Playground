@@ -1,6 +1,8 @@
-﻿namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
+﻿using Juce.CoreUnity.UI;
+
+namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
 {
-    public class DemoStagesUIInteractor
+    public class DemoStagesUIInteractor : UIInteractor
     {
         private readonly DemoStagesUIViewModel viewModel;
         private readonly DemoStagesUIUseCases useCases;

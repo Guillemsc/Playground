@@ -6,6 +6,7 @@ using Playground.Content.Stage.VisualLogic.View.Signals;
 using Playground.Content.Stage.VisualLogic.View.Stage;
 using Playground.Content.StageUI.UI.StageCompleted;
 using Playground.Services;
+using Playground.Services.ViewStack;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
     {
         private readonly Sequencer sequencer;
         private readonly TimeService timeService;
+        private readonly UIViewStackService uiViewStackService;
         private readonly StageCompletedUIView stageCompletedUIView;
         private readonly StageViewRepository stageViewRepository;
         private readonly StopCarAndHideUISequence stopCarAndHideUISequence;
@@ -25,6 +27,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         public StopAndShowUIStageFinishedUseCase(
             Sequencer sequencer,
             TimeService timeService,
+            UIViewStackService uiViewStackService,
             StageCompletedUIView stageCompletedUIView,
             StageViewRepository stageViewRepository,
             StopCarAndHideUISequence stopCarAndHideUISequence
@@ -32,6 +35,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         {
             this.sequencer = sequencer;
             this.timeService = timeService;
+            this.uiViewStackService = uiViewStackService;
             this.stageCompletedUIView = stageCompletedUIView;
             this.stageViewRepository = stageViewRepository;
             this.stopCarAndHideUISequence = stopCarAndHideUISequence;
@@ -50,24 +54,17 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
 
             await new WaitTimeInstruction(timeService.UnscaledTimeContext, TimeSpan.FromSeconds(1.0f)).Execute(cancellationToken);
 
-            GenericSignal<StageCompletedUIView, EventArgs> canUnloadStageSignal = new GenericSignal<StageCompletedUIView, EventArgs>();
+            StageCompletedUIInteractor stageCompletedUIInteractor = uiViewStackService.GetInteractor<StageCompletedUIInteractor>();
+            stageCompletedUIInteractor.RegisterToCanUnloadStage(OnCanUnloadStageSignalTriggered);
 
-            canUnloadStageSignal.OnTrigger += OnCanUnloadStageSignalTriggered;
-
-            await new ShowStageCompletedUIInstruction(
-                stageCompletedUIView,
-                canUnloadStageSignal
-                ).Execute(instantly: false, cancellationToken);
+            await new SetUIViewVisibleInstruction<StageCompletedUIView>(uiViewStackService, visible: true, instantly: false).Execute(cancellationToken);
 
             await taskCompletitionSource.Task;
 
-            canUnloadStageSignal.OnTrigger -= OnCanUnloadStageSignalTriggered;
+            stageCompletedUIInteractor.UnregisterToCanUnloadStage(OnCanUnloadStageSignalTriggered);
         }
 
-        private void OnCanUnloadStageSignalTriggered(
-            StageCompletedUIView stageCompletedUIView,
-            EventArgs eventArgs
-            )
+        private void OnCanUnloadStageSignalTriggered()
         {
             taskCompletitionSource.SetResult(null);
         }

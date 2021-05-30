@@ -1,6 +1,8 @@
-﻿namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
+﻿using Juce.CoreUnity.UI;
+
+namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
 {
-    public class MainMenuUIInteractor 
+    public class MainMenuUIInteractor : UIInteractor
     {
         private readonly MainMenuUIViewModel viewModel;
         private readonly MainMenuUIUseCases useCases;

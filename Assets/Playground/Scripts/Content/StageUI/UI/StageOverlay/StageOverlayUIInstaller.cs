@@ -2,24 +2,24 @@
 using Playground.Services.ViewStack;
 using UnityEngine;
 
-namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
+namespace Playground.Content.StageUI.UI.StageOverlay
 {
-    [RequireComponent(typeof(MainMenuUIView))]
-    public class MainMenuUIInstaller : MonoBehaviour
+    [RequireComponent(typeof(StageOverlayUIView))]
+    public class StageOverlayUIInstaller : MonoBehaviour
     {
         private UIViewStackService uiViewStackService;
 
-        private MainMenuUIViewModel viewModel;
-        private MainMenuUIView view;
-        private MainMenuUIUseCases useCases;
-        private MainMenuUIController controller;
-        private MainMenuUIInteractor interactor;
+        private StageOverlayUIViewModel viewModel;
+        private StageOverlayUIView view;
+        private StageOverlayUIUseCases useCases;
+        private StageOverlayUIController controller;
+        private StageOverlayUIInteractor interactor;
 
         private void Awake()
         {
             GatherDependences();
             GenerateDependences();
-
+            GenerateUseCases();
             Install();
         }
 
@@ -35,17 +35,21 @@ namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
 
         private void GenerateDependences()
         {
-            viewModel = new MainMenuUIViewModel();
+
+        }
+
+        private void GenerateUseCases()
+        {
+            useCases = new StageOverlayUIUseCases(
+                );
         }
 
         private void Install()
         {
-            view = GetComponent<MainMenuUIView>();
+            view = GetComponent<StageOverlayUIView>();
 
-            useCases = new MainMenuUIUseCases();
-
-            controller = new MainMenuUIController(viewModel, useCases);
-            interactor = new MainMenuUIInteractor(viewModel, useCases);
+            controller = new StageOverlayUIController(viewModel, useCases);
+            interactor = new StageOverlayUIInteractor(viewModel, useCases);
 
             view.Init(viewModel);
 

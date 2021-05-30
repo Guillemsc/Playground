@@ -49,8 +49,6 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
 
         private async Task ExecuteSequence(CancellationToken cancellationToken)
         {
-            StageView stageView = stageViewRepository.StageView;
-
             await stopCarAndHideUISequence.Execute(cancellationToken);
 
             FlowService flowService = ServicesProvider.GetService<FlowService>();

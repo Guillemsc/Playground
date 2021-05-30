@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Playground.Services.ViewStack
 {
-    public class RegisteredViewsRepository
+    public class UIViewRepository
     {
         private readonly Dictionary<Type, UIView> items = new Dictionary<Type, UIView>();
 

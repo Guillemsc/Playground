@@ -34,8 +34,6 @@ namespace Playground.Flow.UseCases
 
             StageConfiguration stageConfiguration = currentStageFlowData.StageConfiguration;
 
-            GC.Collect();
-
             ScenesLoader stageScenesLoader = new ScenesLoader(
                 StageUIContext.SceneName,
                 StageContext.SceneName

@@ -10,6 +10,7 @@ using Playground.Content.Stage.VisualLogic.View.Stage;
 using Playground.Content.StageUI.UI.ScreenCarControls;
 using Playground.Content.StageUI.UI.StageOverlay;
 using Playground.Services;
+using Playground.Services.ViewStack;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
     {
         private readonly Sequencer sequencer;
         private readonly TimeService timeService;
+        private readonly UIViewStackService uiViewStackService;
         private readonly ScreenCarControlsUIView screenCarControlsUIView;
         private readonly StageOverlayUIView stageOverlayUIView;
         private readonly StageViewRepository stageViewRepository;
@@ -35,6 +37,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         public LoadStageUseCase(
             Sequencer sequencer,
             TimeService timeService,
+            UIViewStackService uiViewStackService,
             ScreenCarControlsUIView screenCarControlsUIView,
             StageOverlayUIView stageOverlayUIView,
             StageViewRepository stageViewRepository,
@@ -50,6 +53,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         {
             this.sequencer = sequencer;
             this.timeService = timeService;
+            this.uiViewStackService = uiViewStackService;
             this.screenCarControlsUIView = screenCarControlsUIView;
             this.stageOverlayUIView = stageOverlayUIView;
             this.stageViewRepository = stageViewRepository;
@@ -86,7 +90,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             new TeleportCarToTransformInstruction(carViewRepository, stageView.CarStartPosition).Execute();
             new AttachCameraToCarInstruction(carViewRepository, followCarVirtualCamera).Execute();
 
-            await new WaitTimeInstruction(timeService.UnscaledTimeContext, TimeSpan.FromSeconds(2.4f)).Execute(cancellationToken);
+            await new WaitTimeInstruction(timeService.UnscaledTimeContext, TimeSpan.FromSeconds(1.4f)).Execute(cancellationToken);
 
             new SetLoadingTokenAsCompletedInstruction(loadingToken).Execute();
 
@@ -100,8 +104,8 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         private Task ShowUI(CancellationToken cancellationToken)
         {
             return Task.WhenAll(
-                new SetScreenCarControlsVisibleInstruction(screenCarControlsUIView, visible: true, instantly: false).Execute(cancellationToken),
-                new SetStageOverlayVisibleInstruction(stageOverlayUIView, visible: true, instantly: false).Execute(cancellationToken)
+                new SetUIViewVisibleInstruction<ScreenCarControlsUIView>(uiViewStackService, visible: true, instantly: false).Execute(cancellationToken),
+                new SetUIViewVisibleInstruction<StageOverlayUIView>(uiViewStackService, visible: true, instantly: false).Execute(cancellationToken)
                 );
         }
     }

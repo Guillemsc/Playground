@@ -15,6 +15,7 @@ using Playground.Content.StageUI.UI.ScreenCarControls;
 using Playground.Content.StageUI.UI.StageCompleted;
 using Playground.Content.StageUI.UI.StageOverlay;
 using Playground.Services;
+using Playground.Services.ViewStack;
 using System;
 using UnityEngine.EventSystems;
 
@@ -26,6 +27,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
         private readonly IEventDispatcher eventDispatcher;
         private readonly IEventReceiver eventReceiver;
         private readonly TimeService timeService;
+        private readonly UIViewStackService uiViewStackService;
         private readonly ScreenCarControlsUIView screenCarControlsUIView;
         private readonly StageOverlayUIView stageOverlayUIView;
         private readonly StageCompletedUIView stageCompletedUIView;
@@ -38,6 +40,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             IEventDispatcher eventDispatcher,
             IEventReceiver eventReceiver,
             TimeService timeService,
+            UIViewStackService uiViewStackService,
             ScreenCarControlsUIView screenCarControlsUIView,
             StageOverlayUIView stageOverlayUIView,
             StageCompletedUIView stageCompletedUIView,
@@ -50,6 +53,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             this.eventDispatcher = eventDispatcher;
             this.eventReceiver = eventReceiver;
             this.timeService = timeService;
+            this.uiViewStackService = uiViewStackService;
             this.screenCarControlsUIView = screenCarControlsUIView;
             this.stageOverlayUIView = stageOverlayUIView;
             this.stageCompletedUIView = stageCompletedUIView;
@@ -68,7 +72,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             GenericSignal<FinishLineView, EventArgs> finishLineCrossedSignal = new GenericSignal<FinishLineView, EventArgs>();
 
             StopCarAndHideUISequence stopCarAndHideUISequence = new StopCarAndHideUISequence(
-                screenCarControlsUIView,
+                uiViewStackService,
                 stageOverlayUIView,
                 carViewRepository
                 );
@@ -77,6 +81,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                 new LoadStageUseCase(
                     sequencer,
                     timeService,
+                    uiViewStackService,
                     screenCarControlsUIView,
                     stageOverlayUIView,
                     stageViewRepository,
@@ -114,6 +119,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                         new StopAndShowUIStageFinishedUseCase(
                             sequencer,
                             timeService,
+                            uiViewStackService,
                             stageCompletedUIView,
                             stageViewRepository,
                             stopCarAndHideUISequence

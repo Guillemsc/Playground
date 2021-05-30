@@ -26,6 +26,11 @@ namespace Playground.Content.StageUI.UI.StageOverlay
             restartPointerCallbacks.OnClick -= OnRestartPointerCallbacksClick;
         }
 
+        public void Init(StageOverlayUIViewModel viewModel)
+        {
+
+        }
+
         private void OnRestartPointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)
         {
             OnRestartClicked?.Invoke(this, pointerEventData);

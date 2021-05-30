@@ -90,7 +90,7 @@ namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
             controller.Subscribe();
             interactor.Subscribe();
 
-            uiViewStackService.Register(view);
+            uiViewStackService.Register(interactor, view);
         }
 
         private void Uninstall()
@@ -98,7 +98,7 @@ namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
             controller.Unsubscribe();
             interactor.Unsubscribe();
 
-            uiViewStackService.Unregister(view);
+            uiViewStackService.Unregister(interactor, view);
         }
     }
 }

@@ -11,6 +11,7 @@ using Playground.Content.Stage.Setup;
 using Playground.Content.Stage.VisualLogic.EntryPoint;
 using Playground.Content.Stage.VisualLogic.View.Stage;
 using Playground.Services;
+using Playground.Services.ViewStack;
 using UnityEngine;
 
 namespace Playground.Contexts
@@ -60,6 +61,7 @@ namespace Playground.Contexts
 
             TickablesService tickablesService = ServicesProvider.GetService<TickablesService>();
             TimeService timeService = ServicesProvider.GetService<TimeService>();
+            UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
 
             EventDispatcherAndReceiver logicToViewEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
             EventDispatcherAndReceiver viewToLogicEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
@@ -78,6 +80,7 @@ namespace Playground.Contexts
                 viewToLogicEventDispatcherAndReceiver,
                 logicToViewEventDispatcherAndReceiver,
                 timeService,
+                uiViewStackService,
                 stageUIContext.StageUIContextReferences.ScreenCarControlsUIView,
                 stageUIContext.StageUIContextReferences.StageOverlayUIView,
                 stageUIContext.StageUIContextReferences.StageCompletedUIView,

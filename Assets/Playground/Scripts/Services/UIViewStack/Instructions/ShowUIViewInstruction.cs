@@ -9,13 +9,13 @@ namespace Playground.Services.ViewStack
 {
     public class ShowUIViewInstruction : Instruction
     {
-        private readonly RegisteredViewsRepository registeredViewsRepository;
+        private readonly UIViewRepository registeredViewsRepository;
         private readonly ViewContexRepository viewContexRepository;
         private readonly Type viewType;
         private readonly bool instantly;
 
         public ShowUIViewInstruction(
-            RegisteredViewsRepository registeredViewsRepository,
+            UIViewRepository registeredViewsRepository,
             ViewContexRepository viewContexRepository,
             Type viewType,
             bool instantly
