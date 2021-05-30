@@ -303,6 +303,7 @@ GameObject:
   - component: {fileID: 3098731803069546380}
   - component: {fileID: 3098731803069546381}
   - component: {fileID: 3098731803069546382}
+  - component: {fileID: 6748377959537307954}
   m_Layer: 5
   m_Name: MainMenuUIView
   m_TagString: Untagged
@@ -355,6 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f6c6e4480e98394dbd9fac8f19b197b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPopup: 0
   showAnimation: {fileID: 3098731803069546381}
   hideAnimation: {fileID: 3098731803069546382}
   demoStagesPointerCallbacks: {fileID: 3018438038389226229}
@@ -394,6 +396,18 @@ MonoBehaviour:
   tweenPlayersToKill:
   - {fileID: 3098731802869994782}
   tweenPlayersToComplete: []
+--- !u!114 &6748377959537307954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3098731803069546376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 482b158475a8a7b44aea54ef318790c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3098731803398201053
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,7 +478,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: {fileID: 3098731803398201053}
+          FallbackValue: {fileID: 3098731804038137437}
         value:
           bindingEnabled: 0
           wantsToBeBinded: 0

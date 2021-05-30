@@ -1,7 +1,7 @@
 ﻿using Juce.Core.Events.Generic;
 using Juce.CoreUnity.Contracts;
 using Juce.CoreUnity.PointerCallback;
-using Playground.Utils.UI;
+using Juce.CoreUnity.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 

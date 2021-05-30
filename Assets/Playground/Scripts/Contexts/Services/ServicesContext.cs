@@ -2,7 +2,7 @@
 using Juce.CoreUnity.Service;
 using Juce.CoreUnity.Services;
 using Playground.Services;
-using Playground.Utils.UIViewStack;
+using Playground.Services.ViewStack;
 using UnityEngine;
 
 namespace Playground.Contexts

@@ -1,4 +1,5 @@
-﻿using Juce.TweenPlayer;
+﻿using Juce.CoreUnity.UI;
+using Juce.TweenPlayer;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;

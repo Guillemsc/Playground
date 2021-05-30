@@ -1,4 +1,7 @@
 ﻿using Juce.CoreUnity.PointerCallback;
+using Juce.CoreUnity.Service;
+using Playground.Content.Stage.VisualLogic.UI.DemoStages;
+using Playground.Services.ViewStack;
 using System;
 
 namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
@@ -29,7 +32,8 @@ namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
 
         private void OnDemoStagesClicked(PointerCallbacks pointerCallbacks, EventArgs eventArgs)
         {
-
+            UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
+            uiViewStackService.New().Show<DemoStagesUIView>(instantly: false).Hide<MainMenuUIView>(instantly: true).Execute();
         }
     }
 }

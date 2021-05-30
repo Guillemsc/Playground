@@ -1,4 +1,4 @@
-﻿using Playground.Utils.UI;
+﻿using Juce.CoreUnity.UI;
 
 namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
 {

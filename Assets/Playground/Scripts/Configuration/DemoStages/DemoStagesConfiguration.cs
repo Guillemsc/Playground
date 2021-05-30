@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Playground.Content.Stage.Configuration;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Playground.Configuration.DemoStages
@@ -6,8 +7,8 @@ namespace Playground.Configuration.DemoStages
     [CreateAssetMenu(fileName = "DemoStagesConfiguration", menuName = "Playground/DemoStagesConfiguration", order = 1)]
     public class DemoStagesConfiguration : ScriptableObject
     {
-        [SerializeField] private List<SceneReference> stagesScenes = default;
+        [SerializeField] private List<StageConfiguration> stageConfigurations = default;
 
-        public IReadOnlyList<SceneReference> StagesScenes => stagesScenes;
+        public IReadOnlyList<StageConfiguration> StageConfigurations => stageConfigurations;
     }
 }

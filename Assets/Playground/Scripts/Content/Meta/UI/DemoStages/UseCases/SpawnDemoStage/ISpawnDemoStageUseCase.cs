@@ -1,7 +1,9 @@
-﻿namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
+﻿using Playground.Content.Stage.Configuration;
+
+namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
 {
     public interface ISpawnDemoStageUseCase
     {
-        void Execute(string stageScenePath);
+        void Execute(StageConfiguration stageConfiguration);
     }
 }

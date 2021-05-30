@@ -1,5 +1,5 @@
 ﻿using Juce.CoreUnity.Service;
-using Playground.Utils.UIViewStack;
+using Playground.Services.ViewStack;
 using UnityEngine;
 
 namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
@@ -18,6 +18,7 @@ namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
         private void Awake()
         {
             GatherDependences();
+            GenerateDependences();
 
             Install();
         }
@@ -32,10 +33,13 @@ namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
             uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
         }
 
-        private void Install()
+        private void GenerateDependences()
         {
             viewModel = new MainMenuUIViewModel();
+        }
 
+        private void Install()
+        {
             view = GetComponent<MainMenuUIView>();
 
             useCases = new MainMenuUIUseCases();

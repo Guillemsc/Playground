@@ -1,7 +1,7 @@
 ﻿using Juce.CoreUnity.Contracts;
 using Juce.CoreUnity.Service;
 using Playground.Services;
-using Playground.Utils.UIViewStack;
+using Playground.Services.ViewStack;
 using UnityEngine;
 
 namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
@@ -49,9 +49,12 @@ namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
             Contract.IsNotNull(demoStageButtonUIEntriesParent, this);
             Contract.IsNotNull(demoStageButtonUIEntryPrefab, this);
 
+            viewModel = new DemoStagesUIViewModel();
+
             demoStageButtonUIEntryFactory = new DemoStageButtonUIEntryFactory(
                 demoStageButtonUIEntriesParent,
-                demoStageButtonUIEntryPrefab
+                demoStageButtonUIEntryPrefab,
+                viewModel.OnDemoStageButtonClickedEvent
                 );
 
             demoStageButtonUIEntryRepository = new DemoStageButtonUIEntryRepository();
@@ -77,8 +80,6 @@ namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
 
         private void Install()
         {
-            viewModel = new DemoStagesUIViewModel();
-
             view = GetComponent<DemoStagesUIView>();
 
             controller = new DemoStagesUIController(viewModel, useCases);

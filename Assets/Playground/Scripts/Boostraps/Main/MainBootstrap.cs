@@ -4,6 +4,7 @@ using Playground.Flow.UseCases;
 using Playground.Services;
 using Juce.CoreUnity.Service;
 using Playground.Content.LoadingScreen.UI;
+using Playground.Flow.Data;
 
 namespace Playground.Boostraps
 {
@@ -16,12 +17,16 @@ namespace Playground.Boostraps
 
         private async Task Run()
         {
+            CurrentStageFlowData currentStageFlowData = new CurrentStageFlowData();
+
             FlowUseCases flowUseCases = new FlowUseCases(
                 new LoadEssentialScenesFlowUseCase(),
                 new ShowLoadingScreenFlowUseCase(),
-                new LoadMetaUseCase(),
-                new StageBootstrapPlayScenarioFlowUseCase(null),
-                new StageBootstrapReplayScenarioFlowUseCase(null)
+                new LoadMetaFlowUseCase(),
+                new UnloadMetaFlowUseCase(),
+                new SetCurrentStageFlowUseCase(currentStageFlowData),
+                new MainBootstrapPlayScenarioFlowUseCase(currentStageFlowData),
+                new StageBootstrapReplayScenarioFlowUseCase(currentStageFlowData)
                 );
 
             FlowService flowService = new FlowService(flowUseCases);
@@ -31,7 +36,7 @@ namespace Playground.Boostraps
 
             ILoadingToken loadingToken = await flowUseCases.ShowLoadingScreenFlowUseCase.Execute(instantly: true);
 
-            await flowUseCases.LoadMetaUseCase.Execute(loadingToken);
+            await flowUseCases.LoadMetaFlowUseCase.Execute(loadingToken);
         }
     }
 }

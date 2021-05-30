@@ -1,4 +1,5 @@
 ﻿using Playground.Configuration.DemoStages;
+using Playground.Content.Stage.Configuration;
 
 namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
 {
@@ -18,9 +19,9 @@ namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
 
         public void Execute()
         {
-            foreach(SceneReference sceneReference in demoStagesConfiguration.StagesScenes)
+            foreach(StageConfiguration stageConfiguration in demoStagesConfiguration.StageConfigurations)
             {
-                spawnDemoStageUseCase.Execute(sceneReference.ScenePath);
+                spawnDemoStageUseCase.Execute(stageConfiguration);
             }
         }
     }

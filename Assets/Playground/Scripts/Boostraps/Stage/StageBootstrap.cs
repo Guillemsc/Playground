@@ -5,6 +5,7 @@ using Playground.Flow.UseCases;
 using Playground.Services;
 using Juce.CoreUnity.Service;
 using Playground.Content.LoadingScreen.UI;
+using Playground.Flow.Data;
 
 namespace Playground.Boostraps
 {
@@ -19,24 +20,30 @@ namespace Playground.Boostraps
 
         private async Task Run()
         {
-            if(stageConfiguration.StageScene == null)
+            if(stageConfiguration.StageSceneReference == null)
             {
                 UnityEngine.Debug.LogError($"Stage scene is not referenced, at {nameof(StageBootstrap)}");
                 return;
             }
 
+            CurrentStageFlowData currentStageFlowData = new CurrentStageFlowData();
+
             FlowUseCases flowUseCases = new FlowUseCases(
                 new LoadEssentialScenesFlowUseCase(),
                 new ShowLoadingScreenFlowUseCase(),
-                new NopLoadMetaUseCase(),
-                new StageBootstrapPlayScenarioFlowUseCase(stageConfiguration),
-                new StageBootstrapReplayScenarioFlowUseCase(stageConfiguration)
+                new NopLoadMetaFlowUseCase(),
+                new NopUnloadMetaFlowUseCase(),
+                new SetCurrentStageFlowUseCase(currentStageFlowData),
+                new StageBootstrapPlayScenarioFlowUseCase(currentStageFlowData),
+                new StageBootstrapReplayScenarioFlowUseCase(currentStageFlowData)
                 );
 
             FlowService flowService = new FlowService(flowUseCases);
             ServicesProvider.Register(flowService);
 
             await flowUseCases.LoadEssentialScenesFlowUseCase.Execute();
+
+            flowUseCases.SetCurrentStageFlowUseCase.Execute(stageConfiguration);
 
             ILoadingToken loadingToken = await flowUseCases.ShowLoadingScreenFlowUseCase.Execute(instantly: true);
 

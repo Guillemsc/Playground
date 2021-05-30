@@ -1,4 +1,5 @@
 ﻿using Juce.Core.Disposables;
+using Playground.Content.Stage.Configuration;
 using System.IO;
 
 namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
@@ -17,11 +18,9 @@ namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
             this.demoStageButtonUIEntryRepository = demoStageButtonUIEntryRepository;
         }
 
-        public void Execute(string stageScenePath)
+        public void Execute(StageConfiguration stageConfiguration)
         {
-            string sceneName = Path.GetFileNameWithoutExtension(stageScenePath);
-
-            IDisposable<DemoStageButtonUIEntry> instance = demoStageButtonUIEntryFactory.Create(sceneName);
+            IDisposable<DemoStageButtonUIEntry> instance = demoStageButtonUIEntryFactory.Create(stageConfiguration);
 
             demoStageButtonUIEntryRepository.Add(instance);
         }

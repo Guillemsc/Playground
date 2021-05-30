@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9622448942aef19468f5372d02c27aaf, type: 3}
   m_Name: DemoStagesConfiguration
   m_EditorClassIdentifier: 
-  stagesScenes:
-  - sceneAsset: {fileID: 102900000, guid: 8788fe8aa14a7ef42b7a9146e7c018ea, type: 3}
-    scenePath: Assets/Playground/Scenes/Stages/TestStage.unity
+  stageConfigurations:
+  - {fileID: 11400000, guid: bf4d9bbe96fa74446a09e0d3e3aa8e3e, type: 2}
