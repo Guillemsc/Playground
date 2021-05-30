@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 1236140652540187273}
   - component: {fileID: 4158398259932678802}
   - component: {fileID: 1564375256512133208}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelBackLeftCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 1236140652540187273}
   wheelTransform: {fileID: 6287457925475480130}
-  positionOffset: {x: 0, y: 0, z: 0}
+  positionOffset: {x: 0.06, y: 0, z: 0}
   rotationOffset: {x: 0, y: 180, z: 0}
 --- !u!1 &1237485794051569316
 GameObject:
@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 4068273303885780542}
   - component: {fileID: 7951918344183728071}
   - component: {fileID: 5995688530083442224}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelFrontRightCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -559,7 +559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 4068273303885780542}
   wheelTransform: {fileID: 8426131560260651875}
-  positionOffset: {x: 0, y: 0, z: 0}
+  positionOffset: {x: -0.06, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &4442506788219863012
 GameObject:
@@ -829,7 +829,7 @@ GameObject:
   - component: {fileID: 6390785843166677146}
   - component: {fileID: 8555003023925807859}
   - component: {fileID: 4524948375870498091}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelBackRightCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -908,7 +908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 6390785843166677146}
   wheelTransform: {fileID: 5893366443815284498}
-  positionOffset: {x: 0, y: 0, z: 0}
+  positionOffset: {x: -0.06, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &6552261351812984084
 GameObject:
@@ -955,7 +955,7 @@ GameObject:
   - component: {fileID: 6695003100986751185}
   - component: {fileID: 7491335050168219030}
   - component: {fileID: 8916744586778789637}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelFrontLeftCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1034,7 +1034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 6695003100986751185}
   wheelTransform: {fileID: 8846548604678026384}
-  positionOffset: {x: 0, y: 0, z: 0}
+  positionOffset: {x: 0.06, y: 0, z: 0}
   rotationOffset: {x: 0, y: 180, z: 0}
 --- !u!1 &7521613467191311379
 GameObject:

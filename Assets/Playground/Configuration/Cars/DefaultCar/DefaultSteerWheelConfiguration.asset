@@ -18,9 +18,9 @@ MonoBehaviour:
   suspensionDistance: 0.3
   forceAppPointDistance: 0.3
   center: {x: 0.15, y: 0.13, z: 0}
-  spring: 35000
-  damper: 4500
-  targetPosition: 0.5
+  spring: 75000
+  damper: 3000
+  targetPosition: 0.4
   forwardExtremumSlip: 0.4
   forwardExtremumValue: 1
   forwardAsymptoteSlip: 9.96
