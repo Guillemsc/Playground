@@ -19,12 +19,7 @@ jobs:
         UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
       with:
         targetPlatform: Android
-        
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-        lfs: true
-      
+              
     - uses: actions/upload-artifact@v2
       with:
         name: Build
