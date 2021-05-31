@@ -12,6 +12,8 @@ jobs:
         targetPlatform:
           - Android # Build an Android .apk standalone app.
     steps:
+      - uses: actions/checkout@master
+      - uses: textbook/git-checkout-submodule-action@master
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
