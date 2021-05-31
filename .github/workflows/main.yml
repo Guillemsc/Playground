@@ -12,13 +12,13 @@ jobs:
         targetPlatform:
           - Android # Build an Android .apk standalone app.
     steps:
-      - uses: textbook/git-checkout-submodule-action@master
-        with:
-          remote: true
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
           lfs: true
+      - uses: textbook/git-checkout-submodule-action@master
+        with:
+          remote: true
       - uses: actions/cache@v2
         with:
           path: Library
