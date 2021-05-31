@@ -16,14 +16,24 @@
 
         public void Subscribe()
         {
-            //viewModel.OnDemoStageButtonClickedEvent.OnExecute += OnDemoStageButtonClicked;
-
-            //useCases.SpawnDemoStagesUseCase.Execute();
+            viewModel.RestartCommand.OnExecute += OnRestartCommand;
+            viewModel.SettingsCommand.OnExecute += OnSettingsCommand;
         }
 
         public void Unsubscribe()
         {
-            //viewModel.OnDemoStageButtonClickedEvent.Clear();
+            viewModel.RestartCommand.OnExecute -= OnRestartCommand;
+            viewModel.SettingsCommand.OnExecute -= OnSettingsCommand;
+        }
+
+        private void OnRestartCommand()
+        {
+            useCases.RestartSelectedUseCase.Execute();
+        }
+
+        private void OnSettingsCommand()
+        {
+            useCases.SettingsSelectedUseCase.Execute();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Juce.CoreUnity.Service;
+using Playground.Content.StageUI.UI.StageOverlay.UseCases;
 using Playground.Services.ViewStack;
 using UnityEngine;
 
@@ -35,12 +36,22 @@ namespace Playground.Content.StageUI.UI.StageOverlay
 
         private void GenerateDependences()
         {
-
+            viewModel = new StageOverlayUIViewModel();
         }
 
         private void GenerateUseCases()
         {
+            IRestartSelectedUseCase restartSelectedUseCase = new RestartSelectedUseCase(
+                viewModel
+                );
+
+            ISettingsSelectedUseCase settingsSelectedUseCase = new SettingsSelectedUseCase(
+                uiViewStackService
+                );
+
             useCases = new StageOverlayUIUseCases(
+                restartSelectedUseCase,
+                settingsSelectedUseCase
                 );
         }
 

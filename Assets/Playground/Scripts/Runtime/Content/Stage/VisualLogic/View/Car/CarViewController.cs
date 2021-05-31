@@ -18,6 +18,7 @@ namespace Playground.Content.Stage.VisualLogic.View.Car
         private int currentTorqueDirection = 0;
         private int currentSteeringDirection = 0;
         private float currentSteer = 0;
+        private bool handBrake = false;
 
         private void Update()
         {
@@ -39,6 +40,11 @@ namespace Playground.Content.Stage.VisualLogic.View.Car
             if (Input.GetKey("d"))
             {
                 SteerRight();
+            }
+
+            if (Input.GetKey("space"))
+            {
+                HandBrake();
             }
 
             SetWheelsTorque();
@@ -67,10 +73,16 @@ namespace Playground.Content.Stage.VisualLogic.View.Car
             currentSteeringDirection = 1;
         }
 
+        public void HandBrake()
+        {
+            handBrake = transform;
+        }
+
         public void ClearFrame()
         {
             currentTorqueDirection = 0;
             currentSteeringDirection = 0;
+            handBrake = false;
         }
 
         private void Steer(float force)
@@ -90,16 +102,24 @@ namespace Playground.Content.Stage.VisualLogic.View.Car
 
         private void SetWheelsTorque()
         {
-            float motorTorque = currentTorqueDirection * carControllerConfiguration.Torque;
+            bool shouldHandBrake = handBrake || CarViewControllerState == CarViewControllerState.AutoHandBrake;
 
-            if (CarViewControllerState == CarViewControllerState.AutoBreak)
+            if (shouldHandBrake)
             {
-                motorTorque = 0.0f;
+                foreach (WheelCollider wheelCollider in motorWheels)
+                {
+                    wheelCollider.brakeTorque = float.MaxValue;
+                }
             }
-
-            foreach (WheelCollider wheelCollider in motorWheels)
+            else
             {
-                wheelCollider.motorTorque = motorTorque;
+                float motorTorque = currentTorqueDirection * carControllerConfiguration.Torque;
+
+                foreach (WheelCollider wheelCollider in motorWheels)
+                {
+                    wheelCollider.brakeTorque = 0.0f;
+                    wheelCollider.motorTorque = motorTorque;
+                }
             }
         }
 

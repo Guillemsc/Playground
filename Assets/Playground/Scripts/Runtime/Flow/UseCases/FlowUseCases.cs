@@ -9,6 +9,7 @@
         public ISetCurrentStageFlowUseCase SetCurrentStageFlowUseCase { get; }
         public IPlayScenarioFlowUseCase PlayScenarioFlowUseCase { get; }
         public IReplayScenarioFlowUseCase ReplayScenarioFlowUseCase { get; }
+        public IBackToMetaFromStageFlowUseCase BackToMetaFromStageFlowUseCase { get; }
 
         public FlowUseCases(
             ILoadEssentialScenesFlowUseCase loadEssentialScenesFlowUseCase,
@@ -17,7 +18,8 @@
             IUnloadMetaFlowUseCase unloadMetaFlowUseCase,
             ISetCurrentStageFlowUseCase setCurrentStageFlowUseCase,
             IPlayScenarioFlowUseCase playScenarioFlowUseCase,
-            IReplayScenarioFlowUseCase replayScenarioFlowUseCase
+            IReplayScenarioFlowUseCase replayScenarioFlowUseCase,
+            IBackToMetaFromStageFlowUseCase backToMetaFromStageFlowUseCase
             )
         {
             LoadEssentialScenesFlowUseCase = loadEssentialScenesFlowUseCase;
@@ -27,6 +29,7 @@
             SetCurrentStageFlowUseCase = setCurrentStageFlowUseCase;
             PlayScenarioFlowUseCase = playScenarioFlowUseCase;
             ReplayScenarioFlowUseCase = replayScenarioFlowUseCase;
+            BackToMetaFromStageFlowUseCase = backToMetaFromStageFlowUseCase;
         }
     }
 }

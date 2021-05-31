@@ -9,6 +9,7 @@
         public INextCheckPointChangedUseCase NextCheckPointChangedUseCase { get; }
         public IStageFinishedUseCase StageFinishedUseCase { get; }
         public IRestartStageUseCase RestartStageUseCase { get; }
+        public IExitStageUseCase ExitStageUseCase { get; }
 
         public UseCasesRepository(
             ILoadStageUseCase loadStageUseCase,
@@ -17,7 +18,8 @@
             ICurrentCheckPointChangedUseCase currentCheckPointChangedUseCase,
             INextCheckPointChangedUseCase nextCheckPointChangedUseCase,
             IStageFinishedUseCase stageFinishedUseCase,
-            IRestartStageUseCase restartStageUseCase
+            IRestartStageUseCase restartStageUseCase,
+            IExitStageUseCase exitStageUseCase
             )
         {
             LoadStageUseCase = loadStageUseCase;
@@ -27,6 +29,7 @@
             NextCheckPointChangedUseCase = nextCheckPointChangedUseCase;
             StageFinishedUseCase = stageFinishedUseCase;
             RestartStageUseCase = restartStageUseCase;
+            ExitStageUseCase = exitStageUseCase;
         }
     }
 }

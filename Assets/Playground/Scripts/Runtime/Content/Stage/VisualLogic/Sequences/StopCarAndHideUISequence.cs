@@ -29,7 +29,7 @@ namespace Playground.Content.Stage.VisualLogic.Sequences
         {
             CarView carView = carViewRepository.CarView;
 
-            new SetCarViewControllerStateInstruction(carView.CarViewController, CarViewControllerState.AutoBreak).Execute();
+            new SetCarViewControllerStateInstruction(carView.CarViewController, CarViewControllerState.AutoHandBrake).Execute();
 
             await HideUI(cancellationToken);
         }

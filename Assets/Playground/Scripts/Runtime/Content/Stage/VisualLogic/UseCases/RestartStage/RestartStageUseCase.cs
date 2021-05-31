@@ -1,15 +1,10 @@
 ﻿using Juce.Core.Sequencing;
 using Juce.CoreUnity.Service;
 using Playground.Content.LoadingScreen.UI;
-using Playground.Content.Stage.VisualLogic.Instructions;
 using Playground.Content.Stage.VisualLogic.Sequences;
-using Playground.Content.Stage.VisualLogic.View.Car;
-using Playground.Content.Stage.VisualLogic.View.Signals;
 using Playground.Content.Stage.VisualLogic.View.Stage;
-using Playground.Content.StageUI.UI.StageCompleted;
 using Playground.Content.StageUI.UI.StageOverlay;
 using Playground.Services;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 

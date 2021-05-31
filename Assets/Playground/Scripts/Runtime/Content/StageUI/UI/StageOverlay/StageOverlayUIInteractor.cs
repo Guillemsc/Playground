@@ -1,4 +1,5 @@
 ﻿using Juce.CoreUnity.UI;
+using System;
 
 namespace Playground.Content.StageUI.UI.StageOverlay
 {
@@ -23,7 +24,12 @@ namespace Playground.Content.StageUI.UI.StageOverlay
 
         public void Unsubscribe()
         {
+            viewModel.RegisteredRestartCallbacks = null;
+        }
 
+        public void RegisterRestartCallback(Action callback)
+        {
+            viewModel.RegisteredRestartCallbacks += callback;
         }
     }
 }

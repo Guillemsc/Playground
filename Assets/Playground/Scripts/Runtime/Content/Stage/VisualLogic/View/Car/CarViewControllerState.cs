@@ -2,7 +2,7 @@
 {
     public enum CarViewControllerState
     {
-        AutoBreak,
+        AutoHandBrake,
         FullMovement,
     }
 }

@@ -35,7 +35,8 @@ namespace Playground.Boostraps
                 new NopUnloadMetaFlowUseCase(),
                 new SetCurrentStageFlowUseCase(currentStageFlowData),
                 new StageBootstrapPlayScenarioFlowUseCase(currentStageFlowData),
-                new StageBootstrapReplayScenarioFlowUseCase(currentStageFlowData)
+                new StageBootstrapReplayScenarioFlowUseCase(currentStageFlowData),
+                new NopBackToMetaFromStageFlowUseCase()
                 );
 
             FlowService flowService = new FlowService(flowUseCases);

@@ -14,6 +14,7 @@ using Playground.Content.Stage.VisualLogic.View.Stage;
 using Playground.Content.StageUI.UI.ScreenCarControls;
 using Playground.Content.StageUI.UI.StageCompleted;
 using Playground.Content.StageUI.UI.StageOverlay;
+using Playground.Content.StageUI.UI.StageSettings;
 using Playground.Services;
 using Playground.Services.ViewStack;
 using System;
@@ -70,6 +71,9 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
 
             GenericSignal<CheckPointsView, CheckPointView> checkPointCrossedSignal = new GenericSignal<CheckPointsView, CheckPointView>();
             GenericSignal<FinishLineView, EventArgs> finishLineCrossedSignal = new GenericSignal<FinishLineView, EventArgs>();
+
+            StageOverlayUIInteractor stageOverlayUIInteractor = uiViewStackService.GetInteractor<StageOverlayUIInteractor>();
+            StageSettingsUIInteractor stageSettingsUIInteractor = uiViewStackService.GetInteractor<StageSettingsUIInteractor>();
 
             StopCarAndHideUISequence stopCarAndHideUISequence = new StopCarAndHideUISequence(
                 uiViewStackService,
@@ -135,11 +139,19 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                     }),
 
                 new RestartStageUseCase(
-                     sequencer,
-                     timeService,
-                     stageOverlayUIView,
-                     stageViewRepository,
-                     stopCarAndHideUISequence
+                    sequencer,
+                    timeService,
+                    stageOverlayUIView,
+                    stageViewRepository,
+                    stopCarAndHideUISequence
+                    ),
+
+                new ExitStageUseCase(
+                    sequencer,
+                    timeService,
+                    stageOverlayUIView,
+                    stageViewRepository,
+                    stopCarAndHideUISequence
                     )
                 );
 
@@ -193,10 +205,15 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                 carControllerSignals.BreakSignal.Trigger(carControllerSignals, EventArgs.Empty);
             };
 
-            stageOverlayUIView.OnRestartClicked += (StageOverlayUIView stageOverlayUIView, PointerEventData pointerEventData) =>
+            stageOverlayUIInteractor.RegisterRestartCallback(() =>
             {
                 useCasesRepository.RestartStageUseCase.Execute();
-            };
+            });
+
+            stageSettingsUIInteractor.RegisterExitStageCallback(() =>
+            {
+                useCasesRepository.ExitStageUseCase.Execute();
+            });
         }
     }
 }

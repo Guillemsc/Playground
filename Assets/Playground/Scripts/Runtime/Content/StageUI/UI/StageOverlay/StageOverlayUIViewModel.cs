@@ -1,11 +1,13 @@
 ﻿using Juce.Core.Observables;
-using Juce.CoreUnity.PointerCallback;
+using System;
 
 namespace Playground.Content.StageUI.UI.StageOverlay
 {
     public class StageOverlayUIViewModel
     {
-        public ObservableEvent<StageOverlayUIView, PointerCallbacks> OnReplayClickedEvent { get; }
-            = new ObservableEvent<StageOverlayUIView, PointerCallbacks>();
+        public ObservableCommand SettingsCommand { get; } = new ObservableCommand();
+        public ObservableCommand RestartCommand { get; } = new ObservableCommand();
+
+        public Action RegisteredRestartCallbacks { get; set; }
     }
 }

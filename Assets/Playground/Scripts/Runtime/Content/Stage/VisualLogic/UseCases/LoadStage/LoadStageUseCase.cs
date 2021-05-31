@@ -84,7 +84,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
 
             new RegisterFinishLineSignalsInstruction(stageView.FinishLineView, finishLineCrossedSignal).Execute();
 
-            new SetCarViewControllerStateInstruction(carView.CarViewController, CarViewControllerState.AutoBreak).Execute();
+            new SetCarViewControllerStateInstruction(carView.CarViewController, CarViewControllerState.AutoHandBrake).Execute();
             new BindCarControllerSignalsInstruction(carControllerSignals, carView.CarViewController).Execute();
 
             new TeleportCarToTransformInstruction(carViewRepository, stageView.CarStartPosition).Execute();
