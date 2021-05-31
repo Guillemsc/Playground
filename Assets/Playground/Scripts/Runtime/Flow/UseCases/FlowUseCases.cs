@@ -1,6 +1,5 @@
 ﻿namespace Playground.Flow.UseCases
 {
-    //
     public class FlowUseCases
     {
         public ILoadEssentialScenesFlowUseCase LoadEssentialScenesFlowUseCase { get; }
