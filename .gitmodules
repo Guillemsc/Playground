@@ -1,0 +1,24 @@
+[submodule "Assets/Juce/Juce-Core"]
+	path = Assets/Juce/Juce-Core
+	url = C:\\Users\\guill\\Desktop\\Folders\\UnityProjects\\Playground\\Assets\\Juce\\Juce-Core
+[submodule "Assets/Juce/Juce-CoreUnity"]
+	path = Assets/Juce/Juce-CoreUnity
+	url = C:\\Users\\guill\\Desktop\\Folders\\UnityProjects\\Playground\\Assets\\Juce\\Juce-CoreUnity
+[submodule "Assets/Juce/Juce-Logic"]
+	path = Assets/Juce/Juce-Logic
+	url = C:\\Users\\guill\\Desktop\\Folders\\UnityProjects\\Playground\\Assets\\Juce\\Juce-Logic
+[submodule "Assets/Juce/Juce-Scripting"]
+	path = Assets/Juce/Juce-Scripting
+	url = C:\\Users\\guill\\Desktop\\Folders\\UnityProjects\\Playground\\Assets\\Juce\\Juce-Scripting
+[submodule "Assets/Juce/Juce-ScriptingUnity"]
+	path = Assets/Juce/Juce-ScriptingUnity
+	url = C:\\Users\\guill\\Desktop\\Folders\\UnityProjects\\Playground\\Assets\\Juce\\Juce-ScriptingUnity
+[submodule "Assets/Juce/Juce-Tween"]
+	path = Assets/Juce/Juce-Tween
+	url = C:\\Users\\guill\\Desktop\\Folders\\UnityProjects\\Playground\\Assets\\Juce\\Juce-Tween
+[submodule "Assets/Juce/Juce-TweenPlayer"]
+	path = Assets/Juce/Juce-TweenPlayer
+	url = C:\\Users\\guill\\Desktop\\Folders\\UnityProjects\\Playground\\Assets\\Juce\\Juce-TweenPlayer
+[submodule "Assets/Juce/Juce-Utils"]
+	path = Assets/Juce/Juce-Utils
+	url = C:\\Users\\guill\\Desktop\\Folders\\UnityProjects\\Playground\\Assets\\Juce\\Juce-Utils
