@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      - uses: textbook/git-checkout-submodule-action@master
+      - uses: textbook/git-checkout-submodule-action@main
         with:
           remote: true
       - uses: actions/cache@v2
