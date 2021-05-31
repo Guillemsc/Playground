@@ -16,9 +16,7 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      - uses: textbook/git-checkout-submodule-action@main
-        with:
-          remote: true
+          submodules: recursive
       - uses: actions/cache@v2
         with:
           path: Library
