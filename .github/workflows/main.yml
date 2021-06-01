@@ -17,11 +17,6 @@ jobs:
           fetch-depth: 0
           lfs: true
           submodules: recursive
-      - uses: actions/cache@v2
-        with:
-          path: Library
-          key: Library-${{ matrix.targetPlatform }}
-          restore-keys: Library-
       - uses: game-ci/unity-builder@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
