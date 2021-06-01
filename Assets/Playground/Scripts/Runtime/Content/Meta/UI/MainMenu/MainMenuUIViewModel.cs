@@ -7,5 +7,6 @@ namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
     public class MainMenuUIViewModel 
     {
         public GenericEvent<PointerCallbacks, EventArgs> OnDemoStagesClicked;
+        public ObservableVariable<string> VersionValiable { get; } = new ObservableVariable<string>();
     }
 }

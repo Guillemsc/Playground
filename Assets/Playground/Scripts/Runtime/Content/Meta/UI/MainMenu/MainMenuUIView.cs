@@ -11,10 +11,12 @@ namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
     {
         [Header("References")]
         [SerializeField] private PointerCallbacks demoStagesPointerCallbacks = default;
+        [SerializeField] private TMPro.TextMeshProUGUI versionText = default;
 
         private void Awake()
         {
             Contract.IsNotNull(demoStagesPointerCallbacks, this);
+            Contract.IsNotNull(versionText, this);
         }
 
         public void Init(MainMenuUIViewModel viewModel)
@@ -22,6 +24,11 @@ namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
             demoStagesPointerCallbacks.OnClick += (PointerCallbacks pointerCallbacks, PointerEventData pointerEventData) =>
             {
                 viewModel.OnDemoStagesClicked?.Invoke(pointerCallbacks, EventArgs.Empty);
+            };
+
+            viewModel.VersionValiable.OnChange += (string value) =>
+            {
+                versionText.text = value;
             };
         }
     }

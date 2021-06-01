@@ -19,7 +19,7 @@ namespace Playground.Content.StageUI.UI.StageSettings
 
         public void Subscribe()
         {
-
+         
         }
 
         public void Unsubscribe()

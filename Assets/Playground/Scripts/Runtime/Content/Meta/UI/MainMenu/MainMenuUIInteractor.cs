@@ -1,4 +1,5 @@
 ﻿using Juce.CoreUnity.UI;
+using UnityEngine;
 
 namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
 {
@@ -18,7 +19,7 @@ namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
 
         public void Subscribe()
         {
-
+            viewModel.VersionValiable.Value = Application.version;
         }
 
         public void Unsubscribe()
