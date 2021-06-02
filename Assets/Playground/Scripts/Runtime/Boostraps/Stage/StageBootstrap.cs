@@ -31,6 +31,7 @@ namespace Playground.Boostraps
             FlowUseCases flowUseCases = new FlowUseCases(
                 new LoadEssentialScenesFlowUseCase(),
                 new ShowLoadingScreenFlowUseCase(),
+                new NopLoadAdsScenesFlowUseCase(),
                 new NopLoadMetaFlowUseCase(),
                 new NopUnloadMetaFlowUseCase(),
                 new SetCurrentStageFlowUseCase(currentStageFlowData),

@@ -1,12 +1,6 @@
 ﻿using Juce.CoreUnity.Contracts;
 using Juce.CoreUnity.PointerCallback;
-using Juce.CoreUnity.Service;
-using Playground.Content.LoadingScreen.UI;
-using Playground.Content.Stage.VisualLogic.View.Signals;
-using Playground.Services;
 using Juce.CoreUnity.UI;
-using System;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
