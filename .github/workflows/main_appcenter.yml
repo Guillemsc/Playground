@@ -39,7 +39,7 @@ jobs:
         with:
           appName: Guillem Sunyer Caldú/Playground
           token: ${{secrets.APP_CENTER_TOKEN}}
-          group: Testers
+          group: Collaborators
           file: build/Android/Android.aab
           notifyTesters: true
           debug: false
