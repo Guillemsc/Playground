@@ -1,3 +1,5 @@
+using Juce.Core.Events.Generic;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +22,8 @@ namespace Playground.Content.Stage.VisualLogic.View.Car
         private float currentSteer = 0;
         private bool handBrake = false;
 
+        public event GenericEvent<CarViewController, EventArgs> OnAccelerateOrBrake;
+
         private void Update()
         {
             if (Input.GetKey("w"))
@@ -29,7 +33,7 @@ namespace Playground.Content.Stage.VisualLogic.View.Car
 
             if (Input.GetKey("s"))
             {
-                Break();
+                Brake();
             }
 
             if (Input.GetKey("a"))
@@ -58,7 +62,7 @@ namespace Playground.Content.Stage.VisualLogic.View.Car
             currentTorqueDirection = 1;
         }
 
-        public void Break()
+        public void Brake()
         {
             currentTorqueDirection = -1;
         }
@@ -119,6 +123,11 @@ namespace Playground.Content.Stage.VisualLogic.View.Car
                 {
                     wheelCollider.brakeTorque = 0.0f;
                     wheelCollider.motorTorque = motorTorque;
+                }
+
+                if (currentTorqueDirection != 0)
+                {
+                    OnAccelerateOrBrake?.Invoke(this, EventArgs.Empty);
                 }
             }
         }

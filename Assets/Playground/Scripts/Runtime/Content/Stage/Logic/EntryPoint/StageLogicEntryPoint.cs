@@ -33,6 +33,11 @@ namespace Playground.Content.Stage.Logic.EntryPoint
                     eventDispatcher
                     ),
 
+                new StartStageUseCase(
+                    eventDispatcher,
+                    stageState
+                    ),
+
                 new CheckPointCrossedUseCase(
                     eventDispatcher,
                     checkPointRepository,

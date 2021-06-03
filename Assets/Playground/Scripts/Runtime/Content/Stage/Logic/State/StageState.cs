@@ -2,6 +2,7 @@
 {
     public class StageState
     {
+        public bool Started { get; set; }
         public bool Completed { get; set; }
     }
 }

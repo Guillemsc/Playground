@@ -29,6 +29,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         private readonly CarLibrary carLibrary;
         private readonly CarViewRepository carViewRepository;
         private readonly CarControllerSignals carControllerSignals;
+        private readonly CarViewControllerSignals carViewControllerSignals;
         private readonly GenericSignal<CheckPointsView, CheckPointView> checkPointCrossedSignal;
         private readonly GenericSignal<FinishLineView, EventArgs> finishLineCrossedSignal;
         private readonly CinemachineVirtualCamera followCarVirtualCamera;
@@ -45,6 +46,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             CarLibrary carLibrary,
             CarViewRepository carViewRepository,
             CarControllerSignals carControllerSignals,
+            CarViewControllerSignals carViewControllerSignals,
             GenericSignal<CheckPointsView, CheckPointView> checkPointCrossedSignal,
             GenericSignal<FinishLineView, EventArgs> finishLineCrossedSignal,
             CinemachineVirtualCamera followCarVirtualCamera,
@@ -61,6 +63,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             this.carLibrary = carLibrary;
             this.carViewRepository = carViewRepository;
             this.carControllerSignals = carControllerSignals;
+            this.carViewControllerSignals = carViewControllerSignals;
             this.checkPointCrossedSignal = checkPointCrossedSignal;
             this.finishLineCrossedSignal = finishLineCrossedSignal;
             this.followCarVirtualCamera = followCarVirtualCamera;
@@ -86,6 +89,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
 
             new SetCarViewControllerStateInstruction(carView.CarViewController, CarViewControllerState.AutoHandBrake).Execute();
             new BindCarControllerSignalsInstruction(carControllerSignals, carView.CarViewController).Execute();
+            new BindCarViewControllerSignalsInstruction(carViewControllerSignals, carView.CarViewController).Execute();
 
             new TeleportCarToTransformInstruction(carViewRepository, stageView.CarStartPosition).Execute();
             new AttachCameraToCarInstruction(carViewRepository, followCarVirtualCamera).Execute();

@@ -38,7 +38,7 @@ namespace Playground.Content.Stage.VisualLogic.Instructions
 
             carControllerSignals.BreakSignal.OnTrigger += (CarControllerSignals carControllerSignals, EventArgs eventArgs) =>
             {
-                carViewController.Break();
+                carViewController.Brake();
             };
         }
     }

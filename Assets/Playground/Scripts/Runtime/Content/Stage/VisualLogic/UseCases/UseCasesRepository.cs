@@ -3,6 +3,8 @@
     public class UseCasesRepository
     {
         public ILoadStageUseCase LoadStageUseCase { get; }
+        public IStartStageUseCase StartStageUseCase { get; }
+        public ICarAcceleratesOrBrakesUseCase CarAcceleratesOrBrakesUseCase { get; }
         public ICheckPointCrossedUseCase CheckPointCrossedUseCase { get; }
         public IFinishLineCrossedUseCase FinishLineCrossedUseCase { get; }
         public ICurrentCheckPointChangedUseCase CurrentCheckPointChangedUseCase { get; }
@@ -13,6 +15,8 @@
 
         public UseCasesRepository(
             ILoadStageUseCase loadStageUseCase,
+            IStartStageUseCase startStageUseCase,
+            ICarAcceleratesOrBrakesUseCase carAcceleratesOrBrakesUseCase,
             ICheckPointCrossedUseCase checkPointCrossedUseCase,
             IFinishLineCrossedUseCase finishLineCrossedUseCase,
             ICurrentCheckPointChangedUseCase currentCheckPointChangedUseCase,
@@ -23,6 +27,8 @@
             )
         {
             LoadStageUseCase = loadStageUseCase;
+            StartStageUseCase = startStageUseCase;
+            CarAcceleratesOrBrakesUseCase = carAcceleratesOrBrakesUseCase;
             CheckPointCrossedUseCase = checkPointCrossedUseCase;
             FinishLineCrossedUseCase = finishLineCrossedUseCase;
             CurrentCheckPointChangedUseCase = currentCheckPointChangedUseCase;

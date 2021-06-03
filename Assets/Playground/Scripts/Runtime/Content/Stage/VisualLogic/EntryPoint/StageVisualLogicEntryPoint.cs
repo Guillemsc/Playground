@@ -68,6 +68,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             CarViewRepository carViewRepository = new CarViewRepository();
 
             CarControllerSignals carControllerSignals = new CarControllerSignals();
+            CarViewControllerSignals carViewControllerSignals = new CarViewControllerSignals();
 
             GenericSignal<CheckPointsView, CheckPointView> checkPointCrossedSignal = new GenericSignal<CheckPointsView, CheckPointView>();
             GenericSignal<FinishLineView, EventArgs> finishLineCrossedSignal = new GenericSignal<FinishLineView, EventArgs>();
@@ -93,10 +94,18 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                     carLibrary,
                     carViewRepository,
                     carControllerSignals,
+                    carViewControllerSignals,
                     checkPointCrossedSignal,
                     finishLineCrossedSignal,
                     followCarVirtualCamera,
                     loadingToken
+                    ),
+
+                new StartStageUseCase(
+                    ),
+
+                new CarAcceleratesOrBrakesUseCase(
+                    eventDispatcher
                     ),
 
                 new CheckPointCrossedUseCase(
@@ -160,6 +169,11 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                 useCasesRepository.LoadStageUseCase.Execute();
             });
 
+            eventReceiver.Subscribe((StartStageOutEvent ev) =>
+            {
+                useCasesRepository.StartStageUseCase.Execute();
+            });
+
             eventReceiver.Subscribe((CurrentCheckPointChangedOutEvent ev) =>
             {
                 useCasesRepository.CurrentCheckPointChangedUseCase.Execute(ev.CheckPointIndex);
@@ -203,6 +217,11 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             screenCarControlsUIView.OnBreakPointerCallbacksDown += (ScreenCarControlsUIView screenCarControlsUIView, PointerCallbacks pointerCallbacks) =>
             {
                 carControllerSignals.BreakSignal.Trigger(carControllerSignals, EventArgs.Empty);
+            };
+
+            carViewControllerSignals.AcceleratesOrBrakesSignal.OnTrigger += (CarViewControllerSignals carViewControllerSignals, EventArgs eventArgs) =>
+            {
+                useCasesRepository.CarAcceleratesOrBrakesUseCase.Execute();
             };
 
             stageOverlayUIInteractor.RegisterRestartCallback(() =>

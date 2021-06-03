@@ -12,6 +12,7 @@ namespace Playground.Content.Stage.Logic.StateMachine
 
         private IStateMachine<LogicState> stateMachine;
 
+        private IEventReference carAcceleratesOrBrakesInEvent;
         private IEventReference checkPointCrossedInEvent;
         private IEventReference finishLineCrossedInEvent;
 
@@ -26,12 +27,14 @@ namespace Playground.Content.Stage.Logic.StateMachine
 
         public void OnEnter()
         {
+            carAcceleratesOrBrakesInEvent = eventReceiver.Subscribe<CarAcceleratesOrBrakesInEvent>(CarAcceleratesOrBrakesInEvent);
             checkPointCrossedInEvent = eventReceiver.Subscribe<CheckPointCrossedInEvent>(CheckPointCrossedInEvent);
             finishLineCrossedInEvent = eventReceiver.Subscribe<FinishLineCrossedInEvent>(FinishLineCrossedInEvent);
         }
 
         public void OnExit()
         {
+            eventReceiver.Unsubscribe(carAcceleratesOrBrakesInEvent);
             eventReceiver.Unsubscribe(checkPointCrossedInEvent);
             eventReceiver.Unsubscribe(finishLineCrossedInEvent);
         }
@@ -39,6 +42,11 @@ namespace Playground.Content.Stage.Logic.StateMachine
         public void OnRun(IStateMachine<LogicState> stateMachine)
         {
             this.stateMachine = stateMachine;
+        }
+
+        private void CarAcceleratesOrBrakesInEvent(CarAcceleratesOrBrakesInEvent ev)
+        {
+            useCaseRepository.StartStageUseCase.Execute();
         }
 
         private void CheckPointCrossedInEvent(CheckPointCrossedInEvent ev)
