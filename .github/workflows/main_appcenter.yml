@@ -32,11 +32,13 @@ jobs:
          
   releaseToGooglePlay:
     name: upload artefact to App Center
-      uses: wzieba/AppCenter-Github-Action@v1
-      with:
-        appName: Playground
-        token: ${{secrets.APP_CENTER_TOKEN}}
-        group: Testers
-        file: build/Android/Android.aab
-        notifyTesters: true
-        debug: false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: wzieba/AppCenter-Github-Action@v1
+        with:
+          appName: Playground
+          token: ${{secrets.APP_CENTER_TOKEN}}
+          group: Testers
+          file: build/Android/Android.aab
+          notifyTesters: true
+          debug: false
