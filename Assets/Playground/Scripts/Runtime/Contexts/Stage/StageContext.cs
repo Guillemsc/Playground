@@ -1,4 +1,5 @@
-﻿using Juce.Core.Disposables;
+﻿using Juce.Core.CleanUp;
+using Juce.Core.Disposables;
 using Juce.Core.Events;
 using Juce.CoreUnity.Contexts;
 using Juce.CoreUnity.Service;
@@ -22,24 +23,20 @@ namespace Playground.Contexts
 
         [SerializeField] private StageContextReferences stageContextReferences;
 
-        private StageUIContext stageUIContext;
-
-        private EventDispatcherAndReceiverTickable logicToViewTickable;
-        private EventDispatcherAndReceiverTickable viewToLogicTickable;
+        private CleanUpActionsRepository cleanUpActionsRepository;
 
         protected override void Init()
         {
+            cleanUpActionsRepository = new CleanUpActionsRepository();
+
             ContextsProvider.Register(this);
         }
 
         protected override void CleanUp()
         {
-            TickablesService tickablesService = ServicesProvider.GetService<TickablesService>();
-
-            tickablesService.RemoveTickable(logicToViewTickable);
-            tickablesService.RemoveTickable(viewToLogicTickable);
-
             ContextsProvider.Unregister(this);
+
+            cleanUpActionsRepository.CleanUp();
         }
 
         public void RunStage(
@@ -66,8 +63,12 @@ namespace Playground.Contexts
             EventDispatcherAndReceiver logicToViewEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
             EventDispatcherAndReceiver viewToLogicEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
 
-            logicToViewTickable = new EventDispatcherAndReceiverTickable(logicToViewEventDispatcherAndReceiver);
-            viewToLogicTickable = new EventDispatcherAndReceiverTickable(viewToLogicEventDispatcherAndReceiver);
+            EventDispatcherAndReceiverTickable logicToViewTickable = new EventDispatcherAndReceiverTickable(
+                logicToViewEventDispatcherAndReceiver
+                );
+            EventDispatcherAndReceiverTickable viewToLogicTickable = new EventDispatcherAndReceiverTickable(
+                viewToLogicEventDispatcherAndReceiver
+                );
 
             StageLogicEntryPoint stageLogicEntryPoint = new StageLogicEntryPoint(
                 logicToViewEventDispatcherAndReceiver,
@@ -79,6 +80,7 @@ namespace Playground.Contexts
                 loadingToken,
                 viewToLogicEventDispatcherAndReceiver,
                 logicToViewEventDispatcherAndReceiver,
+                tickablesService,
                 timeService,
                 uiViewStackService,
                 stageUIContext.StageUIContextReferences.ScreenCarControlsUIView,
@@ -86,13 +88,17 @@ namespace Playground.Contexts
                 stageUIContext.StageUIContextReferences.StageCompletedUIView,
                 stageView,
                 stageContextReferences.CarLibrary,
-                stageContextReferences.FollowCarVirtualCamera
+                stageContextReferences.FollowCarVirtualCamera,
+                cleanUpActionsRepository
                 );
 
             stageLogicEntryPoint.Execute();
 
             tickablesService.AddTickable(logicToViewTickable);
+            cleanUpActionsRepository.Add(() => tickablesService.RemoveTickable(logicToViewTickable));
+
             tickablesService.AddTickable(viewToLogicTickable);
+            cleanUpActionsRepository.Add(() => tickablesService.RemoveTickable(viewToLogicTickable));
         }
     }
 }

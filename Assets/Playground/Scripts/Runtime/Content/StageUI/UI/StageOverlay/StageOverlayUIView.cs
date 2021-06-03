@@ -11,6 +11,7 @@ namespace Playground.Content.StageUI.UI.StageOverlay
         [Header("References")]
         [SerializeField] private PointerCallbacks settingsPointerCallbacks = default;
         [SerializeField] private PointerCallbacks restartPointerCallbacks = default;
+        [SerializeField] private TMPro.TextMeshProUGUI timerText = default;
 
         private StageOverlayUIViewModel viewModel;
 
@@ -18,6 +19,7 @@ namespace Playground.Content.StageUI.UI.StageOverlay
         {
             Contract.IsNotNull(settingsPointerCallbacks, this);
             Contract.IsNotNull(restartPointerCallbacks, this);
+            Contract.IsNotNull(timerText, this);
 
             settingsPointerCallbacks.OnClick += OnSettingsPointerCallbacksClick;
             restartPointerCallbacks.OnClick += OnRestartPointerCallbacksClick;
@@ -32,6 +34,8 @@ namespace Playground.Content.StageUI.UI.StageOverlay
         public void Init(StageOverlayUIViewModel viewModel)
         {
             this.viewModel = viewModel;
+
+            viewModel.TimerVariable.OnChange += OnTimerVariableChanged;
         }
 
         private void OnSettingsPointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)
@@ -42,6 +46,11 @@ namespace Playground.Content.StageUI.UI.StageOverlay
         private void OnRestartPointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)
         {
             viewModel.RestartCommand.Execute();
+        }
+
+        private void OnTimerVariableChanged(string value)
+        {
+            timerText.text = value;
         }
     }
 }

@@ -31,5 +31,10 @@ namespace Playground.Content.StageUI.UI.StageOverlay
         {
             viewModel.RegisteredRestartCallbacks += callback;
         }
+
+        public void SetTimerTime(TimeSpan timeSpan)
+        {
+            useCases.SetTimerTimeUseCase.Execute(timeSpan);
+        }
     }
 }

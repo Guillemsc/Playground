@@ -20,6 +20,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         private readonly UIViewStackService uiViewStackService;
         private readonly StageCompletedUIView stageCompletedUIView;
         private readonly StageViewRepository stageViewRepository;
+        private readonly StageTimerState stageTimerState;
         private readonly StopCarAndHideUISequence stopCarAndHideUISequence;
 
         private TaskCompletionSource<object> taskCompletitionSource = new TaskCompletionSource<object>();
@@ -30,6 +31,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             UIViewStackService uiViewStackService,
             StageCompletedUIView stageCompletedUIView,
             StageViewRepository stageViewRepository,
+            StageTimerState stageTimerState,
             StopCarAndHideUISequence stopCarAndHideUISequence
             )
         {
@@ -38,6 +40,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             this.uiViewStackService = uiViewStackService;
             this.stageCompletedUIView = stageCompletedUIView;
             this.stageViewRepository = stageViewRepository;
+            this.stageTimerState = stageTimerState;
             this.stopCarAndHideUISequence = stopCarAndHideUISequence;
         }
 
@@ -49,6 +52,11 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         private async Task ExecuteSequence(CancellationToken cancellationToken)
         {
             StageView stageView = stageViewRepository.StageView;
+
+            new SetStageTimerPlayingInstruction(
+                stageTimerState,
+                playing: false
+                ).Execute();
 
             await stopCarAndHideUISequence.Execute(cancellationToken);
 

@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Vendors/Chartboost/Examples/ChartboostExample/ChartboostExample.unity
-    guid: 00912f416d0dd4ccbb3b3c576903bce3
-  - enabled: 1
     path: Assets/Playground/Scenes/Bootstraps/MainBootstrap.unity
     guid: 82e6cce6b0023664e9438ec0761cabcc
   - enabled: 1

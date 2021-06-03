@@ -49,9 +49,14 @@ namespace Playground.Content.StageUI.UI.StageOverlay
                 uiViewStackService
                 );
 
+            ISetTimerTimeUseCase setTimerTimeUseCase = new SetTimerTimeUseCase(
+                viewModel
+                );
+
             useCases = new StageOverlayUIUseCases(
                 restartSelectedUseCase,
-                settingsSelectedUseCase
+                settingsSelectedUseCase,
+                setTimerTimeUseCase
                 );
         }
 
