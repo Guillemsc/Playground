@@ -37,7 +37,7 @@ jobs:
     steps:
       - uses: wzieba/AppCenter-Github-Action@v1
         with:
-          appName: Guillem Sunyer Caldú/Playground
+          appName: gsunyercaldu-gmail.com/Playground
           token: ${{secrets.APP_CENTER_TOKEN}}
           group: Collaborators
           file: build/Android/Android.aab
