@@ -1,0 +1,42 @@
+name: Build project
+
+on: [push, pull_request]
+
+jobs:
+  buildForAndroidPlatform:
+    name: Build for Android
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          lfs: true
+          submodules: recursive
+      - uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          targetPlatform: Android
+          androidAppBundle: true
+          androidKeystoreName: user.keystore
+          androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
+          androidKeyaliasName: ${{ secrets.ANDROID_KEYALIAS_NAME }}
+          androidKeyaliasPass: ${{ secrets.ANDROID_KEYALIAS_PASS }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build-Android
+          path: build/Android
+         
+  releaseToGooglePlay:
+    name: upload artefact to App Center
+      uses: wzieba/AppCenter-Github-Action@v1
+      with:
+        appName: Playground
+        token: ${{secrets.APP_CENTER_TOKEN}}
+        group: Testers
+        file: build/Android/Android.aab
+        notifyTesters: true
+        debug: false
