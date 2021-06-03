@@ -33,6 +33,7 @@ jobs:
   releaseToGooglePlay:
     name: upload artefact to App Center
     runs-on: ubuntu-latest
+    needs: buildForAndroidPlatform
     steps:
       - uses: wzieba/AppCenter-Github-Action@v1
         with:
