@@ -35,7 +35,7 @@ namespace Playground.Content.Stage.VisualLogic.Instructions
             followZoom.m_Damping = 0;
 
             cinemachineVirtualCamera.LookAt = carViewRepository.CarView.transform;
-            //postProcessing.m_FocusTarget = carViewRepository.CarView.transform;
+            cinemachineVirtualCamera.Follow = carViewRepository.CarView.transform;
 
             cinemachineVirtualCamera.InternalUpdateCameraState(Vector3.up, 1.0f);
 

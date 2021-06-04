@@ -637,7 +637,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eb3db5b0868bc4f348e3d3a1dfbf32a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 163e637667ff849a29c9981fe92cd6ff, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -784,7 +784,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.3
+          FallbackValue: 0.25
         easing:
           bindingEnabled: 0
           wantsToBeBinded: 0
@@ -794,8 +794,8 @@ MonoBehaviour:
             serializedVersion: 2
             m_Curve:
             - serializedVersion: 3
-              time: 0
-              value: 0
+              time: 0.002670288
+              value: 0.004211426
               inSlope: 1.9162868
               outSlope: 1.9162868
               tangentMode: 0
@@ -842,7 +842,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.3
+          FallbackValue: 0.2
         easing:
           bindingEnabled: 0
           wantsToBeBinded: 0
