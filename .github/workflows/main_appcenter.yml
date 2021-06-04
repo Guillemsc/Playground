@@ -40,6 +40,6 @@ jobs:
           appName: gsunyercaldu-gmail.com/Playground
           token: ${{secrets.APP_CENTER_TOKEN}}
           group: Collaborators
-          file: build/Android/build-Android.apk
+          file: ${{ format('{0}/build/Android/Android.aab', github.workspace) }}
           notifyTesters: true
           debug: false
