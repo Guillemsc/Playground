@@ -1,4 +1,4 @@
-name: Build project
+name: Build project and upload to Appcenter
 
 on: [push, pull_request]
 
@@ -19,7 +19,7 @@ jobs:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           targetPlatform: Android
-          androidAppBundle: true
+          androidAppBundle: false
           androidKeystoreName: user.keystore
           androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
@@ -30,13 +30,23 @@ jobs:
           name: build-Android
           path: build/Android
          
-  releaseToGooglePlay:
+  releaseToAppcenter:
     name: upload artefact to App Center
-      uses: wzieba/AppCenter-Github-Action@v1
-      with:
-        appName: Playground
-        token: ${{secrets.APP_CENTER_TOKEN}}
-        group: Testers
-        file: build/Android/Android.aab
-        notifyTesters: true
-        debug: false
+    runs-on: ubuntu-latest
+    needs: buildForAndroidPlatform
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Download Android Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: build-Android
+          path: build/Android
+      - uses: wzieba/AppCenter-Github-Action@v1
+        with:
+          appName: gsunyercaldu-gmail.com/Playground
+          token: ${{secrets.APP_CENTER_TOKEN}}
+          group: Collaborators
+          file: ${{ format('{0}/build/Android/Android.apk', github.workspace) }}
+          notifyTesters: true
+          debug: false
