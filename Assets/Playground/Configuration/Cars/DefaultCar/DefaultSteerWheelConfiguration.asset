@@ -26,8 +26,8 @@ MonoBehaviour:
   forwardAsymptoteSlip: 9.96
   forwardAsymptoteValue: 0.3
   forwardStiffness: 1.5
-  sidewaysExtremumSlip: 0
-  sidewaysExtremumValue: 0.5
-  sidewaysAsymptoteSlip: 0.2
+  sidewaysExtremumSlip: 0.8
+  sidewaysExtremumValue: 0.6
+  sidewaysAsymptoteSlip: 1
   sidewaysAsymptoteValue: 0.25
   sidewaysStiffness: 3

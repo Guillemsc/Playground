@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 57b3291a178306044bfdb56c0c1891af, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 4619c0732477176468518fedcb7bcc40, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: ffb8e1cfa231afa44a0719ad93f3457c, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -133,6 +133,26 @@ PrefabInstance:
     - target: {fileID: 199476774907381783, guid: 94f43a353af0e5c499566bd0cbbf6ceb, type: 3}
       propertyPath: m_Name
       value: TestStage2View
+      objectReference: {fileID: 0}
+    - target: {fileID: 2992882385984310468, guid: 94f43a353af0e5c499566bd0cbbf6ceb, type: 3}
+      propertyPath: m_Waypoints.Array.data[5].tangent.x
+      value: -0.7835083
+      objectReference: {fileID: 0}
+    - target: {fileID: 2992882385984310468, guid: 94f43a353af0e5c499566bd0cbbf6ceb, type: 3}
+      propertyPath: m_Waypoints.Array.data[6].tangent.x
+      value: 2.6970978
+      objectReference: {fileID: 0}
+    - target: {fileID: 2992882385984310468, guid: 94f43a353af0e5c499566bd0cbbf6ceb, type: 3}
+      propertyPath: m_Waypoints.Array.data[6].tangent.z
+      value: -6.7162485
+      objectReference: {fileID: 0}
+    - target: {fileID: 2992882385984310468, guid: 94f43a353af0e5c499566bd0cbbf6ceb, type: 3}
+      propertyPath: m_Waypoints.Array.data[6].position.x
+      value: -71.03669
+      objectReference: {fileID: 0}
+    - target: {fileID: 2992882385984310468, guid: 94f43a353af0e5c499566bd0cbbf6ceb, type: 3}
+      propertyPath: m_Waypoints.Array.data[6].position.z
+      value: -14.260856
       objectReference: {fileID: 0}
     - target: {fileID: 3770161712087197616, guid: 94f43a353af0e5c499566bd0cbbf6ceb, type: 3}
       propertyPath: m_RootOrder
