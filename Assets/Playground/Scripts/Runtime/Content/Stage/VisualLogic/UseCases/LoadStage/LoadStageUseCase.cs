@@ -92,7 +92,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             new BindCarViewControllerSignalsInstruction(carViewControllerSignals, carView.CarViewController).Execute();
 
             new TeleportCarToTransformInstruction(carViewRepository, stageView.CarStartPosition).Execute();
-            new AttachCameraToCarInstruction(carViewRepository, followCarVirtualCamera).Execute();
+            new AttachCameraToCarInstruction(carViewRepository, followCarVirtualCamera, stageView.CinemachinePath).Execute();
 
             await new WaitTimeInstruction(timeService.UnscaledTimeContext, TimeSpan.FromSeconds(0.5f)).Execute(cancellationToken);
 

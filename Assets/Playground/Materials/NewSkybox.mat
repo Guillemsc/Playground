@@ -78,7 +78,7 @@ Material:
     - _SunSizeConvergence: 5
     - _UVSec: 0
     - _ZWrite: 1
-    - _mult: 1
+    - _mult: 0.7
     - _pwer: 1
     m_Colors:
     - _Bottom: {r: 0, g: 0.72599363, b: 1, a: 1}

@@ -9,21 +9,29 @@ namespace Playground.Content.Stage.VisualLogic.Instructions
     {
         private readonly CarViewRepository carViewRepository;
         private readonly CinemachineVirtualCamera cinemachineVirtualCamera;
+        private readonly CinemachinePath cinemachinePath;
 
         public AttachCameraToCarInstruction(
             CarViewRepository carViewRepository,
-            CinemachineVirtualCamera cinemachineVirtualCamera
+            CinemachineVirtualCamera cinemachineVirtualCamera,
+            CinemachinePath cinemachinePath
             )
         {
             this.carViewRepository = carViewRepository;
             this.cinemachineVirtualCamera = cinemachineVirtualCamera;
+            this.cinemachinePath = cinemachinePath;
         }
 
         public void Execute()
         {
+            if(cinemachinePath == null)
+            {
+                UnityEngine.Debug.LogError($"{nameof(CinemachinePath)} is null at {nameof(AttachCameraToCarInstruction)}");
+            }
+
             CinemachineComposer composer = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineComposer>();
+            CinemachineTrackedDolly trackedDolly = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTrackedDolly>();
             CinemachineFollowZoom followZoom = cinemachineVirtualCamera.GetComponent<CinemachineFollowZoom>();
-            CinemachinePostProcessing postProcessing = cinemachineVirtualCamera.GetComponent<CinemachinePostProcessing>();
 
             float lastHorizontalDamping = composer.m_HorizontalDamping;
             float lastVerticalDamping = composer.m_VerticalDamping;
@@ -36,6 +44,8 @@ namespace Playground.Content.Stage.VisualLogic.Instructions
 
             cinemachineVirtualCamera.LookAt = carViewRepository.CarView.transform;
             cinemachineVirtualCamera.Follow = carViewRepository.CarView.transform;
+
+            trackedDolly.m_Path = cinemachinePath;
 
             cinemachineVirtualCamera.InternalUpdateCameraState(Vector3.up, 1.0f);
 
