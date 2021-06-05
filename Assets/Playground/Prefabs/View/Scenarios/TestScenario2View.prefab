@@ -2150,7 +2150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3171205393840161996, guid: 9c93cce41a61f4047b18becd3b8fa4b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.13
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 3171205393840161996, guid: 9c93cce41a61f4047b18becd3b8fa4b4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2722,6 +2722,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Generic_Mountains_Grass_02
       objectReference: {fileID: 0}
+    - target: {fileID: 1160684938532738, guid: d2201b576d0da384fb8f681e57559ea8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4525431197815690, guid: d2201b576d0da384fb8f681e57559ea8, type: 3}
       propertyPath: m_RootOrder
       value: 171
@@ -2880,7 +2884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6601051455012116124, guid: 9d8b6cd03c6befb40a569f3033839699, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3
+      value: 0.437
       objectReference: {fileID: 0}
     - target: {fileID: 6601051455012116124, guid: 9d8b6cd03c6befb40a569f3033839699, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3136,7 +3140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5814117638447345597, guid: 13d961f735d05d2449ea95b11a124f36, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: 5814117638447345597, guid: 13d961f735d05d2449ea95b11a124f36, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6196,6 +6200,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Generic_Mountains_Grass_02 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1160684938532738, guid: d2201b576d0da384fb8f681e57559ea8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4525431197815690, guid: d2201b576d0da384fb8f681e57559ea8, type: 3}
       propertyPath: m_RootOrder
       value: 173
@@ -6280,7 +6288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9115656558877450194, guid: 534764ecf0f7ea74ea2e85d9454cb0b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.35
+      value: 0.487
       objectReference: {fileID: 0}
     - target: {fileID: 9115656558877450194, guid: 534764ecf0f7ea74ea2e85d9454cb0b3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8882,6 +8890,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Generic_Mountains_Grass_02 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1160684938532738, guid: d2201b576d0da384fb8f681e57559ea8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4525431197815690, guid: d2201b576d0da384fb8f681e57559ea8, type: 3}
       propertyPath: m_RootOrder
       value: 194
@@ -9855,6 +9867,10 @@ PrefabInstance:
     - target: {fileID: 1385677540724198, guid: fb0131aa61eef7c4d95b2efaf17614ec, type: 3}
       propertyPath: m_Name
       value: SM_Generic_Ground_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385677540724198, guid: fb0131aa61eef7c4d95b2efaf17614ec, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4839270071094572, guid: fb0131aa61eef7c4d95b2efaf17614ec, type: 3}
       propertyPath: m_RootOrder
@@ -10841,6 +10857,10 @@ PrefabInstance:
     - target: {fileID: 1160684938532738, guid: d2201b576d0da384fb8f681e57559ea8, type: 3}
       propertyPath: m_Name
       value: SM_Generic_Mountains_Grass_02 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1160684938532738, guid: d2201b576d0da384fb8f681e57559ea8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4525431197815690, guid: d2201b576d0da384fb8f681e57559ea8, type: 3}
       propertyPath: m_RootOrder
@@ -12884,6 +12904,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Generic_Mountains_Soft_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1898753878615164, guid: a114301c17a8f9d4e87a828e20f894a2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4334248379434994, guid: a114301c17a8f9d4e87a828e20f894a2, type: 3}
       propertyPath: m_RootOrder
       value: 170
@@ -13412,6 +13436,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Generic_Mountains_Soft_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1898753878615164, guid: a114301c17a8f9d4e87a828e20f894a2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4334248379434994, guid: a114301c17a8f9d4e87a828e20f894a2, type: 3}
       propertyPath: m_RootOrder
       value: 169
@@ -13468,7 +13496,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64495058820413306, guid: a114301c17a8f9d4e87a828e20f894a2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a114301c17a8f9d4e87a828e20f894a2, type: 3}
 --- !u!4 &9155014051503659637 stripped
 Transform:
