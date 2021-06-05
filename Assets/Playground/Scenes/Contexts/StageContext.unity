@@ -227,7 +227,7 @@ MonoBehaviour:
   m_RollDamping: 0
   m_AutoDolly:
     m_Enabled: 1
-    m_PositionOffset: -0.16
+    m_PositionOffset: 0.05
     m_SearchRadius: 2
     m_SearchResolution: 5
 --- !u!114 &127805256613838697
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Lens:
     FieldOfView: 55
     OrthographicSize: 5
-    NearClipPlane: 5.56
+    NearClipPlane: 2.86
     FarClipPlane: 1000
     Dutch: 0
     LensShift: {x: 0, y: 0}
@@ -514,7 +514,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 5.56
+  near clip plane: 2.86
   far clip plane: 1000
   field of view: 123.7
   orthographic: 0
