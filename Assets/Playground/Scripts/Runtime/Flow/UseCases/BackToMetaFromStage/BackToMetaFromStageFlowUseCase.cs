@@ -1,6 +1,7 @@
 ﻿using Juce.CoreUnity.Scenes;
 using Juce.CoreUnity.Service;
 using Juce.CoreUnity.Time;
+using Playground.Content;
 using Playground.Content.LoadingScreen.UI;
 using Playground.Content.Stage.Configuration;
 using Playground.Content.Stage.VisualLogic.UI.MainMenu;
@@ -51,6 +52,8 @@ namespace Playground.Flow.UseCases
                 );
 
             await metaScenesLoader.Load();
+
+            await new AdsInstance().TryShowAds();
 
             UnscaledUnityTimer timer = new UnscaledUnityTimer();
             timer.Start();

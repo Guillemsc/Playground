@@ -1,5 +1,4 @@
-﻿using ChartboostSDK;
-using Juce.CoreUnity.Contracts;
+﻿using Juce.CoreUnity.Contracts;
 using Juce.CoreUnity.PointerCallback;
 using Juce.CoreUnity.UI;
 using System;

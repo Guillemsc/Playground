@@ -1146,15 +1146,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
       propertyPath: BindingPlayerComponents.Array.data[0].value.FallbackValue.x
-      value: 1.1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
       propertyPath: BindingPlayerComponents.Array.data[0].value.FallbackValue.y
-      value: 1.1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
       propertyPath: BindingPlayerComponents.Array.data[0].value.FallbackValue.z
-      value: 1.1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
       propertyPath: BindingPlayerComponents.Array.data[0].value.wantsToBeBinded
@@ -1781,15 +1781,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
       propertyPath: BindingPlayerComponents.Array.data[0].value.FallbackValue.x
-      value: 1.1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
       propertyPath: BindingPlayerComponents.Array.data[0].value.FallbackValue.y
-      value: 1.1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
       propertyPath: BindingPlayerComponents.Array.data[0].value.FallbackValue.z
-      value: 1.1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
       propertyPath: BindingPlayerComponents.Array.data[0].value.wantsToBeBinded
