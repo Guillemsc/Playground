@@ -53,6 +53,7 @@ jobs:
   cleanup:
     name: Cleanup to avoid storage limit
     runs-on: ubuntu-latest
+    needs: [buildForAndroidPlatform, releaseToAppcenter]
     if: always()
     steps:
       - name: Cleanup
