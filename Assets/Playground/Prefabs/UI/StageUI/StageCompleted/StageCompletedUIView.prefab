@@ -75557,6 +75557,7 @@ MonoBehaviour:
   isPopup: 0
   showAnimation: {fileID: 3368740062933129049}
   hideAnimation: {fileID: 5177451341928224620}
+  continuePointerCallbacks: {fileID: 8709688949158701751}
   tryAgainPointerCallbacks: {fileID: 1238709241131667536}
 --- !u!114 &3368740062933129049
 MonoBehaviour:

@@ -51,12 +51,17 @@ namespace Playground.Content.StageUI.UI.StageCompleted
                 stageCompletedStar3UIEntry
                 );
 
+            ContinueUseCase continueUseCase = new ContinueUseCase(
+                viewModel
+                );
+
             PlayAgainUseCase playAgainUseCase = new PlayAgainUseCase(
                 viewModel
                 );
 
             useCases = new StageCompletedUIUseCases(
                 showStarsUseCase,
+                continueUseCase,
                 playAgainUseCase
                 );
         }
