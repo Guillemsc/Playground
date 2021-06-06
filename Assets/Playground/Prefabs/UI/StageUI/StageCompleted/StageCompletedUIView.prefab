@@ -396,11 +396,79 @@ MonoBehaviour:
   loopMode: 0
   loopResetMode: 0
   loops: 0
-  BindingPlayerComponents: []
+  BindingPlayerComponents:
+  - id: 0
   bindingEnabled: 0
   bindableDataUid: 
   references:
     version: 1
+    00000000:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 5810044944055690734}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 1.1, y: 1.1, z: 1.1}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.1
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: -0
+              outSlope: -0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0.1308411
+            - serializedVersion: 3
+              time: 0.37480682
+              value: 0.6071371
+              inSlope: 1.4060881
+              outSlope: 1.4060881
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0.021391716
+              outSlope: 0.021391716
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.081442
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
 --- !u!1 &515562238827516558
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,11 +634,79 @@ MonoBehaviour:
   loopMode: 0
   loopResetMode: 0
   loops: 0
-  BindingPlayerComponents: []
+  BindingPlayerComponents:
+  - id: 0
   bindingEnabled: 0
   bindableDataUid: 
   references:
     version: 1
+    00000000:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 5810044944055690734}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 1, y: 1, z: 1}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.1
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: -0
+              outSlope: -0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0.1308411
+            - serializedVersion: 3
+              time: 0.37480682
+              value: 0.6071371
+              inSlope: 1.4060881
+              outSlope: 1.4060881
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0.021391716
+              outSlope: 0.021391716
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.081442
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
 --- !u!1 &631489746284942222
 GameObject:
   m_ObjectHideFlags: 0
@@ -75139,11 +75275,79 @@ MonoBehaviour:
   loopMode: 0
   loopResetMode: 0
   loops: 0
-  BindingPlayerComponents: []
+  BindingPlayerComponents:
+  - id: 0
   bindingEnabled: 0
   bindableDataUid: 
   references:
     version: 1
+    00000000:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 4435408844322309910}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 1.05, y: 1.05, z: 1.05}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.1
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: -0
+              outSlope: -0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0.1308411
+            - serializedVersion: 3
+              time: 0.37480682
+              value: 0.6071371
+              inSlope: 1.4060881
+              outSlope: 1.4060881
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0.021391716
+              outSlope: 0.021391716
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.081442
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
 --- !u!1 &7608223707747613471
 GameObject:
   m_ObjectHideFlags: 0
@@ -80373,11 +80577,79 @@ MonoBehaviour:
   loopMode: 0
   loopResetMode: 0
   loops: 0
-  BindingPlayerComponents: []
+  BindingPlayerComponents:
+  - id: 0
   bindingEnabled: 0
   bindableDataUid: 
   references:
     version: 1
+    00000000:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 4435408844322309910}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 1, y: 1, z: 1}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.1
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: -0
+              outSlope: -0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0.1308411
+            - serializedVersion: 3
+              time: 0.37480682
+              value: 0.6071371
+              inSlope: 1.4060881
+              outSlope: 1.4060881
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0.021391716
+              outSlope: 0.021391716
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.081442
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
 --- !u!1 &8051091969108601605
 GameObject:
   m_ObjectHideFlags: 0
