@@ -32,7 +32,7 @@ namespace Playground.Content.StageUI.UI.StageCompleted
 
         private void OnTryAgainPointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)
         {
-            viewModel.OnPlayAgainClickedEvent.Execute(this, pointerCallbacks);
+            viewModel.PlayAgainEvent.Execute(this, pointerCallbacks);
         }
     }
 }

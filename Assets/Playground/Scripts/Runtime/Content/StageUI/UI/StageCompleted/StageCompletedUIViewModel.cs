@@ -5,8 +5,8 @@ namespace Playground.Content.StageUI.UI.StageCompleted
 {
     public class StageCompletedUIViewModel
     {
-        public ObservableEvent<StageCompletedUIView, PointerCallbacks> OnPlayAgainClickedEvent { get; }
-            = new ObservableEvent<StageCompletedUIView, PointerCallbacks>();
+        public ObservableVariable<int> StarsVariable { get; } = new ObservableVariable<int>();
+        public ObservableEvent<StageCompletedUIView, PointerCallbacks> PlayAgainEvent { get; } = new ObservableEvent<StageCompletedUIView, PointerCallbacks>();
 
         public ObservableCommand CanUnloadStageCommand { get; } = new ObservableCommand();
     }

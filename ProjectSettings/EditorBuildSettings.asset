@@ -41,5 +41,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Playground/Scenes/Stages/TestStage2.unity
     guid: 826b7f0dbd4f2104490b90bb1c3d35d6
+  - enabled: 1
+    path: Assets/Playground/Scenes/Stages/TestCompletitionStage.unity
+    guid: 6b186c23703235a40868c2d1681b5527
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 651086d05b036b845b5551c48fa68919, type: 2}

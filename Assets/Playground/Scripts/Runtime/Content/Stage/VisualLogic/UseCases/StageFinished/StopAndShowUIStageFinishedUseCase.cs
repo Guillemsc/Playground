@@ -67,6 +67,8 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
 
             await new SetUIViewVisibleInstruction<StageCompletedUIView>(uiViewStackService, visible: true, instantly: false).Execute(cancellationToken);
 
+            stageCompletedUIInteractor.SetStars(2);
+
             await taskCompletitionSource.Task;
 
             stageCompletedUIInteractor.UnregisterToCanUnloadStage(OnCanUnloadStageSignalTriggered);

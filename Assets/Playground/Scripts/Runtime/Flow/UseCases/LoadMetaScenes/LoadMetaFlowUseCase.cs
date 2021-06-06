@@ -22,7 +22,7 @@ namespace Playground.Flow.UseCases
             UnscaledUnityTimer timer = new UnscaledUnityTimer();
             timer.Start();
 
-            await timer.AwaitReach(3.5f, default);
+            await timer.AwaitReach(1.5f, default);
 
             loadingToken.Complete();
 

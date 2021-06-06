@@ -27,6 +27,11 @@ namespace Playground.Content.StageUI.UI.StageCompleted
 
         }
 
+        public void SetStars(int stars)
+        {
+            viewModel.StarsVariable.Value = stars;
+        }
+
         public void RegisterToCanUnloadStage(Action canUnloadStage)
         {
             viewModel.CanUnloadStageCommand.OnExecute += canUnloadStage;

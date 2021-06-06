@@ -18,12 +18,19 @@ namespace Playground.Content.StageUI.UI.StageCompleted
 
         public void Subscribe()
         {
-            viewModel.OnPlayAgainClickedEvent.OnExecute += OnPlayAgainClickedEvent;
+            viewModel.PlayAgainEvent.OnExecute += OnPlayAgainClickedEvent;
+            viewModel.StarsVariable.OnChange += OnStarsVariableChanged;
         }
 
         public void Unsubscribe()
         {
-            viewModel.OnPlayAgainClickedEvent.OnExecute -= OnPlayAgainClickedEvent;
+            viewModel.PlayAgainEvent.OnExecute -= OnPlayAgainClickedEvent;
+            viewModel.StarsVariable.OnChange -= OnStarsVariableChanged;
+        }
+
+        private void OnStarsVariableChanged(int value)
+        {
+            useCases.ShowStarsUseCase.Execute(value);
         }
 
         private void OnPlayAgainClickedEvent(StageCompletedUIView stageCompletedUIView, PointerCallbacks pointerCallbacks)

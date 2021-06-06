@@ -20,6 +20,14 @@ namespace Playground.Content.Stage.VisualLogic.Instructions
 
         public void Execute()
         {
+            if(finishLineView == null)
+            {
+                UnityEngine.Debug.LogError($"Tried to register to {nameof(FinishLineView)} but it was null, " +
+                    $"at {nameof(RegisterFinishLineSignalsInstruction)}");
+
+                return;
+            }
+
             finishLineView.OnCrossed += finishLineCrossedSignal.Trigger;
         }
     }

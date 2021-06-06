@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95e85f36025033540926295e7694eb66, type: 3}
-  m_Name: DemoStage2Configuration
+  m_Name: TestStageConfiguration
   m_EditorClassIdentifier: 
   stageSceneReference:
-    sceneAsset: {fileID: 102900000, guid: 826b7f0dbd4f2104490b90bb1c3d35d6, type: 3}
-    scenePath: Assets/Playground/Scenes/Stages/TestStage2.unity
+    sceneAsset: {fileID: 102900000, guid: 8788fe8aa14a7ef42b7a9146e7c018ea, type: 3}
+    scenePath: Assets/Playground/Scenes/Stages/TestStage.unity
