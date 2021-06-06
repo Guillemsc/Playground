@@ -1,4 +1,4 @@
-﻿namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
+﻿namespace Playground.Content.Meta.UI.MainMenu
 {
     public class MainMenuUIUseCases
     {

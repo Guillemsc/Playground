@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
+namespace Playground.Content.Meta.UI.DemoStages
 {
     public class DemoStageButtonUIEntryRepository
     {

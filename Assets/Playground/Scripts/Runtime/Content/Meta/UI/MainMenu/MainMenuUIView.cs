@@ -5,7 +5,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
+namespace Playground.Content.Meta.UI.MainMenu
 {
     public class MainMenuUIView : UIView
     {

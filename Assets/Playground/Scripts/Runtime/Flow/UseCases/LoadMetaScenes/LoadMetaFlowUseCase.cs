@@ -2,7 +2,7 @@
 using Juce.CoreUnity.Service;
 using Juce.CoreUnity.Time;
 using Playground.Content.LoadingScreen.UI;
-using Playground.Content.Stage.VisualLogic.UI.MainMenu;
+using Playground.Content.Meta.UI.MainMenu;
 using Playground.Contexts;
 using Playground.Services.ViewStack;
 using System.Threading.Tasks;

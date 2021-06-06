@@ -2,7 +2,7 @@
 using Playground.Content.Stage.Configuration;
 using System.IO;
 
-namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
+namespace Playground.Content.Meta.UI.DemoStages
 {
     public class SpawnDemoStageUseCase : ISpawnDemoStageUseCase
     {

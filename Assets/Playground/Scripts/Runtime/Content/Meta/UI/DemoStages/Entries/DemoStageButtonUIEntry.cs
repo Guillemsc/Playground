@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
+namespace Playground.Content.Meta.UI.DemoStages
 {
     public class DemoStageButtonUIEntry : MonoBehaviour
     {

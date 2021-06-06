@@ -4,7 +4,7 @@ using Playground.Services;
 using Playground.Services.ViewStack;
 using UnityEngine;
 
-namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
+namespace Playground.Content.Meta.UI.DemoStages
 {
     [RequireComponent(typeof(DemoStagesUIView))]
     public class DemoStagesUIInstaller : MonoBehaviour

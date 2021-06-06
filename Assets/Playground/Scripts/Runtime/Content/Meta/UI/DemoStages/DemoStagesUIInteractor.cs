@@ -1,6 +1,6 @@
 ﻿using Juce.CoreUnity.UI;
 
-namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
+namespace Playground.Content.Meta.UI.DemoStages
 {
     public class DemoStagesUIInteractor : UIInteractor
     {

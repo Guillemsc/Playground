@@ -5,7 +5,7 @@ using Juce.CoreUnity.PointerCallback;
 using Playground.Content.Stage.Configuration;
 using UnityEngine;
 
-namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
+namespace Playground.Content.Meta.UI.DemoStages
 {
     public class DemoStageButtonUIEntryFactory 
     {

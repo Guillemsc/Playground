@@ -1,10 +1,10 @@
 ﻿using Juce.CoreUnity.PointerCallback;
 using Juce.CoreUnity.Service;
-using Playground.Content.Stage.VisualLogic.UI.DemoStages;
+using Playground.Content.Meta.UI.DemoStages;
 using Playground.Services.ViewStack;
 using System;
 
-namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
+namespace Playground.Content.Meta.UI.MainMenu
 {
     public class MainMenuUIController 
     {

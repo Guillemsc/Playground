@@ -1,7 +1,7 @@
 ﻿using Juce.Core.Observables;
 using Juce.CoreUnity.PointerCallback;
 
-namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
+namespace Playground.Content.Meta.UI.DemoStages
 {
     public class DemoStagesUIViewModel
     {

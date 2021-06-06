@@ -2,7 +2,7 @@
 using Juce.CoreUnity.PointerCallback;
 using System;
 
-namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
+namespace Playground.Content.Meta.UI.MainMenu
 {
     public class MainMenuUIViewModel 
     {

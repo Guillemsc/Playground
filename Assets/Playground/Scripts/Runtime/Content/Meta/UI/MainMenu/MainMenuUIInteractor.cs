@@ -1,7 +1,7 @@
 ﻿using Juce.CoreUnity.UI;
 using UnityEngine;
 
-namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
+namespace Playground.Content.Meta.UI.MainMenu
 {
     public class MainMenuUIInteractor : UIInteractor
     {

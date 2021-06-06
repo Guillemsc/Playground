@@ -5,7 +5,7 @@ using Playground.Content.Stage.Configuration;
 using Playground.Services;
 using System.Threading.Tasks;
 
-namespace Playground.Content.Stage.VisualLogic.UI.DemoStages
+namespace Playground.Content.Meta.UI.DemoStages
 {
     public class DemoStagesUIController
     {

@@ -2,7 +2,7 @@
 using Playground.Services.ViewStack;
 using UnityEngine;
 
-namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
+namespace Playground.Content.Meta.UI.MainMenu
 {
     [RequireComponent(typeof(MainMenuUIView))]
     public class MainMenuUIInstaller : MonoBehaviour
