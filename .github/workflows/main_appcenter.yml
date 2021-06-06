@@ -50,8 +50,12 @@ jobs:
           file: ${{ format('{0}/build/Android/Android.apk', github.workspace) }}
           notifyTesters: true
           debug: false
-      - name: Cleanup to avoid storage limit
-        if: always()
+  cleanup:
+    name: Cleanup to avoid storage limit
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Cleanup
         uses: geekyeggo/delete-artifact@v1
         with:
           name: build-Android
