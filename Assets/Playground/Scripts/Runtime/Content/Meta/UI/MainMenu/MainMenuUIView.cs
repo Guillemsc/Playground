@@ -18,7 +18,7 @@ namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
         private void Awake()
         {
             Contract.IsNotNull(demoStagesPointerCallbacks, this);
-            Contract.IsNotNull(showAdPointerCallbacks, this);
+            //Contract.IsNotNull(showAdPointerCallbacks, this);
             Contract.IsNotNull(versionText, this);
         }
 
@@ -29,20 +29,20 @@ namespace Playground.Content.Stage.VisualLogic.UI.MainMenu
                 viewModel.OnDemoStagesClicked?.Invoke(pointerCallbacks, EventArgs.Empty);
             };
 
-            showAdPointerCallbacks.OnClick += (PointerCallbacks pointerCallbacks, PointerEventData pointerEventData) =>
-            {
-                UnityEngine.Debug.Log("Asking for ad");
-                //Chartboost.showRewardedVideo(CBLocation.Default);
+            //showAdPointerCallbacks.OnClick += (PointerCallbacks pointerCallbacks, PointerEventData pointerEventData) =>
+            //{
+            //    UnityEngine.Debug.Log("Asking for ad");
+            //    //Chartboost.showRewardedVideo(CBLocation.Default);
 
-                if (Chartboost.hasInterstitial(CBLocation.HomeScreen))
-                {
-                    Chartboost.showInterstitial(CBLocation.HomeScreen);
-                }
-                else
-                {
-                    Chartboost.cacheInterstitial(CBLocation.HomeScreen);
-                }
-            };
+            //    if (Chartboost.hasInterstitial(CBLocation.HomeScreen))
+            //    {
+            //        Chartboost.showInterstitial(CBLocation.HomeScreen);
+            //    }
+            //    else
+            //    {
+            //        Chartboost.cacheInterstitial(CBLocation.HomeScreen);
+            //    }
+            //};
 
             viewModel.VersionValiable.OnChange += (string value) =>
             {
