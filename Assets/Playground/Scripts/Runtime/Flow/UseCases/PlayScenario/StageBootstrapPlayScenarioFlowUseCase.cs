@@ -1,7 +1,7 @@
 ﻿using Juce.CoreUnity.Contexts;
 using Juce.CoreUnity.Scenes;
+using Playground.Configuration.Stage;
 using Playground.Content.LoadingScreen.UI;
-using Playground.Content.Stage.Configuration;
 using Playground.Content.Stage.VisualLogic.View.Stage;
 using Playground.Contexts;
 using Playground.Flow.Data;

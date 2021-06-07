@@ -1,4 +1,4 @@
-﻿using Playground.Content.Stage.Configuration;
+﻿using Playground.Configuration.Stage;
 using Playground.Flow.Data;
 
 namespace Playground.Flow.UseCases

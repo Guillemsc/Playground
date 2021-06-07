@@ -1,5 +1,5 @@
-﻿using Playground.Content.Stage.Libraries;
-using Playground.Content.Stage.VisualLogic.View.Car;
+﻿using Playground.Content.Stage.VisualLogic.View.Car;
+using Playground.Libraries.Car;
 
 namespace Playground.Content.Stage.VisualLogic.Instructions
 {
@@ -19,7 +19,7 @@ namespace Playground.Content.Stage.VisualLogic.Instructions
 
         public void Execute()
         {
-            CarView instance = carLibrary.DefaultCarPrefab.InstantiateGameObjectAndGetComponent();
+            CarView instance = carLibrary.Items[0].CarViewPrefab.InstantiateGameObjectAndGetComponent();
 
             carViewRepository.CarView = instance;
         }

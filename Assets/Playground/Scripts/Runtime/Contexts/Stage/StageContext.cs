@@ -5,7 +5,6 @@ using Juce.CoreUnity.Contexts;
 using Juce.CoreUnity.Service;
 using Juce.CoreUnity.Services;
 using Playground.Content.LoadingScreen.UI;
-using Playground.Content.Stage.Configuration;
 using Playground.Content.Stage.Logic.CheckPoints;
 using Playground.Content.Stage.Logic.EntryPoint;
 using Playground.Content.Stage.Setup;
@@ -59,6 +58,7 @@ namespace Playground.Contexts
             TickablesService tickablesService = ServicesProvider.GetService<TickablesService>();
             TimeService timeService = ServicesProvider.GetService<TimeService>();
             UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
+            ConfigurationService configurationService = ServicesProvider.GetService<ConfigurationService>();
 
             EventDispatcherAndReceiver logicToViewEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
             EventDispatcherAndReceiver viewToLogicEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
@@ -87,7 +87,7 @@ namespace Playground.Contexts
                 stageUIContext.StageUIContextReferences.StageOverlayUIView,
                 stageUIContext.StageUIContextReferences.StageCompletedUIView,
                 stageView,
-                stageContextReferences.CarLibrary,
+                configurationService.CarLibrary,
                 stageContextReferences.FollowCarVirtualCamera,
                 cleanUpActionsRepository
                 );

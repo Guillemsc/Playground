@@ -1,5 +1,4 @@
 ﻿using Cinemachine;
-using Playground.Content.Stage.Libraries;
 using UnityEngine;
 
 namespace Playground.Contexts
@@ -10,10 +9,6 @@ namespace Playground.Contexts
         [Header("References")]
         [SerializeField] private CinemachineVirtualCamera followCarVirtualCamera = default;
 
-        [Header("Libraries")]
-        [SerializeField] private CarLibrary carLibrary = default;
-
         public CinemachineVirtualCamera FollowCarVirtualCamera => followCarVirtualCamera;
-        public CarLibrary CarLibrary => carLibrary;
     }
 }

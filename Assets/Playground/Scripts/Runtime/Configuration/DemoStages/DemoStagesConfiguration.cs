@@ -1,4 +1,4 @@
-﻿using Playground.Content.Stage.Configuration;
+﻿using Playground.Configuration.Stage;
 using System.Collections.Generic;
 using UnityEngine;
 

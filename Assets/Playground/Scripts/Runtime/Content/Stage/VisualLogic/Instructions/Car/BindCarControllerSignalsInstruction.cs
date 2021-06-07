@@ -1,5 +1,4 @@
-﻿using Playground.Content.Stage.Libraries;
-using Playground.Content.Stage.VisualLogic.View.Car;
+﻿using Playground.Content.Stage.VisualLogic.View.Car;
 using Playground.Content.Stage.VisualLogic.View.Signals;
 using System;
 

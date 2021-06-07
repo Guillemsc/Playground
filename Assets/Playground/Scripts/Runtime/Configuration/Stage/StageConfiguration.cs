@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Playground.Content.Stage.Configuration
+namespace Playground.Configuration.Stage
 {
     [CreateAssetMenu(fileName = "StageConfiguration", menuName = "Playground/Configuration/StageConfiguration", order = 1)]
     public class StageConfiguration : ScriptableObject

@@ -1,6 +1,4 @@
-﻿using Cinemachine;
-using Playground.Content.LoadingScreen.UI;
-using Playground.Content.Stage.Libraries;
+﻿using Playground.Content.LoadingScreen.UI;
 using UnityEngine;
 
 namespace Playground.Contexts

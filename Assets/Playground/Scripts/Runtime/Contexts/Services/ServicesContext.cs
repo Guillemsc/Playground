@@ -32,6 +32,7 @@ namespace Playground.Contexts
             ServicesProvider.Register(uiViewStackService);
 
             configurationService = new ConfigurationService(
+                servicesContextReferences.CarLibrary,
                 servicesContextReferences.DemoStagesConfiguration
                 );
             ServicesProvider.Register(configurationService);

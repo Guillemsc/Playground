@@ -653,6 +653,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carViewController: {fileID: 3286121952638777041}
+  rigidBody: {fileID: 4442506788219863013}
+  wheelCollidersParent: {fileID: 1025971260965441522}
 --- !u!114 &3286121952638777041
 MonoBehaviour:
   m_ObjectHideFlags: 0

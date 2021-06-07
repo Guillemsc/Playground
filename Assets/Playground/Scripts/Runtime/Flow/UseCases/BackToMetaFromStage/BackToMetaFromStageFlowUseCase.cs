@@ -1,10 +1,10 @@
 ﻿using Juce.CoreUnity.Scenes;
 using Juce.CoreUnity.Service;
 using Juce.CoreUnity.Time;
+using Playground.Configuration.Stage;
 using Playground.Content;
 using Playground.Content.LoadingScreen.UI;
 using Playground.Content.Meta.UI.MainMenu;
-using Playground.Content.Stage.Configuration;
 using Playground.Contexts;
 using Playground.Flow.Data;
 using Playground.Services;

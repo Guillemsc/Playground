@@ -1,11 +1,11 @@
-﻿using Playground.Content.Stage.Configuration;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using UnityEngine;
 using Playground.Flow.UseCases;
 using Playground.Services;
 using Juce.CoreUnity.Service;
 using Playground.Content.LoadingScreen.UI;
 using Playground.Flow.Data;
+using Playground.Configuration.Stage;
 
 namespace Playground.Boostraps
 {

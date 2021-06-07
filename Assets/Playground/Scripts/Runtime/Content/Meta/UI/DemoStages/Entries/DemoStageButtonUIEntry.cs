@@ -1,6 +1,6 @@
 ﻿using Juce.Core.Events.Generic;
 using Juce.CoreUnity.PointerCallback;
-using Playground.Content.Stage.Configuration;
+using Playground.Configuration.Stage;
 using System.IO;
 using UnityEngine;
 using UnityEngine.EventSystems;

@@ -1,16 +1,4 @@
-﻿using Juce.Core.Events;
-using Juce.CoreUnity.Contexts;
-using Juce.CoreUnity.Service;
-using Juce.CoreUnity.Services;
-using Playground.Content.LoadingScreen.UI;
-using Playground.Content.Stage.Configuration;
-using Playground.Content.Stage.Logic.CheckPoints;
-using Playground.Content.Stage.Logic.EntryPoint;
-using Playground.Content.Stage.Setup;
-using Playground.Content.Stage.VisualLogic.EntryPoint;
-using Playground.Content.Stage.VisualLogic.View.Stage;
-using Playground.Services;
-using System.Threading.Tasks;
+﻿using Juce.CoreUnity.Contexts;
 using UnityEngine;
 
 namespace Playground.Contexts

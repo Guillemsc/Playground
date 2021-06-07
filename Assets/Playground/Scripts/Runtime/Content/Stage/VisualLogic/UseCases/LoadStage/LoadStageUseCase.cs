@@ -1,7 +1,6 @@
 ﻿using Cinemachine;
 using Juce.Core.Sequencing;
 using Playground.Content.LoadingScreen.UI;
-using Playground.Content.Stage.Libraries;
 using Playground.Content.Stage.VisualLogic.Instructions;
 using Playground.Content.Stage.VisualLogic.View.Car;
 using Playground.Content.Stage.VisualLogic.View.CheckPoints;
@@ -9,6 +8,7 @@ using Playground.Content.Stage.VisualLogic.View.Signals;
 using Playground.Content.Stage.VisualLogic.View.Stage;
 using Playground.Content.StageUI.UI.ScreenCarControls;
 using Playground.Content.StageUI.UI.StageOverlay;
+using Playground.Libraries.Car;
 using Playground.Services;
 using Playground.Services.ViewStack;
 using System;

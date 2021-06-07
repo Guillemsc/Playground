@@ -1,5 +1,5 @@
 ﻿using Playground.Configuration.DemoStages;
-using Playground.Content.Stage.Configuration;
+using Playground.Configuration.Stage;
 
 namespace Playground.Content.Meta.UI.DemoStages
 {

@@ -1,8 +1,7 @@
 ﻿using Juce.Core.Disposables;
-using Juce.Core.Events.Generic;
 using Juce.Core.Observables;
 using Juce.CoreUnity.PointerCallback;
-using Playground.Content.Stage.Configuration;
+using Playground.Configuration.Stage;
 using UnityEngine;
 
 namespace Playground.Content.Meta.UI.DemoStages
