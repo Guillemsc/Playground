@@ -30,7 +30,7 @@ jobs:
           name: build-Android
           path: build/Android
          
-  releaseToAppcenter:
+  releaseToAppCenter:
     name: upload artefact to App Center
     runs-on: ubuntu-latest
     needs: buildForAndroidPlatform
