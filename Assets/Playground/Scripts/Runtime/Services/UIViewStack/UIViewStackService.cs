@@ -1,6 +1,7 @@
 ﻿using Juce.CoreUnity.Service;
 using Juce.CoreUnity.UI;
 using System;
+using UnityEngine;
 
 namespace Playground.Services.ViewStack
 {
@@ -9,6 +10,15 @@ namespace Playground.Services.ViewStack
         private readonly UIViewRepository registeredViewsRepository = new UIViewRepository();
         private readonly UIInteractorRepository registeredInteractorsRepository = new UIInteractorRepository();
         private readonly ViewContexRepository viewContexRepository = new ViewContexRepository();
+
+        private readonly Canvas canvas;
+
+        public Canvas Canvas => canvas;
+
+        public UIViewStackService(Canvas canvas)
+        {
+            this.canvas = canvas;
+        }
 
         public void Init()
         {

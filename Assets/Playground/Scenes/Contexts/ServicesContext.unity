@@ -379,3 +379,4 @@ MonoBehaviour:
   servicesContextReferences:
     carLibrary: {fileID: 11400000, guid: 7d86d18346d98544e95320831dd29734, type: 2}
     demoStagesConfiguration: {fileID: 11400000, guid: 2bd9c39589461cb4abd50521ddce990e, type: 2}
+    uiFrameCanvas: {fileID: 1417241261}

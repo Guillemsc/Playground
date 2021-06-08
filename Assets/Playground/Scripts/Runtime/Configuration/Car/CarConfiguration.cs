@@ -1,7 +1,7 @@
 ﻿using Playground.Content.Stage.VisualLogic.View.Car;
 using UnityEngine;
 
-namespace Playground.Configuration.Stage
+namespace Playground.Configuration.Car
 {
     [CreateAssetMenu(fileName = "CarConfiguration", menuName = "Playground/Configuration/CarConfiguration", order = 1)]
     public class CarConfiguration : ScriptableObject

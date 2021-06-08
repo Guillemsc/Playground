@@ -1,4 +1,6 @@
 ﻿using Juce.CoreUnity.Service;
+using Playground.Content.Stage.VisualLogic.Viewer3D;
+using Playground.Services;
 using Playground.Services.ViewStack;
 using UnityEngine;
 
@@ -7,7 +9,12 @@ namespace Playground.Content.Meta.UI.MainMenu
     [RequireComponent(typeof(MainMenuUIView))]
     public class MainMenuUIInstaller : MonoBehaviour
     {
+        [SerializeField] private Viewer3DView carViewer3DView = default;
+
         private UIViewStackService uiViewStackService;
+        private ConfigurationService configurationService;
+
+        private CarViewRepository carViewRepository;
 
         private MainMenuUIViewModel viewModel;
         private MainMenuUIView view;
@@ -19,6 +26,7 @@ namespace Playground.Content.Meta.UI.MainMenu
         {
             GatherDependences();
             GenerateDependences();
+            GenerateUseCases();
 
             Install();
         }
@@ -31,23 +39,43 @@ namespace Playground.Content.Meta.UI.MainMenu
         private void GatherDependences()
         {
             uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
+            configurationService = ServicesProvider.GetService<ConfigurationService>();
         }
 
         private void GenerateDependences()
         {
+            carViewRepository = new CarViewRepository();
+
             viewModel = new MainMenuUIViewModel();
+        }
+
+        private void GenerateUseCases()
+        {
+            IShowCarViewUseCase show3DCarUseCase = new ShowCarViewUseCase(
+                carViewer3DView,
+                configurationService.CarLibrary,
+                carViewRepository
+                );
+
+            IManuallyRotateCarViewUseCase manuallyRotate3DCarUseCase = new ManuallyRotateCarViewUseCase(
+                carViewer3DView,
+                uiViewStackService.Canvas
+                );
+
+            useCases = new MainMenuUIUseCases(
+                show3DCarUseCase,
+                manuallyRotate3DCarUseCase
+                );
         }
 
         private void Install()
         {
             view = GetComponent<MainMenuUIView>();
 
-            useCases = new MainMenuUIUseCases();
-
             controller = new MainMenuUIController(viewModel, useCases);
             interactor = new MainMenuUIInteractor(viewModel, useCases);
 
-            view.Init(viewModel);
+            view.Init(viewModel, useCases);
 
             controller.Subscribe();
             interactor.Subscribe();

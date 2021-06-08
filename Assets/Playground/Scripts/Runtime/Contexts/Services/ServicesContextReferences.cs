@@ -11,7 +11,11 @@ namespace Playground.Contexts
         [SerializeField] private CarLibrary carLibrary = default;
         [SerializeField] private DemoStagesConfiguration demoStagesConfiguration = default;
 
+        [Header("UIFrame")]
+        [SerializeField] private Canvas uiFrameCanvas = default;
+
         public CarLibrary CarLibrary => carLibrary;
         public DemoStagesConfiguration DemoStagesConfiguration => demoStagesConfiguration;
+        public Canvas UIFrameCanvas => uiFrameCanvas;
     }
 }

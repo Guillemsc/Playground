@@ -1,4 +1,5 @@
 using Juce.Core.Events.Generic;
+using Playground.Configuration.CarSettings;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,7 @@ namespace Playground.Content.Stage.VisualLogic.View.Car
     {
         [Header("References")]
         [SerializeField] private List<WheelCollider> motorWheels = default;
-        [SerializeField] private List<WheelCollider> leftSteeringWheels = default;
-        [SerializeField] private List<WheelCollider> rightSteeringWheels = default;
+        [SerializeField] private List<WheelCollider> steeringWheels = default;
 
         [Header("Configuration")]
         [SerializeField] CarControllerConfiguration carControllerConfiguration = default;
@@ -168,12 +168,7 @@ namespace Playground.Content.Stage.VisualLogic.View.Car
                 }
             }
 
-            foreach (WheelCollider wheelCollider in leftSteeringWheels)
-            {
-                wheelCollider.steerAngle = currentSteer;
-            }
-
-            foreach (WheelCollider wheelCollider in rightSteeringWheels)
+            foreach (WheelCollider wheelCollider in steeringWheels)
             {
                 wheelCollider.steerAngle = currentSteer;
             }

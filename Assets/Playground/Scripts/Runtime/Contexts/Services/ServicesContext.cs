@@ -28,7 +28,9 @@ namespace Playground.Contexts
             timeService = new TimeService();
             ServicesProvider.Register(timeService);
 
-            uiViewStackService = new UIViewStackService();
+            uiViewStackService = new UIViewStackService(
+                servicesContextReferences.UIFrameCanvas
+                );
             ServicesProvider.Register(uiViewStackService);
 
             configurationService = new ConfigurationService(

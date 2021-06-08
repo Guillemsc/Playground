@@ -23,6 +23,8 @@ namespace Playground.Content.Meta.UI.MainMenu
         public void Subscribe()
         {
             viewModel.OnDemoStagesClicked += OnDemoStagesClicked;
+
+            useCases.Show3DCarUseCase.Execute();
         }
 
         public void Unsubscribe()

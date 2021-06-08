@@ -1,4 +1,4 @@
-﻿using Playground.Configuration.Stage;
+﻿using Playground.Configuration.Car;
 using System.Collections.Generic;
 using UnityEngine;
 

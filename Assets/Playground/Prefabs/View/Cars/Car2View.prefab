@@ -655,6 +655,9 @@ MonoBehaviour:
   carViewController: {fileID: 3286121952638777041}
   rigidBody: {fileID: 4442506788219863013}
   wheelCollidersParent: {fileID: 1025971260965441522}
+  steeringWheelsTransforms:
+  - {fileID: 8846548604678026384}
+  - {fileID: 8426131560260651875}
 --- !u!114 &3286121952638777041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,9 +673,8 @@ MonoBehaviour:
   motorWheels:
   - {fileID: 1236140652540187273}
   - {fileID: 6390785843166677146}
-  leftSteeringWheels:
+  steeringWheels:
   - {fileID: 6695003100986751185}
-  rightSteeringWheels:
   - {fileID: 4068273303885780542}
   carControllerConfiguration: {fileID: 11400000, guid: 6b24e160aeb79d1419705ca3d886792a, type: 2}
 --- !u!54 &4442506788219863013

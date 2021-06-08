@@ -146,7 +146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210851288415220632}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.3499999, y: 0.3, z: -0.7590008}
+  m_LocalPosition: {x: -0.4, y: 0.25, z: -0.7590008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6186252577916356262}
@@ -321,7 +321,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237485794051569316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3499999, y: 0.3, z: 0.8600006}
+  m_LocalPosition: {x: 0.4, y: 0.25, z: 0.8600006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6186252577916356262}
@@ -613,6 +613,9 @@ MonoBehaviour:
   carViewController: {fileID: 3286121952638777041}
   rigidBody: {fileID: 4442506788219863013}
   wheelCollidersParent: {fileID: 1025971260965441522}
+  steeringWheelsTransforms:
+  - {fileID: 8846548604678026384}
+  - {fileID: 8426131560260651875}
 --- !u!114 &3286121952638777041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,9 +631,8 @@ MonoBehaviour:
   motorWheels:
   - {fileID: 1236140652540187273}
   - {fileID: 6390785843166677146}
-  leftSteeringWheels:
+  steeringWheels:
   - {fileID: 6695003100986751185}
-  rightSteeringWheels:
   - {fileID: 4068273303885780542}
   carControllerConfiguration: {fileID: 11400000, guid: cd6aa0aea962c1649a1a7e4fea30781d, type: 2}
 --- !u!54 &4442506788219863013
@@ -675,7 +677,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4692550891803584211}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -0.3499999, y: 0.3, z: 0.8600006}
+  m_LocalPosition: {x: -0.4, y: 0.25, z: 0.8600006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6186252577916356262}
@@ -1064,7 +1066,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7521613467191311379}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3499999, y: 0.3, z: -0.7590008}
+  m_LocalPosition: {x: 0.4, y: 0.25, z: -0.7590008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6186252577916356262}

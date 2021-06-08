@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Playground.Configuration.CarSettings;
+using UnityEngine;
 
 namespace Playground.Content.Stage.VisualLogic.View.Car.Wheels
 {

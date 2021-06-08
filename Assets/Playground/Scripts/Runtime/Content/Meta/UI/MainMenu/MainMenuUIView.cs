@@ -1,4 +1,5 @@
 ﻿using Juce.CoreUnity.Contracts;
+using Juce.CoreUnity.DragPointerCallback;
 using Juce.CoreUnity.PointerCallback;
 using Juce.CoreUnity.UI;
 using System;
@@ -10,43 +11,49 @@ namespace Playground.Content.Meta.UI.MainMenu
     public class MainMenuUIView : UIView
     {
         [Header("References")]
+        [SerializeField] private RectTransform carViewerDragRectTransform = default;
+        [SerializeField] private DragPointerCallbacks carViewerDragPointerCallbacks = default;
         [SerializeField] private PointerCallbacks demoStagesPointerCallbacks = default;
-        [SerializeField] private PointerCallbacks showAdPointerCallbacks = default;
         [SerializeField] private TMPro.TextMeshProUGUI versionText = default;
+
+        private MainMenuUIViewModel viewModel;
+        private MainMenuUIUseCases useCases;
 
         private void Awake()
         {
+            Contract.IsNotNull(carViewerDragPointerCallbacks, this);
             Contract.IsNotNull(demoStagesPointerCallbacks, this);
-            //Contract.IsNotNull(showAdPointerCallbacks, this);
             Contract.IsNotNull(versionText, this);
+
+            carViewerDragPointerCallbacks.OnDragging += OnCarViewerDragPointerCallbacksDragging;
+            demoStagesPointerCallbacks.OnClick += OnDemoStagesPointerCallbacksClick;
         }
 
-        public void Init(MainMenuUIViewModel viewModel)
+        private void OnDestroy()
         {
-            demoStagesPointerCallbacks.OnClick += (PointerCallbacks pointerCallbacks, PointerEventData pointerEventData) =>
-            {
-                viewModel.OnDemoStagesClicked?.Invoke(pointerCallbacks, EventArgs.Empty);
-            };
+            carViewerDragPointerCallbacks.OnDragging -= OnCarViewerDragPointerCallbacksDragging;
+            demoStagesPointerCallbacks.OnClick -= OnDemoStagesPointerCallbacksClick;
+        }
 
-            //showAdPointerCallbacks.OnClick += (PointerCallbacks pointerCallbacks, PointerEventData pointerEventData) =>
-            //{
-            //    UnityEngine.Debug.Log("Asking for ad");
-            //    //Chartboost.showRewardedVideo(CBLocation.Default);
-
-            //    if (Chartboost.hasInterstitial(CBLocation.HomeScreen))
-            //    {
-            //        Chartboost.showInterstitial(CBLocation.HomeScreen);
-            //    }
-            //    else
-            //    {
-            //        Chartboost.cacheInterstitial(CBLocation.HomeScreen);
-            //    }
-            //};
+        public void Init(MainMenuUIViewModel viewModel, MainMenuUIUseCases useCases)
+        {
+            this.viewModel = viewModel;
+            this.useCases = useCases;
 
             viewModel.VersionValiable.OnChange += (string value) =>
             {
                 versionText.text = value;
             };
+        }
+
+        private void OnCarViewerDragPointerCallbacksDragging(DragPointerCallbacks dragPointerCallbacks, PointerEventData pointerEventData)
+        {
+            useCases.ManuallyRotate3DCarUseCase.Execute(-pointerEventData.delta.x);
+        }
+
+        private void OnDemoStagesPointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)
+        {
+            viewModel.OnDemoStagesClicked?.Invoke(pointerCallbacks, EventArgs.Empty);
         }
     }
 }
