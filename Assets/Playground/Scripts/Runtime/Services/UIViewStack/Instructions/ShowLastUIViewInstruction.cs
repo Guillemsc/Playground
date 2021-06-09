@@ -6,55 +6,42 @@ using System.Threading.Tasks;
 
 namespace Playground.Services.ViewStack
 {
-    public class ShowUIViewInstruction : Instruction
+    public class ShowLastUIViewInstruction : Instruction
     {
         private readonly UIViewRepository registeredViewsRepository;
         private readonly ViewContexRepository viewContexRepository;
-        private readonly Type viewType;
+        private readonly ViewQueueRepository viewQueueRepository;
         private readonly bool instantly;
 
-        public ShowUIViewInstruction(
+        public ShowLastUIViewInstruction(
             UIViewRepository registeredViewsRepository,
             ViewContexRepository viewContexRepository,
-            Type viewType,
+            ViewQueueRepository viewQueueRepository,
             bool instantly
             )
         {
             this.registeredViewsRepository = registeredViewsRepository;
             this.viewContexRepository = viewContexRepository;
-            this.viewType = viewType;
+            this.viewQueueRepository = viewQueueRepository;
             this.instantly = instantly;
         }
 
         protected override Task OnExecute(CancellationToken cancellationToken)
         {
+            Type viewType = viewQueueRepository.Peek();
+            viewQueueRepository.Pop();
+
             bool found = registeredViewsRepository.TryGet(viewType, out UIView uiView);
 
             if (!found)
             {
                 UnityEngine.Debug.LogError($"Tried to Show {nameof(UIView)} of type {viewType.Name}, " +
-                    $"but it was not registered, at {nameof(ShowUIViewInstruction)}");
+                    $"but it was not registered, at {nameof(ShowLastUIViewInstruction)}");
 
                 return Task.CompletedTask;
             }
 
-            if(uiView.IsPopup)
-            {
-                ViewContex viewContext = viewContexRepository.Peek();
-
-                if(viewContext == null)
-                {
-                    UnityEngine.Debug.LogError($"Tried to Show {nameof(UIView)} as Popup, " +
-                        $"but it there was not a main view to attach to, at {nameof(ShowUIViewInstruction)}");
-                    return Task.CompletedTask;
-                }
-
-                viewContext.PopupUIViews.Add(uiView);
-            }
-            else
-            {
-                viewContexRepository.Add(new ViewContex(uiView));
-            }
+            viewContexRepository.Add(new ViewContex(uiView));
 
             UIFrame.Instance.Push(uiView);
 

@@ -3,6 +3,8 @@ using Juce.CoreUnity.Service;
 using Playground.Configuration.Stage;
 using Playground.Content.LoadingScreen.UI;
 using Playground.Services;
+using Playground.Services.ViewStack;
+using System;
 using System.Threading.Tasks;
 
 namespace Playground.Content.Meta.UI.DemoStages
@@ -23,6 +25,7 @@ namespace Playground.Content.Meta.UI.DemoStages
 
         public void Subscribe()
         {
+            viewModel.OnBackClickedEvent.OnExecute += OnBackClickedEvent;
             viewModel.OnDemoStageButtonClickedEvent.OnExecute += OnDemoStageButtonClicked;
 
             useCases.SpawnDemoStagesUseCase.Execute();
@@ -31,6 +34,13 @@ namespace Playground.Content.Meta.UI.DemoStages
         public void Unsubscribe()
         {
             viewModel.OnDemoStageButtonClickedEvent.Clear();
+            viewModel.OnDemoStageButtonClickedEvent.Clear();
+        }
+
+        private void OnBackClickedEvent(PointerCallbacks pointerCallbacks, EventArgs eventArgs)
+        {
+            UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
+            uiViewStackService.New().ShowLast(instantly: false).Hide<DemoStagesUIView>(instantly: true).Execute();
         }
 
         private void OnDemoStageButtonClicked(DemoStageButtonUIEntry demoStageButtonUIEntry, PointerCallbacks pointerCallbacks)

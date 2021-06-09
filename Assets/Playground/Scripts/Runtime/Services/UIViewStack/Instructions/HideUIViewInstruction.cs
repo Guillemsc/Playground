@@ -11,18 +11,21 @@ namespace Playground.Services.ViewStack
     {
         private readonly UIViewRepository registeredViewsRepository;
         private readonly ViewContexRepository viewContexRepository;
+        private readonly ViewQueueRepository viewQueueRepository;
         private readonly Type viewType;
         private readonly bool instantly;
 
         public HideUIViewInstruction(
             UIViewRepository registeredViewsRepository,
             ViewContexRepository viewContexRepository,
+            ViewQueueRepository viewQueueRepository,
             Type viewType,
             bool instantly
             )
         {
             this.registeredViewsRepository = registeredViewsRepository;
             this.viewContexRepository = viewContexRepository;
+            this.viewQueueRepository = viewQueueRepository;
             this.viewType = viewType;
             this.instantly = instantly;
         }
@@ -71,6 +74,8 @@ namespace Playground.Services.ViewStack
                 {
                     hideTasks.Add(popup.Hide(instantly, cancellationToken));
                 }
+
+                viewQueueRepository.Push(uiView.GetType());
 
                 await Task.WhenAll(hideTasks);
             }

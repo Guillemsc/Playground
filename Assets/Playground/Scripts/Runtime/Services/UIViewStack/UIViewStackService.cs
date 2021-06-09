@@ -1,4 +1,5 @@
-﻿using Juce.CoreUnity.Service;
+﻿using Juce.Core.Sequencing;
+using Juce.CoreUnity.Service;
 using Juce.CoreUnity.UI;
 using System;
 using UnityEngine;
@@ -10,6 +11,9 @@ namespace Playground.Services.ViewStack
         private readonly UIViewRepository registeredViewsRepository = new UIViewRepository();
         private readonly UIInteractorRepository registeredInteractorsRepository = new UIInteractorRepository();
         private readonly ViewContexRepository viewContexRepository = new ViewContexRepository();
+        private readonly ViewQueueRepository viewQueueRepository = new ViewQueueRepository();
+
+        private readonly Sequencer sequencer = new Sequencer();
 
         private readonly Canvas canvas;
 
@@ -80,7 +84,12 @@ namespace Playground.Services.ViewStack
 
         public ViewStackSequence New()
         {
-            return new ViewStackSequence(registeredViewsRepository, viewContexRepository);
+            return new ViewStackSequence(
+                registeredViewsRepository, 
+                viewContexRepository,
+                viewQueueRepository,
+                sequencer
+                );
         }
     }
 }

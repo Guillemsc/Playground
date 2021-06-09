@@ -10,18 +10,23 @@ namespace Playground.Services.ViewStack
     public class ViewStackSequence
     {
         private readonly List<Instruction> instructionsToPlay = new List<Instruction>(); 
-        private readonly Sequencer sequencer = new Sequencer();
 
         private readonly UIViewRepository registeredViewsRepository;
         private readonly ViewContexRepository viewContexRepository;
+        private readonly ViewQueueRepository viewQueueRepository;
+        private readonly Sequencer sequencer;
 
         public ViewStackSequence(
             UIViewRepository registeredViewsRepository,
-            ViewContexRepository viewContexRepository
+            ViewContexRepository viewContexRepository,
+            ViewQueueRepository viewQueueRepository,
+            Sequencer sequencer
             )
         {
             this.registeredViewsRepository = registeredViewsRepository;
             this.viewContexRepository = viewContexRepository;
+            this.viewQueueRepository = viewQueueRepository;
+            this.sequencer = sequencer;
         }
 
         public ViewStackSequence Show<T>(bool instantly) where T : UIView
@@ -45,7 +50,20 @@ namespace Playground.Services.ViewStack
             instructionsToPlay.Add(new HideUIViewInstruction(
                 registeredViewsRepository,
                 viewContexRepository,
+                viewQueueRepository,
                 type,
+                instantly
+                ));
+
+            return this;
+        }
+
+        public ViewStackSequence ShowLast(bool instantly)
+        {
+            instructionsToPlay.Add(new ShowLastUIViewInstruction(
+                registeredViewsRepository,
+                viewContexRepository,
+                viewQueueRepository,
                 instantly
                 ));
 

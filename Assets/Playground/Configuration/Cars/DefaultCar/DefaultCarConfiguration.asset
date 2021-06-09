@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81db7380c72340747900dc77c15a8be5, type: 3}
   m_Name: DefaultCarConfiguration
   m_EditorClassIdentifier: 
+  carName: Default car lol
+  carIcon: {fileID: 21300000, guid: 4beff98f38985dc4dbce8dabe9715be1, type: 3}
   carViewPrefab: {fileID: 1674271318535626332, guid: 549c3300d395080418bdf760e379ba07, type: 3}

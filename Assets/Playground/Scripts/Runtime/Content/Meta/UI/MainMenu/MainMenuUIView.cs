@@ -11,8 +11,8 @@ namespace Playground.Content.Meta.UI.MainMenu
     public class MainMenuUIView : UIView
     {
         [Header("References")]
-        [SerializeField] private RectTransform carViewerDragRectTransform = default;
         [SerializeField] private DragPointerCallbacks carViewerDragPointerCallbacks = default;
+        [SerializeField] private PointerCallbacks carLibraryPointerCallbacks = default;
         [SerializeField] private PointerCallbacks demoStagesPointerCallbacks = default;
         [SerializeField] private TMPro.TextMeshProUGUI versionText = default;
 
@@ -22,16 +22,19 @@ namespace Playground.Content.Meta.UI.MainMenu
         private void Awake()
         {
             Contract.IsNotNull(carViewerDragPointerCallbacks, this);
+            Contract.IsNotNull(carLibraryPointerCallbacks, this);
             Contract.IsNotNull(demoStagesPointerCallbacks, this);
             Contract.IsNotNull(versionText, this);
 
             carViewerDragPointerCallbacks.OnDragging += OnCarViewerDragPointerCallbacksDragging;
+            carLibraryPointerCallbacks.OnClick += OnCarLibraryPointerCallbacksClick;
             demoStagesPointerCallbacks.OnClick += OnDemoStagesPointerCallbacksClick;
         }
 
         private void OnDestroy()
         {
             carViewerDragPointerCallbacks.OnDragging -= OnCarViewerDragPointerCallbacksDragging;
+            carLibraryPointerCallbacks.OnClick -= OnCarLibraryPointerCallbacksClick;
             demoStagesPointerCallbacks.OnClick -= OnDemoStagesPointerCallbacksClick;
         }
 
@@ -51,9 +54,14 @@ namespace Playground.Content.Meta.UI.MainMenu
             useCases.ManuallyRotate3DCarUseCase.Execute(-pointerEventData.delta.x);
         }
 
+        private void OnCarLibraryPointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)
+        {
+            viewModel.OnCarLibraryClickedEvent.Execute(pointerCallbacks, EventArgs.Empty);
+        }
+
         private void OnDemoStagesPointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)
         {
-            viewModel.OnDemoStagesClicked?.Invoke(pointerCallbacks, EventArgs.Empty);
+            viewModel.OnDemoStagesClickedEvent.Execute(pointerCallbacks, EventArgs.Empty);
         }
     }
 }

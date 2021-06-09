@@ -5,14 +5,14 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Playground.Content.Meta.UI.DemoStages
+namespace Playground.Content.Meta.UI.CarsLibrary
 {
-    public class DemoStagesUIView : UIView
+    public class CarsLibraryUIView : UIView
     {
         [Header("References")]
         [SerializeField] private PointerCallbacks backPointerCallbacks = default;
 
-        private DemoStagesUIViewModel viewModel;
+        private CarsLibraryUIViewModel viewModel;
 
         private void Awake()
         {
@@ -26,7 +26,7 @@ namespace Playground.Content.Meta.UI.DemoStages
             backPointerCallbacks.OnClick -= OnBaclPointerCallbacksClick;
         }
 
-        public void Init(DemoStagesUIViewModel viewModel)
+        public void Init(CarsLibraryUIViewModel viewModel)
         {
             this.viewModel = viewModel;
         }
