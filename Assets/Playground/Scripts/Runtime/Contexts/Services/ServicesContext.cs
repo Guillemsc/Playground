@@ -17,6 +17,7 @@ namespace Playground.Contexts
         private TimeService timeService;
         private UIViewStackService uiViewStackService;
         private ConfigurationService configurationService;
+        private UserService userService;
 
         protected override void Init()
         {
@@ -38,6 +39,9 @@ namespace Playground.Contexts
                 servicesContextReferences.DemoStagesConfiguration
                 );
             ServicesProvider.Register(configurationService);
+
+            userService = new UserService();
+            ServicesProvider.Register(userService);
         }
 
         protected override void CleanUp()
@@ -45,6 +49,8 @@ namespace Playground.Contexts
             ServicesProvider.Unregister(uiViewStackService);
             ServicesProvider.Unregister(tickablesService);
             ServicesProvider.Unregister(timeService);
+            ServicesProvider.Unregister(configurationService);
+            ServicesProvider.Unregister(userService);
 
             ContextsProvider.Unregister(this);
         }
