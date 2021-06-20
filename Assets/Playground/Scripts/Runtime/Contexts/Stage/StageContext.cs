@@ -59,6 +59,7 @@ namespace Playground.Contexts
             TimeService timeService = ServicesProvider.GetService<TimeService>();
             UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
             ConfigurationService configurationService = ServicesProvider.GetService<ConfigurationService>();
+            UserService userService = ServicesProvider.GetService<UserService>();
 
             EventDispatcherAndReceiver logicToViewEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
             EventDispatcherAndReceiver viewToLogicEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
@@ -83,6 +84,7 @@ namespace Playground.Contexts
                 tickablesService,
                 timeService,
                 uiViewStackService,
+                userService,
                 stageUIContext.StageUIContextReferences.ScreenCarControlsUIView,
                 stageUIContext.StageUIContextReferences.StageOverlayUIView,
                 stageUIContext.StageUIContextReferences.StageCompletedUIView,

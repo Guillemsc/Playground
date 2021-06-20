@@ -2,7 +2,8 @@
     "name": "Playground.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:e0c13596d568ddb45ac614d4cabc6676"
+        "GUID:e0c13596d568ddb45ac614d4cabc6676",
+        "GUID:b513107342daa434a94fbe72b871df52"
     ],
     "includePlatforms": [
         "Editor"

@@ -17,6 +17,11 @@ namespace Playground.Content.StageUI.UI.StageSettings
             this.useCases = useCases;
         }
 
+        public void Refresh()
+        {
+
+        }
+
         public void Subscribe()
         {
          

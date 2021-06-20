@@ -10,18 +10,21 @@ namespace Playground.Services.ViewStack
     {
         private readonly UIViewRepository registeredViewsRepository;
         private readonly ViewContexRepository viewContexRepository;
+        private readonly UIInteractorRepository uiInteractorRepository;
         private readonly Type viewType;
         private readonly bool instantly;
 
         public ShowUIViewInstruction(
             UIViewRepository registeredViewsRepository,
             ViewContexRepository viewContexRepository,
+            UIInteractorRepository uiInteractorRepository,
             Type viewType,
             bool instantly
             )
         {
             this.registeredViewsRepository = registeredViewsRepository;
             this.viewContexRepository = viewContexRepository;
+            this.uiInteractorRepository = uiInteractorRepository;
             this.viewType = viewType;
             this.instantly = instantly;
         }
@@ -57,6 +60,13 @@ namespace Playground.Services.ViewStack
             }
 
             UIFrame.Instance.Push(uiView);
+
+            bool interactorFound = uiInteractorRepository.TryGet(viewType, out UIInteractor interactor);
+
+            if(interactorFound)
+            {
+                interactor.Refresh();
+            }
 
             return uiView.Show(instantly, cancellationToken);
         }

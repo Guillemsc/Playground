@@ -27,6 +27,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         private readonly StageViewRepository stageViewRepository;
         private readonly StageView stageView;
         private readonly CarLibrary carLibrary;
+        private readonly string carTypeId;
         private readonly CarViewRepository carViewRepository;
         private readonly CarControllerSignals carControllerSignals;
         private readonly CarViewControllerSignals carViewControllerSignals;
@@ -44,6 +45,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             StageViewRepository stageViewRepository,
             StageView stageView,
             CarLibrary carLibrary,
+            string carTypeId,
             CarViewRepository carViewRepository,
             CarControllerSignals carControllerSignals,
             CarViewControllerSignals carViewControllerSignals,
@@ -61,6 +63,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             this.stageViewRepository = stageViewRepository;
             this.stageView = stageView;
             this.carLibrary = carLibrary;
+            this.carTypeId = carTypeId;
             this.carViewRepository = carViewRepository;
             this.carControllerSignals = carControllerSignals;
             this.carViewControllerSignals = carViewControllerSignals;
@@ -79,7 +82,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         {
             stageViewRepository.StageView = stageView;
 
-            new LoadCarInstruction(carLibrary, carViewRepository).Execute();
+            new LoadCarInstruction(carLibrary, carViewRepository).Execute(carTypeId);
             CarView carView = carViewRepository.CarView;
 
             new RegisterCheckPointsSignalsInstruction(stageView.CheckPointsView, checkPointCrossedSignal).Execute();

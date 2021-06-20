@@ -16,6 +16,11 @@ namespace Playground.Content.Meta.UI.CarsLibrary
             this.useCases = useCases;
         }
 
+        public void Refresh()
+        {
+
+        }
+
         public void Subscribe()
         {
 

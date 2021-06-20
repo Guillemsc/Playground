@@ -4,6 +4,7 @@
     {
         public ILoadEssentialScenesFlowUseCase LoadEssentialScenesFlowUseCase { get; }
         public IShowLoadingScreenFlowUseCase ShowLoadingScreenFlowUseCase { get; }
+        public ILoadUserDataFlowUseCase LoadUserDataFlowUseCase { get; }
         public ILoadAdsScenesFlowUseCase LoadAdsScenesFlowUseCase { get; }
         public ILoadMetaFlowUseCase LoadMetaFlowUseCase { get; }
         public IUnloadMetaFlowUseCase UnloadMetaFlowUseCase { get; }
@@ -15,6 +16,7 @@
         public FlowUseCases(
             ILoadEssentialScenesFlowUseCase loadEssentialScenesFlowUseCase,
             IShowLoadingScreenFlowUseCase showLoadingScreenFlowUseCase,
+            ILoadUserDataFlowUseCase loadUserDataFlowUseCase,
             ILoadAdsScenesFlowUseCase loadAdsScenesFlowUseCase,
             ILoadMetaFlowUseCase loadMetaFlowUseCase,
             IUnloadMetaFlowUseCase unloadMetaFlowUseCase,
@@ -26,6 +28,7 @@
         {
             LoadEssentialScenesFlowUseCase = loadEssentialScenesFlowUseCase;
             ShowLoadingScreenFlowUseCase = showLoadingScreenFlowUseCase;
+            LoadUserDataFlowUseCase = loadUserDataFlowUseCase;
             LoadAdsScenesFlowUseCase = loadAdsScenesFlowUseCase;
             LoadMetaFlowUseCase = loadMetaFlowUseCase;
             UnloadMetaFlowUseCase = unloadMetaFlowUseCase;

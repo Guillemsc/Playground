@@ -30,8 +30,6 @@ namespace Playground.Content.Meta.UI.MainMenu
             viewModel.OnCarLibraryClickedEvent.OnExecute += OnCarLibraryClickedEvent;
             viewModel.OnDemoStagesClickedEvent.OnExecute += OnDemoStagesClickedEvent;
             viewModel.OnCreditsClickedEvent.OnExecute += OnCreditsClickedEvent;
-
-            useCases.Show3DCarUseCase.Execute();
         }
 
         public void Unsubscribe()

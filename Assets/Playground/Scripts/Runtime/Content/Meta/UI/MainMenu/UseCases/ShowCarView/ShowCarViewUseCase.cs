@@ -1,4 +1,5 @@
-﻿using Playground.Configuration.Car;
+﻿using Juce.Core.Disposables;
+using Playground.Configuration.Car;
 using Playground.Content.Stage.VisualLogic.View.Car;
 using Playground.Content.Stage.VisualLogic.Viewer3D;
 using Playground.Libraries.Car;
@@ -12,18 +13,21 @@ namespace Playground.Content.Meta.UI.MainMenu
         private readonly UserService userService;
         private readonly Viewer3DView carViewer3DView;
         private readonly CarLibrary carLibrary;
+        private readonly CarViewFactory carViewFactory;
         private readonly CarViewRepository carViewRepository;
 
         public ShowCarViewUseCase(
             UserService userService,
             Viewer3DView carViewer3DView,
             CarLibrary carLibrary,
+            CarViewFactory carViewFactory,
             CarViewRepository carViewRepository
             )
         {
             this.userService = userService;
             this.carViewer3DView = carViewer3DView;
             this.carLibrary = carLibrary;
+            this.carViewFactory = carViewFactory;
             this.carViewRepository = carViewRepository;
         }
 
@@ -37,13 +41,11 @@ namespace Playground.Content.Meta.UI.MainMenu
                 userService.UserData.SelectedCarTypeId = carConfiguration.CarTypeId;
             }
 
-            CarView carViewInstance = carConfiguration.CarViewPrefab.InstantiateGameObjectAndGetComponent();
-            carViewInstance.DisablePhysics();
-            carViewInstance.SetSteering(20);
+            IDisposable<CarView> instance = carViewFactory.Create(carConfiguration);
 
-            carViewRepository.Set(carViewInstance);
+            carViewRepository.Set(instance);
 
-            carViewer3DView.Show(carViewInstance.gameObject);
+            carViewer3DView.Show(instance.Value.gameObject);
             carViewer3DView.Pivot.localRotation = Quaternion.Euler(0, 135.0f, 0);
         }
     }

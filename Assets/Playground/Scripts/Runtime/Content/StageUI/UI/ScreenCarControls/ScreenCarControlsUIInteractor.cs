@@ -16,6 +16,11 @@ namespace Playground.Content.StageUI.UI.ScreenCarControls
             this.useCases = useCases;
         }
 
+        public void Refresh()
+        {
+
+        }
+
         public void Subscribe()
         {
 

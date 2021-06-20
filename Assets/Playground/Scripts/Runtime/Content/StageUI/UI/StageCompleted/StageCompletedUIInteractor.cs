@@ -17,6 +17,11 @@ namespace Playground.Content.StageUI.UI.StageCompleted
             this.useCases = useCases;
         }
 
+        public void Refresh()
+        {
+
+        }
+
         public void Subscribe()
         {
 

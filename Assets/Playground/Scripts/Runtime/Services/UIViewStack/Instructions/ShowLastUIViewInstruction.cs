@@ -11,6 +11,8 @@ namespace Playground.Services.ViewStack
         private readonly UIViewRepository registeredViewsRepository;
         private readonly ViewContexRepository viewContexRepository;
         private readonly ViewQueueRepository viewQueueRepository;
+        private readonly UIInteractorRepository uiInteractorRepository;
+
         private readonly bool asForeground;
         private readonly bool instantly;
 
@@ -18,6 +20,7 @@ namespace Playground.Services.ViewStack
             UIViewRepository registeredViewsRepository,
             ViewContexRepository viewContexRepository,
             ViewQueueRepository viewQueueRepository,
+            UIInteractorRepository uiInteractorRepository,
             bool asForeground,
             bool instantly
             )
@@ -25,6 +28,7 @@ namespace Playground.Services.ViewStack
             this.registeredViewsRepository = registeredViewsRepository;
             this.viewContexRepository = viewContexRepository;
             this.viewQueueRepository = viewQueueRepository;
+            this.uiInteractorRepository = uiInteractorRepository;
             this.asForeground = asForeground;
             this.instantly = instantly;
         }
@@ -53,6 +57,13 @@ namespace Playground.Services.ViewStack
             else
             {
                 UIFrame.Instance.PushAsForeground(uiView);
+            }
+
+            bool interactorFound = uiInteractorRepository.TryGet(viewType, out UIInteractor interactor);
+
+            if (interactorFound)
+            {
+                interactor.Refresh();
             }
 
             return uiView.Show(instantly, cancellationToken);

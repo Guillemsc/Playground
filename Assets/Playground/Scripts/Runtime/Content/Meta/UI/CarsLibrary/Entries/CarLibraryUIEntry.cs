@@ -16,6 +16,10 @@ namespace Playground.Content.Meta.UI.CarsLibrary
 
         public event GenericEvent<CarLibraryUIEntry, PointerCallbacks> OnClicked;
 
+        private CarConfiguration carConfiguration;
+
+        public string CarTypeId => carConfiguration.CarTypeId;
+
         private void Awake()
         {
             Contract.IsNotNull(nameText, this);
@@ -32,6 +36,8 @@ namespace Playground.Content.Meta.UI.CarsLibrary
 
         public void Init(CarConfiguration carConfiguration)
         {
+            this.carConfiguration = carConfiguration;
+
             nameText.text = carConfiguration.CarName;
             iconImage.sprite = carConfiguration.CarIcon;
         }

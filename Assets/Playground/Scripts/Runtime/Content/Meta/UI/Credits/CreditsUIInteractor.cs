@@ -13,6 +13,11 @@ namespace Playground.Content.Meta.UI.Credits
             this.viewModel = viewModel;
         }
 
+        public void Refresh()
+        {
+
+        }
+
         public void Subscribe()
         {
 

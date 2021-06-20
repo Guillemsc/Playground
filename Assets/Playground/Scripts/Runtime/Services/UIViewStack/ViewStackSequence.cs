@@ -14,18 +14,21 @@ namespace Playground.Services.ViewStack
         private readonly UIViewRepository registeredViewsRepository;
         private readonly ViewContexRepository viewContexRepository;
         private readonly ViewQueueRepository viewQueueRepository;
+        private readonly UIInteractorRepository uiInteractorRepository;
         private readonly Sequencer sequencer;
 
         public ViewStackSequence(
             UIViewRepository registeredViewsRepository,
             ViewContexRepository viewContexRepository,
             ViewQueueRepository viewQueueRepository,
+            UIInteractorRepository uiInteractorRepository,
             Sequencer sequencer
             )
         {
             this.registeredViewsRepository = registeredViewsRepository;
             this.viewContexRepository = viewContexRepository;
             this.viewQueueRepository = viewQueueRepository;
+            this.uiInteractorRepository = uiInteractorRepository;
             this.sequencer = sequencer;
         }
 
@@ -36,6 +39,7 @@ namespace Playground.Services.ViewStack
             instructionsToPlay.Add(new ShowUIViewInstruction(
                 registeredViewsRepository, 
                 viewContexRepository,
+                uiInteractorRepository,
                 type, 
                 instantly
                 ));
@@ -64,6 +68,7 @@ namespace Playground.Services.ViewStack
                 registeredViewsRepository,
                 viewContexRepository,
                 viewQueueRepository,
+                uiInteractorRepository,
                 asForeground: false,
                 instantly
                 ));
@@ -77,6 +82,7 @@ namespace Playground.Services.ViewStack
                 registeredViewsRepository,
                 viewContexRepository,
                 viewQueueRepository,
+                uiInteractorRepository,
                 asForeground: true,
                 instantly
                 ));

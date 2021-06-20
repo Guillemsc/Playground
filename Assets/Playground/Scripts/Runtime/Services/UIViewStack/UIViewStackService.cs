@@ -36,15 +36,15 @@ namespace Playground.Services.ViewStack
 
         public void Register(UIInteractor uiInteractor, UIView uiView)
         {
-            registeredInteractorsRepository.Add(uiInteractor);
+            registeredInteractorsRepository.Add(uiView, uiInteractor);
             registeredViewsRepository.Add(uiView);
 
             UIFrame.Instance.Register(uiView);
         }
 
-        public void Unregister(UIInteractor uiInteractor, UIView uiView)
+        public void Unregister(UIView uiView)
         {
-            registeredInteractorsRepository.Remove(uiInteractor);
+            registeredInteractorsRepository.Remove(uiView);
             registeredViewsRepository.Remove(uiView);
 
             if(uiView.IsPopup)
@@ -69,12 +69,11 @@ namespace Playground.Services.ViewStack
 
         public T GetInteractor<T>() where T : UIInteractor
         {
-            Type type = typeof(T);
-            bool found = registeredInteractorsRepository.TryGet(type, out UIInteractor uiInteractor);
+            bool found = registeredInteractorsRepository.TryGet<T>(out UIInteractor uiInteractor);
 
-            if(!found)
+            if (!found)
             {
-                UnityEngine.Debug.LogError($"Tried to get {nameof(UIInteractor)} of type {type.Name}, " +
+                UnityEngine.Debug.LogError($"Tried to get {nameof(UIInteractor)} for view of type {typeof(T).Name}, " +
                     $"but it was not registered, at {nameof(UIViewStackService)}");
                 return default;
             }
@@ -88,6 +87,7 @@ namespace Playground.Services.ViewStack
                 registeredViewsRepository, 
                 viewContexRepository,
                 viewQueueRepository,
+                registeredInteractorsRepository,
                 sequencer
                 );
         }

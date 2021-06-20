@@ -18,12 +18,12 @@ namespace Playground.Content.Meta.UI.CarsLibrary
         {
             Contract.IsNotNull(backPointerCallbacks, this);
 
-            backPointerCallbacks.OnClick += OnBaclPointerCallbacksClick;
+            backPointerCallbacks.OnClick += OnBackPointerCallbacksClick;
         }
 
         private void OnDestroy()
         {
-            backPointerCallbacks.OnClick -= OnBaclPointerCallbacksClick;
+            backPointerCallbacks.OnClick -= OnBackPointerCallbacksClick;
         }
 
         public void Init(CarsLibraryUIViewModel viewModel)
@@ -31,7 +31,7 @@ namespace Playground.Content.Meta.UI.CarsLibrary
             this.viewModel = viewModel;
         }
 
-        private void OnBaclPointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)
+        private void OnBackPointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)
         {
             viewModel.OnBackClickedEvent.Execute(pointerCallbacks, EventArgs.Empty);
         }

@@ -64,7 +64,7 @@ namespace Playground.Content.StageUI.UI.ScreenCarControls
             controller.Unsubscribe();
             interactor.Unsubscribe();
 
-            uiViewStackService.Unregister(interactor, view);
+            uiViewStackService.Unregister(view);
         }
     }
 }

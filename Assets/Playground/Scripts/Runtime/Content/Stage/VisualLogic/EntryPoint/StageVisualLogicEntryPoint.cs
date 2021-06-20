@@ -32,6 +32,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
         private readonly TickablesService tickableService;
         private readonly TimeService timeService;
         private readonly UIViewStackService uiViewStackService;
+        private readonly UserService userService;
         private readonly ScreenCarControlsUIView screenCarControlsUIView;
         private readonly StageOverlayUIView stageOverlayUIView;
         private readonly StageCompletedUIView stageCompletedUIView;
@@ -47,6 +48,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             TickablesService tickableService,
             TimeService timeService,
             UIViewStackService uiViewStackService,
+            UserService userService,
             ScreenCarControlsUIView screenCarControlsUIView,
             StageOverlayUIView stageOverlayUIView,
             StageCompletedUIView stageCompletedUIView,
@@ -62,6 +64,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             this.tickableService = tickableService;
             this.timeService = timeService;
             this.uiViewStackService = uiViewStackService;
+            this.userService = userService;
             this.screenCarControlsUIView = screenCarControlsUIView;
             this.stageOverlayUIView = stageOverlayUIView;
             this.stageCompletedUIView = stageCompletedUIView;
@@ -109,6 +112,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                     stageViewRepository,
                     stageViewPrefab,
                     carLibrary,
+                    userService.UserData.SelectedCarTypeId,
                     carViewRepository,
                     carControllerSignals,
                     carViewControllerSignals,

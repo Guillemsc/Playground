@@ -16,6 +16,11 @@ namespace Playground.Content.Meta.UI.DemoStages
             this.useCases = useCases;
         }
 
+        public void Refresh()
+        {
+
+        }
+
         public void Subscribe()
         {
 

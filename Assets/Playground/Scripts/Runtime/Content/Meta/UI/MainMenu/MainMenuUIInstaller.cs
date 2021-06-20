@@ -15,6 +15,7 @@ namespace Playground.Content.Meta.UI.MainMenu
         private ConfigurationService configurationService;
         private UserService userService;
 
+        private CarViewFactory carViewFactory;
         private CarViewRepository carViewRepository;
 
         private MainMenuUIViewModel viewModel;
@@ -46,6 +47,7 @@ namespace Playground.Content.Meta.UI.MainMenu
 
         private void GenerateDependences()
         {
+            carViewFactory = new CarViewFactory();
             carViewRepository = new CarViewRepository();
 
             viewModel = new MainMenuUIViewModel();
@@ -53,10 +55,15 @@ namespace Playground.Content.Meta.UI.MainMenu
 
         private void GenerateUseCases()
         {
+            ICleanUpCarViewUseCase cleanUpCarViewUseCase = new CleanUpCarViewUseCase(
+                carViewRepository
+                );
+
             IShowCarViewUseCase show3DCarUseCase = new ShowCarViewUseCase(
                 userService,
                 carViewer3DView,
                 configurationService.CarLibrary,
+                carViewFactory,
                 carViewRepository
                 );
 
@@ -66,6 +73,7 @@ namespace Playground.Content.Meta.UI.MainMenu
                 );
 
             useCases = new MainMenuUIUseCases(
+                cleanUpCarViewUseCase,
                 show3DCarUseCase,
                 manuallyRotate3DCarUseCase
                 );
@@ -99,7 +107,7 @@ namespace Playground.Content.Meta.UI.MainMenu
             controller.Unsubscribe();
             interactor.Unsubscribe();
 
-            uiViewStackService.Unregister(interactor, view);
+            uiViewStackService.Unregister(view);
         }
     }
 }

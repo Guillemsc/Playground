@@ -22,6 +22,7 @@ namespace Playground.Content.Meta.UI.CarsLibrary
         public void Subscribe()
         {
             viewModel.OnBackClickedEvent.OnExecute += OnBackClickedEvent;
+            viewModel.OnCarClickedEvent.OnExecute += OnCarClickedEvent;
 
             useCases.SpawnCarsUseCase.Execute();
         }
@@ -29,12 +30,18 @@ namespace Playground.Content.Meta.UI.CarsLibrary
         public void Unsubscribe()
         {
             viewModel.OnBackClickedEvent.OnExecute -= OnBackClickedEvent;
+            viewModel.OnCarClickedEvent.OnExecute -= OnCarClickedEvent;
         }
 
         private void OnBackClickedEvent(PointerCallbacks pointerCallbacks, EventArgs eventArgs)
         {
             UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
             uiViewStackService.New().ShowLast(instantly: false).Hide<CarsLibraryUIView>(instantly: true).Execute();
+        }
+
+        private void OnCarClickedEvent(CarLibraryUIEntry carLibraryUIEntry, PointerCallbacks pointerCallbacks)
+        {
+            useCases.CarSelectedUseCase.Execute(carLibraryUIEntry.CarTypeId);
         }
     }
 }

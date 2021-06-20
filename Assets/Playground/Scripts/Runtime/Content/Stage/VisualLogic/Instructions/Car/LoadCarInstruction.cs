@@ -1,4 +1,5 @@
-﻿using Playground.Content.Stage.VisualLogic.View.Car;
+﻿using Playground.Configuration.Car;
+using Playground.Content.Stage.VisualLogic.View.Car;
 using Playground.Libraries.Car;
 
 namespace Playground.Content.Stage.VisualLogic.Instructions
@@ -17,9 +18,16 @@ namespace Playground.Content.Stage.VisualLogic.Instructions
             this.carViewRepository = carViewRepository;
         }
 
-        public void Execute()
+        public void Execute(string carTypeId)
         {
-            CarView instance = carLibrary.Items[0].CarViewPrefab.InstantiateGameObjectAndGetComponent();
+            bool found = carLibrary.TryGet(carTypeId, out CarConfiguration carConfiguration);
+
+            if(!found)
+            {
+                carConfiguration = carLibrary.Items[0];
+            }
+
+            CarView instance = carConfiguration.CarViewPrefab.InstantiateGameObjectAndGetComponent();
 
             carViewRepository.CarView = instance;
         }

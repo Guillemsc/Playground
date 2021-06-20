@@ -80,7 +80,7 @@ namespace Playground.Content.StageUI.UI.StageOverlay
             controller.Unsubscribe();
             interactor.Unsubscribe();
 
-            uiViewStackService.Unregister(interactor, view);
+            uiViewStackService.Unregister(view);
         }
     }
 }

@@ -86,7 +86,7 @@ namespace Playground.Content.StageUI.UI.StageCompleted
             controller.Unsubscribe();
             interactor.Unsubscribe();
 
-            uiViewStackService.Unregister(interactor, view);
+            uiViewStackService.Unregister(view);
         }
     }
 }

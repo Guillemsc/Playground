@@ -17,6 +17,11 @@ namespace Playground.Content.StageUI.UI.StageOverlay
             this.useCases = useCases;
         }
 
+        public void Refresh()
+        {
+
+        }
+
         public void Subscribe()
         {
 

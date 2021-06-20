@@ -17,6 +17,12 @@ namespace Playground.Content.Meta.UI.MainMenu
             this.useCases = useCases;
         }
 
+        public void Refresh()
+        {
+            useCases.CleanUpCarViewUseCase.Execute();
+            useCases.Show3DCarUseCase.Execute();
+        }
+
         public void Subscribe()
         {
             viewModel.VersionValiable.Value = Application.version;

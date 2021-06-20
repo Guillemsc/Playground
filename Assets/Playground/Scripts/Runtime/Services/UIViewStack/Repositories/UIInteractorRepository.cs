@@ -8,16 +8,16 @@ namespace Playground.Services.ViewStack
     {
         private readonly Dictionary<Type, UIInteractor> items = new Dictionary<Type, UIInteractor>();
 
-        public void Add(UIInteractor uiInteractor)
+        public void Add(UIView view, UIInteractor uiInteractor)
         {
-            Type type = uiInteractor.GetType();
+            Type type = view.GetType();
 
             items.Add(type, uiInteractor);
         }
 
-        public void Remove(UIInteractor uiInteractor)
+        public void Remove(UIView view)
         {
-            Type type = uiInteractor.GetType();
+            Type type = view.GetType();
 
             items.Remove(type);
         }
@@ -25,6 +25,23 @@ namespace Playground.Services.ViewStack
         public bool TryGet(Type type, out UIInteractor uiInteractor)
         {
             return items.TryGetValue(type, out uiInteractor);
+        }
+
+        public bool TryGet<T>(out UIInteractor uiInteractor) where T : UIInteractor
+        {
+            Type type = typeof(T);
+
+            foreach(KeyValuePair<Type, UIInteractor> item in items)
+            {
+                if(item.Value.GetType() == type)
+                {
+                    uiInteractor = item.Value;
+                    return true;
+                }
+            }
+
+            uiInteractor = null;
+            return false;
         }
     }
 }
