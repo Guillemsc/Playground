@@ -14,6 +14,7 @@ namespace Playground.Content.Meta.UI.MainMenu
         [SerializeField] private DragPointerCallbacks carViewerDragPointerCallbacks = default;
         [SerializeField] private PointerCallbacks carLibraryPointerCallbacks = default;
         [SerializeField] private PointerCallbacks demoStagesPointerCallbacks = default;
+        [SerializeField] private PointerCallbacks creditsPointerCallbacks = default;
         [SerializeField] private TMPro.TextMeshProUGUI versionText = default;
 
         private MainMenuUIViewModel viewModel;
@@ -24,11 +25,13 @@ namespace Playground.Content.Meta.UI.MainMenu
             Contract.IsNotNull(carViewerDragPointerCallbacks, this);
             Contract.IsNotNull(carLibraryPointerCallbacks, this);
             Contract.IsNotNull(demoStagesPointerCallbacks, this);
+            Contract.IsNotNull(creditsPointerCallbacks, this);
             Contract.IsNotNull(versionText, this);
 
             carViewerDragPointerCallbacks.OnDragging += OnCarViewerDragPointerCallbacksDragging;
             carLibraryPointerCallbacks.OnClick += OnCarLibraryPointerCallbacksClick;
             demoStagesPointerCallbacks.OnClick += OnDemoStagesPointerCallbacksClick;
+            creditsPointerCallbacks.OnClick += OnCreditsPointerCallbacksClick;
         }
 
         private void OnDestroy()
@@ -36,6 +39,7 @@ namespace Playground.Content.Meta.UI.MainMenu
             carViewerDragPointerCallbacks.OnDragging -= OnCarViewerDragPointerCallbacksDragging;
             carLibraryPointerCallbacks.OnClick -= OnCarLibraryPointerCallbacksClick;
             demoStagesPointerCallbacks.OnClick -= OnDemoStagesPointerCallbacksClick;
+            creditsPointerCallbacks.OnClick -= OnCreditsPointerCallbacksClick;
         }
 
         public void Init(MainMenuUIViewModel viewModel, MainMenuUIUseCases useCases)
@@ -62,6 +66,11 @@ namespace Playground.Content.Meta.UI.MainMenu
         private void OnDemoStagesPointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)
         {
             viewModel.OnDemoStagesClickedEvent.Execute(pointerCallbacks, EventArgs.Empty);
+        }
+
+        private void OnCreditsPointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)
+        {
+            viewModel.OnCreditsClickedEvent.Execute(pointerCallbacks, EventArgs.Empty);
         }
     }
 }

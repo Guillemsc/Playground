@@ -11,18 +11,21 @@ namespace Playground.Services.ViewStack
         private readonly UIViewRepository registeredViewsRepository;
         private readonly ViewContexRepository viewContexRepository;
         private readonly ViewQueueRepository viewQueueRepository;
+        private readonly bool asForeground;
         private readonly bool instantly;
 
         public ShowLastUIViewInstruction(
             UIViewRepository registeredViewsRepository,
             ViewContexRepository viewContexRepository,
             ViewQueueRepository viewQueueRepository,
+            bool asForeground,
             bool instantly
             )
         {
             this.registeredViewsRepository = registeredViewsRepository;
             this.viewContexRepository = viewContexRepository;
             this.viewQueueRepository = viewQueueRepository;
+            this.asForeground = asForeground;
             this.instantly = instantly;
         }
 
@@ -43,7 +46,14 @@ namespace Playground.Services.ViewStack
 
             viewContexRepository.Add(new ViewContex(uiView));
 
-            UIFrame.Instance.Push(uiView);
+            if (!asForeground)
+            {
+                UIFrame.Instance.Push(uiView);
+            }
+            else
+            {
+                UIFrame.Instance.PushAsForeground(uiView);
+            }
 
             return uiView.Show(instantly, cancellationToken);
         }

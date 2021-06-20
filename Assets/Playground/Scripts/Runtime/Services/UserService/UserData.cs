@@ -3,6 +3,6 @@
     [System.Serializable]
     public class UserData
     {
-        public string SelectedCarId { get; set; }
+        public string SelectedCarTypeId { get; set; }
     }
 }

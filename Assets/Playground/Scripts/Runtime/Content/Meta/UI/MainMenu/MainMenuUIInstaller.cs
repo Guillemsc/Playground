@@ -13,6 +13,7 @@ namespace Playground.Content.Meta.UI.MainMenu
 
         private UIViewStackService uiViewStackService;
         private ConfigurationService configurationService;
+        private UserService userService;
 
         private CarViewRepository carViewRepository;
 
@@ -40,6 +41,7 @@ namespace Playground.Content.Meta.UI.MainMenu
         {
             uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
             configurationService = ServicesProvider.GetService<ConfigurationService>();
+            userService = ServicesProvider.GetService<UserService>();
         }
 
         private void GenerateDependences()
@@ -52,6 +54,7 @@ namespace Playground.Content.Meta.UI.MainMenu
         private void GenerateUseCases()
         {
             IShowCarViewUseCase show3DCarUseCase = new ShowCarViewUseCase(
+                userService,
                 carViewer3DView,
                 configurationService.CarLibrary,
                 carViewRepository
@@ -72,8 +75,16 @@ namespace Playground.Content.Meta.UI.MainMenu
         {
             view = GetComponent<MainMenuUIView>();
 
-            controller = new MainMenuUIController(viewModel, useCases);
-            interactor = new MainMenuUIInteractor(viewModel, useCases);
+            controller = new MainMenuUIController(
+                viewModel, 
+                useCases, 
+                uiViewStackService
+                );
+
+            interactor = new MainMenuUIInteractor(
+                viewModel, 
+                useCases
+                );
 
             view.Init(viewModel, useCases);
 

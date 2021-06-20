@@ -9,6 +9,7 @@ namespace Playground.Content.Meta.UI.MainMenu
     {
         public ObservableEvent<PointerCallbacks, EventArgs> OnCarLibraryClickedEvent { get; } = new ObservableEvent<PointerCallbacks, EventArgs>();
         public ObservableEvent<PointerCallbacks, EventArgs> OnDemoStagesClickedEvent { get; } = new ObservableEvent<PointerCallbacks, EventArgs>();
+        public ObservableEvent<PointerCallbacks, EventArgs> OnCreditsClickedEvent { get; } = new ObservableEvent<PointerCallbacks, EventArgs>();
 
         public ObservableVariable<string> VersionValiable { get; } = new ObservableVariable<string>();
     }

@@ -64,6 +64,20 @@ namespace Playground.Services.ViewStack
                 registeredViewsRepository,
                 viewContexRepository,
                 viewQueueRepository,
+                asForeground: false,
+                instantly
+                ));
+
+            return this;
+        }
+
+        public ViewStackSequence ShowLastAsForeground(bool instantly)
+        {
+            instructionsToPlay.Add(new ShowLastUIViewInstruction(
+                registeredViewsRepository,
+                viewContexRepository,
+                viewQueueRepository,
+                asForeground: true,
                 instantly
                 ));
 
