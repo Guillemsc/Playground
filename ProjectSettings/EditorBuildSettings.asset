@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Playground/Scenes/Contexts/CameraContext.unity
     guid: 8af6024c832e9c44281db33c56d9759b
   - enabled: 1
+    path: Assets/Playground/Scenes/Contexts/SharedContext.unity
+    guid: d34d1c97b98ad214a95d8325fccac61b
+  - enabled: 1
     path: Assets/Playground/Scenes/Contexts/LoadingScreenContext.unity
     guid: f46cc4a35bb130343a5327e85ddfa8f9
   - enabled: 1
