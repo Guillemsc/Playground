@@ -1,5 +1,6 @@
 ﻿using Juce.Core.Sequencing;
 using Playground.Configuration.Stage;
+using Playground.Content.Shared;
 using Playground.Content.Stage.VisualLogic.Instructions;
 using Playground.Content.Stage.VisualLogic.Sequences;
 using Playground.Content.Stage.VisualLogic.View.Car;
@@ -19,6 +20,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         private readonly Sequencer sequencer;
         private readonly TimeService timeService;
         private readonly UIViewStackService uiViewStackService;
+        private readonly SharedUseCases sharedUseCases;
         private readonly StageStarsConfiguration stageStarsConfiguration;
         private readonly StageRewardsConfiguration stageRewardsConfiguration;
         private readonly StageCompletedUIView stageCompletedUIView;
@@ -33,6 +35,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             Sequencer sequencer,
             TimeService timeService,
             UIViewStackService uiViewStackService,
+            SharedUseCases sharedUseCases,
             StageStarsConfiguration stageStarsConfiguration,
             StageRewardsConfiguration stageRewardsConfiguration,
             StageCompletedUIView stageCompletedUIView,
@@ -45,6 +48,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             this.sequencer = sequencer;
             this.timeService = timeService;
             this.uiViewStackService = uiViewStackService;
+            this.sharedUseCases = sharedUseCases;
             this.stageStarsConfiguration = stageStarsConfiguration;
             this.stageRewardsConfiguration = stageRewardsConfiguration;
             this.stageCompletedUIView = stageCompletedUIView;
@@ -94,7 +98,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
 
         private int GetStars()
         {
-            if(stageStarsConfiguration)
+            if(stageStarsConfiguration == null)
             {
                 UnityEngine.Debug.LogError($"Tried to get stars from timing, but {nameof(StageStarsConfiguration)} was null " +
                     $"at {nameof(StopAndShowUIStageFinishedUseCase)}");
@@ -108,36 +112,13 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
                 return 0;
             }
 
-            bool stageCarStarsFound = stageStarsConfiguration.TryGet(
-                carViewRepository.Item.TypeId,
-                out StageStarsCarConfiguration stageStarsCarConfiguration
-                );
-
-            if(!stageCarStarsFound)
-            {
-                UnityEngine.Debug.LogError($"Tried to get stars from timing, but {nameof(StageStarsCarConfiguration)} was not " +
-                    $"found for car {carViewRepository.Item.TypeId}. Using default, at {nameof(StopAndShowUIStageFinishedUseCase)}");
-                stageStarsCarConfiguration = stageStarsConfiguration.GetDefault(carViewRepository.Item.TypeId);
-            }
-
             float finalTime = (float)stageTimerState.Timer.Time.TotalSeconds;
 
-            if (finalTime <= stageStarsCarConfiguration.Star3Timing)
-            {
-                return 3;
-            }
-
-            if (finalTime <= stageStarsCarConfiguration.Star2Timing)
-            {
-                return 2;
-            }
-
-            if (finalTime <= stageStarsCarConfiguration.Star1Timing)
-            {
-                return 1;
-            }
-
-            return 0;
+            return sharedUseCases.GetStageStarsFromTimingUseCase.Execute(
+                stageStarsConfiguration,
+                carViewRepository.Item.TypeId,
+                finalTime
+                );
         }
 
         private int GetSoftCurrencyReward(int stars)

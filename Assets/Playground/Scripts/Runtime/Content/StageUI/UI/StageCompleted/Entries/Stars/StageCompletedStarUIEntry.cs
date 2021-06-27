@@ -5,10 +5,10 @@ namespace Playground.Content.StageUI.UI.StageCompleted
 {
     public class StageCompletedStarUIEntry : MonoBehaviour
     {
-        [SerializeField] private TweenPlayer showActiveFeedback = default;
-        [SerializeField] private TweenPlayer showInactiveFeedback = default;
+        [SerializeField] private TweenPlayer showEarnedFeedback = default;
+        [SerializeField] private TweenPlayer showNotEarnedFeedback = default;
 
-        public TweenPlayer ShowActiveFeedback => showActiveFeedback;
-        public TweenPlayer ShowInactiveFeedback => showInactiveFeedback;
+        public TweenPlayer ShowEarnedFeedback => showEarnedFeedback;
+        public TweenPlayer ShowNotEarnedFeedback => showNotEarnedFeedback;
     }
 }

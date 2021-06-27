@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: car_0001_Configuration
   m_EditorClassIdentifier: 
   carTypeId: car_0001
-  carName: Default car lol
+  carName: Pickup
   carIcon: {fileID: 21300000, guid: 4beff98f38985dc4dbce8dabe9715be1, type: 3}
   carViewPrefab: {fileID: 1674271318535626332, guid: 549c3300d395080418bdf760e379ba07, type: 3}

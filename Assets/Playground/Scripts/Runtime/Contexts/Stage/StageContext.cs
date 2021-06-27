@@ -40,6 +40,7 @@ namespace Playground.Contexts
         }
 
         public void RunStage(
+            SharedContext sharedContext,
             StageUIContext stageUIContext,
             StageView stageView,
             StageStarsConfiguration stageStarsConfiguration,
@@ -89,6 +90,7 @@ namespace Playground.Contexts
                 timeService,
                 uiViewStackService,
                 userService,
+                sharedContext.SharedUseCases,
                 stageUIContext.StageUIContextReferences.ScreenCarControlsUIView,
                 stageUIContext.StageUIContextReferences.StageOverlayUIView,
                 stageUIContext.StageUIContextReferences.StageCompletedUIView,

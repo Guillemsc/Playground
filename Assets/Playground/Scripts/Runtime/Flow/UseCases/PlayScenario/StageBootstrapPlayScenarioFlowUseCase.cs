@@ -76,10 +76,12 @@ namespace Playground.Flow.UseCases
                     $"at {nameof(StageBootstrapPlayScenarioFlowUseCase)}");
             }
 
+            SharedContext sharedContext = ContextsProvider.GetContext<SharedContext>();
             StageUIContext stageUIContext = ContextsProvider.GetContext<StageUIContext>();
             StageContext stageContext = ContextsProvider.GetContext<StageContext>();
 
             stageContext.RunStage(
+                sharedContext,
                 stageUIContext,
                 stageView,
                 stageStarsConfiguration,

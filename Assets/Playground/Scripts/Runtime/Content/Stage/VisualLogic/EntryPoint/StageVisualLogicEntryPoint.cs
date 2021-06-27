@@ -6,6 +6,7 @@ using Juce.CoreUnity.PointerCallback;
 using Juce.CoreUnity.Services;
 using Playground.Configuration.Stage;
 using Playground.Content.LoadingScreen.UI;
+using Playground.Content.Shared;
 using Playground.Content.Stage.Logic.Events;
 using Playground.Content.Stage.VisualLogic.Sequences;
 using Playground.Content.Stage.VisualLogic.Tickable;
@@ -35,6 +36,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             TimeService timeService,
             UIViewStackService uiViewStackService,
             PersistenceService userService,
+            SharedUseCases sharedUseCases,
             ScreenCarControlsUIView screenCarControlsUIView,
             StageOverlayUIView stageOverlayUIView,
             StageCompletedUIView stageCompletedUIView,
@@ -129,6 +131,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                             sequencer,
                             timeService,
                             uiViewStackService,
+                            sharedUseCases,
                             stageStarsConfiguration,
                             stageRewardsConfiguration,
                             stageCompletedUIView,

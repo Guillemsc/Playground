@@ -290,7 +290,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.3
+          FallbackValue: 0.15
         easing:
           bindingEnabled: 0
           wantsToBeBinded: 0
@@ -409,7 +409,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.3
+          FallbackValue: 0.15
         easing:
           bindingEnabled: 0
           wantsToBeBinded: 0
@@ -461,13 +461,13 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.2
+          FallbackValue: 0
         duration:
           bindingEnabled: 0
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.3
+          FallbackValue: 0.15
         easing:
           bindingEnabled: 0
           wantsToBeBinded: 0

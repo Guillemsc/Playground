@@ -1,4 +1,6 @@
-﻿namespace Playground.Content.StageUI.UI.StageCompleted
+﻿using UnityEngine;
+
+namespace Playground.Content.StageUI.UI.StageCompleted
 {
     public class ShowStarsUseCase : IShowStarsUseCase
     {
@@ -19,20 +21,48 @@
 
         public void Execute(int stars)
         {
-            if (stars > 0)
+            float delay = 0.0f;
+
+            for(int i = 0; i < 3; ++i)
             {
-                stageCompletedStar1UIEntry.ShowActiveFeedback.Play(new StageCompletedStarDelayBindableData(0.0f));
+                bool earned = stars > i;
+
+                StageCompletedStarUIEntry stageCompletedStarUIEntry = GetStar(i);
+
+                if(earned)
+                {
+                    stageCompletedStarUIEntry.ShowEarnedFeedback.Play(new StageCompletedStarDelayBindableData(delay));
+                }
+                else
+                {
+                    stageCompletedStarUIEntry.ShowNotEarnedFeedback.Play(new StageCompletedStarDelayBindableData(delay));
+                }
+
+                delay += 0.4f;
+            }
+        }
+
+        private StageCompletedStarUIEntry GetStar(int starIndex)
+        {
+            starIndex = Mathf.Clamp(starIndex, 0, 2);
+
+            if (starIndex == 0)
+            {
+                return stageCompletedStar1UIEntry;
             }
 
-            if (stars > 1)
+            if (starIndex == 1)
             {
-                stageCompletedStar2UIEntry.ShowActiveFeedback.Play(new StageCompletedStarDelayBindableData(0.4f));
+                return stageCompletedStar2UIEntry;
             }
 
-            if (stars > 2)
+            if (starIndex == 2)
             {
-                stageCompletedStar3UIEntry.ShowActiveFeedback.Play(new StageCompletedStarDelayBindableData(0.8f));
+                return stageCompletedStar3UIEntry;
             }
+
+            throw new System.ArgumentOutOfRangeException($"Tried to get {nameof(StageCompletedStarUIEntry)}" +
+                $"at index {starIndex}");
         }
     }
 }
