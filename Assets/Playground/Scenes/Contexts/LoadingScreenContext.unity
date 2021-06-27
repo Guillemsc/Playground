@@ -217,7 +217,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 999
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &384100297
 RectTransform:
@@ -291,6 +291,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 384100297}
     m_Modifications:
+    - target: {fileID: 3620257324350966084, guid: 549f88132bec57140a3ac4b003e51504, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 16.43872
+      objectReference: {fileID: 0}
     - target: {fileID: 3983120120460372424, guid: 549f88132bec57140a3ac4b003e51504, type: 3}
       propertyPath: m_Name
       value: LoadingScreenUIView
