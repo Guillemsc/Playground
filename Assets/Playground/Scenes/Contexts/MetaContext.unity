@@ -493,26 +493,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 993.76
       objectReference: {fileID: 0}
-    - target: {fileID: 5816282697860426881, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816282697860426881, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816282697860426881, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 309
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816282697860426881, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 488.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816282697860426881, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -50
-      objectReference: {fileID: 0}
     - target: {fileID: 5816282697984691075, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -530,26 +510,6 @@ PrefabInstance:
       value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 5816282697984691075, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -32
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816282698290610768, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816282698290610768, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816282698290610768, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 190
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816282698290610768, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 270
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816282698290610768, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -32
       objectReference: {fileID: 0}
@@ -592,26 +552,6 @@ PrefabInstance:
     - target: {fileID: 5816282698741782118, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816282698891427974, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816282698891427974, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816282698891427974, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 76
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816282698891427974, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 321
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816282698891427974, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -32
       objectReference: {fileID: 0}
     - target: {fileID: 6053300259957523059, guid: 60c55dca6aece684fabd2d9ca2e47835, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1236,6 +1176,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreditsUIView
       objectReference: {fileID: 0}
+    - target: {fileID: 9076056522551914887, guid: fc7434f17c0a5304a976784b4fffbc46, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc7434f17c0a5304a976784b4fffbc46, type: 3}
 --- !u!224 &3688756898502273143 stripped
@@ -1341,6 +1285,10 @@ PrefabInstance:
     - target: {fileID: 8291611418865231406, guid: c6bcf2ecbfce52c4ba4be353a125110a, type: 3}
       propertyPath: m_Name
       value: CarsLibraryUIView
+      objectReference: {fileID: 0}
+    - target: {fileID: 8291611418865231406, guid: c6bcf2ecbfce52c4ba4be353a125110a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6bcf2ecbfce52c4ba4be353a125110a, type: 3}

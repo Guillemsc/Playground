@@ -27,7 +27,7 @@ namespace Playground.Content.Stage.VisualLogic.Sequences
 
         public async Task Execute(CancellationToken cancellationToken)
         {
-            CarView carView = carViewRepository.CarView;
+            CarView carView = carViewRepository.Item;
 
             new SetCarViewControllerStateInstruction(carView.CarViewController, CarViewControllerState.AutoHandBrake).Execute();
 

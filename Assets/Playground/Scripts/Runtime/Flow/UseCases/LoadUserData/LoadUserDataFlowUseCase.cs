@@ -8,9 +8,9 @@ namespace Playground.Flow.UseCases
     {
         public Task Execute()
         {
-            UserService userService = ServicesProvider.GetService<UserService>();
+            PersistenceService persistenceService = ServicesProvider.GetService<PersistenceService>();
 
-            return userService.Load(default);
+            return persistenceService.LoadAll(default);
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Playground.Boostraps
     public class StageBootstrap : MonoBehaviour
     {
         [SerializeField] private StageConfiguration stageConfiguration = default;
+        [SerializeField] private string carTypeId = default;
 
         private void Awake()
         {
@@ -36,7 +37,7 @@ namespace Playground.Boostraps
                 new NopLoadMetaFlowUseCase(),
                 new NopUnloadMetaFlowUseCase(),
                 new SetCurrentStageFlowUseCase(currentStageFlowData),
-                new StageBootstrapPlayScenarioFlowUseCase(currentStageFlowData),
+                new StageBootstrapPlayScenarioFlowUseCase(currentStageFlowData, carTypeId),
                 new StageBootstrapReplayScenarioFlowUseCase(currentStageFlowData),
                 new NopBackToMetaFromStageFlowUseCase()
                 );

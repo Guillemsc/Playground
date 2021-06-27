@@ -28,7 +28,9 @@ namespace Playground.Content.Meta.UI.MainMenu
             Contract.IsNotNull(creditsPointerCallbacks, this);
             Contract.IsNotNull(versionText, this);
 
+            carViewerDragPointerCallbacks.OnBegin += OnCarViewerDragPointerCallbacksBegin;
             carViewerDragPointerCallbacks.OnDragging += OnCarViewerDragPointerCallbacksDragging;
+            carViewerDragPointerCallbacks.OnEnd += OnCarViewerDragPointerCallbacksEnd;
             carLibraryPointerCallbacks.OnClick += OnCarLibraryPointerCallbacksClick;
             demoStagesPointerCallbacks.OnClick += OnDemoStagesPointerCallbacksClick;
             creditsPointerCallbacks.OnClick += OnCreditsPointerCallbacksClick;
@@ -36,7 +38,9 @@ namespace Playground.Content.Meta.UI.MainMenu
 
         private void OnDestroy()
         {
+            carViewerDragPointerCallbacks.OnBegin -= OnCarViewerDragPointerCallbacksBegin;
             carViewerDragPointerCallbacks.OnDragging -= OnCarViewerDragPointerCallbacksDragging;
+            carViewerDragPointerCallbacks.OnEnd -= OnCarViewerDragPointerCallbacksEnd;
             carLibraryPointerCallbacks.OnClick -= OnCarLibraryPointerCallbacksClick;
             demoStagesPointerCallbacks.OnClick -= OnDemoStagesPointerCallbacksClick;
             creditsPointerCallbacks.OnClick -= OnCreditsPointerCallbacksClick;
@@ -53,9 +57,19 @@ namespace Playground.Content.Meta.UI.MainMenu
             };
         }
 
+        private void OnCarViewerDragPointerCallbacksBegin(DragPointerCallbacks dragPointerCallbacks, PointerEventData pointerEventData)
+        {
+            viewModel.OnStartDraggingCarViewEvent.Execute(dragPointerCallbacks, pointerEventData);
+        }
+
         private void OnCarViewerDragPointerCallbacksDragging(DragPointerCallbacks dragPointerCallbacks, PointerEventData pointerEventData)
         {
-            useCases.ManuallyRotate3DCarUseCase.Execute(-pointerEventData.delta.x);
+            viewModel.OnDragCarViewEvent.Execute(dragPointerCallbacks, pointerEventData);
+        }
+
+        private void OnCarViewerDragPointerCallbacksEnd(DragPointerCallbacks dragPointerCallbacks, PointerEventData pointerEventData)
+        {
+            viewModel.OnStopDraggingCarViewEvent.Execute(dragPointerCallbacks, pointerEventData);
         }
 
         private void OnCarLibraryPointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)

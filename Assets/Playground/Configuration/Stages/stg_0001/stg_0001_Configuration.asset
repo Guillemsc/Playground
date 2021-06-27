@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e85f36025033540926295e7694eb66, type: 3}
+  m_Name: stg_0001_Configuration
+  m_EditorClassIdentifier: 
+  stageName: Parking
+  stageSceneReference:
+    sceneAsset: {fileID: 102900000, guid: 8788fe8aa14a7ef42b7a9146e7c018ea, type: 3}
+    scenePath: Assets/Playground/Scenes/Stages/stg_0001_PARKING.unity
+  stageStarsConfiguration: {fileID: 11400000, guid: 7813ae97058e39a4db695f820600bae6, type: 2}
+  stageRewardsConfiguration: {fileID: 11400000, guid: 894fd2eb05f9bbb43b26673a931d93db, type: 2}

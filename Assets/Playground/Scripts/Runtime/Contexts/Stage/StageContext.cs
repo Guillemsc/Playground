@@ -4,6 +4,7 @@ using Juce.Core.Events;
 using Juce.CoreUnity.Contexts;
 using Juce.CoreUnity.Service;
 using Juce.CoreUnity.Services;
+using Playground.Configuration.Stage;
 using Playground.Content.LoadingScreen.UI;
 using Playground.Content.Stage.Logic.CheckPoints;
 using Playground.Content.Stage.Logic.EntryPoint;
@@ -40,7 +41,10 @@ namespace Playground.Contexts
 
         public void RunStage(
             StageUIContext stageUIContext,
-            StageView stageView, 
+            StageView stageView,
+            StageStarsConfiguration stageStarsConfiguration,
+            StageRewardsConfiguration stageRewardsConfiguration,
+            string carTypeId,
             ILoadingToken loadingToken
             )
         {  
@@ -59,7 +63,7 @@ namespace Playground.Contexts
             TimeService timeService = ServicesProvider.GetService<TimeService>();
             UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
             ConfigurationService configurationService = ServicesProvider.GetService<ConfigurationService>();
-            UserService userService = ServicesProvider.GetService<UserService>();
+            PersistenceService userService = ServicesProvider.GetService<PersistenceService>();
 
             EventDispatcherAndReceiver logicToViewEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
             EventDispatcherAndReceiver viewToLogicEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
@@ -89,7 +93,10 @@ namespace Playground.Contexts
                 stageUIContext.StageUIContextReferences.StageOverlayUIView,
                 stageUIContext.StageUIContextReferences.StageCompletedUIView,
                 stageView,
+                stageStarsConfiguration,
+                stageRewardsConfiguration,
                 configurationService.CarLibrary,
+                carTypeId,
                 stageContextReferences.FollowCarVirtualCamera,
                 cleanUpActionsRepository
                 );

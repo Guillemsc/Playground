@@ -15,7 +15,7 @@ namespace Playground.Content.Meta.UI.CarsLibrary
 
         private UIViewStackService uiViewStackService;
         private ConfigurationService configurationService;
-        private UserService userService;
+        private PersistenceService userService;
 
         private CarLibraryUIEntryFactory carLibraryUIEntryFactory;
         private CarLibraryUIEntryRepository carLibraryUIEntryRepository;
@@ -43,7 +43,7 @@ namespace Playground.Content.Meta.UI.CarsLibrary
         {
             uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
             configurationService = ServicesProvider.GetService<ConfigurationService>();
-            userService = ServicesProvider.GetService<UserService>();
+            userService = ServicesProvider.GetService<PersistenceService>();
         }
 
         private void GenerateDependences()
@@ -74,13 +74,20 @@ namespace Playground.Content.Meta.UI.CarsLibrary
                 spawnCarUseCase
                 );
 
+            IRefreshCarsUseCase refreshCarsUseCase = new RefreshCarsUseCase(
+                userService,
+                carLibraryUIEntryRepository
+                );
+
             ICarSelectedUseCase carSelectedUseCase = new CarSelectedUseCase(
-                userService
+                userService,
+                carLibraryUIEntryRepository
                 );
 
             useCases = new CarsLibraryUIUseCases(
                 spawnCarUseCase,
                 spawnCarsUseCase,
+                refreshCarsUseCase,
                 carSelectedUseCase
                 );
         }

@@ -83,7 +83,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             stageViewRepository.StageView = stageView;
 
             new LoadCarInstruction(carLibrary, carViewRepository).Execute(carTypeId);
-            CarView carView = carViewRepository.CarView;
+            CarView carView = carViewRepository.Item;
 
             new RegisterCheckPointsSignalsInstruction(stageView.CheckPointsView, checkPointCrossedSignal).Execute();
             new SetCheckPointAsActive(stageView.CheckPointsView, checkPointIndex: 0).Execute();

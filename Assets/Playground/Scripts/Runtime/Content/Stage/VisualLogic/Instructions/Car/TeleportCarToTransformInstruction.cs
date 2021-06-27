@@ -19,8 +19,8 @@ namespace Playground.Content.Stage.VisualLogic.Instructions
 
         public void Execute()
         {
-            carViewRepository.CarView.transform.position = transform.position;
-            carViewRepository.CarView.transform.rotation = transform.rotation;
+            carViewRepository.Item.transform.position = transform.position;
+            carViewRepository.Item.transform.rotation = transform.rotation;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Playground.Services;
+﻿using Playground.Utils.Persistence;
 using UnityEditor;
 
 namespace Playground.ToolsMenu
@@ -8,7 +8,7 @@ namespace Playground.ToolsMenu
         [MenuItem("Tools/Playground/Clear User Data")]
         private static void ClearUserData()
         {
-            UserDataUtils.ClearUserData();
+            PersistenceDataUtils.ClearPersistanceData();
         }
     }
 }

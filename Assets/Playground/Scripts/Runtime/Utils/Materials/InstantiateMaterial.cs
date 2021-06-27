@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Playground.Utils.UIAnimations
+namespace Playground.Utils.Materials
 {
     public class InstantiateMaterial : MonoBehaviour
     {
@@ -11,7 +11,6 @@ namespace Playground.Utils.UIAnimations
 
         private void TryInstantiateMaterial()
         {
-            Material material = gameObject.GetComponent<Material>();
             Renderer renderer = gameObject.GetComponent<Renderer>();
 
             if(renderer == null)

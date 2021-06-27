@@ -20,7 +20,7 @@ namespace Playground.Content.Meta.UI.MainMenu
         public void Refresh()
         {
             useCases.CleanUpCarViewUseCase.Execute();
-            useCases.Show3DCarUseCase.Execute();
+            useCases.ShowCarViewUseCase.Execute();
         }
 
         public void Subscribe()

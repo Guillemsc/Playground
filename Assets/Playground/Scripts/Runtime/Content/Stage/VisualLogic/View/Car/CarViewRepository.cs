@@ -2,6 +2,16 @@
 {
     public class CarViewRepository 
     {
-        public CarView CarView { get; set; }
+        public CarView Item { get; private set; }
+
+        public void Set(CarView item)
+        {
+            Item = item;
+        }
+
+        public bool HasItem()
+        {
+            return Item != null;
+        }
     }
 }

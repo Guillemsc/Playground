@@ -42,8 +42,8 @@ namespace Playground.Content.Stage.VisualLogic.Instructions
 
             followZoom.m_Damping = 0;
 
-            cinemachineVirtualCamera.LookAt = carViewRepository.CarView.transform;
-            cinemachineVirtualCamera.Follow = carViewRepository.CarView.transform;
+            cinemachineVirtualCamera.LookAt = carViewRepository.Item.transform;
+            cinemachineVirtualCamera.Follow = carViewRepository.Item.transform;
 
             trackedDolly.m_Path = cinemachinePath;
 

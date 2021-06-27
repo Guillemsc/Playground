@@ -17,7 +17,7 @@ namespace Playground.Contexts
         private TimeService timeService;
         private UIViewStackService uiViewStackService;
         private ConfigurationService configurationService;
-        private UserService userService;
+        private PersistenceService userService;
 
         protected override void Init()
         {
@@ -40,7 +40,7 @@ namespace Playground.Contexts
                 );
             ServicesProvider.Register(configurationService);
 
-            userService = new UserService();
+            userService = new PersistenceService();
             ServicesProvider.Register(userService);
         }
 

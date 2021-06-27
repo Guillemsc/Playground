@@ -1,27 +1,33 @@
-﻿using Playground.Content.Stage.VisualLogic.Viewer3D;
+﻿using Playground.Configuration.MainMenu;
 using UnityEngine;
 
 namespace Playground.Content.Meta.UI.MainMenu
 {
     public class ManuallyRotateCarViewUseCase : IManuallyRotateCarViewUseCase
     {
-        private readonly Viewer3DView carViewer3DView;
-        private readonly Canvas parentCanvas;
+        private readonly MainMenuConfiguration mainMenuConfiguration;
+        private readonly CarViewRotationData carViewRotationData;
+        private readonly IScreenToCanvasDeltaUseCase screenToCanvasDeltaUseCase;
+        private readonly IRotateCarViewUseCase rotateCarViewUseCase;
 
         public ManuallyRotateCarViewUseCase(
-            Viewer3DView carViewer3DView,
-            Canvas parentCanvas
+            MainMenuConfiguration mainMenuConfiguration,
+            CarViewRotationData carViewRotationData,
+            IScreenToCanvasDeltaUseCase screenToCanvasDeltaUseCase,
+            IRotateCarViewUseCase rotateCarViewUseCase
             )
         {
-            this.carViewer3DView = carViewer3DView;
-            this.parentCanvas = parentCanvas;
+            this.mainMenuConfiguration = mainMenuConfiguration;
+            this.carViewRotationData = carViewRotationData;
+            this.screenToCanvasDeltaUseCase = screenToCanvasDeltaUseCase;
+            this.rotateCarViewUseCase = rotateCarViewUseCase;
         }
 
         public void Execute(float ammount)
         {
-            float ammountOfRotation = (ammount / parentCanvas.scaleFactor) * 0.5f;
+            float canvasAmmount = screenToCanvasDeltaUseCase.Execute(ammount) * mainMenuConfiguration.ManualRotationMultiplier;
 
-            carViewer3DView.Pivot.localRotation = carViewer3DView.Pivot.localRotation * Quaternion.Euler(0, ammountOfRotation, 0);
+            rotateCarViewUseCase.Execute(canvasAmmount);
         }
     }
 }

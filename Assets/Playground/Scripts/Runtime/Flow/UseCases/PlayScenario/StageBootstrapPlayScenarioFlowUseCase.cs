@@ -5,6 +5,7 @@ using Playground.Content.LoadingScreen.UI;
 using Playground.Content.Stage.VisualLogic.View.Stage;
 using Playground.Contexts;
 using Playground.Flow.Data;
+using Playground.Services;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -16,10 +17,15 @@ namespace Playground.Flow.UseCases
     public class StageBootstrapPlayScenarioFlowUseCase : IPlayScenarioFlowUseCase
     {
         private readonly CurrentStageFlowData currentStageFlowData;
+        private readonly string carTypeId;
 
-        public StageBootstrapPlayScenarioFlowUseCase(CurrentStageFlowData currentStageFlowData)
+        public StageBootstrapPlayScenarioFlowUseCase(
+            CurrentStageFlowData currentStageFlowData,
+            string carTypeId
+            )
         {
             this.currentStageFlowData = currentStageFlowData;
+            this.carTypeId = carTypeId;
         }
 
         public async Task Execute(ILoadingToken loadingToken)
@@ -33,6 +39,8 @@ namespace Playground.Flow.UseCases
             }
 
             StageConfiguration stageConfiguration = currentStageFlowData.StageConfiguration;
+            StageStarsConfiguration stageStarsConfiguration = stageConfiguration.StageStarsConfiguration;
+            StageRewardsConfiguration stageRewardsConfiguration = stageConfiguration.StageRewardsConfiguration;
 
             GC.Collect();
 
@@ -74,6 +82,9 @@ namespace Playground.Flow.UseCases
             stageContext.RunStage(
                 stageUIContext,
                 stageView,
+                stageStarsConfiguration,
+                stageRewardsConfiguration,
+                carTypeId,
                 loadingToken
                 );
         }

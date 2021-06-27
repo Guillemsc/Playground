@@ -18,7 +18,7 @@ namespace Playground.Content.Meta.UI.CarsLibrary
 
         public void Refresh()
         {
-
+            useCases.RefreshCarsUseCase.Execute();
         }
 
         public void Subscribe()

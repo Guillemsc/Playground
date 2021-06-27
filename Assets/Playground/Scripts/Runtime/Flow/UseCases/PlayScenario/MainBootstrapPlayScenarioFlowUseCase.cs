@@ -1,11 +1,12 @@
 ﻿using Juce.CoreUnity.Contexts;
 using Juce.CoreUnity.Scenes;
+using Juce.CoreUnity.Service;
 using Playground.Configuration.Stage;
 using Playground.Content.LoadingScreen.UI;
 using Playground.Content.Stage.VisualLogic.View.Stage;
 using Playground.Contexts;
 using Playground.Flow.Data;
-using System;
+using Playground.Services;
 using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -33,6 +34,8 @@ namespace Playground.Flow.UseCases
             }
 
             StageConfiguration stageConfiguration = currentStageFlowData.StageConfiguration;
+            StageStarsConfiguration stageStarsConfiguration = stageConfiguration.StageStarsConfiguration;
+            StageRewardsConfiguration stageRewardsConfiguration = stageConfiguration.StageRewardsConfiguration;
 
             ScenesLoader stageScenesLoader = new ScenesLoader(
                 StageUIContext.SceneName,
@@ -66,12 +69,17 @@ namespace Playground.Flow.UseCases
                     $"at {nameof(StageBootstrapPlayScenarioFlowUseCase)}");
             }
 
+            PersistenceService persistenceService = ServicesProvider.GetService<PersistenceService>();
+
             StageUIContext stageUIContext = ContextsProvider.GetContext<StageUIContext>();
             StageContext stageContext = ContextsProvider.GetContext<StageContext>();
 
             stageContext.RunStage(
                 stageUIContext,
                 stageView,
+                stageStarsConfiguration,
+                stageRewardsConfiguration,
+                persistenceService.UserDataSerializableData.Data.SelectedCarTypeId,
                 loadingToken
                 );
         }

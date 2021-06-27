@@ -1,4 +1,6 @@
 ﻿using Juce.CoreUnity.Service;
+using Juce.CoreUnity.Services;
+using Playground.Configuration.MainMenu;
 using Playground.Content.Stage.VisualLogic.Viewer3D;
 using Playground.Services;
 using Playground.Services.ViewStack;
@@ -9,14 +11,21 @@ namespace Playground.Content.Meta.UI.MainMenu
     [RequireComponent(typeof(MainMenuUIView))]
     public class MainMenuUIInstaller : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField] private Viewer3DView carViewer3DView = default;
 
+        [Header("Configuration")]
+        [SerializeField] private MainMenuConfiguration mainMenuConfiguration = default;
+
+        private TickablesService tickablesService;
         private UIViewStackService uiViewStackService;
         private ConfigurationService configurationService;
-        private UserService userService;
+        private PersistenceService userService;
 
         private CarViewFactory carViewFactory;
         private CarViewRepository carViewRepository;
+
+        private CarViewRotationData carViewRotationData;
 
         private MainMenuUIViewModel viewModel;
         private MainMenuUIView view;
@@ -40,9 +49,10 @@ namespace Playground.Content.Meta.UI.MainMenu
 
         private void GatherDependences()
         {
+            tickablesService = ServicesProvider.GetService<TickablesService>();
             uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
             configurationService = ServicesProvider.GetService<ConfigurationService>();
-            userService = ServicesProvider.GetService<UserService>();
+            userService = ServicesProvider.GetService<PersistenceService>();
         }
 
         private void GenerateDependences()
@@ -50,16 +60,22 @@ namespace Playground.Content.Meta.UI.MainMenu
             carViewFactory = new CarViewFactory();
             carViewRepository = new CarViewRepository();
 
+            carViewRotationData = new CarViewRotationData();
+
             viewModel = new MainMenuUIViewModel();
         }
 
         private void GenerateUseCases()
         {
+            IScreenToCanvasDeltaUseCase screenToCanvasDeltaUseCase = new ScreenToCanvasDeltaUseCase(
+                uiViewStackService.Canvas
+                );
+
             ICleanUpCarViewUseCase cleanUpCarViewUseCase = new CleanUpCarViewUseCase(
                 carViewRepository
                 );
 
-            IShowCarViewUseCase show3DCarUseCase = new ShowCarViewUseCase(
+            IShowCarViewUseCase showCarViewUseCase = new ShowCarViewUseCase(
                 userService,
                 carViewer3DView,
                 configurationService.CarLibrary,
@@ -67,15 +83,42 @@ namespace Playground.Content.Meta.UI.MainMenu
                 carViewRepository
                 );
 
-            IManuallyRotateCarViewUseCase manuallyRotate3DCarUseCase = new ManuallyRotateCarViewUseCase(
-                carViewer3DView,
-                uiViewStackService.Canvas
+            IRotateCarViewUseCase rotateCarViewUseCase = new RotateCarViewUseCase(
+                carViewer3DView
+                );
+
+            IStartManuallyRotatingCarViewUseCase startManuallyRotatingCarViewUseCase = new StartManuallyRotatingCarViewUseCase(
+                carViewRotationData
+                );
+
+            IStopManuallyRotatingCarViewUseCase stopManuallyRotatingCarViewUseCase = new StopManuallyRotatingCarViewUseCase(
+                mainMenuConfiguration,
+                carViewRotationData,
+                screenToCanvasDeltaUseCase
+                );
+
+            IManuallyRotateCarViewUseCase manuallyRotateCarViewUseCase = new ManuallyRotateCarViewUseCase(
+                mainMenuConfiguration,
+                carViewRotationData,
+                screenToCanvasDeltaUseCase,
+                rotateCarViewUseCase
+                );
+
+            ICarryCarViewRotationVelocityTickableUseCase carryCarViewRotationVelocityTickableUseCase = new CarryCarViewRotationVelocityTickableUseCase(
+                mainMenuConfiguration,
+                carViewRotationData,
+                rotateCarViewUseCase
                 );
 
             useCases = new MainMenuUIUseCases(
+                screenToCanvasDeltaUseCase,
                 cleanUpCarViewUseCase,
-                show3DCarUseCase,
-                manuallyRotate3DCarUseCase
+                showCarViewUseCase,
+                rotateCarViewUseCase,
+                startManuallyRotatingCarViewUseCase,
+                stopManuallyRotatingCarViewUseCase,
+                manuallyRotateCarViewUseCase,
+                carryCarViewRotationVelocityTickableUseCase
                 );
         }
 
@@ -100,10 +143,14 @@ namespace Playground.Content.Meta.UI.MainMenu
             interactor.Subscribe();
 
             uiViewStackService.Register(interactor, view);
+
+            tickablesService.AddTickable(useCases.CarryCarViewRotationVelocityTickableUseCase);
         }
 
         private void Uninstall()
         {
+            tickablesService.RemoveTickable(useCases.CarryCarViewRotationVelocityTickableUseCase);
+
             controller.Unsubscribe();
             interactor.Unsubscribe();
 

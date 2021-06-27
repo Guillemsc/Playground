@@ -12,8 +12,9 @@ namespace Playground.Content.Stage.VisualLogic.View.Car
         [Header("References")]
         [SerializeField] private Rigidbody rigidBody = default;
         [SerializeField] private Transform wheelCollidersParent = default;
-        [SerializeField] private List<Transform> steeringWheelsTransforms = default;
+        [SerializeField] private List<CarViewSteeringWheelData> steeringWheelsTransforms = default;
 
+        public string TypeId { get; private set; }
         public CarViewController CarViewController => carViewController;
 
         private void Awake()
@@ -21,6 +22,11 @@ namespace Playground.Content.Stage.VisualLogic.View.Car
             Contract.IsNotNull(carViewController, this);
             Contract.IsNotNull(rigidBody, this);
             Contract.IsNotNull(wheelCollidersParent, this);
+        }
+
+        public void Init(string typeId)
+        {
+            TypeId = typeId;
         }
 
         public void EnablePhysics()
@@ -37,15 +43,24 @@ namespace Playground.Content.Stage.VisualLogic.View.Car
 
         public void SetSteering(float steerAngle)
         {
-            foreach(Transform steeringWheel in steeringWheelsTransforms)
+            foreach(CarViewSteeringWheelData steeringWheelData in steeringWheelsTransforms)
             {
-                if(steeringWheel == null)
+                if(steeringWheelData == null)
                 {
                     continue;
                 }
 
-                Vector3 currentRotation = steeringWheel.localRotation.eulerAngles;
-                steeringWheel.localRotation = Quaternion.Euler(currentRotation.x, steerAngle, currentRotation.z);
+                if(steeringWheelData.SteeringWheelTransform == null)
+                {
+                    continue;
+                }
+
+                Vector3 currentRotation = steeringWheelData.SteeringWheelTransform.localRotation.eulerAngles;
+                steeringWheelData.SteeringWheelTransform.localRotation = Quaternion.Euler(
+                    currentRotation.x, 
+                    steerAngle + steeringWheelData.RotationOffset, 
+                    currentRotation.z
+                    );
             }
         }
     }

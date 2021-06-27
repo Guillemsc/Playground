@@ -30,9 +30,7 @@ namespace Playground.Content.Meta.UI.DemoStages
         {
             StageConfiguration = stageConfiguration;
 
-            string sceneName = Path.GetFileNameWithoutExtension(stageConfiguration.StageSceneReference.ScenePath);
-
-            stageNameText.text = sceneName;
+            stageNameText.text = stageConfiguration.StageName;
         }
 
         private void OnPointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)

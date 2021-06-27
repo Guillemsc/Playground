@@ -2,19 +2,34 @@
 {
     public class MainMenuUIUseCases
     {
+        public IScreenToCanvasDeltaUseCase ScreenToCanvasDeltaUseCase { get; }
         public ICleanUpCarViewUseCase CleanUpCarViewUseCase { get; }
-        public IShowCarViewUseCase Show3DCarUseCase { get; }
+        public IShowCarViewUseCase ShowCarViewUseCase { get; }
+        public IRotateCarViewUseCase RotateCarViewUseCase { get; }
+        public IStartManuallyRotatingCarViewUseCase StartManuallyRotatingCarViewUseCase { get; }
+        public IStopManuallyRotatingCarViewUseCase StopManuallyRotatingCarViewUseCase { get; }
         public IManuallyRotateCarViewUseCase ManuallyRotate3DCarUseCase { get; }
+        public ICarryCarViewRotationVelocityTickableUseCase CarryCarViewRotationVelocityTickableUseCase { get; }
 
         public MainMenuUIUseCases(
+            IScreenToCanvasDeltaUseCase screenToCanvasDeltaUseCase,
             ICleanUpCarViewUseCase cleanUpCarViewUseCase,
-            IShowCarViewUseCase show3DCarUseCase,
-            IManuallyRotateCarViewUseCase manuallyRotate3DCarUseCase
+            IShowCarViewUseCase showCarViewUseCase,
+            IRotateCarViewUseCase rotateCarViewUseCase,
+            IStartManuallyRotatingCarViewUseCase startManuallyRotatingCarViewUseCase,
+            IStopManuallyRotatingCarViewUseCase stopManuallyRotatingCarViewUseCase,
+            IManuallyRotateCarViewUseCase manuallyRotate3DCarUseCase,
+            ICarryCarViewRotationVelocityTickableUseCase carryCarViewRotationVelocityTickableUseCase
             )
         {
+            ScreenToCanvasDeltaUseCase = screenToCanvasDeltaUseCase;
             CleanUpCarViewUseCase = cleanUpCarViewUseCase;
-            Show3DCarUseCase = show3DCarUseCase;
+            ShowCarViewUseCase = showCarViewUseCase;
+            RotateCarViewUseCase = rotateCarViewUseCase;
+            StartManuallyRotatingCarViewUseCase = startManuallyRotatingCarViewUseCase;
+            StopManuallyRotatingCarViewUseCase = stopManuallyRotatingCarViewUseCase;
             ManuallyRotate3DCarUseCase = manuallyRotate3DCarUseCase;
+            CarryCarViewRotationVelocityTickableUseCase = carryCarViewRotationVelocityTickableUseCase;
         }
     }
 }

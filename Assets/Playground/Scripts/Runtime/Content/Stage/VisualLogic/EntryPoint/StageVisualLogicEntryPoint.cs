@@ -4,6 +4,7 @@ using Juce.Core.Events;
 using Juce.Core.Sequencing;
 using Juce.CoreUnity.PointerCallback;
 using Juce.CoreUnity.Services;
+using Playground.Configuration.Stage;
 using Playground.Content.LoadingScreen.UI;
 using Playground.Content.Stage.Logic.Events;
 using Playground.Content.Stage.VisualLogic.Sequences;
@@ -26,21 +27,6 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
 {
     public class StageVisualLogicEntryPoint
     {
-        private readonly ILoadingToken loadingToken;
-        private readonly IEventDispatcher eventDispatcher;
-        private readonly IEventReceiver eventReceiver;
-        private readonly TickablesService tickableService;
-        private readonly TimeService timeService;
-        private readonly UIViewStackService uiViewStackService;
-        private readonly UserService userService;
-        private readonly ScreenCarControlsUIView screenCarControlsUIView;
-        private readonly StageOverlayUIView stageOverlayUIView;
-        private readonly StageCompletedUIView stageCompletedUIView;
-        private readonly StageView stageViewPrefab;
-        private readonly CarLibrary carLibrary;
-        private readonly CinemachineVirtualCamera followCarVirtualCamera;
-        private readonly ICleanUpActionsRepository cleanUpActionsRepository;
-
         public StageVisualLogicEntryPoint(
             ILoadingToken loadingToken,
             IEventDispatcher eventDispatcher,
@@ -48,31 +34,19 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             TickablesService tickableService,
             TimeService timeService,
             UIViewStackService uiViewStackService,
-            UserService userService,
+            PersistenceService userService,
             ScreenCarControlsUIView screenCarControlsUIView,
             StageOverlayUIView stageOverlayUIView,
             StageCompletedUIView stageCompletedUIView,
             StageView stageViewPrefab,
+            StageStarsConfiguration stageStarsConfiguration,
+            StageRewardsConfiguration stageRewardsConfiguration,
             CarLibrary carLibrary,
+            string carTypeId,
             CinemachineVirtualCamera followCarVirtualCamera,
             ICleanUpActionsRepository cleanUpActionsRepository
             )
         {
-            this.loadingToken = loadingToken;
-            this.eventDispatcher = eventDispatcher;
-            this.eventReceiver = eventReceiver;
-            this.tickableService = tickableService;
-            this.timeService = timeService;
-            this.uiViewStackService = uiViewStackService;
-            this.userService = userService;
-            this.screenCarControlsUIView = screenCarControlsUIView;
-            this.stageOverlayUIView = stageOverlayUIView;
-            this.stageCompletedUIView = stageCompletedUIView;
-            this.stageViewPrefab = stageViewPrefab;
-            this.carLibrary = carLibrary;
-            this.followCarVirtualCamera = followCarVirtualCamera;
-            this.cleanUpActionsRepository = cleanUpActionsRepository;
-
             Sequencer sequencer = new Sequencer();
 
             StageViewRepository stageViewRepository = new StageViewRepository();
@@ -112,7 +86,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                     stageViewRepository,
                     stageViewPrefab,
                     carLibrary,
-                    userService.UserData.SelectedCarTypeId,
+                    carTypeId,
                     carViewRepository,
                     carControllerSignals,
                     carViewControllerSignals,
@@ -155,8 +129,11 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                             sequencer,
                             timeService,
                             uiViewStackService,
+                            stageStarsConfiguration,
+                            stageRewardsConfiguration,
                             stageCompletedUIView,
                             stageViewRepository,
+                            carViewRepository,
                             stageTimerState,
                             stopCarAndHideUISequence
                             ),

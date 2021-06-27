@@ -29,7 +29,9 @@ namespace Playground.Content.Stage.VisualLogic.Instructions
 
             CarView instance = carConfiguration.CarViewPrefab.InstantiateGameObjectAndGetComponent();
 
-            carViewRepository.CarView = instance;
+            instance.Init(carTypeId);
+
+            carViewRepository.Set(instance);
         }
     }
 }
