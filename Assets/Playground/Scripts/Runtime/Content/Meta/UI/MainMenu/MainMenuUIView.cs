@@ -16,6 +16,7 @@ namespace Playground.Content.Meta.UI.MainMenu
         [SerializeField] private PointerCallbacks demoStagesPointerCallbacks = default;
         [SerializeField] private PointerCallbacks creditsPointerCallbacks = default;
         [SerializeField] private TMPro.TextMeshProUGUI versionText = default;
+        [SerializeField] private TMPro.TextMeshProUGUI starsText = default;
 
         private MainMenuUIViewModel viewModel;
         private MainMenuUIUseCases useCases;
@@ -26,6 +27,7 @@ namespace Playground.Content.Meta.UI.MainMenu
             Contract.IsNotNull(carLibraryPointerCallbacks, this);
             Contract.IsNotNull(demoStagesPointerCallbacks, this);
             Contract.IsNotNull(creditsPointerCallbacks, this);
+            Contract.IsNotNull(starsText, this);
             Contract.IsNotNull(versionText, this);
 
             carViewerDragPointerCallbacks.OnBegin += OnCarViewerDragPointerCallbacksBegin;
@@ -50,6 +52,11 @@ namespace Playground.Content.Meta.UI.MainMenu
         {
             this.viewModel = viewModel;
             this.useCases = useCases;
+
+            viewModel.StarsVariable.OnChange += (int stars) =>
+            {
+                starsText.text = stars.ToString();
+            };
 
             viewModel.VersionValiable.OnChange += (string value) =>
             {

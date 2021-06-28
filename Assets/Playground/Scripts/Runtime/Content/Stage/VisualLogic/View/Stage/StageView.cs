@@ -18,5 +18,12 @@ namespace Playground.Content.Stage.VisualLogic.View.Stage
         public CheckPointsView CheckPointsView => checkPointsView;
         public Transform CarStartPosition => carStartPosition;
         public FinishLineView FinishLineView => finishLineView;
+
+        public string TypeId { get; private set; }
+
+        public void Init(string typeId)
+        {
+            TypeId = typeId;
+        }
     }
 }

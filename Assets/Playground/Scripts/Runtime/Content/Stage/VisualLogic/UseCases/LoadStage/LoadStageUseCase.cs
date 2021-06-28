@@ -80,7 +80,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
 
         private async Task ExecuteSequence(CancellationToken cancellationToken)
         {
-            stageViewRepository.StageView = stageView;
+            stageViewRepository.SetItem(stageView);
 
             new LoadCarInstruction(carLibrary, carViewRepository).Execute(carTypeId);
             CarView carView = carViewRepository.Item;

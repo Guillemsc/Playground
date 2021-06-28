@@ -1,5 +1,4 @@
-﻿using Juce.Core.Events.Generic;
-using Juce.Core.Observables;
+﻿using Juce.Core.Observables;
 using Juce.CoreUnity.DragPointerCallback;
 using Juce.CoreUnity.PointerCallback;
 using System;
@@ -9,6 +8,9 @@ namespace Playground.Content.Meta.UI.MainMenu
 {
     public class MainMenuUIViewModel 
     {
+        public ObservableVariable<int> StarsVariable { get; }
+            = new ObservableVariable<int>();
+
         public ObservableEvent<DragPointerCallbacks, PointerEventData> OnStartDraggingCarViewEvent { get; } 
             = new ObservableEvent<DragPointerCallbacks, PointerEventData>();
         public ObservableEvent<DragPointerCallbacks, PointerEventData> OnStopDraggingCarViewEvent { get; } 

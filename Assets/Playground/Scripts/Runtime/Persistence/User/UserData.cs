@@ -1,4 +1,4 @@
-﻿namespace Playground.Services
+﻿namespace Playground.Persistence
 {
     [System.Serializable]
     public class UserData

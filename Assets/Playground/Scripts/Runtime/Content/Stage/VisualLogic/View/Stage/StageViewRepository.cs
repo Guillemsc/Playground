@@ -2,6 +2,16 @@
 {
     public class StageViewRepository 
     {
-        public StageView StageView { get; set; }
+        public StageView Item { get; private set; }
+
+        public void SetItem(StageView item)
+        {
+            Item = item;
+        }
+
+        public bool HasItem()
+        {
+            return Item != null;
+        }
     }
 }

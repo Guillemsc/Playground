@@ -1,6 +1,8 @@
 ﻿using Juce.CoreUnity.Contexts;
+using Juce.CoreUnity.Service;
 using Playground.Content.Shared;
 using Playground.Content.Shared.UseCases;
+using Playground.Services;
 
 namespace Playground.Contexts
 {
@@ -12,10 +14,22 @@ namespace Playground.Contexts
 
         protected override void Init()
         {
+            PersistenceService persistanceService = ServicesProvider.GetService<PersistenceService>();
+
             IGetStageStarsFromTimingUseCase getStageStarsFromTimingUseCase = new GetStageStarsFromTimingUseCase();
 
+            ITryGetStageCarStarsUseCase tryGetStageCarStarsUseCase = new TryGetStageCarStarsUseCase(
+                persistanceService
+                );
+
+            ISetStageCarStarsUseCase setStageCarStarsUseCase = new SetStageCarStarsUseCase(
+                persistanceService
+                );
+
             SharedUseCases = new SharedUseCases(
-                getStageStarsFromTimingUseCase
+                getStageStarsFromTimingUseCase,
+                tryGetStageCarStarsUseCase,
+                setStageCarStarsUseCase
                 );
 
             ContextsProvider.Register(this);

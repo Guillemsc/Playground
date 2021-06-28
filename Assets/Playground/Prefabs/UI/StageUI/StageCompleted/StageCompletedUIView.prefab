@@ -11291,7 +11291,7 @@ RectTransform:
   - {fileID: 5810044944055690734}
   - {fileID: 6254755227923947571}
   m_Father: {fileID: 3566179880705214802}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -11385,7 +11385,7 @@ RectTransform:
   - {fileID: 5412766647152146472}
   - {fileID: 2554045748668948146}
   m_Father: {fileID: 3566179880705214802}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.7513891}
   m_AnchorMax: {x: 0.5, y: 0.7513891}
@@ -11413,7 +11413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 728fa64fe6dd24aa5ae13b1da2514961, type: 2}
-  m_Color: {r: 1, g: 0.47996545, b: 0, a: 0.6156863}
+  m_Color: {r: 1, g: 0.47996545, b: 0, a: 0.07058824}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11940,6 +11940,140 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3420370796595257608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6793541137415703742}
+  - component: {fileID: 2703932310763999173}
+  - component: {fileID: 3270340442994979616}
+  m_Layer: 5
+  m_Name: TimeText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6793541137415703742
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3420370796595257608}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3566179880705214802}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -84}
+  m_SizeDelta: {x: 271.3502, y: 107.124}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2703932310763999173
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3420370796595257608}
+  m_CullTransparentMesh: 1
+--- !u!114 &3270340442994979616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3420370796595257608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 0:12
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 7659f6d6ec9b642db8be29bc45fe97cc, type: 2}
+  m_sharedMaterial: {fileID: 8690591861142563998, guid: 7659f6d6ec9b642db8be29bc45fe97cc, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 93.7
+  m_fontSizeBase: 102.2
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 110.9
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &3558311194023637332
 GameObject:
   m_ObjectHideFlags: 0
@@ -12220,7 +12354,7 @@ RectTransform:
   - {fileID: 4435408844322309910}
   - {fileID: 8822096447688639548}
   m_Father: {fileID: 3566179880705214802}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -22619,6 +22753,10 @@ MonoBehaviour:
   - id: 6
   - id: 7
   - id: 8
+  - id: 9
+  - id: 10
+  - id: 11
+  - id: 12
   bindingEnabled: 0
   bindableDataUid: 
   references:
@@ -22626,7 +22764,7 @@ MonoBehaviour:
     00000000:
       type: {class: GameObjectActiveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
-        folded: 0
+        folded: 1
         enabled: 1
         target:
           bindingEnabled: 0
@@ -22679,13 +22817,13 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: {fileID: 2667616117234167702}
+          FallbackValue: {fileID: 6793541137415703742}
         value:
           bindingEnabled: 0
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: {x: 1, y: 1, z: 1}
+          FallbackValue: {x: 6, y: 6, z: 6}
         delay:
           bindingEnabled: 0
           wantsToBeBinded: 0
@@ -22697,7 +22835,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.3
+          FallbackValue: 0
         easing:
           bindingEnabled: 0
           wantsToBeBinded: 0
@@ -22709,25 +22847,83 @@ MonoBehaviour:
             - serializedVersion: 3
               time: 0
               value: 0
-              inSlope: 1.9162868
-              outSlope: 1.9162868
+              inSlope: 0
+              outSlope: 1
               tangentMode: 0
               weightedMode: 0
               inWeight: 0
-              outWeight: 0.059712816
+              outWeight: 0
             - serializedVersion: 3
               time: 1
               value: 1
-              inSlope: -1.8814839
-              outSlope: -1.8814839
+              inSlope: 1
+              outSlope: 0
               tangentMode: 0
               weightedMode: 0
-              inWeight: 0.044753253
+              inWeight: 0
               outWeight: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
     00000003:
+      type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 3420370796595257608}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000004:
       type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -22737,65 +22933,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: {fileID: 8708990791735445818}
-        value:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {x: 1, y: 1, z: 1}
-        delay:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0.1
-        duration:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0.3
-        easing:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue:
-            serializedVersion: 2
-            m_Curve:
-            - serializedVersion: 3
-              time: 0
-              value: 0
-              inSlope: 1.9162868
-              outSlope: 1.9162868
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0.059712816
-            - serializedVersion: 3
-              time: 1
-              value: 1
-              inSlope: -1.8814839
-              outSlope: -1.8814839
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0.044753253
-              outWeight: 0
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-    00000004:
-      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
-      data:
-        folded: 0
-        enabled: 1
-        target:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {fileID: 7399065549129604557}
+          FallbackValue: {fileID: 2667616117234167702}
         value:
           bindingEnabled: 0
           wantsToBeBinded: 0
@@ -22844,6 +22982,238 @@ MonoBehaviour:
             m_PostInfinity: 2
             m_RotationOrder: 4
     00000005:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 6793541137415703742}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 1, y: 1, z: 1}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 2
+              outSlope: 2
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000006:
+      type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 3420370796595257608}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.5
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 2
+              outSlope: 2
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000007:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 8708990791735445818}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 1, y: 1, z: 1}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.4
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 1.9162868
+              outSlope: 1.9162868
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0.059712816
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: -1.8814839
+              outSlope: -1.8814839
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.044753253
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000008:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 7399065549129604557}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 1, y: 1, z: 1}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.5
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 1.9162868
+              outSlope: 1.9162868
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0.059712816
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: -1.8814839
+              outSlope: -1.8814839
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.044753253
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000009:
       type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -22901,7 +23271,7 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-    00000006:
+    0000000A:
       type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -22959,7 +23329,7 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-    00000007:
+    0000000B:
       type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -22970,10 +23340,10 @@ MonoBehaviour:
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
-    00000008:
+    0000000C:
       type: {class: UIInteractableComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
-        folded: 0
+        folded: 1
         enabled: 1
         target:
           bindingEnabled: 0
@@ -23427,8 +23797,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 9133151895295189278}
   - {fileID: 2667616117234167702}
+  - {fileID: 9133151895295189278}
+  - {fileID: 6793541137415703742}
   - {fileID: 7399065549129604557}
   - {fileID: 8708990791735445818}
   - {fileID: 4847431762981929300}
@@ -28504,7 +28875,7 @@ RectTransform:
   - {fileID: 6341452589665226651}
   - {fileID: 9166553433711697396}
   m_Father: {fileID: 3566179880705214802}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -28975,6 +29346,7 @@ MonoBehaviour:
   - id: 7
   - id: 8
   - id: 9
+  - id: 10
   bindingEnabled: 0
   bindableDataUid: 
   references:
@@ -29076,7 +29448,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: {fileID: 8708990791735445818}
+          FallbackValue: {fileID: 6793541137415703742}
         value:
           bindingEnabled: 0
           wantsToBeBinded: 0
@@ -29094,7 +29466,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.3
+          FallbackValue: 0.15
         easing:
           bindingEnabled: 0
           wantsToBeBinded: 0
@@ -29106,20 +29478,20 @@ MonoBehaviour:
             - serializedVersion: 3
               time: 0
               value: 0
-              inSlope: -1.4161968
-              outSlope: -1.4161968
+              inSlope: -0.58552223
+              outSlope: -0.58552223
               tangentMode: 0
               weightedMode: 0
               inWeight: 0
-              outWeight: 0.06400552
+              outWeight: 0.10413884
             - serializedVersion: 3
-              time: 1
+              time: 0.9986572
               value: 1
-              inSlope: 2.4272547
-              outSlope: 2.4272547
+              inSlope: 2.0996697
+              outSlope: 2.0996697
               tangentMode: 0
               weightedMode: 0
-              inWeight: 0.048606455
+              inWeight: 0.030741306
               outWeight: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
@@ -29134,7 +29506,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: {fileID: 7399065549129604557}
+          FallbackValue: {fileID: 8708990791735445818}
         value:
           bindingEnabled: 0
           wantsToBeBinded: 0
@@ -29152,7 +29524,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.3
+          FallbackValue: 0.2
         easing:
           bindingEnabled: 0
           wantsToBeBinded: 0
@@ -29183,6 +29555,64 @@ MonoBehaviour:
             m_PostInfinity: 2
             m_RotationOrder: 4
     00000004:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 7399065549129604557}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 0, y: 0, z: 0}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: -1.4161968
+              outSlope: -1.4161968
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0.06400552
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 2.4272547
+              outSlope: 2.4272547
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.048606455
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000005:
       type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -29240,7 +29670,7 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-    00000005:
+    00000006:
       type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -29251,7 +29681,7 @@ MonoBehaviour:
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
-    00000006:
+    00000007:
       type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -29309,7 +29739,7 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-    00000007:
+    00000008:
       type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -29320,7 +29750,7 @@ MonoBehaviour:
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
-    00000008:
+    00000009:
       type: {class: GameObjectActiveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -29343,7 +29773,7 @@ MonoBehaviour:
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
-    00000009:
+    0000000A:
       type: {class: GameObjectActiveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -35308,6 +35738,7 @@ MonoBehaviour:
   hideAnimation: {fileID: 5177451341928224620}
   continuePointerCallbacks: {fileID: 8709688949158701751}
   tryAgainPointerCallbacks: {fileID: 1238709241131667536}
+  timeText: {fileID: 3270340442994979616}
 --- !u!114 &3368740062933129049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35391,7 +35822,7 @@ RectTransform:
   - {fileID: 4544656545316277449}
   - {fileID: 3370684933828784800}
   m_Father: {fileID: 3566179880705214802}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -36730,7 +37161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6826677651857792438, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 23.000008
       objectReference: {fileID: 0}
     - target: {fileID: 6826677651857792438, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -36843,7 +37274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6826677651857792438, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 6826677651857792438, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -36859,6 +37290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
+--- !u!224 &2530134295583999077 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6826677651857792438, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
+  m_PrefabInstance: {fileID: 9052776877013703123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5066089822407177281 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4318865460562537874, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
@@ -36870,11 +37306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f8b4b4bf51e4445ae0d00183e17b07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &2530134295583999077 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6826677651857792438, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
-  m_PrefabInstance: {fileID: 9052776877013703123}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9064884256766329604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36956,7 +37387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6826677651857792438, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 23.000008
       objectReference: {fileID: 0}
     - target: {fileID: 6826677651857792438, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

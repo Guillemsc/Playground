@@ -65,7 +65,8 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
 
         private async Task ExecuteSequence(CancellationToken cancellationToken)
         {
-            StageView stageView = stageViewRepository.StageView;
+            StageView stageView = stageViewRepository.Item;
+            CarView carView = carViewRepository.Item;
 
             new SetStageTimerPlayingInstruction(
                 stageTimerState,
@@ -76,15 +77,19 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
 
             await new WaitTimeInstruction(timeService.UnscaledTimeContext, TimeSpan.FromSeconds(1.0f)).Execute(cancellationToken);
 
-            StageCompletedUIInteractor stageCompletedUIInteractor = uiViewStackService.GetInteractor<StageCompletedUIInteractor>();
-            stageCompletedUIInteractor.RegisterToCanUnloadStage(OnCanUnloadStageSignalTriggered);
-
-            await new SetUIViewVisibleInstruction<StageCompletedUIView>(uiViewStackService, visible: true, instantly: false).Execute(cancellationToken);
-
             int stars = GetStars();
             int softCurrenctyReward = GetSoftCurrencyReward(stars);
 
+            StageCompletedUIInteractor stageCompletedUIInteractor = uiViewStackService.GetInteractor<StageCompletedUIInteractor>();
+            stageCompletedUIInteractor.RegisterToCanUnloadStage(OnCanUnloadStageSignalTriggered);
+
+            stageCompletedUIInteractor.SetTime(stageTimerState.Timer.Time);
+
+            await new SetUIViewVisibleInstruction<StageCompletedUIView>(uiViewStackService, visible: true, instantly: false).Execute(cancellationToken);
+
             stageCompletedUIInteractor.SetStars(stars);
+
+            await sharedUseCases.SetStageCarStarsUseCase.Execute(stageView.TypeId, carView.TypeId, stars, cancellationToken);
 
             await taskCompletitionSource.Task;
 

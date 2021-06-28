@@ -69,6 +69,8 @@ namespace Playground.Flow.UseCases
                     $"at {nameof(StageBootstrapPlayScenarioFlowUseCase)}");
             }
 
+            stageView.Init(stageConfiguration.StageTypeId);
+
             PersistenceService persistenceService = ServicesProvider.GetService<PersistenceService>();
 
             SharedContext sharedContext = ContextsProvider.GetContext<SharedContext>();

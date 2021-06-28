@@ -25,7 +25,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
 
         private void ExecuteSequence(int checkPointIndex)
         {
-            StageView stageView = stageViewRepository.StageView;
+            StageView stageView = stageViewRepository.Item;
 
             new SetCheckPointAsCrossed(stageView.CheckPointsView, checkPointIndex).Execute();
         }

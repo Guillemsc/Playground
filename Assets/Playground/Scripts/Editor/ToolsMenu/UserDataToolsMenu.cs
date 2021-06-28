@@ -9,6 +9,8 @@ namespace Playground.ToolsMenu
         private static void ClearUserData()
         {
             PersistenceDataUtils.ClearPersistanceData();
+
+            UnityEngine.Debug.Log("User Data cleared");
         }
     }
 }

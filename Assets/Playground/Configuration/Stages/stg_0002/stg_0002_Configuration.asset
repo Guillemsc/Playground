@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e85f36025033540926295e7694eb66, type: 3}
   m_Name: stg_0002_Configuration
   m_EditorClassIdentifier: 
+  stageTypeId: stg_0002
+  stageName: Mountains
   stageSceneReference:
     sceneAsset: {fileID: 102900000, guid: 826b7f0dbd4f2104490b90bb1c3d35d6, type: 3}
     scenePath: Assets/Playground/Scenes/Stages/stg_0002_MOUNTAINS.unity
   stageStarsConfiguration: {fileID: 11400000, guid: 42683327024387347b53302860fab181, type: 2}
-  stageName: Mountains
+  stageRewardsConfiguration: {fileID: 0}

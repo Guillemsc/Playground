@@ -10,6 +10,7 @@
         public IStopManuallyRotatingCarViewUseCase StopManuallyRotatingCarViewUseCase { get; }
         public IManuallyRotateCarViewUseCase ManuallyRotate3DCarUseCase { get; }
         public ICarryCarViewRotationVelocityTickableUseCase CarryCarViewRotationVelocityTickableUseCase { get; }
+        public IRefreshStarsUseCase RefreshStarsUseCase { get; }
 
         public MainMenuUIUseCases(
             IScreenToCanvasDeltaUseCase screenToCanvasDeltaUseCase,
@@ -19,7 +20,8 @@
             IStartManuallyRotatingCarViewUseCase startManuallyRotatingCarViewUseCase,
             IStopManuallyRotatingCarViewUseCase stopManuallyRotatingCarViewUseCase,
             IManuallyRotateCarViewUseCase manuallyRotate3DCarUseCase,
-            ICarryCarViewRotationVelocityTickableUseCase carryCarViewRotationVelocityTickableUseCase
+            ICarryCarViewRotationVelocityTickableUseCase carryCarViewRotationVelocityTickableUseCase,
+            IRefreshStarsUseCase refreshStarsUseCase
             )
         {
             ScreenToCanvasDeltaUseCase = screenToCanvasDeltaUseCase;
@@ -30,6 +32,8 @@
             StopManuallyRotatingCarViewUseCase = stopManuallyRotatingCarViewUseCase;
             ManuallyRotate3DCarUseCase = manuallyRotate3DCarUseCase;
             CarryCarViewRotationVelocityTickableUseCase = carryCarViewRotationVelocityTickableUseCase;
+            RefreshStarsUseCase = refreshStarsUseCase;
+
         }
     }
 }

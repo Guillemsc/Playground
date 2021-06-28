@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e85f36025033540926295e7694eb66, type: 3}
   m_Name: stg_TEST1_Configuration
   m_EditorClassIdentifier: 
+  stageTypeId: stg_TEST1
+  stageName: Test_Completition
   stageSceneReference:
     sceneAsset: {fileID: 102900000, guid: 6b186c23703235a40868c2d1681b5527, type: 3}
     scenePath: Assets/Playground/Scenes/Stages/stg_TEST1_COMPLETITION.unity
   stageStarsConfiguration: {fileID: 0}
-  stageName: Test_Completition
+  stageRewardsConfiguration: {fileID: 0}

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace Playground.Services
+namespace Playground.Persistence
 {
     [System.Serializable]
     public class ProgressData
@@ -9,6 +9,7 @@ namespace Playground.Services
         public const string LocalPath = "ProgressData";
 
         public int SoftCurrency { get; set; } = 0;
+        public int TotalStars { get; set; } = 0;
         public List<StageData> StagesData { get; set; } = new List<StageData>();
 
         public override string ToString()
@@ -22,6 +23,7 @@ namespace Playground.Services
 
             return
                 $"{nameof(SoftCurrency)}:{SoftCurrency} \n" +
+                 $"{nameof(TotalStars)}:{TotalStars} \n" +
                 $"{nameof(StagesData)}:{stagesDataStringBuilder} \n";
         }
     }

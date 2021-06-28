@@ -45,22 +45,27 @@ namespace Playground.Content.StageUI.UI.StageCompleted
 
         private void GenerateUseCases()
         {
-            ShowStarsUseCase showStarsUseCase = new ShowStarsUseCase(
+            IShowStarsUseCase showStarsUseCase = new ShowStarsUseCase(
                 stageCompletedStar1UIEntry,
                 stageCompletedStar2UIEntry,
                 stageCompletedStar3UIEntry
                 );
 
-            ContinueUseCase continueUseCase = new ContinueUseCase(
+            ISetTimeUseCase setTimeUseCase = new SetTimeUseCase(
                 viewModel
                 );
 
-            PlayAgainUseCase playAgainUseCase = new PlayAgainUseCase(
+            IContinueUseCase continueUseCase = new ContinueUseCase(
+                viewModel
+                );
+
+            IPlayAgainUseCase playAgainUseCase = new PlayAgainUseCase(
                 viewModel
                 );
 
             useCases = new StageCompletedUIUseCases(
                 showStarsUseCase,
+                setTimeUseCase,
                 continueUseCase,
                 playAgainUseCase
                 );

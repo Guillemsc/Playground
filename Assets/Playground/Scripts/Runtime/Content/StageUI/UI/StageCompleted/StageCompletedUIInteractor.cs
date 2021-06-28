@@ -32,6 +32,11 @@ namespace Playground.Content.StageUI.UI.StageCompleted
 
         }
 
+        public void SetTime(TimeSpan time)
+        {
+            useCases.SetTimeUseCase.Execute(time);
+        }
+
         public void SetStars(int stars)
         {
             viewModel.StarsVariable.Value = stars;

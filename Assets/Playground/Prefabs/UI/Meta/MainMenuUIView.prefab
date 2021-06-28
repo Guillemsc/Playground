@@ -11147,6 +11147,7 @@ MonoBehaviour:
   demoStagesPointerCallbacks: {fileID: 8777617215164662429}
   creditsPointerCallbacks: {fileID: 989936952892257202}
   versionText: {fileID: 518848959098606067}
+  starsText: {fileID: 22052663927552097}
 --- !u!114 &3098731803069546381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11466,8 +11467,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -445.3, y: -47}
-  m_SizeDelta: {x: 169.1031, y: 44.2444}
+  m_AnchoredPosition: {x: -425.55573, y: -47}
+  m_SizeDelta: {x: 129.6146, y: 44.2444}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4508198958479451377
 GameObject:
@@ -18752,7 +18753,7 @@ GameObject:
   - component: {fileID: 22052663927552097}
   - component: {fileID: 731196824720248533}
   m_Layer: 5
-  m_Name: ValueText
+  m_Name: StarsValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18805,7 +18806,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999,999
+  m_text: 9,999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c1482dbce654844b9ba1c753cbea5d80, type: 2}
   m_sharedMaterial: {fileID: 7374927986402738804, guid: c1482dbce654844b9ba1c753cbea5d80, type: 2}

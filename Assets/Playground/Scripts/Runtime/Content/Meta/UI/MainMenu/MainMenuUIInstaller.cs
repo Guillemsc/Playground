@@ -20,7 +20,7 @@ namespace Playground.Content.Meta.UI.MainMenu
         private TickablesService tickablesService;
         private UIViewStackService uiViewStackService;
         private ConfigurationService configurationService;
-        private PersistenceService userService;
+        private PersistenceService persistenceService;
 
         private CarViewFactory carViewFactory;
         private CarViewRepository carViewRepository;
@@ -52,7 +52,7 @@ namespace Playground.Content.Meta.UI.MainMenu
             tickablesService = ServicesProvider.GetService<TickablesService>();
             uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
             configurationService = ServicesProvider.GetService<ConfigurationService>();
-            userService = ServicesProvider.GetService<PersistenceService>();
+            persistenceService = ServicesProvider.GetService<PersistenceService>();
         }
 
         private void GenerateDependences()
@@ -76,7 +76,7 @@ namespace Playground.Content.Meta.UI.MainMenu
                 );
 
             IShowCarViewUseCase showCarViewUseCase = new ShowCarViewUseCase(
-                userService,
+                persistenceService,
                 carViewer3DView,
                 configurationService.CarLibrary,
                 carViewFactory,
@@ -110,6 +110,11 @@ namespace Playground.Content.Meta.UI.MainMenu
                 rotateCarViewUseCase
                 );
 
+            IRefreshStarsUseCase setStarsUseCase = new RefreshStarsUseCase(
+                viewModel,
+                persistenceService
+                );
+
             useCases = new MainMenuUIUseCases(
                 screenToCanvasDeltaUseCase,
                 cleanUpCarViewUseCase,
@@ -118,7 +123,8 @@ namespace Playground.Content.Meta.UI.MainMenu
                 startManuallyRotatingCarViewUseCase,
                 stopManuallyRotatingCarViewUseCase,
                 manuallyRotateCarViewUseCase,
-                carryCarViewRotationVelocityTickableUseCase
+                carryCarViewRotationVelocityTickableUseCase,
+                setStarsUseCase
                 );
         }
 

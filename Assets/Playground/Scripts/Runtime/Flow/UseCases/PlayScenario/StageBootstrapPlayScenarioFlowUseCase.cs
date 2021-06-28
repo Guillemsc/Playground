@@ -76,6 +76,8 @@ namespace Playground.Flow.UseCases
                     $"at {nameof(StageBootstrapPlayScenarioFlowUseCase)}");
             }
 
+            stageView.Init(stageConfiguration.StageTypeId);
+
             SharedContext sharedContext = ContextsProvider.GetContext<SharedContext>();
             StageUIContext stageUIContext = ContextsProvider.GetContext<StageUIContext>();
             StageContext stageContext = ContextsProvider.GetContext<StageContext>();

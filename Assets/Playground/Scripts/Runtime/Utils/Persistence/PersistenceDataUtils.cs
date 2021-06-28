@@ -19,7 +19,7 @@ namespace Playground.Utils.Persistence
         {
             string path = GetPersistanceDataFolder();
 
-            Directory.Delete(path);
+            Directory.Delete(path, recursive: true);
         }
     }
 }

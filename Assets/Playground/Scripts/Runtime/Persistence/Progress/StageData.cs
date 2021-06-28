@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 
-namespace Playground.Services
+namespace Playground.Persistence
 {
     [System.Serializable]
     public class StageData

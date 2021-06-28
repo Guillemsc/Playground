@@ -11,6 +11,7 @@ namespace Playground.Content.StageUI.UI.StageCompleted
         [Header("References")]
         [SerializeField] private PointerCallbacks continuePointerCallbacks = default;
         [SerializeField] private PointerCallbacks tryAgainPointerCallbacks = default;
+        [SerializeField] private TMPro.TextMeshProUGUI timeText = default;
 
         private StageCompletedUIViewModel viewModel;
 
@@ -18,6 +19,7 @@ namespace Playground.Content.StageUI.UI.StageCompleted
         {
             Contract.IsNotNull(continuePointerCallbacks, this);
             Contract.IsNotNull(tryAgainPointerCallbacks, this);
+            Contract.IsNotNull(timeText, this);
 
             continuePointerCallbacks.OnClick += OnContinuePointerCallbacksClick;
             tryAgainPointerCallbacks.OnClick += OnTryAgainPointerCallbacksClick;
@@ -32,6 +34,11 @@ namespace Playground.Content.StageUI.UI.StageCompleted
         public void Init(StageCompletedUIViewModel viewModel)
         {
             this.viewModel = viewModel;
+
+            viewModel.TimeVariable.OnChange += (string value) =>
+            {
+                timeText.text = value;
+            };
         }
 
         private void OnContinuePointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)
