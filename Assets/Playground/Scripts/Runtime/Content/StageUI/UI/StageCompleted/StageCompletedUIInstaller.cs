@@ -1,4 +1,5 @@
 ﻿using Juce.CoreUnity.Service;
+using Juce.TweenPlayer;
 using Playground.Services.ViewStack;
 using UnityEngine;
 
@@ -11,6 +12,9 @@ namespace Playground.Content.StageUI.UI.StageCompleted
         [SerializeField] private StageCompletedStarUIEntry stageCompletedStar1UIEntry = default;
         [SerializeField] private StageCompletedStarUIEntry stageCompletedStar2UIEntry = default;
         [SerializeField] private StageCompletedStarUIEntry stageCompletedStar3UIEntry = default;
+
+        [Header("Feedbacks")]
+        [SerializeField] private TweenPlayer softCurrencyFeedback = default;
 
         private UIViewStackService uiViewStackService;
 
@@ -55,6 +59,10 @@ namespace Playground.Content.StageUI.UI.StageCompleted
                 viewModel
                 );
 
+            IAnimateSoftCurrencyUseCase animateSoftCurrencyUseCase = new AnimateSoftCurrencyUseCase(
+                softCurrencyFeedback
+                );
+
             IContinueUseCase continueUseCase = new ContinueUseCase(
                 viewModel
                 );
@@ -66,6 +74,7 @@ namespace Playground.Content.StageUI.UI.StageCompleted
             useCases = new StageCompletedUIUseCases(
                 showStarsUseCase,
                 setTimeUseCase,
+                animateSoftCurrencyUseCase,
                 continueUseCase,
                 playAgainUseCase
                 );

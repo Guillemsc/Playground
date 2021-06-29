@@ -83,6 +83,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             stageCompletedUIInteractor.RegisterToCanUnloadStage(OnCanUnloadStageSignalTriggered);
 
             stageCompletedUIInteractor.SetTime(stageTimerState.Timer.Time);
+            stageCompletedUIInteractor.SetSoftCurrency(softCurrenctyReward);
 
             await new SetUIViewVisibleInstruction<StageCompletedUIView>(uiViewStackService, visible: true, instantly: false).Execute(cancellationToken);
 
@@ -152,6 +153,11 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             if (stars == 1)
             {
                 return stageRewardsConfiguration.Star1SoftCurrencyReward;
+            }
+
+            if (stars == 0)
+            {
+                return stageRewardsConfiguration.Star0SoftCurrencyReward;
             }
 
             return 0;

@@ -42,6 +42,17 @@ namespace Playground.Content.StageUI.UI.StageCompleted
             viewModel.StarsVariable.Value = stars;
         }
 
+        public void SetSoftCurrency(int stars)
+        {
+            useCases.AnimateSoftCurrencyUseCase.Execute(stars);
+        }
+
+        public void SetData(int stars, TimeSpan time, int softCurrency)
+        {
+            useCases.SetTimeUseCase.Execute(time);
+            viewModel.StarsVariable.Value = stars;
+        }
+
         public void RegisterToCanUnloadStage(Action canUnloadStage)
         {
             viewModel.CanUnloadStageCommand.OnExecute += canUnloadStage;

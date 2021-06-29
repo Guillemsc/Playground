@@ -10,11 +10,13 @@ namespace Playground.Content.StageUI.UI.StageCompleted
             = new ObservableVariable<int>();
         public ObservableVariable<string> TimeVariable { get; } 
             = new ObservableVariable<string>();
+        public ObservableVariable<int> SoftCurrencyVariable { get; }
+            = new ObservableVariable<int>();
         public ObservableEvent<StageCompletedUIView, PointerCallbacks> ContinueEvent { get; } 
             = new ObservableEvent<StageCompletedUIView, PointerCallbacks>();
         public ObservableEvent<StageCompletedUIView, PointerCallbacks> PlayAgainEvent { get; } 
             = new ObservableEvent<StageCompletedUIView, PointerCallbacks>();
-
-        public ObservableCommand CanUnloadStageCommand { get; } = new ObservableCommand();
+        public ObservableCommand CanUnloadStageCommand { get; } 
+            = new ObservableCommand();
     }
 }

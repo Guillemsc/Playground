@@ -4,18 +4,21 @@
     {
         public IShowStarsUseCase ShowStarsUseCase { get; }
         public ISetTimeUseCase SetTimeUseCase { get; }
+        public IAnimateSoftCurrencyUseCase AnimateSoftCurrencyUseCase { get; }
         public IContinueUseCase ContinueUseCase { get; }
         public IPlayAgainUseCase PlayAgainUseCase { get; }
 
         public StageCompletedUIUseCases(
             IShowStarsUseCase showStarsUseCase,
             ISetTimeUseCase setTimeUseCase,
+            IAnimateSoftCurrencyUseCase animateSoftCurrencyUseCase,
             IContinueUseCase continueUseCase,
             IPlayAgainUseCase playAgainUseCase
             )
         {
             ShowStarsUseCase = showStarsUseCase;
             SetTimeUseCase = setTimeUseCase;
+            AnimateSoftCurrencyUseCase = animateSoftCurrencyUseCase;
             ContinueUseCase = continueUseCase;
             PlayAgainUseCase = playAgainUseCase;
         }

@@ -31,11 +31,11 @@ namespace Playground.Content.StageUI.UI.StageCompleted
 
                 if(earned)
                 {
-                    stageCompletedStarUIEntry.ShowEarnedFeedback.Play(new StageCompletedStarDelayBindableData(delay));
+                    stageCompletedStarUIEntry.ShowEarnedFeedback.Play(new StarDelayBindableData(delay));
                 }
                 else
                 {
-                    stageCompletedStarUIEntry.ShowNotEarnedFeedback.Play(new StageCompletedStarDelayBindableData(delay));
+                    stageCompletedStarUIEntry.ShowNotEarnedFeedback.Play(new StarDelayBindableData(delay));
                 }
 
                 delay += 0.4f;

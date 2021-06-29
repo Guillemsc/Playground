@@ -18,4 +18,4 @@ MonoBehaviour:
     sceneAsset: {fileID: 102900000, guid: 6b186c23703235a40868c2d1681b5527, type: 3}
     scenePath: Assets/Playground/Scenes/Stages/stg_TEST1_COMPLETITION.unity
   stageStarsConfiguration: {fileID: 0}
-  stageRewardsConfiguration: {fileID: 0}
+  stageRewardsConfiguration: {fileID: 11400000, guid: dfe6ef2247ea67544b95f6640f270f34, type: 2}
