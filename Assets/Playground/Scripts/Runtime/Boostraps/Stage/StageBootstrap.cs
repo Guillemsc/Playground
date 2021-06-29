@@ -6,6 +6,7 @@ using Juce.CoreUnity.Service;
 using Playground.Content.LoadingScreen.UI;
 using Playground.Flow.Data;
 using Playground.Configuration.Stage;
+using Playground.Shared.UseCases;
 
 namespace Playground.Boostraps
 {
@@ -27,6 +28,23 @@ namespace Playground.Boostraps
                 return;
             }
 
+            GenerateFlowService();
+            GenerateSharedService();
+
+            FlowService flowService = ServicesProvider.GetService<FlowService>();
+            FlowUseCases flowUseCases = flowService.FlowUseCases;
+
+            await flowUseCases.LoadEssentialScenesFlowUseCase.Execute();
+
+            flowUseCases.SetCurrentStageFlowUseCase.Execute(stageConfiguration);
+
+            ILoadingToken loadingToken = await flowUseCases.ShowLoadingScreenFlowUseCase.Execute(instantly: true);
+
+            await flowUseCases.PlayScenarioFlowUseCase.Execute(loadingToken);
+        }
+
+        private void GenerateFlowService()
+        {
             CurrentStageFlowData currentStageFlowData = new CurrentStageFlowData();
 
             FlowUseCases flowUseCases = new FlowUseCases(
@@ -44,14 +62,24 @@ namespace Playground.Boostraps
 
             FlowService flowService = new FlowService(flowUseCases);
             ServicesProvider.Register(flowService);
+        }
 
-            await flowUseCases.LoadEssentialScenesFlowUseCase.Execute();
+        private void GenerateSharedService()
+        {
+            IGetStageStarsFromTimingUseCase getStageStarsFromTimingUseCase = new NopGetStageStarsFromTimingUseCase();
 
-            flowUseCases.SetCurrentStageFlowUseCase.Execute(stageConfiguration);
+            ITryGetStageCarStarsUseCase tryGetStageCarStarsUseCase = new NopTryGetStageCarStarsUseCase();
 
-            ILoadingToken loadingToken = await flowUseCases.ShowLoadingScreenFlowUseCase.Execute(instantly: true);
+            ISetStageCarStarsUseCase setStageCarStarsUseCase = new NopSetStageCarStarsUseCase();
 
-            await flowUseCases.PlayScenarioFlowUseCase.Execute(loadingToken);
-        }    
+            SharedUseCases sharedUseCases = new SharedUseCases(
+                getStageStarsFromTimingUseCase,
+                tryGetStageCarStarsUseCase,
+                setStageCarStarsUseCase
+                );
+
+            SharedService sharedService = new SharedService(sharedUseCases);
+            ServicesProvider.Register(sharedService);
+        }
     }
 }

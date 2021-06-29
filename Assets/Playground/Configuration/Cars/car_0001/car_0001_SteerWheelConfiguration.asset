@@ -30,4 +30,4 @@ MonoBehaviour:
   sidewaysExtremumValue: 0.6
   sidewaysAsymptoteSlip: 1
   sidewaysAsymptoteValue: 0.25
-  sidewaysStiffness: 3
+  sidewaysStiffness: 4

@@ -1,4 +1,4 @@
-﻿namespace Playground.Content.Shared.UseCases
+﻿namespace Playground.Shared.UseCases
 {
     public interface ITryGetStageCarStarsUseCase
     {

@@ -1,21 +1,15 @@
-﻿using Playground.Persistence;
+﻿using Juce.CoreUnity.Service;
+using Playground.Persistence;
 using Playground.Services;
 
-namespace Playground.Content.Shared.UseCases
+namespace Playground.Shared.UseCases
 {
     public class TryGetStageCarStarsUseCase : ITryGetStageCarStarsUseCase
     {
-        private readonly PersistenceService persistanceService;
-
-        public TryGetStageCarStarsUseCase(
-            PersistenceService persistanceService
-            )
-        {
-            this.persistanceService = persistanceService;
-        }
-
         public bool Execute(string stageTypeId, string carTypeId, out int stars)
         {
+            PersistenceService persistanceService = ServicesProvider.GetService<PersistenceService>();
+
             ProgressData progressData = persistanceService.ProgressDataSerializableData.Data;
 
             bool stageDataFound = ProgressDataUtils.TryGetStageData(progressData, stageTypeId, out StageData stageData);

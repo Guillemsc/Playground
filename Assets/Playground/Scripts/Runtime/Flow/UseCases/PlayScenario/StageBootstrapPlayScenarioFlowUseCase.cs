@@ -78,12 +78,10 @@ namespace Playground.Flow.UseCases
 
             stageView.Init(stageConfiguration.StageTypeId);
 
-            SharedContext sharedContext = ContextsProvider.GetContext<SharedContext>();
             StageUIContext stageUIContext = ContextsProvider.GetContext<StageUIContext>();
             StageContext stageContext = ContextsProvider.GetContext<StageContext>();
 
             stageContext.RunStage(
-                sharedContext,
                 stageUIContext,
                 stageView,
                 stageStarsConfiguration,

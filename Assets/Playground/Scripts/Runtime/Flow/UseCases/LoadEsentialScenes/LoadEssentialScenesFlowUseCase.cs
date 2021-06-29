@@ -11,7 +11,6 @@ namespace Playground.Flow.UseCases
             ScenesLoader esentialScenesLoader = new ScenesLoader(
                 ServicesContext.SceneName,
                 CameraContext.SceneName,
-                SharedContext.SceneName,
                 LoadingScreenContext.SceneName
                 );
 

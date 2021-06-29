@@ -1,6 +1,4 @@
-﻿using Playground.Content.Shared.UseCases;
-
-namespace Playground.Content.Shared
+﻿namespace Playground.Shared.UseCases
 {
     public class SharedUseCases
     {

@@ -1,6 +1,5 @@
 ﻿using Juce.Core.Sequencing;
 using Playground.Configuration.Stage;
-using Playground.Content.Shared;
 using Playground.Content.Stage.VisualLogic.Instructions;
 using Playground.Content.Stage.VisualLogic.Sequences;
 using Playground.Content.Stage.VisualLogic.View.Car;
@@ -20,7 +19,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
         private readonly Sequencer sequencer;
         private readonly TimeService timeService;
         private readonly UIViewStackService uiViewStackService;
-        private readonly SharedUseCases sharedUseCases;
+        private readonly SharedService sharedService;
         private readonly StageStarsConfiguration stageStarsConfiguration;
         private readonly StageRewardsConfiguration stageRewardsConfiguration;
         private readonly StageCompletedUIView stageCompletedUIView;
@@ -35,7 +34,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             Sequencer sequencer,
             TimeService timeService,
             UIViewStackService uiViewStackService,
-            SharedUseCases sharedUseCases,
+            SharedService sharedService,
             StageStarsConfiguration stageStarsConfiguration,
             StageRewardsConfiguration stageRewardsConfiguration,
             StageCompletedUIView stageCompletedUIView,
@@ -48,7 +47,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             this.sequencer = sequencer;
             this.timeService = timeService;
             this.uiViewStackService = uiViewStackService;
-            this.sharedUseCases = sharedUseCases;
+            this.sharedService = sharedService;
             this.stageStarsConfiguration = stageStarsConfiguration;
             this.stageRewardsConfiguration = stageRewardsConfiguration;
             this.stageCompletedUIView = stageCompletedUIView;
@@ -89,7 +88,12 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
 
             stageCompletedUIInteractor.SetStars(stars);
 
-            await sharedUseCases.SetStageCarStarsUseCase.Execute(stageView.TypeId, carView.TypeId, stars, cancellationToken);
+            await sharedService.SharedUseCases.SetStageCarStarsUseCase.Execute(
+                stageView.TypeId, 
+                carView.TypeId, 
+                stars, 
+                cancellationToken
+                );
 
             await taskCompletitionSource.Task;
 
@@ -119,7 +123,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
 
             float finalTime = (float)stageTimerState.Timer.Time.TotalSeconds;
 
-            return sharedUseCases.GetStageStarsFromTimingUseCase.Execute(
+            return sharedService.SharedUseCases.GetStageStarsFromTimingUseCase.Execute(
                 stageStarsConfiguration,
                 carViewRepository.Item.TypeId,
                 finalTime

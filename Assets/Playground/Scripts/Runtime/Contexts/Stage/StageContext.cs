@@ -40,7 +40,6 @@ namespace Playground.Contexts
         }
 
         public void RunStage(
-            SharedContext sharedContext,
             StageUIContext stageUIContext,
             StageView stageView,
             StageStarsConfiguration stageStarsConfiguration,
@@ -65,6 +64,7 @@ namespace Playground.Contexts
             UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
             ConfigurationService configurationService = ServicesProvider.GetService<ConfigurationService>();
             PersistenceService userService = ServicesProvider.GetService<PersistenceService>();
+            SharedService sharedService = ServicesProvider.GetService<SharedService>();
 
             EventDispatcherAndReceiver logicToViewEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
             EventDispatcherAndReceiver viewToLogicEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
@@ -90,7 +90,7 @@ namespace Playground.Contexts
                 timeService,
                 uiViewStackService,
                 userService,
-                sharedContext.SharedUseCases,
+                sharedService,
                 stageUIContext.StageUIContextReferences.ScreenCarControlsUIView,
                 stageUIContext.StageUIContextReferences.StageOverlayUIView,
                 stageUIContext.StageUIContextReferences.StageCompletedUIView,

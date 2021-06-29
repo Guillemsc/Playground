@@ -5,6 +5,7 @@ using Playground.Services;
 using Juce.CoreUnity.Service;
 using Playground.Content.LoadingScreen.UI;
 using Playground.Flow.Data;
+using Playground.Shared.UseCases;
 
 namespace Playground.Boostraps
 {
@@ -16,6 +17,25 @@ namespace Playground.Boostraps
         }
 
         private async Task Run()
+        {
+            GenerateFlowService();
+            GenerateSharedService();
+
+            FlowService flowService = ServicesProvider.GetService<FlowService>();
+            FlowUseCases flowUseCases = flowService.FlowUseCases;
+
+            await flowUseCases.LoadEssentialScenesFlowUseCase.Execute();
+
+            ILoadingToken loadingToken = await flowUseCases.ShowLoadingScreenFlowUseCase.Execute(instantly: true);
+
+            await flowUseCases.LoadUserDataFlowUseCase.Execute();
+
+            await flowUseCases.LoadAdsScenesFlowUseCase.Execute();
+
+            await flowUseCases.LoadMetaFlowUseCase.Execute(loadingToken);
+        }
+
+        private void GenerateFlowService()
         {
             CurrentStageFlowData currentStageFlowData = new CurrentStageFlowData();
 
@@ -34,16 +54,24 @@ namespace Playground.Boostraps
 
             FlowService flowService = new FlowService(flowUseCases);
             ServicesProvider.Register(flowService);
+        }
 
-            await flowUseCases.LoadEssentialScenesFlowUseCase.Execute();
+        private void GenerateSharedService()
+        {
+            IGetStageStarsFromTimingUseCase getStageStarsFromTimingUseCase = new GetStageStarsFromTimingUseCase();
 
-            ILoadingToken loadingToken = await flowUseCases.ShowLoadingScreenFlowUseCase.Execute(instantly: true);
+            ITryGetStageCarStarsUseCase tryGetStageCarStarsUseCase = new TryGetStageCarStarsUseCase();
 
-            await flowUseCases.LoadUserDataFlowUseCase.Execute();
+            ISetStageCarStarsUseCase setStageCarStarsUseCase = new SetStageCarStarsUseCase();
 
-            await flowUseCases.LoadAdsScenesFlowUseCase.Execute();
+            SharedUseCases sharedUseCases = new SharedUseCases(
+                getStageStarsFromTimingUseCase,
+                tryGetStageCarStarsUseCase,
+                setStageCarStarsUseCase
+                );
 
-            await flowUseCases.LoadMetaFlowUseCase.Execute(loadingToken);
+            SharedService sharedService = new SharedService(sharedUseCases);
+            ServicesProvider.Register(sharedService);
         }
     }
 }

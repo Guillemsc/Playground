@@ -73,12 +73,10 @@ namespace Playground.Flow.UseCases
 
             PersistenceService persistenceService = ServicesProvider.GetService<PersistenceService>();
 
-            SharedContext sharedContext = ContextsProvider.GetContext<SharedContext>();
             StageUIContext stageUIContext = ContextsProvider.GetContext<StageUIContext>();
             StageContext stageContext = ContextsProvider.GetContext<StageContext>();
 
             stageContext.RunStage(
-                sharedContext,
                 stageUIContext,
                 stageView,
                 stageStarsConfiguration,

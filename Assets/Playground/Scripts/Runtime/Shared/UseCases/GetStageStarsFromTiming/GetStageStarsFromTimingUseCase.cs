@@ -1,6 +1,6 @@
 ﻿using Playground.Configuration.Stage;
 
-namespace Playground.Content.Shared.UseCases
+namespace Playground.Shared.UseCases
 {
     public class GetStageStarsFromTimingUseCase : IGetStageStarsFromTimingUseCase
     {

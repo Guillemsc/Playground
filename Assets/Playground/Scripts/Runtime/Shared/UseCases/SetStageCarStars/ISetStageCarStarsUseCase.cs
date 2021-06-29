@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Playground.Content.Shared.UseCases
+namespace Playground.Shared.UseCases
 {
     public interface ISetStageCarStarsUseCase
     {
