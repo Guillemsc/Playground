@@ -14866,6 +14866,7 @@ MonoBehaviour:
   - id: 1
   - id: 2
   - id: 3
+  - id: 4
   bindingEnabled: 1
   bindableDataUid: 01bf5ecd-28ae-46e7-add3-2c3097d4d59f
   references:
@@ -14958,11 +14959,22 @@ MonoBehaviour:
         enabled: 1
         delay:
           bindingEnabled: 1
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: Delay
+          FallbackValue: 0.3
+    00000003:
+      type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        delay:
+          bindingEnabled: 1
           wantsToBeBinded: 1
           binded: 1
           bindedVariableName: Delay
           FallbackValue: 0
-    00000003:
+    00000004:
       type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 0
@@ -15129,6 +15141,7 @@ MonoBehaviour:
   - id: 1
   - id: 2
   - id: 3
+  - id: 4
   bindingEnabled: 1
   bindableDataUid: 01bf5ecd-28ae-46e7-add3-2c3097d4d59f
   references:
@@ -15163,11 +15176,22 @@ MonoBehaviour:
         enabled: 1
         delay:
           bindingEnabled: 1
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+    00000002:
+      type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        delay:
+          bindingEnabled: 1
           wantsToBeBinded: 1
           binded: 1
           bindedVariableName: Delay
           FallbackValue: 0
-    00000002:
+    00000003:
       type: {class: ParticleSystemPlayComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 0
@@ -15190,7 +15214,7 @@ MonoBehaviour:
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
-    00000003:
+    00000004:
       type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 0

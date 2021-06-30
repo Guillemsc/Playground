@@ -84,17 +84,21 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
 
             stageCompletedUIInteractor.SetTime(stageTimerState.Timer.Time);
             stageCompletedUIInteractor.SetSoftCurrency(softCurrenctyReward);
+            stageCompletedUIInteractor.SetStars(stars);
 
             await new SetUIViewVisibleInstruction<StageCompletedUIView>(uiViewStackService, visible: true, instantly: false).Execute(cancellationToken);
 
-            stageCompletedUIInteractor.SetStars(stars);
-
-            await sharedService.SharedUseCases.SetStageCarStarsUseCase.Execute(
+            sharedService.SharedUseCases.SetStageCarStarsUseCase.Execute(
                 stageView.TypeId, 
                 carView.TypeId, 
-                stars, 
-                cancellationToken
+                stars
                 );
+
+            sharedService.SharedUseCases.AddSoftCurrencyUseCase.Execute(
+                softCurrenctyReward
+                );
+
+            await sharedService.SharedUseCases.SaveProgressUseCase.Execute(cancellationToken);
 
             await taskCompletitionSource.Task;
 

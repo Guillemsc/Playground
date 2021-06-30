@@ -10,6 +10,8 @@ namespace Playground.Content.Meta.UI.MainMenu
     {
         public ObservableVariable<int> StarsVariable { get; }
             = new ObservableVariable<int>();
+        public ObservableVariable<int> SoftCurrencyVariable { get; }
+            = new ObservableVariable<int>();
 
         public ObservableEvent<DragPointerCallbacks, PointerEventData> OnStartDraggingCarViewEvent { get; } 
             = new ObservableEvent<DragPointerCallbacks, PointerEventData>();

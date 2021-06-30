@@ -5,9 +5,9 @@ namespace Playground.Shared.UseCases
 {
     public class NopSetStageCarStarsUseCase : ISetStageCarStarsUseCase
     {
-        public Task Execute(string stageTypeId, string carTypeId, int starsToSet, CancellationToken cancellationToken)
+        public void Execute(string stageTypeId, string carTypeId, int starsToSet)
         {
-            return Task.CompletedTask;
+         
         }
     }
 }

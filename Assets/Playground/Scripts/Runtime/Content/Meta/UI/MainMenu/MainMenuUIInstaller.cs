@@ -115,6 +115,11 @@ namespace Playground.Content.Meta.UI.MainMenu
                 persistenceService
                 );
 
+            IRefreshSoftCurrencyUseCase refreshSoftCurrencyUseCase = new RefreshSoftCurrencyUseCase(
+                viewModel,
+                persistenceService
+                );
+
             useCases = new MainMenuUIUseCases(
                 screenToCanvasDeltaUseCase,
                 cleanUpCarViewUseCase,
@@ -124,7 +129,8 @@ namespace Playground.Content.Meta.UI.MainMenu
                 stopManuallyRotatingCarViewUseCase,
                 manuallyRotateCarViewUseCase,
                 carryCarViewRotationVelocityTickableUseCase,
-                setStarsUseCase
+                setStarsUseCase,
+                refreshSoftCurrencyUseCase
                 );
         }
 

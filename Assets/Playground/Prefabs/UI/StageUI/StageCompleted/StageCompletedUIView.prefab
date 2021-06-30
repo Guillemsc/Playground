@@ -11140,14 +11140,14 @@ RectTransform:
   - {fileID: 6105686325199828351}
   - {fileID: 4839781639979673280}
   - {fileID: 8278562360572156146}
-  m_Father: {fileID: 3566179880705214802}
-  m_RootOrder: 5
+  m_Father: {fileID: 6274485898083211367}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 30.3, y: -109.000015}
+  m_AnchoredPosition: {x: 208.32562, y: 0.9385376}
   m_SizeDelta: {x: 0, y: 90.20828}
-  m_Pivot: {x: 0, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7126778290396028920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11213,20 +11213,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544066954990289764}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7403698053361958224}
   - {fileID: 6793541137415703742}
-  m_Father: {fileID: 3566179880705214802}
-  m_RootOrder: 4
+  m_Father: {fileID: 6274485898083211367}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24, y: -109}
+  m_AnchoredPosition: {x: -207.01562, y: 0.9385681}
   m_SizeDelta: {x: 0, y: 90.2083}
-  m_Pivot: {x: 1, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2606462955952223613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11450,11 +11450,11 @@ RectTransform:
   - {fileID: 5810044944055690734}
   - {fileID: 6254755227923947571}
   m_Father: {fileID: 3566179880705214802}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 279.23248, y: 130.00002}
+  m_AnchoredPosition: {x: 279.23248, y: 97}
   m_SizeDelta: {x: 299.249, y: 111.7081}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3674938258379837981
@@ -11548,7 +11548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.7513891}
   m_AnchorMax: {x: 0.5, y: 0.7513891}
-  m_AnchoredPosition: {x: 0, y: -134}
+  m_AnchoredPosition: {x: 0, y: -143}
   m_SizeDelta: {x: 1041.6488, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1798161790945117829
@@ -11589,6 +11589,43 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1964070255204819157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5561252638932313211}
+  m_Layer: 5
+  m_Name: Separators
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5561252638932313211
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964070255204819157}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2833767708730469434}
+  - {fileID: 3452608522782360295}
+  m_Father: {fileID: 3566179880705214802}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -9}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2147615703790181802
 GameObject:
   m_ObjectHideFlags: 0
@@ -12639,11 +12676,11 @@ RectTransform:
   - {fileID: 4435408844322309910}
   - {fileID: 8822096447688639548}
   m_Father: {fileID: 3566179880705214802}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -160.90018, y: 130}
+  m_AnchoredPosition: {x: -160.90018, y: 97}
   m_SizeDelta: {x: 529.6742, y: 111.7081}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1058489451467338088
@@ -12846,7 +12883,7 @@ GameObject:
   - component: {fileID: 1445656880502422994}
   - component: {fileID: 5053000174480364518}
   m_Layer: 5
-  m_Name: Deco (2)
+  m_Name: SeparatorLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12863,8 +12900,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3566179880705214802}
-  m_RootOrder: 3
+  m_Father: {fileID: 5561252638932313211}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -23078,7 +23115,9 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2900173398658891957}
+  - {fileID: 4890252663935750673}
   m_Father: {fileID: 7187421599537261684}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23117,10 +23156,6 @@ MonoBehaviour:
   - id: 10
   - id: 11
   - id: 12
-  - id: 13
-  - id: 14
-  - id: 15
-  - id: 16
   bindingEnabled: 0
   bindableDataUid: 
   references:
@@ -23149,6 +23184,64 @@ MonoBehaviour:
           bindedVariableName: 
           FallbackValue: 0
     00000001:
+      type: {class: TweenPlayerPlayComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 8146868472051175169}
+        complete:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        bind:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+    00000002:
+      type: {class: TweenPlayerPlayComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 1580269750416633408}
+        complete:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        bind:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+    00000003:
       type: {class: GameObjectActiveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -23171,239 +23264,7 @@ MonoBehaviour:
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
-    00000002:
-      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
-      data:
-        folded: 1
-        enabled: 1
-        target:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {fileID: 4746125986771007246}
-        value:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {x: 6, y: 6, z: 6}
-        delay:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0
-        duration:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0
-        easing:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue:
-            serializedVersion: 2
-            m_Curve:
-            - serializedVersion: 3
-              time: 0
-              value: 0
-              inSlope: 0
-              outSlope: 1
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            - serializedVersion: 3
-              time: 1
-              value: 1
-              inSlope: 1
-              outSlope: 0
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-    00000003:
-      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
-      data:
-        folded: 1
-        enabled: 1
-        target:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {fileID: 66652521465228488}
-        value:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {x: 6, y: 6, z: 6}
-        delay:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0
-        duration:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0
-        easing:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue:
-            serializedVersion: 2
-            m_Curve:
-            - serializedVersion: 3
-              time: 0
-              value: 0
-              inSlope: 0
-              outSlope: 1
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            - serializedVersion: 3
-              time: 1
-              value: 1
-              inSlope: 1
-              outSlope: 0
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
     00000004:
-      type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
-      data:
-        folded: 1
-        enabled: 1
-        target:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {fileID: 1544066954990289764}
-        value:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0
-        delay:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0
-        duration:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0
-        easing:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue:
-            serializedVersion: 2
-            m_Curve:
-            - serializedVersion: 3
-              time: 0
-              value: 0
-              inSlope: 0
-              outSlope: 1
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            - serializedVersion: 3
-              time: 1
-              value: 1
-              inSlope: 1
-              outSlope: 0
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-    00000005:
-      type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
-      data:
-        folded: 1
-        enabled: 1
-        target:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {fileID: 1450706171000011904}
-        value:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0
-        delay:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0
-        duration:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0
-        easing:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue:
-            serializedVersion: 2
-            m_Curve:
-            - serializedVersion: 3
-              time: 0
-              value: 0
-              inSlope: 0
-              outSlope: 1
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            - serializedVersion: 3
-              time: 1
-              value: 1
-              inSlope: 1
-              outSlope: 0
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-    00000006:
       type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -23461,239 +23322,7 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-    00000007:
-      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
-      data:
-        folded: 1
-        enabled: 1
-        target:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {fileID: 4746125986771007246}
-        value:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {x: 1, y: 1, z: 1}
-        delay:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0.3
-        duration:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0.3
-        easing:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue:
-            serializedVersion: 2
-            m_Curve:
-            - serializedVersion: 3
-              time: 0
-              value: 0
-              inSlope: 0
-              outSlope: 0
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            - serializedVersion: 3
-              time: 1
-              value: 1
-              inSlope: 2
-              outSlope: 2
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-    00000008:
-      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
-      data:
-        folded: 1
-        enabled: 1
-        target:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {fileID: 66652521465228488}
-        value:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {x: 1, y: 1, z: 1}
-        delay:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0.3
-        duration:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0.3
-        easing:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue:
-            serializedVersion: 2
-            m_Curve:
-            - serializedVersion: 3
-              time: 0
-              value: 0
-              inSlope: 0
-              outSlope: 0
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            - serializedVersion: 3
-              time: 1
-              value: 1
-              inSlope: 2
-              outSlope: 2
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-    00000009:
-      type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
-      data:
-        folded: 1
-        enabled: 1
-        target:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {fileID: 1544066954990289764}
-        value:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 1
-        delay:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0.5
-        duration:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0.3
-        easing:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue:
-            serializedVersion: 2
-            m_Curve:
-            - serializedVersion: 3
-              time: 0
-              value: 0
-              inSlope: 0
-              outSlope: 0
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            - serializedVersion: 3
-              time: 1
-              value: 1
-              inSlope: 2
-              outSlope: 2
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-    0000000A:
-      type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
-      data:
-        folded: 1
-        enabled: 1
-        target:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {fileID: 1450706171000011904}
-        value:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 1
-        delay:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0.5
-        duration:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0.3
-        easing:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue:
-            serializedVersion: 2
-            m_Curve:
-            - serializedVersion: 3
-              time: 0
-              value: 0
-              inSlope: 0
-              outSlope: 0
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            - serializedVersion: 3
-              time: 1
-              value: 1
-              inSlope: 2
-              outSlope: 2
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-    0000000B:
+    00000005:
       type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -23715,7 +23344,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.4
+          FallbackValue: 0.9
         duration:
           bindingEnabled: 0
           wantsToBeBinded: 0
@@ -23751,10 +23380,10 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-    0000000C:
+    00000006:
       type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
-        folded: 1
+        folded: 0
         enabled: 1
         target:
           bindingEnabled: 0
@@ -23773,7 +23402,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.5
+          FallbackValue: 1.1
         duration:
           bindingEnabled: 0
           wantsToBeBinded: 0
@@ -23809,7 +23438,7 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-    0000000D:
+    00000007:
       type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -23867,7 +23496,7 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-    0000000E:
+    00000008:
       type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -23925,7 +23554,123 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-    0000000F:
+    00000009:
+      type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 8309642319891204707}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.2
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    0000000A:
+      type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 1964070255204819157}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    0000000B:
       type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -23936,7 +23681,7 @@ MonoBehaviour:
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
-    00000010:
+    0000000C:
       type: {class: UIInteractableComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -24395,10 +24140,8 @@ RectTransform:
   m_Children:
   - {fileID: 2667616117234167702}
   - {fileID: 9133151895295189278}
-  - {fileID: 3452608522782360295}
-  - {fileID: 2833767708730469434}
-  - {fileID: 4746125986771007246}
-  - {fileID: 66652521465228488}
+  - {fileID: 5561252638932313211}
+  - {fileID: 6274485898083211367}
   - {fileID: 7399065549129604557}
   - {fileID: 8708990791735445818}
   - {fileID: 4847431762981929300}
@@ -24511,7 +24254,7 @@ GameObject:
   - component: {fileID: 8035202686864467312}
   - component: {fileID: 490795753975822567}
   m_Layer: 5
-  m_Name: Deco (1)
+  m_Name: SeparatorRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24528,8 +24271,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3566179880705214802}
-  m_RootOrder: 2
+  m_Father: {fileID: 5561252638932313211}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -29516,6 +29259,299 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5625153233470546913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4890252663935750673}
+  - component: {fileID: 1580269750416633408}
+  m_Layer: 5
+  m_Name: ShowSoftCurrencyFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4890252663935750673
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5625153233470546913}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6989877733507586139}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1580269750416633408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5625153233470546913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ef6096a7669654489b5445d8387734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  executionMode: 0
+  loopMode: 0
+  loopResetMode: 0
+  loops: 0
+  BindingPlayerComponents:
+  - id: 0
+  - id: 1
+  - id: 2
+  - id: 3
+  bindingEnabled: 0
+  bindableDataUid: 
+  references:
+    version: 1
+    00000000:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 66652521465228488}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 6, y: 6, z: 6}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000001:
+      type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 1450706171000011904}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000002:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 66652521465228488}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 1, y: 1, z: 1}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 2
+              outSlope: 2
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000003:
+      type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 1450706171000011904}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.5
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 2
+              outSlope: 2
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
 --- !u!1 &5642269050248164007
 GameObject:
   m_ObjectHideFlags: 0
@@ -29525,6 +29561,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8278562360572156146}
+  - component: {fileID: 8906727616737867004}
   - component: {fileID: 6076772118507058668}
   - component: {fileID: 6373693986091236893}
   m_Layer: 5
@@ -29551,8 +29588,22 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 304.3983, y: 90.2083}
+  m_SizeDelta: {x: 242.98126, y: 90.2083}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8906727616737867004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5642269050248164007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b35d8919f32dc42902a85b7a8d989f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMeshPro: {fileID: 6373693986091236893}
+  rectTransform: {fileID: 8278562360572156146}
 --- !u!222 &6076772118507058668
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29624,7 +29675,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -30156,6 +30207,8 @@ MonoBehaviour:
   - id: 9
   - id: 10
   - id: 11
+  - id: 12
+  - id: 13
   bindingEnabled: 0
   bindableDataUid: 
   references:
@@ -30538,16 +30591,63 @@ MonoBehaviour:
             m_PostInfinity: 2
             m_RotationOrder: 4
     00000007:
-      type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
         enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 8309642319891204707}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
         delay:
           bindingEnabled: 0
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.2
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
     00000008:
       type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
@@ -30558,7 +30658,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: {fileID: 1348661792628233199}
+          FallbackValue: {fileID: 1964070255204819157}
         value:
           bindingEnabled: 0
           wantsToBeBinded: 0
@@ -30618,6 +30718,75 @@ MonoBehaviour:
           bindedVariableName: 
           FallbackValue: 0
     0000000A:
+      type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 1348661792628233199}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.2
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    0000000B:
+      type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+    0000000C:
       type: {class: GameObjectActiveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -30640,7 +30809,7 @@ MonoBehaviour:
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
-    0000000B:
+    0000000D:
       type: {class: GameObjectActiveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 1
@@ -35734,6 +35903,299 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6954119706850700920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2900173398658891957}
+  - component: {fileID: 8146868472051175169}
+  m_Layer: 5
+  m_Name: ShowTimeFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2900173398658891957
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6954119706850700920}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6989877733507586139}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8146868472051175169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6954119706850700920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53ef6096a7669654489b5445d8387734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  executionMode: 0
+  loopMode: 0
+  loopResetMode: 0
+  loops: 0
+  BindingPlayerComponents:
+  - id: 0
+  - id: 1
+  - id: 2
+  - id: 3
+  bindingEnabled: 0
+  bindableDataUid: 
+  references:
+    version: 1
+    00000000:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 4746125986771007246}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 6, y: 6, z: 6}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000001:
+      type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 1544066954990289764}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 1
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 1
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000002:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 4746125986771007246}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 1, y: 1, z: 1}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 2
+              outSlope: 2
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000003:
+      type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 1544066954990289764}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.5
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.3
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 2
+              outSlope: 2
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
 --- !u!1 &7048950632853137543
 GameObject:
   m_ObjectHideFlags: 0
@@ -36842,7 +37304,7 @@ RectTransform:
   - {fileID: 4544656545316277449}
   - {fileID: 3370684933828784800}
   m_Father: {fileID: 3566179880705214802}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -37287,6 +37749,84 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 299f326ea0f4443bb8aede4cccf6bc77, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8309642319891204707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6274485898083211367}
+  - component: {fileID: 4819833118445571714}
+  - component: {fileID: 674989761517329264}
+  m_Layer: 5
+  m_Name: TimeAndCurrencyBackground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &6274485898083211367
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8309642319891204707}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6064956525184768776}
+  - {fileID: 4746125986771007246}
+  - {fileID: 66652521465228488}
+  m_Father: {fileID: 3566179880705214802}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -133}
+  m_SizeDelta: {x: 834.1944, y: 111.6771}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4819833118445571714
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8309642319891204707}
+  m_CullTransparentMesh: 1
+--- !u!114 &674989761517329264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8309642319891204707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.36862746}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 5458175504c3442729c2d39a4201eb30, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -38272,11 +38812,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
---- !u!224 &5412766647152146472 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6826677651857792438, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
-  m_PrefabInstance: {fileID: 1559153331937551774}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3336191992056612876 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4318865460562537874, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
@@ -38288,6 +38823,550 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f8b4b4bf51e4445ae0d00183e17b07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &5412766647152146472 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6826677651857792438, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
+  m_PrefabInstance: {fileID: 1559153331937551774}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5619879141441983368
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6274485898083211367}
+    m_Modifications:
+    - target: {fileID: 1250121594770562153, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6be115246fe9b40b8b37ad9f4e2be66a, type: 3}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 76.1207
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 63.8613
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.3272095
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.83855057
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921368876353665, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_Name
+      value: ButtonWithImage
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921369428252742, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921369428252742, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6be115246fe9b40b8b37ad9f4e2be66a, type: 3}
+    - target: {fileID: 1861921369428252742, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921369428252742, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921369428252742, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1861921369428252742, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728543938391414297, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0]
+      value: Juce.TweenPlayer.Runtime Juce.TweenPlayer.Components.TransformLocalScaleComponent
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].folded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].delay.binded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].value.binded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.binded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].target.binded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].duration.binded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].delay.FallbackValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].delay.bindingEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].target.FallbackValue
+      value: 
+      objectReference: {fileID: 6064956523550195062}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].value.bindingEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].delay.wantsToBeBinded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.bindingEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].target.bindingEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].value.FallbackValue.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].value.FallbackValue.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].value.FallbackValue.z
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].value.wantsToBeBinded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].duration.FallbackValue
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.wantsToBeBinded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].target.wantsToBeBinded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].duration.bindingEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].delay.bindedVariableName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].duration.wantsToBeBinded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].value.bindedVariableName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.bindedVariableName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].target.bindedVariableName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].duration.bindedVariableName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[0].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[1].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[0].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[0].weightedMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936469337271428166, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[1].weightedMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0]
+      value: Juce.TweenPlayer.Runtime Juce.TweenPlayer.Components.TransformLocalScaleComponent
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].folded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].delay.binded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].value.binded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.binded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].target.binded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].duration.binded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].delay.FallbackValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].delay.bindingEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].target.FallbackValue
+      value: 
+      objectReference: {fileID: 6064956523550195062}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].value.bindingEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].delay.wantsToBeBinded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.bindingEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].target.bindingEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].value.FallbackValue.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].value.FallbackValue.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].value.FallbackValue.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].value.wantsToBeBinded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].duration.FallbackValue
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.wantsToBeBinded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].target.wantsToBeBinded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].duration.bindingEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].delay.bindedVariableName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].duration.wantsToBeBinded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].value.bindedVariableName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.bindedVariableName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].target.bindedVariableName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].duration.bindedVariableName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_PreInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_PostInfinity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_RotationOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[0].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[1].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[0].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[1].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[0].weightedMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290335385193080601, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+      propertyPath: BindingPlayerComponents.Array.data[0].easing.FallbackValue.m_Curve.Array.data[1].weightedMode
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+--- !u!224 &6064956523550195062 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1861921369388969726, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+  m_PrefabInstance: {fileID: 5619879141441983368}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &6064956525184768776 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1861921368876353664, guid: ca50a7e3705624742a5b55602f4c4d5e, type: 3}
+  m_PrefabInstance: {fileID: 5619879141441983368}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9052776877013703123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38498,6 +39577,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
+--- !u!224 &2554045748668948146 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6826677651857792438, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
+  m_PrefabInstance: {fileID: 9064884256766329604}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5053955178397314710 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4318865460562537874, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
@@ -38509,8 +39593,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45f8b4b4bf51e4445ae0d00183e17b07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &2554045748668948146 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6826677651857792438, guid: a9e938b40c414d94599f5bb6228d3abe, type: 3}
-  m_PrefabInstance: {fileID: 9064884256766329604}
-  m_PrefabAsset: {fileID: 0}

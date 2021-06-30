@@ -17,6 +17,7 @@ namespace Playground.Content.Meta.UI.MainMenu
         [SerializeField] private PointerCallbacks creditsPointerCallbacks = default;
         [SerializeField] private TMPro.TextMeshProUGUI versionText = default;
         [SerializeField] private TMPro.TextMeshProUGUI starsText = default;
+        [SerializeField] private TMPro.TextMeshProUGUI softCurrencyText = default;
 
         private MainMenuUIViewModel viewModel;
         private MainMenuUIUseCases useCases;
@@ -27,8 +28,9 @@ namespace Playground.Content.Meta.UI.MainMenu
             Contract.IsNotNull(carLibraryPointerCallbacks, this);
             Contract.IsNotNull(demoStagesPointerCallbacks, this);
             Contract.IsNotNull(creditsPointerCallbacks, this);
-            Contract.IsNotNull(starsText, this);
             Contract.IsNotNull(versionText, this);
+            Contract.IsNotNull(starsText, this);
+            Contract.IsNotNull(softCurrencyText, this);
 
             carViewerDragPointerCallbacks.OnBegin += OnCarViewerDragPointerCallbacksBegin;
             carViewerDragPointerCallbacks.OnDragging += OnCarViewerDragPointerCallbacksDragging;
@@ -53,9 +55,14 @@ namespace Playground.Content.Meta.UI.MainMenu
             this.viewModel = viewModel;
             this.useCases = useCases;
 
-            viewModel.StarsVariable.OnChange += (int stars) =>
+            viewModel.StarsVariable.OnChange += (int value) =>
             {
-                starsText.text = stars.ToString();
+                starsText.text = value.ToString();
+            };
+
+            viewModel.SoftCurrencyVariable.OnChange += (int value) =>
+            {
+                softCurrencyText.text = value.ToString();
             };
 
             viewModel.VersionValiable.OnChange += (string value) =>

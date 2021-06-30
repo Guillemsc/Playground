@@ -364,7 +364,6 @@ MonoBehaviour:
   - id: 1
   - id: 2
   - id: 3
-  - id: 4
   bindingEnabled: 0
   bindableDataUid: 
   references:
@@ -420,7 +419,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.3
+          FallbackValue: 0.2
         easing:
           bindingEnabled: 0
           wantsToBeBinded: 0
@@ -451,64 +450,6 @@ MonoBehaviour:
             m_PostInfinity: 2
             m_RotationOrder: 4
     00000002:
-      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
-      data:
-        folded: 0
-        enabled: 1
-        target:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {fileID: 0}
-        value:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {x: 1, y: 1, z: 1}
-        delay:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0
-        duration:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0.3
-        easing:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue:
-            serializedVersion: 2
-            m_Curve:
-            - serializedVersion: 3
-              time: 0
-              value: 0
-              inSlope: 1.2807137
-              outSlope: 1.2807137
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0.072096124
-            - serializedVersion: 3
-              time: 1
-              value: 1
-              inSlope: -2.0781367
-              outSlope: -2.0781367
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0.036048114
-              outWeight: 0
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-    00000003:
       type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 0
@@ -519,7 +460,7 @@ MonoBehaviour:
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
-    00000004:
+    00000003:
       type: {class: UIInteractableComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 0
@@ -769,7 +710,6 @@ MonoBehaviour:
   - id: 1
   - id: 2
   - id: 3
-  - id: 4
   bindingEnabled: 0
   bindableDataUid: 
   references:
@@ -831,7 +771,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.3
+          FallbackValue: 0.15
         easing:
           bindingEnabled: 0
           wantsToBeBinded: 0
@@ -862,64 +802,6 @@ MonoBehaviour:
             m_PostInfinity: 2
             m_RotationOrder: 4
     00000002:
-      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
-      data:
-        folded: 0
-        enabled: 1
-        target:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {fileID: 0}
-        value:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {x: 0, y: 0, z: 0}
-        delay:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0
-        duration:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0.3
-        easing:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue:
-            serializedVersion: 2
-            m_Curve:
-            - serializedVersion: 3
-              time: 0
-              value: 0
-              inSlope: -1.070669
-              outSlope: -1.070669
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0.052069433
-            - serializedVersion: 3
-              time: 1
-              value: 1
-              inSlope: 2
-              outSlope: 2
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-    00000003:
       type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 0
@@ -930,7 +812,7 @@ MonoBehaviour:
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
-    00000004:
+    00000003:
       type: {class: GameObjectActiveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 0

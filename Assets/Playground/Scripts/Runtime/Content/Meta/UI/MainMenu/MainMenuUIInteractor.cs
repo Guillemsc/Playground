@@ -22,6 +22,7 @@ namespace Playground.Content.Meta.UI.MainMenu
             useCases.CleanUpCarViewUseCase.Execute();
             useCases.ShowCarViewUseCase.Execute();
             useCases.RefreshStarsUseCase.Execute();
+            useCases.RefreshSoftCurrencyUseCase.Execute();
         }
 
         public void Subscribe()

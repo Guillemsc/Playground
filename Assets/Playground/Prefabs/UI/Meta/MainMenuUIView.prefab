@@ -11148,6 +11148,7 @@ MonoBehaviour:
   creditsPointerCallbacks: {fileID: 989936952892257202}
   versionText: {fileID: 518848959098606067}
   starsText: {fileID: 22052663927552097}
+  softCurrencyText: {fileID: 5816282698290610770}
 --- !u!114 &3098731803069546381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12046,7 +12047,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5816282697860426881}
   m_Layer: 5
-  m_Name: StatsGold
+  m_Name: StatsSoftCurrency
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12087,7 +12088,7 @@ GameObject:
   - component: {fileID: 5816282698290610770}
   - component: {fileID: 5816282698290610771}
   m_Layer: 5
-  m_Name: ValueText
+  m_Name: SoftCurrencyValueText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
