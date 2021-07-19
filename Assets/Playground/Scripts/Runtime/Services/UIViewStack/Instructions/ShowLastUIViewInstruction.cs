@@ -13,7 +13,7 @@ namespace Playground.Services.ViewStack
         private readonly ViewQueueRepository viewQueueRepository;
         private readonly UIInteractorRepository uiInteractorRepository;
 
-        private readonly bool asForeground;
+        private readonly bool behindForeground;
         private readonly bool instantly;
 
         public ShowLastUIViewInstruction(
@@ -21,7 +21,7 @@ namespace Playground.Services.ViewStack
             ViewContexRepository viewContexRepository,
             ViewQueueRepository viewQueueRepository,
             UIInteractorRepository uiInteractorRepository,
-            bool asForeground,
+            bool behindForeground,
             bool instantly
             )
         {
@@ -29,7 +29,7 @@ namespace Playground.Services.ViewStack
             this.viewContexRepository = viewContexRepository;
             this.viewQueueRepository = viewQueueRepository;
             this.uiInteractorRepository = uiInteractorRepository;
-            this.asForeground = asForeground;
+            this.behindForeground = behindForeground;
             this.instantly = instantly;
         }
 
@@ -50,13 +50,13 @@ namespace Playground.Services.ViewStack
 
             viewContexRepository.Add(new ViewContex(uiView));
 
-            if (!asForeground)
+            if (behindForeground)
             {
-                UIFrame.Instance.Push(uiView);
+                UIFrame.Instance.PushBehindForeground(uiView);
             }
             else
             {
-                UIFrame.Instance.PushAsForeground(uiView);
+                UIFrame.Instance.PushForeground(uiView);
             }
 
             bool interactorFound = uiInteractorRepository.TryGet(viewType, out UIInteractor interactor);

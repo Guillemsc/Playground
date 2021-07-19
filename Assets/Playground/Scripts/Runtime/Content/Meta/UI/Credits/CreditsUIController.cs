@@ -30,7 +30,11 @@ namespace Playground.Content.Meta.UI.Credits
 
         private void OnScreenClickedEvent(PointerCallbacks pointerCallbacks, EventArgs eventArgs)
         {
-            uiViewStackService.New().ShowLastAsForeground(instantly: true).Hide<CreditsUIView>(instantly: false).Execute();
+            uiViewStackService.New()
+                .ShowLastBehindForeground(instantly: true)
+                .Hide<CreditsUIView>(instantly: false)
+                .MoveBack<CreditsUIView>()
+                .Execute();
         }
     }
 }

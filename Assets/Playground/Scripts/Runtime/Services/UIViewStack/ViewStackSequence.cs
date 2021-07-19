@@ -62,6 +62,18 @@ namespace Playground.Services.ViewStack
             return this;
         }
 
+        public ViewStackSequence MoveBack<T>() where T : UIView
+        {
+            Type type = typeof(T);
+
+            instructionsToPlay.Add(new MoveBackUIViewInstruction(
+                registeredViewsRepository,
+                type
+                ));
+
+            return this;
+        }
+
         public ViewStackSequence ShowLast(bool instantly)
         {
             instructionsToPlay.Add(new ShowLastUIViewInstruction(
@@ -69,21 +81,21 @@ namespace Playground.Services.ViewStack
                 viewContexRepository,
                 viewQueueRepository,
                 uiInteractorRepository,
-                asForeground: false,
+                behindForeground: false,
                 instantly
                 ));
 
             return this;
         }
 
-        public ViewStackSequence ShowLastAsForeground(bool instantly)
+        public ViewStackSequence ShowLastBehindForeground(bool instantly)
         {
             instructionsToPlay.Add(new ShowLastUIViewInstruction(
                 registeredViewsRepository,
                 viewContexRepository,
                 viewQueueRepository,
                 uiInteractorRepository,
-                asForeground: true,
+                behindForeground: true,
                 instantly
                 ));
 

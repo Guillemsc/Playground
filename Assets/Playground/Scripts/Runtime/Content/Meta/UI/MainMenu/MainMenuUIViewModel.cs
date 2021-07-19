@@ -20,6 +20,8 @@ namespace Playground.Content.Meta.UI.MainMenu
         public ObservableEvent<DragPointerCallbacks, PointerEventData> OnDragCarViewEvent { get; } 
             = new ObservableEvent<DragPointerCallbacks, PointerEventData>();
 
+        public ObservableEvent<PointerCallbacks, EventArgs> OnShopClickedEvent { get; }
+            = new ObservableEvent<PointerCallbacks, EventArgs>();
         public ObservableEvent<PointerCallbacks, EventArgs> OnCarLibraryClickedEvent { get; } 
             = new ObservableEvent<PointerCallbacks, EventArgs>();
         public ObservableEvent<PointerCallbacks, EventArgs> OnDemoStagesClickedEvent { get; } 

@@ -4,6 +4,7 @@ using Juce.CoreUnity.Service;
 using Playground.Content.Meta.UI.CarsLibrary;
 using Playground.Content.Meta.UI.Credits;
 using Playground.Content.Meta.UI.DemoStages;
+using Playground.Content.Meta.UI.Shop;
 using Playground.Services.ViewStack;
 using System;
 using UnityEngine.EventSystems;
@@ -32,6 +33,7 @@ namespace Playground.Content.Meta.UI.MainMenu
             viewModel.OnStartDraggingCarViewEvent.OnExecute += OnStartDraggingCarViewEvent;
             viewModel.OnStopDraggingCarViewEvent.OnExecute += OnStopDraggingCarViewEvent;
             viewModel.OnDragCarViewEvent.OnExecute += OnDragCarViewEvent;
+            viewModel.OnShopClickedEvent.OnExecute += OnShopClickedEvent;
             viewModel.OnCarLibraryClickedEvent.OnExecute += OnCarLibraryClickedEvent;
             viewModel.OnDemoStagesClickedEvent.OnExecute += OnDemoStagesClickedEvent;
             viewModel.OnCreditsClickedEvent.OnExecute += OnCreditsClickedEvent;
@@ -42,6 +44,7 @@ namespace Playground.Content.Meta.UI.MainMenu
             viewModel.OnStartDraggingCarViewEvent.OnExecute -= OnStartDraggingCarViewEvent;
             viewModel.OnStopDraggingCarViewEvent.OnExecute -= OnStopDraggingCarViewEvent;
             viewModel.OnDragCarViewEvent.OnExecute -= OnDragCarViewEvent;
+            viewModel.OnShopClickedEvent.OnExecute -= OnShopClickedEvent;
             viewModel.OnCarLibraryClickedEvent.OnExecute -= OnCarLibraryClickedEvent;
             viewModel.OnDemoStagesClickedEvent.OnExecute -= OnDemoStagesClickedEvent;
             viewModel.OnCreditsClickedEvent.OnExecute -= OnCreditsClickedEvent;
@@ -60,6 +63,11 @@ namespace Playground.Content.Meta.UI.MainMenu
         private void OnDragCarViewEvent(DragPointerCallbacks dragPointerCallbacks, PointerEventData pointerEventData)
         {
             useCases.ManuallyRotate3DCarUseCase.Execute(-pointerEventData.delta.x);
+        }
+
+        private void OnShopClickedEvent(PointerCallbacks pointerCallbacks, EventArgs eventArgs)
+        {
+            uiViewStackService.New().Show<ShopUIView>(instantly: false).Hide<MainMenuUIView>(instantly: true).Execute();
         }
 
         private void OnCarLibraryClickedEvent(PointerCallbacks pointerCallbacks, EventArgs eventArgs)

@@ -16,3 +16,4 @@ MonoBehaviour:
   carName: F1
   carIcon: {fileID: 21300000, guid: 44a56692446c6fc40a7cfb13e97f9e0c, type: 3}
   carViewPrefab: {fileID: 1674271318535626332, guid: f20a7e5f6c4936e43b33a7ace0310f4c, type: 3}
+  carShopPrice: 1000

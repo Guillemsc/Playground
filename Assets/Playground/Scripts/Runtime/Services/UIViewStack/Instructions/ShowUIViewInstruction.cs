@@ -59,7 +59,7 @@ namespace Playground.Services.ViewStack
                 viewContexRepository.Add(new ViewContex(uiView));
             }
 
-            UIFrame.Instance.Push(uiView);
+            UIFrame.Instance.PushForeground(uiView);
 
             bool interactorFound = uiInteractorRepository.TryGet(viewType, out UIInteractor interactor);
 
