@@ -67,17 +67,21 @@ namespace Playground.Boostraps
         private void GenerateSharedService()
         {
             ISaveProgressUseCase saveProgressUseCase = new NopSaveProgressUseCase();
+            IGetOwnedCarsUseCase getOwnedCarsUseCase = new NopGetOwnedCarsUseCase();
             IGetStageStarsFromTimingUseCase getStageStarsFromTimingUseCase = new NopGetStageStarsFromTimingUseCase();
             ITryGetStageCarStarsUseCase tryGetStageCarStarsUseCase = new NopTryGetStageCarStarsUseCase();
             ISetStageCarStarsUseCase setStageCarStarsUseCase = new NopSetStageCarStarsUseCase();
             IAddSoftCurrencyUseCase addSoftCurrencyUseCase = new NopAddSoftCurrencyUseCase();
+            IRemoveSoftCurrencyUseCase removeSoftCurrencyUseCase = new NopRemoveSoftCurrencyUseCase();
 
             SharedUseCases sharedUseCases = new SharedUseCases(
                 saveProgressUseCase,
+                getOwnedCarsUseCase,
                 getStageStarsFromTimingUseCase,
                 tryGetStageCarStarsUseCase,
                 setStageCarStarsUseCase,
-                addSoftCurrencyUseCase
+                addSoftCurrencyUseCase,
+                removeSoftCurrencyUseCase
                 );
 
             SharedService sharedService = new SharedService(sharedUseCases);

@@ -10964,7 +10964,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.15
+          FallbackValue: 0.1
         easing:
           bindingEnabled: 0
           wantsToBeBinded: 0
@@ -11286,7 +11286,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.15
+          FallbackValue: 0.1
         easing:
           bindingEnabled: 0
           wantsToBeBinded: 0
