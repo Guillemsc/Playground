@@ -58,7 +58,9 @@ namespace Playground.Content.Meta.UI.CarPanel
         private void GenerateUseCases()
         {
             ISetupViewingCarUseCase setupViewingCarUseCase = new SetupViewingCarUseCase(
-                viewingCarData
+                configurationService.CarLibrary,
+                viewingCarData,
+                viewModel
                 );
 
             IRefreshCarUseCase refreshCarUseCase = new RefreshCarUseCase(

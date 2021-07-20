@@ -13,9 +13,11 @@ namespace Playground.Content.Stage.VisualLogic.View.Car
         [SerializeField] private Rigidbody rigidBody = default;
         [SerializeField] private Transform wheelCollidersParent = default;
         [SerializeField] private List<CarViewSteeringWheelData> steeringWheelsTransforms = default;
+        [SerializeField] private Transform groundPosition = default;
 
         public string TypeId { get; private set; }
         public CarViewController CarViewController => carViewController;
+        public Transform GroundPosition => groundPosition;
 
         private void Awake()
         {

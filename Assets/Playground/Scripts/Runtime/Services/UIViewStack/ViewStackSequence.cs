@@ -47,6 +47,22 @@ namespace Playground.Services.ViewStack
             return this;
         }
 
+        public ViewStackSequence HideAndPush<T>(bool instantly) where T : UIView
+        {
+            Type type = typeof(T);
+
+            instructionsToPlay.Add(new HideUIViewInstruction(
+                registeredViewsRepository,
+                viewContexRepository,
+                viewQueueRepository,
+                type,
+                pushToViewQueue: true,
+                instantly
+                ));
+
+            return this;
+        }
+
         public ViewStackSequence Hide<T>(bool instantly) where T : UIView
         {
             Type type = typeof(T);
@@ -56,19 +72,8 @@ namespace Playground.Services.ViewStack
                 viewContexRepository,
                 viewQueueRepository,
                 type,
+                pushToViewQueue: false,
                 instantly
-                ));
-
-            return this;
-        }
-
-        public ViewStackSequence MoveBack<T>() where T : UIView
-        {
-            Type type = typeof(T);
-
-            instructionsToPlay.Add(new MoveBackUIViewInstruction(
-                registeredViewsRepository,
-                type
                 ));
 
             return this;
@@ -97,6 +102,18 @@ namespace Playground.Services.ViewStack
                 uiInteractorRepository,
                 behindForeground: true,
                 instantly
+                ));
+
+            return this;
+        }
+
+        public ViewStackSequence MoveBack<T>() where T : UIView
+        {
+            Type type = typeof(T);
+
+            instructionsToPlay.Add(new MoveBackUIViewInstruction(
+                registeredViewsRepository,
+                type
                 ));
 
             return this;

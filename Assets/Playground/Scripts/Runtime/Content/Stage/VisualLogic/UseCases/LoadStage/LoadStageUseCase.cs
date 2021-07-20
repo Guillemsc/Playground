@@ -14,6 +14,7 @@ using Playground.Services.ViewStack;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Playground.Content.Stage.VisualLogic.UseCases
 {
@@ -94,7 +95,13 @@ namespace Playground.Content.Stage.VisualLogic.UseCases
             new BindCarControllerSignalsInstruction(carControllerSignals, carView.CarViewController).Execute();
             new BindCarViewControllerSignalsInstruction(carViewControllerSignals, carView.CarViewController).Execute();
 
-            new TeleportCarToTransformInstruction(carViewRepository, stageView.CarStartPosition).Execute();
+            Vector3 groundPositionOffset = new GetCarViewGroundOffsetInstruction(carViewRepository).Execute();
+            new TeleportCarToTransformInstruction(
+                carViewRepository, 
+                stageView.CarStartPosition,
+                groundPositionOffset
+                ).Execute();
+
             new AttachCameraToCarInstruction(carViewRepository, followCarVirtualCamera, stageView.CinemachinePath).Execute();
 
             await new WaitTimeInstruction(timeService.UnscaledTimeContext, TimeSpan.FromSeconds(0.5f)).Execute(cancellationToken);

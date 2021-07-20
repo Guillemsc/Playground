@@ -18,7 +18,7 @@ namespace Playground.Content.Meta.UI.Shop
 
             carPanelUIInteractor.SetupViewingCar(carTypeId);
 
-            uiViewStackService.New().Show<CarPanelUIView>(instantly: false).Hide<ShopUIView>(instantly: true).Execute();
+            uiViewStackService.New().Show<CarPanelUIView>(instantly: false).HideAndPush<ShopUIView>(instantly: true).Execute();
         }
     }
 }
