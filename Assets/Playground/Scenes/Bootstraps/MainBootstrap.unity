@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 1933272022}
   - component: {fileID: 1933272021}
   - component: {fileID: 1933272023}
+  - component: {fileID: 1933272024}
   m_Layer: 0
   m_Name: Bootstrap
   m_TagString: Untagged
@@ -180,3 +181,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxFramerate: 999
+--- !u!114 &1933272024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933272020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e20862caede32f64ba59118e7e85f89f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
