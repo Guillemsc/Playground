@@ -22,17 +22,24 @@ namespace Playground.Content.Meta.UI.CarPanel
         public void Subscribe()
         {
             viewModel.OnBackClickedEvent.OnExecute += OnBackClickedEvent;
+            viewModel.OnCarSelectedEvent.OnExecute += OnCarSelectedEvent;
         }
 
         public void Unsubscribe()
         {
             viewModel.OnBackClickedEvent.OnExecute -= OnBackClickedEvent;
+            viewModel.OnCarSelectedEvent.OnExecute -= OnCarSelectedEvent;
         }
 
         private void OnBackClickedEvent(PointerCallbacks pointerCallbacks, EventArgs eventArgs)
         {
             UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
             uiViewStackService.New().ShowLast(instantly: false).Hide<CarPanelUIView>(instantly: true).Execute();
+        }
+
+        private void OnCarSelectedEvent(PointerCallbacks pointerCallbacks, EventArgs eventArgs)
+        {
+            useCases.SelectCarUseCase.Execute();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Playground.Content.Meta.UI.CarPanel
 
         private UIViewStackService uiViewStackService;
         private ConfigurationService configurationService;
-        private PersistenceService userService;
+        private PersistenceService persistenceService;
 
         private CarViewer3DUIInteractor carViewer3DInteractor;
 
@@ -43,7 +43,7 @@ namespace Playground.Content.Meta.UI.CarPanel
         {
             uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
             configurationService = ServicesProvider.GetService<ConfigurationService>();
-            userService = ServicesProvider.GetService<PersistenceService>();
+            persistenceService = ServicesProvider.GetService<PersistenceService>();
         }
 
         private void GenerateDependences()
@@ -69,9 +69,16 @@ namespace Playground.Content.Meta.UI.CarPanel
                 viewingCarData
                 );
 
+            ISelectCarUseCase selectCarUseCase = new SelectCarUseCase(
+                uiViewStackService,
+                persistenceService,
+                viewingCarData
+                );
+
             useCases = new CarPanelUIUseCases(
                 setupViewingCarUseCase,
-                refreshCarUseCase
+                refreshCarUseCase,
+                selectCarUseCase
                 );
         }
 

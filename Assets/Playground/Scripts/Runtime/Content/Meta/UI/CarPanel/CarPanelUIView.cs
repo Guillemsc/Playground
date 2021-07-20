@@ -56,7 +56,7 @@ namespace Playground.Content.Meta.UI.CarPanel
 
         private void OnSelectCarPointerCallbacksClick(PointerCallbacks pointerCallbacks, PointerEventData pointerEventData)
         {
-            viewModel.OnBackClickedEvent.Execute(pointerCallbacks, EventArgs.Empty);
+            viewModel.OnCarSelectedEvent.Execute(pointerCallbacks, EventArgs.Empty);
         }
     }
 }
