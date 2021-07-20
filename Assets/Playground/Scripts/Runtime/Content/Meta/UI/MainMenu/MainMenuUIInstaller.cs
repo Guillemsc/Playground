@@ -1,6 +1,7 @@
 ﻿using Juce.CoreUnity.Service;
 using Juce.CoreUnity.Services;
 using Playground.Configuration.MainMenu;
+using Playground.Content.Meta.UI.CarViewer3D;
 using Playground.Content.Stage.VisualLogic.Viewer3D;
 using Playground.Services;
 using Playground.Services.ViewStack;
@@ -12,20 +13,13 @@ namespace Playground.Content.Meta.UI.MainMenu
     public class MainMenuUIInstaller : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private Viewer3DView carViewer3DView = default;
+        [SerializeField] private CarViewer3DUIInstaller carViewer3DInstaller = default;
 
-        [Header("Configuration")]
-        [SerializeField] private MainMenuConfiguration mainMenuConfiguration = default;
-
-        private TickablesService tickablesService;
         private UIViewStackService uiViewStackService;
         private ConfigurationService configurationService;
         private PersistenceService persistenceService;
 
-        private CarViewFactory carViewFactory;
-        private CarViewRepository carViewRepository;
-
-        private CarViewRotationData carViewRotationData;
+        private CarViewer3DUIInteractor carViewer3DInteractor;
 
         private MainMenuUIViewModel viewModel;
         private MainMenuUIView view;
@@ -49,7 +43,6 @@ namespace Playground.Content.Meta.UI.MainMenu
 
         private void GatherDependences()
         {
-            tickablesService = ServicesProvider.GetService<TickablesService>();
             uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
             configurationService = ServicesProvider.GetService<ConfigurationService>();
             persistenceService = ServicesProvider.GetService<PersistenceService>();
@@ -57,59 +50,13 @@ namespace Playground.Content.Meta.UI.MainMenu
 
         private void GenerateDependences()
         {
-            carViewFactory = new CarViewFactory();
-            carViewRepository = new CarViewRepository();
-
-            carViewRotationData = new CarViewRotationData();
+            carViewer3DInteractor = carViewer3DInstaller.Install();
 
             viewModel = new MainMenuUIViewModel();
         }
 
         private void GenerateUseCases()
         {
-            IScreenToCanvasDeltaUseCase screenToCanvasDeltaUseCase = new ScreenToCanvasDeltaUseCase(
-                uiViewStackService.Canvas
-                );
-
-            ICleanUpCarViewUseCase cleanUpCarViewUseCase = new CleanUpCarViewUseCase(
-                carViewRepository
-                );
-
-            IShowCarViewUseCase showCarViewUseCase = new ShowCarViewUseCase(
-                persistenceService,
-                carViewer3DView,
-                configurationService.CarLibrary,
-                carViewFactory,
-                carViewRepository
-                );
-
-            IRotateCarViewUseCase rotateCarViewUseCase = new RotateCarViewUseCase(
-                carViewer3DView
-                );
-
-            IStartManuallyRotatingCarViewUseCase startManuallyRotatingCarViewUseCase = new StartManuallyRotatingCarViewUseCase(
-                carViewRotationData
-                );
-
-            IStopManuallyRotatingCarViewUseCase stopManuallyRotatingCarViewUseCase = new StopManuallyRotatingCarViewUseCase(
-                mainMenuConfiguration,
-                carViewRotationData,
-                screenToCanvasDeltaUseCase
-                );
-
-            IManuallyRotateCarViewUseCase manuallyRotateCarViewUseCase = new ManuallyRotateCarViewUseCase(
-                mainMenuConfiguration,
-                carViewRotationData,
-                screenToCanvasDeltaUseCase,
-                rotateCarViewUseCase
-                );
-
-            ICarryCarViewRotationVelocityTickableUseCase carryCarViewRotationVelocityTickableUseCase = new CarryCarViewRotationVelocityTickableUseCase(
-                mainMenuConfiguration,
-                carViewRotationData,
-                rotateCarViewUseCase
-                );
-
             IRefreshStarsUseCase setStarsUseCase = new RefreshStarsUseCase(
                 viewModel,
                 persistenceService
@@ -120,17 +67,16 @@ namespace Playground.Content.Meta.UI.MainMenu
                 persistenceService
                 );
 
+            IRefreshCarUseCase refreshCarUseCase = new RefreshCarUseCase(
+                persistenceService,
+                carViewer3DInteractor,
+                configurationService.CarLibrary
+                );
+
             useCases = new MainMenuUIUseCases(
-                screenToCanvasDeltaUseCase,
-                cleanUpCarViewUseCase,
-                showCarViewUseCase,
-                rotateCarViewUseCase,
-                startManuallyRotatingCarViewUseCase,
-                stopManuallyRotatingCarViewUseCase,
-                manuallyRotateCarViewUseCase,
-                carryCarViewRotationVelocityTickableUseCase,
                 setStarsUseCase,
-                refreshSoftCurrencyUseCase
+                refreshSoftCurrencyUseCase,
+                refreshCarUseCase
                 );
         }
 
@@ -155,13 +101,11 @@ namespace Playground.Content.Meta.UI.MainMenu
             interactor.Subscribe();
 
             uiViewStackService.Register(interactor, view);
-
-            tickablesService.AddTickable(useCases.CarryCarViewRotationVelocityTickableUseCase);
         }
 
         private void Uninstall()
         {
-            tickablesService.RemoveTickable(useCases.CarryCarViewRotationVelocityTickableUseCase);
+            carViewer3DInstaller.Uninstall();
 
             controller.Unsubscribe();
             interactor.Unsubscribe();

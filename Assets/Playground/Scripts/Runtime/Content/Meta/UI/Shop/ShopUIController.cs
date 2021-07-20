@@ -22,6 +22,7 @@ namespace Playground.Content.Meta.UI.Shop
         public void Subscribe()
         {
             viewModel.OnBackClickedEvent.OnExecute += OnBackClickedEvent;
+            viewModel.OnShopCarClickedEvent.OnExecute += OnShopCarClickedEvent;
 
             useCases.SpawnCarsUseCase.Execute();
         }
@@ -35,6 +36,11 @@ namespace Playground.Content.Meta.UI.Shop
         {
             UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
             uiViewStackService.New().ShowLast(instantly: false).Hide<ShopUIView>(instantly: true).Execute();
+        }
+
+        private void OnShopCarClickedEvent(ShopCarUIEntry shopCarUIEntry, PointerCallbacks pointerCallbacks)
+        {
+            useCases.CarSelectedUseCase.Execute(shopCarUIEntry.CarTypeId);
         }
     }
 }

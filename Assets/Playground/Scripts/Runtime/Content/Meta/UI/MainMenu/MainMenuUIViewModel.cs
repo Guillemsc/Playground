@@ -13,13 +13,6 @@ namespace Playground.Content.Meta.UI.MainMenu
         public ObservableVariable<int> SoftCurrencyVariable { get; }
             = new ObservableVariable<int>();
 
-        public ObservableEvent<DragPointerCallbacks, PointerEventData> OnStartDraggingCarViewEvent { get; } 
-            = new ObservableEvent<DragPointerCallbacks, PointerEventData>();
-        public ObservableEvent<DragPointerCallbacks, PointerEventData> OnStopDraggingCarViewEvent { get; } 
-            = new ObservableEvent<DragPointerCallbacks, PointerEventData>();
-        public ObservableEvent<DragPointerCallbacks, PointerEventData> OnDragCarViewEvent { get; } 
-            = new ObservableEvent<DragPointerCallbacks, PointerEventData>();
-
         public ObservableEvent<PointerCallbacks, EventArgs> OnShopClickedEvent { get; }
             = new ObservableEvent<PointerCallbacks, EventArgs>();
         public ObservableEvent<PointerCallbacks, EventArgs> OnCarLibraryClickedEvent { get; } 

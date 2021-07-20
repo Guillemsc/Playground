@@ -70,9 +70,14 @@ namespace Playground.Content.Meta.UI.Shop
                 spawnCarUseCase
                 );
 
+            ICarSelectedUseCase carSelectedUseCase = new CarSelectedUseCase(
+                uiViewStackService
+                );
+
             useCases = new ShopUIUseCases(
                 spawnCarUseCase,
-                spawnCarsUseCase
+                spawnCarsUseCase,
+                carSelectedUseCase
                 );
         }
 

@@ -8,17 +8,21 @@ namespace Playground.Configuration.Car
     {
         [Header("Core")]
         [SerializeField] private string carTypeId = default;
-        [SerializeField] private string carName = default;
-        [SerializeField] private Sprite carIcon = default;
         [SerializeField] private CarView carViewPrefab = default;
+
+        [Header("Info")]
+        [SerializeField] private string carName = default;
+        [SerializeField] private string carDescription = default;
+        [SerializeField] private Sprite carIcon = default;
 
         [Header("Shop")]
         [SerializeField] private int carShopPrice = default;
 
         public string CarTypeId => carTypeId;
+        public CarView CarViewPrefab => carViewPrefab;
         public Sprite CarIcon => carIcon;
         public string CarName => carName;
-        public CarView CarViewPrefab => carViewPrefab;
+        public string CarDescription => carDescription;
         public int CarShopPrice => carShopPrice;
     }
 }

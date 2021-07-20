@@ -30,9 +30,9 @@ namespace Playground.Content.Meta.UI.MainMenu
 
         public void Subscribe()
         {
-            viewModel.OnStartDraggingCarViewEvent.OnExecute += OnStartDraggingCarViewEvent;
-            viewModel.OnStopDraggingCarViewEvent.OnExecute += OnStopDraggingCarViewEvent;
-            viewModel.OnDragCarViewEvent.OnExecute += OnDragCarViewEvent;
+            //viewModel.OnStartDraggingCarViewEvent.OnExecute += OnStartDraggingCarViewEvent;
+            //viewModel.OnStopDraggingCarViewEvent.OnExecute += OnStopDraggingCarViewEvent;
+            //viewModel.OnDragCarViewEvent.OnExecute += OnDragCarViewEvent;
             viewModel.OnShopClickedEvent.OnExecute += OnShopClickedEvent;
             viewModel.OnCarLibraryClickedEvent.OnExecute += OnCarLibraryClickedEvent;
             viewModel.OnDemoStagesClickedEvent.OnExecute += OnDemoStagesClickedEvent;
@@ -41,29 +41,29 @@ namespace Playground.Content.Meta.UI.MainMenu
 
         public void Unsubscribe()
         {
-            viewModel.OnStartDraggingCarViewEvent.OnExecute -= OnStartDraggingCarViewEvent;
-            viewModel.OnStopDraggingCarViewEvent.OnExecute -= OnStopDraggingCarViewEvent;
-            viewModel.OnDragCarViewEvent.OnExecute -= OnDragCarViewEvent;
+            //viewModel.OnStartDraggingCarViewEvent.OnExecute -= OnStartDraggingCarViewEvent;
+            //viewModel.OnStopDraggingCarViewEvent.OnExecute -= OnStopDraggingCarViewEvent;
+            //viewModel.OnDragCarViewEvent.OnExecute -= OnDragCarViewEvent;
             viewModel.OnShopClickedEvent.OnExecute -= OnShopClickedEvent;
             viewModel.OnCarLibraryClickedEvent.OnExecute -= OnCarLibraryClickedEvent;
             viewModel.OnDemoStagesClickedEvent.OnExecute -= OnDemoStagesClickedEvent;
             viewModel.OnCreditsClickedEvent.OnExecute -= OnCreditsClickedEvent;
         }
 
-        private void OnStartDraggingCarViewEvent(DragPointerCallbacks dragPointerCallbacks, PointerEventData pointerEventData)
-        {
-            useCases.StartManuallyRotatingCarViewUseCase.Execute();
-        }
+        //private void OnStartDraggingCarViewEvent(DragPointerCallbacks dragPointerCallbacks, PointerEventData pointerEventData)
+        //{
+        //    useCases.StartManuallyRotatingCarViewUseCase.Execute();
+        //}
 
-        private void OnStopDraggingCarViewEvent(DragPointerCallbacks dragPointerCallbacks, PointerEventData pointerEventData)
-        {
-            useCases.StopManuallyRotatingCarViewUseCase.Execute(-pointerEventData.delta.x);
-        }
+        //private void OnStopDraggingCarViewEvent(DragPointerCallbacks dragPointerCallbacks, PointerEventData pointerEventData)
+        //{
+        //    useCases.StopManuallyRotatingCarViewUseCase.Execute(-pointerEventData.delta.x);
+        //}
 
-        private void OnDragCarViewEvent(DragPointerCallbacks dragPointerCallbacks, PointerEventData pointerEventData)
-        {
-            useCases.ManuallyRotate3DCarUseCase.Execute(-pointerEventData.delta.x);
-        }
+        //private void OnDragCarViewEvent(DragPointerCallbacks dragPointerCallbacks, PointerEventData pointerEventData)
+        //{
+        //    useCases.ManuallyRotate3DCarUseCase.Execute(-pointerEventData.delta.x);
+        //}
 
         private void OnShopClickedEvent(PointerCallbacks pointerCallbacks, EventArgs eventArgs)
         {

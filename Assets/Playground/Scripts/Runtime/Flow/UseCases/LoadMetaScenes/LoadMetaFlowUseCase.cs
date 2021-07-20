@@ -28,7 +28,7 @@ namespace Playground.Flow.UseCases
 
             UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
 
-            await uiViewStackService.New().Show<MainMenuUIView>(instantly: false).Execute(default);
+            await uiViewStackService.New().Show<MainMenuUIView>(instantly: true).Execute(default);
 
             loadingToken.Complete();
         }
