@@ -22,3 +22,6 @@
 [submodule "Assets/Juce/Juce-Scripting"]
 	path = Assets/Juce/Juce-Scripting
 	url = https://github.com/Juce-Assets/Juce-Scripting
+[submodule "Assets/Juce/Juce-Loc"]
+	path = Assets/Juce/Juce-Loc
+	url = https://github.com/Juce-Assets/Juce-Loc
