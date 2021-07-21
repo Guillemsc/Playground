@@ -92,7 +92,7 @@ namespace Playground.Utils.Persistence
             }
             catch (Exception exception)
             {
-                UnityEngine.Debug.LogError($"Error loading {nameof(SerializableData<T>)} {typeof(T).Name}" +
+                UnityEngine.Debug.LogError($"Error loading {nameof(SerializableData<T>)} {typeof(T).Name} " +
                     $"with the following exception {exception}");
             }
 
