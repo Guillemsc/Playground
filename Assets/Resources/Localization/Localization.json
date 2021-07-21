@@ -1,0 +1,18 @@
+{
+  "Values": [
+    {
+      "Language": "English",
+      "Values": {
+        "tid_1": "Hi",
+        "tid_2": "What"
+      }
+    },
+    {
+      "Language": "Spanish",
+      "Values": {
+        "tid_1": "Hola",
+        "tid_2": "Que"
+      }
+    }
+  ]
+}
