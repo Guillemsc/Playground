@@ -26,6 +26,8 @@ namespace Playground.Boostraps
 
             await flowUseCases.LoadEssentialScenesFlowUseCase.Execute();
 
+            await flowUseCases.LoadLocalizationDataFlowUseCase.Execute();
+
             ILoadingToken loadingToken = await flowUseCases.ShowLoadingScreenFlowUseCase.Execute(instantly: true);
 
             await flowUseCases.LoadUserDataFlowUseCase.Execute();
@@ -41,6 +43,7 @@ namespace Playground.Boostraps
 
             FlowUseCases flowUseCases = new FlowUseCases(
                 new LoadEssentialScenesFlowUseCase(),
+                new LoadLocalizationDataFlowUseCase(),
                 new ShowLoadingScreenFlowUseCase(),
                 new LoadUserDataFlowUseCase(),
                 new LoadAdsScenesFlowUseCase(),

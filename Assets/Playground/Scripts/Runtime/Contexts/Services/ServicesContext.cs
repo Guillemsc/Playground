@@ -18,6 +18,7 @@ namespace Playground.Contexts
         private UIViewStackService uiViewStackService;
         private ConfigurationService configurationService;
         private PersistenceService userService;
+        private LocalizationService localizationService;
 
         protected override void Init()
         {
@@ -42,6 +43,9 @@ namespace Playground.Contexts
 
             userService = new PersistenceService();
             ServicesProvider.Register(userService);
+
+            localizationService = new LocalizationService();
+            ServicesProvider.Register(localizationService);
         }
 
         protected override void CleanUp()
@@ -51,6 +55,7 @@ namespace Playground.Contexts
             ServicesProvider.Unregister(timeService);
             ServicesProvider.Unregister(configurationService);
             ServicesProvider.Unregister(userService);
+            ServicesProvider.Unregister(localizationService);
 
             ContextsProvider.Unregister(this);
         }
