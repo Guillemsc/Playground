@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 977dcd512ea66984aaf50c399c4fc158, type: 3}
-  m_Name: ScreenSafeAreaSettings
+  m_Name: ScreenSafeAreaConfiguration
   m_EditorClassIdentifier: 
-  referenceOrientation: 0
+  referenceOrientation: 3
   defaultData:
     up:
       use: 1
