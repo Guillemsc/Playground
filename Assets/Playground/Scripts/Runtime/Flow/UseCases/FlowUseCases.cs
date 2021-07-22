@@ -3,6 +3,7 @@
     public class FlowUseCases
     {
         public ILoadEssentialScenesFlowUseCase LoadEssentialScenesFlowUseCase { get; }
+        public ILoadBaseCheatsFlowUseCase LoadBaseCheatsFlowUseCase { get; }
         public ILoadLocalizationDataFlowUseCase LoadLocalizationDataFlowUseCase { get; }
         public IShowLoadingScreenFlowUseCase ShowLoadingScreenFlowUseCase { get; }
         public ILoadUserDataFlowUseCase LoadUserDataFlowUseCase { get; }
@@ -16,6 +17,7 @@
 
         public FlowUseCases(
             ILoadEssentialScenesFlowUseCase loadEssentialScenesFlowUseCase,
+            ILoadBaseCheatsFlowUseCase loadBaseCheatsFlowUseCase,
             ILoadLocalizationDataFlowUseCase loadLocalizationDataFlowUseCase,
             IShowLoadingScreenFlowUseCase showLoadingScreenFlowUseCase,
             ILoadUserDataFlowUseCase loadUserDataFlowUseCase,
@@ -29,6 +31,7 @@
             )
         {
             LoadEssentialScenesFlowUseCase = loadEssentialScenesFlowUseCase;
+            LoadBaseCheatsFlowUseCase = loadBaseCheatsFlowUseCase;
             LoadLocalizationDataFlowUseCase = loadLocalizationDataFlowUseCase;
             ShowLoadingScreenFlowUseCase = showLoadingScreenFlowUseCase;
             LoadUserDataFlowUseCase = loadUserDataFlowUseCase;

@@ -1,19 +1,21 @@
 {
   "Values": [
     {
-      "Language": "English",
+      "Language": "english",
       "Values": {
-        "tid_1": "Hi",
-        "tid_2": "What",
-        "tid_3": "The"
+        "main_menu_shop_button": "Shop",
+        "main_menu_car_library_button": "Cars",
+        "main_menu_race_button": "Race!",
+        "main_menu_credits": "Credits"
       }
     },
     {
-      "Language": "Spanish",
+      "Language": "spanish",
       "Values": {
-        "tid_1": "Hola",
-        "tid_2": "Que",
-        "tid_3": "Missing tid_3"
+        "main_menu_shop_button": "Hola",
+        "main_menu_car_library_button": "Que",
+        "main_menu_race_button": "Missing main_menu_race_button",
+        "main_menu_credits": "Missing main_menu_credits"
       }
     }
   ]

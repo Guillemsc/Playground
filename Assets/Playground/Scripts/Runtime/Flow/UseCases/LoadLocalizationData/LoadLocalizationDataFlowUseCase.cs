@@ -15,11 +15,12 @@ namespace Playground.Flow.UseCases
             if(!couldLoad)
             {
                 UnityEngine.Debug.LogError($"Localization data could not be loaded, at {nameof(LoadLocalizationDataFlowUseCase)}");
+                return;
             }
-            else
-            {
-                UnityEngine.Debug.Log($"Localization data successfully loaded");
-            }
+
+            UnityEngine.Debug.Log($"Localization data successfully loaded");
+
+            localizationService.SetLanguage(LocalizationService.DefaultLanguage);
         }
     }
 }

@@ -85,6 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4651714969955921778}
   - component: {fileID: 1008731360132747391}
+  - component: {fileID: 8265168800127322467}
   - component: {fileID: 7750048410708425867}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -120,6 +121,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2523244626860103763}
   m_CullTransparentMesh: 1
+--- !u!114 &8265168800127322467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2523244626860103763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e52cd0f5f4de9d4dadc198ac0826d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 1
+  tids: []
+  formating: '{0}'
 --- !u!114 &7750048410708425867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,7 +183,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 35.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 553535330970204799}
   - component: {fileID: 8117923807124968325}
+  - component: {fileID: 5625700943435290274}
   - component: {fileID: 6226234492405569400}
   m_Layer: 5
   m_Name: Text
@@ -45,6 +46,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2532940633196490487}
   m_CullTransparentMesh: 1
+--- !u!114 &5625700943435290274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2532940633196490487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e52cd0f5f4de9d4dadc198ac0826d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabled: 1
+  tids: []
+  formating: 
 --- !u!114 &6226234492405569400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,7 +124,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}

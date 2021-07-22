@@ -36,6 +36,8 @@ namespace Playground.Boostraps
 
             await flowUseCases.LoadEssentialScenesFlowUseCase.Execute();
 
+            flowUseCases.LoadBaseCheatsFlowUseCase.Execute();
+
             await flowUseCases.LoadLocalizationDataFlowUseCase.Execute();
 
             flowUseCases.SetCurrentStageFlowUseCase.Execute(stageConfiguration);
@@ -51,6 +53,7 @@ namespace Playground.Boostraps
 
             FlowUseCases flowUseCases = new FlowUseCases(
                 new LoadEssentialScenesFlowUseCase(),
+                new LoadBaseCheatsFlowUseCase(),
                 new LoadLocalizationDataFlowUseCase(),
                 new ShowLoadingScreenFlowUseCase(),
                 new NopLoadUserDataFlowUseCase(),
