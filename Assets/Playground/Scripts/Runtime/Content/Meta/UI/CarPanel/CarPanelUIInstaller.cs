@@ -83,9 +83,10 @@ namespace Playground.Content.Meta.UI.CarPanel
                 viewingCarData
                 );
 
-            IPurchaseCaseUseCase purchaseCarUseCase = new PurchaseCarUseCase(
+            IPurchaseCarUseCase purchaseCarUseCase = new PurchaseCarUseCase(
                 uiViewStackService,
-                viewingCarData
+                viewingCarData,
+                showPurchasedFeedback
                 );
 
             useCases = new CarPanelUIUseCases(

@@ -39,7 +39,7 @@ namespace Playground.Content.Meta.UI.ConfirmPurchase
 
         private void OnConfirmationClickedEvent(PointerCallbacks pointerCallbacks, EventArgs eventArgs)
         {
-          
+            useCases.PurchasedUseCase.Execute();
         }
     }
 }

@@ -46,7 +46,7 @@ namespace Playground.Content.Meta.UI.CarPanel
 
         private void OnCarPurchasedEvent(PointerCallbacks pointerCallbacks, EventArgs eventArgs)
         {
-            useCases.PurchaseCaseUseCase.Execute();
+            useCases.PurchaseCarUseCase.Execute();
         }
     }
 }

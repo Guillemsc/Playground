@@ -13,6 +13,8 @@ namespace Playground.Content.Meta.UI.ConfirmPurchase
         private ConfigurationService configurationService;
         private PersistenceService userService;
 
+        private EventsData eventsData;
+
         private ConfirmPurchaseUIViewModel viewModel;
         private ConfirmPurchaseUIView view;
         private ConfirmPurchaseUIUseCases useCases;
@@ -41,6 +43,8 @@ namespace Playground.Content.Meta.UI.ConfirmPurchase
 
         private void GenerateDependences()
         {
+            eventsData = new EventsData();
+
             viewModel = new ConfirmPurchaseUIViewModel();
         }
 
@@ -50,8 +54,13 @@ namespace Playground.Content.Meta.UI.ConfirmPurchase
                 viewModel
                 );
 
+            IPurchasedUseCase purchaseCaseUseCase = new PurchasedUseCase(
+                eventsData
+                );
+
             useCases = new ConfirmPurchaseUIUseCases(
-                setupDataUseCase
+                setupDataUseCase,
+                purchaseCaseUseCase
                 );
         }
 
@@ -60,7 +69,7 @@ namespace Playground.Content.Meta.UI.ConfirmPurchase
             view = GetComponent<ConfirmPurchaseUIView>();
 
             controller = new ConfirmPurchaseUIController(viewModel, useCases);
-            interactor = new ConfirmPurchaseUIInteractor(viewModel, useCases);
+            interactor = new ConfirmPurchaseUIInteractor(viewModel, useCases, eventsData);
 
             view.Init(viewModel);
 

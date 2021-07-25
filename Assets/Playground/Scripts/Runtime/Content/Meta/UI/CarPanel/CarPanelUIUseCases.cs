@@ -5,19 +5,19 @@
         public ISetupViewingCarUseCase SetupViewingCarUseCase { get; }
         public IRefreshCarUseCase RefreshCarUseCase { get; }
         public ISelectCarUseCase SelectCarUseCase { get; }
-        public IPurchaseCaseUseCase PurchaseCaseUseCase { get; }
+        public IPurchaseCarUseCase PurchaseCarUseCase { get; }
 
         public CarPanelUIUseCases(
             ISetupViewingCarUseCase setupViewingCarUseCase,
             IRefreshCarUseCase refreshCarUseCase,
             ISelectCarUseCase selectCarUseCase,
-            IPurchaseCaseUseCase purchaseCaseUseCase
+            IPurchaseCarUseCase purchaseCarUseCase
             )
         {
             SetupViewingCarUseCase = setupViewingCarUseCase;
             RefreshCarUseCase = refreshCarUseCase;
             SelectCarUseCase = selectCarUseCase;
-            PurchaseCaseUseCase = purchaseCaseUseCase;
+            PurchaseCarUseCase = purchaseCarUseCase;
         }
     }
 }

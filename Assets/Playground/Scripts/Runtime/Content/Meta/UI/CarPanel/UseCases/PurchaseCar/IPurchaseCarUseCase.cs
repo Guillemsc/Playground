@@ -1,6 +1,6 @@
 ﻿namespace Playground.Content.Meta.UI.CarPanel
 {
-    public interface IPurchaseCaseUseCase
+    public interface IPurchaseCarUseCase
     {
         void Execute();
     }
