@@ -4,6 +4,7 @@
     {
         public ISaveProgressUseCase SaveProgressUseCase { get; }
         public IGetOwnedCarsUseCase GetOwnedCarsUseCase { get; }
+        public IIsCarOwnedUseCase IsCarOwnedUseCase { get; }
         public IGetStageStarsFromTimingUseCase GetStageStarsFromTimingUseCase { get; }
         public ITryGetStageCarStarsUseCase TryGetStageCarStarsUseCase { get; }
         public ISetStageCarStarsUseCase SetStageCarStarsUseCase { get; }
@@ -13,6 +14,7 @@
         public SharedUseCases(
             ISaveProgressUseCase saveProgressUseCase,
             IGetOwnedCarsUseCase getOwnedCarsUseCase,
+            IIsCarOwnedUseCase isCarOwnedUseCase,
             IGetStageStarsFromTimingUseCase getStageStarsFromTimingUseCase,
             ITryGetStageCarStarsUseCase tryGetStageCarStarsUseCase,
             ISetStageCarStarsUseCase setStageCarStarsUseCase,
@@ -22,6 +24,7 @@
         {
             SaveProgressUseCase = saveProgressUseCase;
             GetOwnedCarsUseCase = getOwnedCarsUseCase;
+            IsCarOwnedUseCase = isCarOwnedUseCase;
             GetStageStarsFromTimingUseCase = getStageStarsFromTimingUseCase;
             TryGetStageCarStarsUseCase = tryGetStageCarStarsUseCase;
             SetStageCarStarsUseCase = setStageCarStarsUseCase;

@@ -74,6 +74,7 @@ namespace Playground.Boostraps
         {
             ISaveProgressUseCase saveProgressUseCase = new NopSaveProgressUseCase();
             IGetOwnedCarsUseCase getOwnedCarsUseCase = new NopGetOwnedCarsUseCase();
+            IIsCarOwnedUseCase isCarOwnedUseCase = new NopIsCarOwnedUseCase();
             IGetStageStarsFromTimingUseCase getStageStarsFromTimingUseCase = new NopGetStageStarsFromTimingUseCase();
             ITryGetStageCarStarsUseCase tryGetStageCarStarsUseCase = new NopTryGetStageCarStarsUseCase();
             ISetStageCarStarsUseCase setStageCarStarsUseCase = new NopSetStageCarStarsUseCase();
@@ -83,6 +84,7 @@ namespace Playground.Boostraps
             SharedUseCases sharedUseCases = new SharedUseCases(
                 saveProgressUseCase,
                 getOwnedCarsUseCase,
+                isCarOwnedUseCase,
                 getStageStarsFromTimingUseCase,
                 tryGetStageCarStarsUseCase,
                 setStageCarStarsUseCase,

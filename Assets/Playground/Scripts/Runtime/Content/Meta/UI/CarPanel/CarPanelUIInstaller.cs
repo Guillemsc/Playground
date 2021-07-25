@@ -1,4 +1,5 @@
 ﻿using Juce.CoreUnity.Service;
+using Juce.TweenPlayer;
 using Playground.Content.Meta.UI.CarViewer3D;
 using Playground.Services;
 using Playground.Services.ViewStack;
@@ -11,10 +12,13 @@ namespace Playground.Content.Meta.UI.CarPanel
     {
         [Header("References")]
         [SerializeField] private CarViewer3DUIInstaller carViewer3DInstaller = default;
+        [SerializeField] private TweenPlayer showPurchasedFeedback = default;
+        [SerializeField] private TweenPlayer showNonPurchasedFeedback = default;
 
         private UIViewStackService uiViewStackService;
         private ConfigurationService configurationService;
         private PersistenceService persistenceService;
+        private SharedService sharedService;
 
         private CarViewer3DUIInteractor carViewer3DInteractor;
 
@@ -44,6 +48,7 @@ namespace Playground.Content.Meta.UI.CarPanel
             uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
             configurationService = ServicesProvider.GetService<ConfigurationService>();
             persistenceService = ServicesProvider.GetService<PersistenceService>();
+            sharedService = ServicesProvider.GetService<SharedService>();
         }
 
         private void GenerateDependences()
@@ -58,9 +63,12 @@ namespace Playground.Content.Meta.UI.CarPanel
         private void GenerateUseCases()
         {
             ISetupViewingCarUseCase setupViewingCarUseCase = new SetupViewingCarUseCase(
+                sharedService,
                 configurationService.CarLibrary,
                 viewingCarData,
-                viewModel
+                viewModel,
+                showPurchasedFeedback,
+                showNonPurchasedFeedback
                 );
 
             IRefreshCarUseCase refreshCarUseCase = new RefreshCarUseCase(
@@ -75,10 +83,16 @@ namespace Playground.Content.Meta.UI.CarPanel
                 viewingCarData
                 );
 
+            IPurchaseCaseUseCase purchaseCarUseCase = new PurchaseCarUseCase(
+                uiViewStackService,
+                viewingCarData
+                );
+
             useCases = new CarPanelUIUseCases(
                 setupViewingCarUseCase,
                 refreshCarUseCase,
-                selectCarUseCase
+                selectCarUseCase,
+                purchaseCarUseCase
                 );
         }
 

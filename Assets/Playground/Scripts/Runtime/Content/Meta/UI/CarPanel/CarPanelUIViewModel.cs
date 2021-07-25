@@ -17,5 +17,7 @@ namespace Playground.Content.Meta.UI.CarPanel
             = new ObservableVariable<string>();
         public ObservableVariable<string> CarDescriptionVariable { get; }
             = new ObservableVariable<string>();
+        public ObservableVariable<int> CarPriceVariable { get; }
+            = new ObservableVariable<int>();
     }
 }

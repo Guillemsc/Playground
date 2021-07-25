@@ -23,12 +23,14 @@ namespace Playground.Content.Meta.UI.CarPanel
         {
             viewModel.OnBackClickedEvent.OnExecute += OnBackClickedEvent;
             viewModel.OnCarSelectedEvent.OnExecute += OnCarSelectedEvent;
+            viewModel.OnCarPurchasedEvent.OnExecute += OnCarPurchasedEvent;
         }
 
         public void Unsubscribe()
         {
             viewModel.OnBackClickedEvent.OnExecute -= OnBackClickedEvent;
             viewModel.OnCarSelectedEvent.OnExecute -= OnCarSelectedEvent;
+            viewModel.OnCarPurchasedEvent.OnExecute -= OnCarPurchasedEvent;
         }
 
         private void OnBackClickedEvent(PointerCallbacks pointerCallbacks, EventArgs eventArgs)
@@ -40,6 +42,11 @@ namespace Playground.Content.Meta.UI.CarPanel
         private void OnCarSelectedEvent(PointerCallbacks pointerCallbacks, EventArgs eventArgs)
         {
             useCases.SelectCarUseCase.Execute();
+        }
+
+        private void OnCarPurchasedEvent(PointerCallbacks pointerCallbacks, EventArgs eventArgs)
+        {
+            useCases.PurchaseCaseUseCase.Execute();
         }
     }
 }
