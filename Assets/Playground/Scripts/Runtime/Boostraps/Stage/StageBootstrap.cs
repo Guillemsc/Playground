@@ -80,6 +80,8 @@ namespace Playground.Boostraps
             ISetStageCarStarsUseCase setStageCarStarsUseCase = new NopSetStageCarStarsUseCase();
             IAddSoftCurrencyUseCase addSoftCurrencyUseCase = new NopAddSoftCurrencyUseCase();
             IRemoveSoftCurrencyUseCase removeSoftCurrencyUseCase = new NopRemoveSoftCurrencyUseCase();
+            IHasEnoughSoftCurrencyUseCase hasEnoughSoftCurrencyUseCase = new NopHasEnoughSoftCurrencyUseCase();
+            IPurchaseCarUseCase purchaseCarUseCase = new NopPurchaseCarUseCase();
 
             SharedUseCases sharedUseCases = new SharedUseCases(
                 saveProgressUseCase,
@@ -89,7 +91,9 @@ namespace Playground.Boostraps
                 tryGetStageCarStarsUseCase,
                 setStageCarStarsUseCase,
                 addSoftCurrencyUseCase,
-                removeSoftCurrencyUseCase
+                removeSoftCurrencyUseCase,
+                hasEnoughSoftCurrencyUseCase,
+                purchaseCarUseCase
                 );
 
             SharedService sharedService = new SharedService(sharedUseCases);

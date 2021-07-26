@@ -14,6 +14,8 @@ namespace Playground.Content.Meta.UI.CarPanel
         [SerializeField] private CarViewer3DUIInstaller carViewer3DInstaller = default;
         [SerializeField] private TweenPlayer showPurchasedFeedback = default;
         [SerializeField] private TweenPlayer showNonPurchasedFeedback = default;
+        [SerializeField] private TweenPlayer showEnoughSoftCurrencyFeedback = default;
+        [SerializeField] private TweenPlayer showNotEnoughSoftCurrencyFeedback = default;
 
         private UIViewStackService uiViewStackService;
         private ConfigurationService configurationService;
@@ -68,7 +70,9 @@ namespace Playground.Content.Meta.UI.CarPanel
                 viewingCarData,
                 viewModel,
                 showPurchasedFeedback,
-                showNonPurchasedFeedback
+                showNonPurchasedFeedback,
+                showEnoughSoftCurrencyFeedback,
+                showNotEnoughSoftCurrencyFeedback
                 );
 
             IRefreshCarUseCase refreshCarUseCase = new RefreshCarUseCase(
@@ -84,6 +88,7 @@ namespace Playground.Content.Meta.UI.CarPanel
                 );
 
             IPurchaseCarUseCase purchaseCarUseCase = new PurchaseCarUseCase(
+                sharedService,
                 uiViewStackService,
                 viewingCarData,
                 showPurchasedFeedback

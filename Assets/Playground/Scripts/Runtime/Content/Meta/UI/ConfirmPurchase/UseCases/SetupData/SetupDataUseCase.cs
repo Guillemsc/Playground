@@ -13,7 +13,10 @@ namespace Playground.Content.Meta.UI.ConfirmPurchase
             this.confirmPurchaseUIViewModel = confirmPurchaseUIViewModel;
         }
 
-        public void Execute(int price, Sprite icon)
+        public void Execute(
+            int price, 
+            Sprite icon
+            )
         {
             confirmPurchaseUIViewModel.PriceVariable.Value = price;
             confirmPurchaseUIViewModel.IconVariable.Value = icon;

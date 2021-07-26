@@ -1,29 +1,37 @@
-﻿using Juce.CoreUnity.Service;
-using Playground.Services;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace Playground.Cheats
 {
     public class BaseCheats
     {
-        [Category("Next Language")] 
+        [Category("Language")] 
         public void SetNextLanguage()
         {
-            bool found = ServicesProvider.TryGetService(out LocalizationService localizationService);
+            SetNextLanguageCheat.Execute();
+        }
 
-            if (!found)
-            {
-                return;
-            }
+        [Category("Cars")]
+        public void UnlockAllCars()
+        {
+            UnlockAllCarsCheat.Execute(default).RunAsync();
+        }
 
-            int nextLanguageIndex = localizationService.CurrentLanguageIndex + 1;
+        [Category("Cars")]
+        public void LockAllCars()
+        {
+            LockAllCarsCheat.Execute(default).RunAsync();
+        }
 
-            if(nextLanguageIndex >= localizationService.Languages.Count)
-            {
-                nextLanguageIndex = 0;
-            }
+        [Category("Soft Currency")]
+        public void RemoveAllSoftCurrency()
+        {
+            RemoveAllSoftCurrencyCheat.Execute(default).RunAsync();
+        }
 
-            localizationService.SetLanguage(nextLanguageIndex);
+        [Category("Soft Currency")]
+        public void AddSoftCurrency()
+        {
+            AddSoftCurrencyCheat.Execute(default).RunAsync();
         }
     }
 }

@@ -13,6 +13,8 @@ namespace Playground.Content.Meta.UI.CarPanel
         private readonly CarPanelUIViewModel carPanelUIViewModel;
         private readonly TweenPlayer showPurchasedFeedback;
         private readonly TweenPlayer showNonPurchasedFeedback;
+        private readonly TweenPlayer showEnoughSoftCurrencyFeedback;
+        private readonly TweenPlayer showNotEnoughSoftCurrencyFeedback;
 
         public SetupViewingCarUseCase(
             SharedService sharedService,
@@ -20,7 +22,9 @@ namespace Playground.Content.Meta.UI.CarPanel
             ViewingCarData viewingCarData,
             CarPanelUIViewModel carPanelUIViewModel,
             TweenPlayer showPurchasedFeedback,
-            TweenPlayer showNonPurchasedFeedback
+            TweenPlayer showNonPurchasedFeedback,
+            TweenPlayer showEnoughSoftCurrencyFeedback,
+            TweenPlayer showNotEnoughSoftCurrencyFeedback
             )
         {
             this.sharedService = sharedService;
@@ -29,6 +33,8 @@ namespace Playground.Content.Meta.UI.CarPanel
             this.carPanelUIViewModel = carPanelUIViewModel;
             this.showPurchasedFeedback = showPurchasedFeedback;
             this.showNonPurchasedFeedback = showNonPurchasedFeedback;
+            this.showEnoughSoftCurrencyFeedback = showEnoughSoftCurrencyFeedback;
+            this.showNotEnoughSoftCurrencyFeedback = showNotEnoughSoftCurrencyFeedback;
         }
 
         public void Execute(string carTypeId)
@@ -55,11 +61,24 @@ namespace Playground.Content.Meta.UI.CarPanel
 
             if (isOwned)
             {
-                showPurchasedFeedback.Play(instantly: true, default).RunAsync();
+                showPurchasedFeedback.Play(instantly: true);
             }
             else
             {
-                showNonPurchasedFeedback.Play(instantly: true, default).RunAsync();
+                showNonPurchasedFeedback.Play(instantly: true);
+
+                bool enoughSoftCurrency = sharedService.SharedUseCases.HasEnoughSoftCurrencyUseCase.Execute(
+                    carConfiguration.CarShopPrice
+                    );
+
+                if(enoughSoftCurrency)
+                {
+                    showEnoughSoftCurrencyFeedback.Play(instantly: true);
+                }
+                else
+                {
+                    showNotEnoughSoftCurrencyFeedback.Play(instantly: true);
+                }
             }
         }
     }

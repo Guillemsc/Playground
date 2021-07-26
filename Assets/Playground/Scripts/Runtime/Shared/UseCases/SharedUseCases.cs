@@ -10,6 +10,8 @@
         public ISetStageCarStarsUseCase SetStageCarStarsUseCase { get; }
         public IAddSoftCurrencyUseCase AddSoftCurrencyUseCase { get; }
         public IRemoveSoftCurrencyUseCase RemoveSoftCurrencyUseCase { get; }
+        public IHasEnoughSoftCurrencyUseCase HasEnoughSoftCurrencyUseCase { get; }
+        public IPurchaseCarUseCase PurchaseCarUseCase { get; }
 
         public SharedUseCases(
             ISaveProgressUseCase saveProgressUseCase,
@@ -19,7 +21,9 @@
             ITryGetStageCarStarsUseCase tryGetStageCarStarsUseCase,
             ISetStageCarStarsUseCase setStageCarStarsUseCase,
             IAddSoftCurrencyUseCase addSoftCurrencyUseCase,
-            IRemoveSoftCurrencyUseCase removeSoftCurrencyUseCase
+            IRemoveSoftCurrencyUseCase removeSoftCurrencyUseCase,
+            IHasEnoughSoftCurrencyUseCase hasEnoughSoftCurrencyUseCase,
+            IPurchaseCarUseCase purchaseCarUseCase
             )
         {
             SaveProgressUseCase = saveProgressUseCase;
@@ -30,6 +34,8 @@
             SetStageCarStarsUseCase = setStageCarStarsUseCase;
             AddSoftCurrencyUseCase = addSoftCurrencyUseCase;
             RemoveSoftCurrencyUseCase = removeSoftCurrencyUseCase;
+            HasEnoughSoftCurrencyUseCase = hasEnoughSoftCurrencyUseCase;
+            PurchaseCarUseCase = purchaseCarUseCase;
         }
     }
 }
