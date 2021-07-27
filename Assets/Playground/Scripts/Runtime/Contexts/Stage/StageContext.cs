@@ -1,5 +1,4 @@
 ﻿using Juce.Core.CleanUp;
-using Juce.Core.Disposables;
 using Juce.Core.Events;
 using Juce.CoreUnity.Contexts;
 using Juce.CoreUnity.Service;
@@ -25,6 +24,8 @@ namespace Playground.Contexts
         [SerializeField] private StageContextReferences stageContextReferences;
 
         private CleanUpActionsRepository cleanUpActionsRepository;
+
+        public StageContextReferences StageContextReferences => stageContextReferences;
 
         protected override void Init()
         {

@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageContextReferences:
+    mainCamera: {fileID: 127805257532784730}
     followCarVirtualCamera: {fileID: 127805257157279490}
-    carLibrary: {fileID: 11400000, guid: e62620c4b1e5b2248a31ca511068ebc4, type: 2}
 --- !u!4 &1566313240
 Transform:
   m_ObjectHideFlags: 0

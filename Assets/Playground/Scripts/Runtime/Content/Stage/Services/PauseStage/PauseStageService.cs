@@ -8,7 +8,7 @@ namespace Playground.Content.Stage.Services
     {
         private readonly TimeService timeService;
 
-        private bool paused;
+        public bool Paused { get; private set; }
 
         public PauseStageService(TimeService timeService)
         {
@@ -27,12 +27,12 @@ namespace Playground.Content.Stage.Services
 
         public void Pause()
         {
-            if(paused)
+            if(Paused)
             {
                 return;
             }
 
-            paused = true;
+            Paused = true;
 
             timeService.ScaledTimeContext.TimeScale = 0.0f;
             Physics.autoSimulation = false;
@@ -40,12 +40,12 @@ namespace Playground.Content.Stage.Services
 
         public void Resume()
         {
-            if (!paused)
+            if (!Paused)
             {
                 return;
             }
 
-            paused = false;
+            Paused = false;
 
             timeService.ScaledTimeContext.TimeScale = 1.0f;
             Physics.autoSimulation = true;
@@ -53,7 +53,7 @@ namespace Playground.Content.Stage.Services
 
         public void Toggle()
         {
-            if(paused)
+            if(Paused)
             {
                 Resume();
             }
