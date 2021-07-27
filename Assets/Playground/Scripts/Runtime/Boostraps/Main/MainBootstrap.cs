@@ -43,19 +43,40 @@ namespace Playground.Boostraps
         {
             CurrentStageFlowData currentStageFlowData = new CurrentStageFlowData();
 
+            ILoadEssentialScenesFlowUseCase loadEssentialScenesFlowUseCase = new LoadEssentialScenesFlowUseCase();
+            ILoadBaseCheatsFlowUseCase loadBaseCheatsFlowUseCase = new LoadBaseCheatsFlowUseCase();
+            ISetStageCheatsActiveFlowUseCase setStageCheatsActiveFlowUseCase = new SetStageCheatsActiveFlowUseCase();
+            ILoadLocalizationDataFlowUseCase loadLocalizationDataFlowUseCase = new LoadLocalizationDataFlowUseCase();
+            IShowLoadingScreenFlowUseCase showLoadingScreenFlowUseCase = new ShowLoadingScreenFlowUseCase();
+            ILoadUserDataFlowUseCase loadUserDataFlowUseCase = new LoadUserDataFlowUseCase();
+            ILoadAdsScenesFlowUseCase loadAdsScenesFlowUseCase = new LoadAdsScenesFlowUseCase();
+            ILoadMetaFlowUseCase loadMetaFlowUseCase = new LoadMetaFlowUseCase();
+            IUnloadMetaFlowUseCase unloadMetaFlowUseCase = new UnloadMetaFlowUseCase();
+            ISetCurrentStageFlowUseCase setCurrentStageFlowUseCase = new SetCurrentStageFlowUseCase(currentStageFlowData);
+            IPlayScenarioFlowUseCase playScenarioFlowUseCase = new MainBootstrapPlayScenarioFlowUseCase(
+                setStageCheatsActiveFlowUseCase,
+                currentStageFlowData
+                );
+            IReplayScenarioFlowUseCase replayScenarioFlowUseCase = new StageBootstrapReplayScenarioFlowUseCase(currentStageFlowData); // Todo update
+            IBackToMetaFromStageFlowUseCase backToMetaFromStageFlowUseCase = new BackToMetaFromStageFlowUseCase(
+                setStageCheatsActiveFlowUseCase,
+                currentStageFlowData
+                );
+
             FlowUseCases flowUseCases = new FlowUseCases(
-                new LoadEssentialScenesFlowUseCase(),
-                new LoadBaseCheatsFlowUseCase(),
-                new LoadLocalizationDataFlowUseCase(),
-                new ShowLoadingScreenFlowUseCase(),
-                new LoadUserDataFlowUseCase(),
-                new LoadAdsScenesFlowUseCase(),
-                new LoadMetaFlowUseCase(),
-                new UnloadMetaFlowUseCase(),
-                new SetCurrentStageFlowUseCase(currentStageFlowData),
-                new MainBootstrapPlayScenarioFlowUseCase(currentStageFlowData),
-                new StageBootstrapReplayScenarioFlowUseCase(currentStageFlowData),
-                new BackToMetaFromStageFlowUseCase(currentStageFlowData)
+                loadEssentialScenesFlowUseCase,
+                loadBaseCheatsFlowUseCase,
+                setStageCheatsActiveFlowUseCase,
+                loadLocalizationDataFlowUseCase,
+                showLoadingScreenFlowUseCase,
+                loadUserDataFlowUseCase,
+                loadAdsScenesFlowUseCase,
+                loadMetaFlowUseCase,
+                unloadMetaFlowUseCase,
+                setCurrentStageFlowUseCase,
+                playScenarioFlowUseCase,
+                replayScenarioFlowUseCase,
+                backToMetaFromStageFlowUseCase
                 );
 
             FlowService flowService = new FlowService(flowUseCases);

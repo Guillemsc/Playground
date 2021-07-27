@@ -16,10 +16,15 @@ namespace Playground.Flow.UseCases
 {
     public class MainBootstrapPlayScenarioFlowUseCase : IPlayScenarioFlowUseCase
     {
+        private readonly ISetStageCheatsActiveFlowUseCase setStageCheatsActiveFlowUseCase;
         private readonly CurrentStageFlowData currentStageFlowData;
 
-        public MainBootstrapPlayScenarioFlowUseCase(CurrentStageFlowData currentStageFlowData)
+        public MainBootstrapPlayScenarioFlowUseCase(
+            ISetStageCheatsActiveFlowUseCase setStageCheatsActiveFlowUseCase,
+            CurrentStageFlowData currentStageFlowData
+            )
         {
+            this.setStageCheatsActiveFlowUseCase = setStageCheatsActiveFlowUseCase;
             this.currentStageFlowData = currentStageFlowData;
         }
 
@@ -84,6 +89,8 @@ namespace Playground.Flow.UseCases
                 persistenceService.UserDataSerializableData.Data.SelectedCarTypeId,
                 loadingToken
                 );
+
+            setStageCheatsActiveFlowUseCase.Execute(active: true);
         }
 
         public bool TryGetStageView(Scene scene, out StageView stageView)

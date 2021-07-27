@@ -8,6 +8,7 @@ using Playground.Configuration.Stage;
 using Playground.Content.LoadingScreen.UI;
 using Playground.Content.Stage.Logic.CheckPoints;
 using Playground.Content.Stage.Logic.EntryPoint;
+using Playground.Content.Stage.Services;
 using Playground.Content.Stage.Setup;
 using Playground.Content.Stage.VisualLogic.EntryPoint;
 using Playground.Content.Stage.VisualLogic.View.Stage;
@@ -65,6 +66,10 @@ namespace Playground.Contexts
             ConfigurationService configurationService = ServicesProvider.GetService<ConfigurationService>();
             PersistenceService userService = ServicesProvider.GetService<PersistenceService>();
             SharedService sharedService = ServicesProvider.GetService<SharedService>();
+
+            PauseStageService pauseStageService = new PauseStageService(timeService);
+            ServicesProvider.Register(pauseStageService);
+            cleanUpActionsRepository.Add(() => ServicesProvider.Unregister(pauseStageService));
 
             EventDispatcherAndReceiver logicToViewEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
             EventDispatcherAndReceiver viewToLogicEventDispatcherAndReceiver = new EventDispatcherAndReceiver();

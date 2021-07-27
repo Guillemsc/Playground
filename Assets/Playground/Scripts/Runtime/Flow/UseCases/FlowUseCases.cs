@@ -4,6 +4,7 @@
     {
         public ILoadEssentialScenesFlowUseCase LoadEssentialScenesFlowUseCase { get; }
         public ILoadBaseCheatsFlowUseCase LoadBaseCheatsFlowUseCase { get; }
+        public ISetStageCheatsActiveFlowUseCase SetStageCheatsActiveFlowUseCase { get; }
         public ILoadLocalizationDataFlowUseCase LoadLocalizationDataFlowUseCase { get; }
         public IShowLoadingScreenFlowUseCase ShowLoadingScreenFlowUseCase { get; }
         public ILoadUserDataFlowUseCase LoadUserDataFlowUseCase { get; }
@@ -18,6 +19,7 @@
         public FlowUseCases(
             ILoadEssentialScenesFlowUseCase loadEssentialScenesFlowUseCase,
             ILoadBaseCheatsFlowUseCase loadBaseCheatsFlowUseCase,
+            ISetStageCheatsActiveFlowUseCase setStageCheatsActiveFlowUseCase,
             ILoadLocalizationDataFlowUseCase loadLocalizationDataFlowUseCase,
             IShowLoadingScreenFlowUseCase showLoadingScreenFlowUseCase,
             ILoadUserDataFlowUseCase loadUserDataFlowUseCase,
@@ -32,6 +34,7 @@
         {
             LoadEssentialScenesFlowUseCase = loadEssentialScenesFlowUseCase;
             LoadBaseCheatsFlowUseCase = loadBaseCheatsFlowUseCase;
+            SetStageCheatsActiveFlowUseCase = setStageCheatsActiveFlowUseCase;
             LoadLocalizationDataFlowUseCase = loadLocalizationDataFlowUseCase;
             ShowLoadingScreenFlowUseCase = showLoadingScreenFlowUseCase;
             LoadUserDataFlowUseCase = loadUserDataFlowUseCase;

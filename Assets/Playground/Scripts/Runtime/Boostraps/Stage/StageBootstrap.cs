@@ -51,19 +51,34 @@ namespace Playground.Boostraps
         {
             CurrentStageFlowData currentStageFlowData = new CurrentStageFlowData();
 
+            ILoadEssentialScenesFlowUseCase loadEssentialScenesFlowUseCase = new LoadEssentialScenesFlowUseCase();
+            ILoadBaseCheatsFlowUseCase loadBaseCheatsFlowUseCase = new LoadBaseCheatsFlowUseCase();
+            ILoadLocalizationDataFlowUseCase loadLocalizationDataFlowUseCase = new LoadLocalizationDataFlowUseCase();
+            IShowLoadingScreenFlowUseCase showLoadingScreenFlowUseCase = new ShowLoadingScreenFlowUseCase();
+            ILoadUserDataFlowUseCase loadUserDataFlowUseCase = new NopLoadUserDataFlowUseCase();
+            ILoadAdsScenesFlowUseCase loadAdsScenesFlowUseCase = new NopLoadAdsScenesFlowUseCase();
+            ILoadMetaFlowUseCase loadMetaFlowUseCase = new NopLoadMetaFlowUseCase();
+            IUnloadMetaFlowUseCase unloadMetaFlowUseCase = new NopUnloadMetaFlowUseCase();
+            ISetCurrentStageFlowUseCase setCurrentStageFlowUseCase = new SetCurrentStageFlowUseCase(currentStageFlowData);
+            IPlayScenarioFlowUseCase playScenarioFlowUseCase = new StageBootstrapPlayScenarioFlowUseCase(currentStageFlowData, carTypeId);
+            IReplayScenarioFlowUseCase replayScenarioFlowUseCase = new StageBootstrapReplayScenarioFlowUseCase(currentStageFlowData);
+            IBackToMetaFromStageFlowUseCase backToMetaFromStageFlowUseCase = new NopBackToMetaFromStageFlowUseCase();
+            ISetStageCheatsActiveFlowUseCase setStageCheatsActiveFlowUseCase = new SetStageCheatsActiveFlowUseCase();
+
             FlowUseCases flowUseCases = new FlowUseCases(
-                new LoadEssentialScenesFlowUseCase(),
-                new LoadBaseCheatsFlowUseCase(),
-                new LoadLocalizationDataFlowUseCase(),
-                new ShowLoadingScreenFlowUseCase(),
-                new NopLoadUserDataFlowUseCase(),
-                new NopLoadAdsScenesFlowUseCase(),
-                new NopLoadMetaFlowUseCase(),
-                new NopUnloadMetaFlowUseCase(),
-                new SetCurrentStageFlowUseCase(currentStageFlowData),
-                new StageBootstrapPlayScenarioFlowUseCase(currentStageFlowData, carTypeId),
-                new StageBootstrapReplayScenarioFlowUseCase(currentStageFlowData),
-                new NopBackToMetaFromStageFlowUseCase()
+                loadEssentialScenesFlowUseCase,
+                loadBaseCheatsFlowUseCase,
+                setStageCheatsActiveFlowUseCase,
+                loadLocalizationDataFlowUseCase,
+                showLoadingScreenFlowUseCase,
+                loadUserDataFlowUseCase,
+                loadAdsScenesFlowUseCase,
+                loadMetaFlowUseCase,
+                unloadMetaFlowUseCase,
+                setCurrentStageFlowUseCase,
+                playScenarioFlowUseCase,
+                replayScenarioFlowUseCase,
+                backToMetaFromStageFlowUseCase
                 );
 
             FlowService flowService = new FlowService(flowUseCases);

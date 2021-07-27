@@ -16,15 +16,22 @@ namespace Playground.Flow.UseCases
 {
     public class BackToMetaFromStageFlowUseCase : IBackToMetaFromStageFlowUseCase
     {
+        private readonly ISetStageCheatsActiveFlowUseCase setStageCheatsActiveFlowUseCase;
         private readonly CurrentStageFlowData currentStageFlowData;
 
-        public BackToMetaFromStageFlowUseCase(CurrentStageFlowData currentStageFlowData)
+        public BackToMetaFromStageFlowUseCase(
+            ISetStageCheatsActiveFlowUseCase setStageCheatsActiveFlowUseCase,
+            CurrentStageFlowData currentStageFlowData
+            )
         {
+            this.setStageCheatsActiveFlowUseCase = setStageCheatsActiveFlowUseCase;
             this.currentStageFlowData = currentStageFlowData;
         }
 
         public async Task Execute(ILoadingToken loadingToken)
         {
+            setStageCheatsActiveFlowUseCase.Execute(active: false);
+
             if (currentStageFlowData.StageConfiguration == null)
             {
                 UnityEngine.Debug.LogError($"No stage configuration set on {nameof(CurrentStageFlowData)}, " +
