@@ -27,16 +27,16 @@ namespace Playground.Content.Stage.Logic.StateMachine
 
         public void OnEnter()
         {
-            carAcceleratesOrBrakesInEvent = eventReceiver.Subscribe<CarAcceleratesOrBrakesInEvent>(CarAcceleratesOrBrakesInEvent);
-            checkPointCrossedInEvent = eventReceiver.Subscribe<CheckPointCrossedInEvent>(CheckPointCrossedInEvent);
-            finishLineCrossedInEvent = eventReceiver.Subscribe<FinishLineCrossedInEvent>(FinishLineCrossedInEvent);
+            //carAcceleratesOrBrakesInEvent = eventReceiver.Subscribe<CarAcceleratesOrBrakesInEvent>(CarAcceleratesOrBrakesInEvent);
+            //checkPointCrossedInEvent = eventReceiver.Subscribe<CheckPointCrossedInEvent>(CheckPointCrossedInEvent);
+            //finishLineCrossedInEvent = eventReceiver.Subscribe<FinishLineCrossedInEvent>(FinishLineCrossedInEvent);
         }
 
         public void OnExit()
         {
-            eventReceiver.Unsubscribe(carAcceleratesOrBrakesInEvent);
-            eventReceiver.Unsubscribe(checkPointCrossedInEvent);
-            eventReceiver.Unsubscribe(finishLineCrossedInEvent);
+            //eventReceiver.Unsubscribe(carAcceleratesOrBrakesInEvent);
+            //eventReceiver.Unsubscribe(checkPointCrossedInEvent);
+            //eventReceiver.Unsubscribe(finishLineCrossedInEvent);
         }
 
         public void OnRun(IStateMachine<LogicState> stateMachine)
@@ -44,28 +44,28 @@ namespace Playground.Content.Stage.Logic.StateMachine
             this.stateMachine = stateMachine;
         }
 
-        private void CarAcceleratesOrBrakesInEvent(CarAcceleratesOrBrakesInEvent ev)
-        {
-            useCaseRepository.StartStageUseCase.Execute();
-        }
+        //private void CarAcceleratesOrBrakesInEvent(CarAcceleratesOrBrakesInEvent ev)
+        //{
+        //    useCaseRepository.StartStageUseCase.Execute();
+        //}
 
-        private void CheckPointCrossedInEvent(CheckPointCrossedInEvent ev)
-        {
-            useCaseRepository.CheckPointCrossedUseCase.Execute(ev.CheckPointIndex);
-        }
+        //private void CheckPointCrossedInEvent(CheckPointCrossedInEvent ev)
+        //{
+        //    useCaseRepository.CheckPointCrossedUseCase.Execute(ev.CheckPointIndex);
+        //}
 
-        private void FinishLineCrossedInEvent(FinishLineCrossedInEvent ev)
-        {
-            useCaseRepository.FinishLineCrossedUseCase.Execute();
+        //private void FinishLineCrossedInEvent(FinishLineCrossedInEvent ev)
+        //{
+        //    useCaseRepository.FinishLineCrossedUseCase.Execute();
 
-            bool completed = useCaseRepository.IsStageCompletedUseCase.Execute();
+        //    bool completed = useCaseRepository.IsStageCompletedUseCase.Execute();
 
-            if(!completed)
-            {
-                return;
-            }
+        //    if(!completed)
+        //    {
+        //        return;
+        //    }
 
-            stateMachine.SetNextState(LogicState.Dispose);
-        }
+        //    stateMachine.SetNextState(LogicState.Dispose);
+        //}
     }
 }

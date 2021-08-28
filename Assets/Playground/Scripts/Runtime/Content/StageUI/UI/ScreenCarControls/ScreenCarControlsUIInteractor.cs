@@ -1,4 +1,5 @@
-﻿using Juce.CoreUnity.UI;
+﻿using Juce.Core.Activables;
+using Juce.CoreUnity.UI;
 
 namespace Playground.Content.StageUI.UI.ScreenCarControls
 {
@@ -6,6 +7,8 @@ namespace Playground.Content.StageUI.UI.ScreenCarControls
     {
         private readonly ScreenCarControlsUIViewModel viewModel;
         private readonly ScreenCarControlsUIUseCases useCases;
+
+        public IActivable MainActivable { get; }
 
         public ScreenCarControlsUIInteractor(
             ScreenCarControlsUIViewModel viewModel,

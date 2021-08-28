@@ -10,35 +10,36 @@ namespace Playground.Cheats
     {
         public static Task Execute(CancellationToken cancellationToken)
         {
-            bool configurationServiceFound = ServicesProvider.TryGetService(out ConfigurationService configurationService);
+            return Task.CompletedTask;
+            //bool configurationServiceFound = ServicesProvider.TryGetService(out ConfigurationService configurationService);
 
-            if (!configurationServiceFound)
-            {
-                return Task.CompletedTask;
-            }
+            //if (!configurationServiceFound)
+            //{
+            //    return Task.CompletedTask;
+            //}
 
-            bool persistenceServiceFound = ServicesProvider.TryGetService(out PersistenceService persistenceService);
+            //bool persistenceServiceFound = ServicesProvider.TryGetService(out PersistenceService persistenceService);
 
-            if (!persistenceServiceFound)
-            {
-                return Task.CompletedTask;
-            }
+            //if (!persistenceServiceFound)
+            //{
+            //    return Task.CompletedTask;
+            //}
 
-            foreach(CarConfiguration carConfiguration in configurationService.CarLibrary.Items)
-            {
-                bool alreadyUnlocked = persistenceService.ProgressDataSerializableData.Data.OwnedCars.Contains(
-                    carConfiguration.CarTypeId
-                    );
+            //foreach(CarConfiguration carConfiguration in configurationService.CarLibrary.Items)
+            //{
+            //    bool alreadyUnlocked = persistenceService.ProgressDataSerializableData.Data.OwnedCars.Contains(
+            //        carConfiguration.CarTypeId
+            //        );
 
-                if(alreadyUnlocked)
-                {
-                    continue;
-                }
+            //    if(alreadyUnlocked)
+            //    {
+            //        continue;
+            //    }
 
-                persistenceService.ProgressDataSerializableData.Data.OwnedCars.Add(carConfiguration.CarTypeId);
-            }
+            //    persistenceService.ProgressDataSerializableData.Data.OwnedCars.Add(carConfiguration.CarTypeId);
+            //}
 
-            return persistenceService.ProgressDataSerializableData.Save(cancellationToken);
+            //return persistenceService.ProgressDataSerializableData.Save(cancellationToken);
         }
     }
 }

@@ -1,5 +1,8 @@
-﻿using Juce.CoreUnity.UI;
+﻿using Juce.Core.Activables;
+using Juce.CoreUnity.UI;
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Playground.Content.StageUI.UI.StageOverlay
 {
@@ -40,6 +43,11 @@ namespace Playground.Content.StageUI.UI.StageOverlay
         public void SetTimerTime(TimeSpan timeSpan)
         {
             useCases.SetTimerTimeUseCase.Execute(timeSpan);
+        }
+
+        private bool GetActivableActive()
+        {
+            return default;
         }
     }
 }

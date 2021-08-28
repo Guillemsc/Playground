@@ -16,17 +16,17 @@ namespace Playground.Content.StageUI.UI.StageCompleted
 
         public async void Execute()
         {
-            UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
+            //UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
 
-            await uiViewStackService.New().Hide<StageCompletedUIView>(instantly: false).Execute(default);
+            //await uiViewStackService.New().Hide<StageCompletedUIView>(instantly: false).Execute(default);
 
-            FlowService flowService = ServicesProvider.GetService<FlowService>();
+            //FlowService flowService = ServicesProvider.GetService<FlowService>();
 
-            ILoadingToken loadingToken = await flowService.FlowUseCases.ShowLoadingScreenFlowUseCase.Execute(instantly: false);
+            //ILoadingToken loadingToken = await flowService.FlowUseCases.ShowLoadingScreenFlowUseCase.Execute(instantly: false);
 
-            stageCompletedUIViewModel.CanUnloadStageCommand.Execute();
+            //stageCompletedUIViewModel.CanUnloadStageCommand.Execute();
 
-            await flowService.FlowUseCases.BackToMetaFromStageFlowUseCase.Execute(loadingToken);
+            //await flowService.FlowUseCases.BackToMetaFromStageFlowUseCase.Execute(loadingToken);
         }
     }
 }

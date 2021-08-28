@@ -26,7 +26,7 @@ namespace Playground.Content.Stage.Logic.StateMachine
 
         public void OnRun(IStateMachine<LogicState> stateMachine)
         {
-            useCaseRepository.LoadStageUseCase.Execute();
+            //useCaseRepository.LoadStageUseCase.Execute();
 
             stateMachine.SetNextState(LogicState.Main);
         }
