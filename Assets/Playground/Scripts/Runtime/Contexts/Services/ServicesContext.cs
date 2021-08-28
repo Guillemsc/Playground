@@ -3,29 +3,61 @@ using Juce.CoreUnity.Service;
 using Juce.CoreUnity.Services;
 using Playground.Services;
 using Playground.Services.ViewStack;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Playground.Contexts.Services
 {
     public class ServicesContext : Context
     {
-        protected override void CleanUp()
-        {
-            
-        }
+        [SerializeField] private ServicesContextReferences servicesContextReferences = default;
+
+        private TickablesService tickablesService;
+        private TimeService timeService;
+        private UIViewStackService uiViewStackService;
+        private ConfigurationService configurationService;
+        private PersistenceService userService;
+        private LocalizationService localizationService;
 
         protected override void Init()
         {
-            
+            ContextsProvider.Register(this);
+
+            tickablesService = new TickablesService();
+            ServicesProvider.Register(tickablesService);
+
+            timeService = new TimeService();
+            ServicesProvider.Register(timeService);
+
+            uiViewStackService = new UIViewStackService(
+                servicesContextReferences.UIFrameCanvas
+                );
+            ServicesProvider.Register(uiViewStackService);
+
+            configurationService = new ConfigurationService(
+                );
+            ServicesProvider.Register(configurationService);
+
+
+            userService = new PersistenceService();
+            ServicesProvider.Register(userService);
+
+            localizationService = new LocalizationService();
+            ServicesProvider.Register(localizationService);
         }
 
-        //[SerializeField] private ServicesContextReferences servicesContextReferences = default;
+        protected override void CleanUp()
+        {
+            ServicesProvider.Unregister(uiViewStackService);
+            ServicesProvider.Unregister(tickablesService);
+            ServicesProvider.Unregister(timeService);
+            ServicesProvider.Unregister(uiViewStackService);
+            ServicesProvider.Unregister(configurationService);
+            ServicesProvider.Unregister(userService);
+            ServicesProvider.Unregister(localizationService);
 
-        //private TickablesService tickablesService;
-        //private TimeService timeService;
-        //private UIViewStackService uiViewStackService;
-        //private ConfigurationService configurationService;
+            ContextsProvider.Unregister(this);
+        }
+
         //private PersistenceService userService;
         //private LocalizationService localizationService;
 

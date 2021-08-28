@@ -1,12 +1,10 @@
 ﻿using Juce.CoreUnity.Contexts;
 using UnityEngine;
 
-namespace Playground.Contexts
+namespace Playground.Contexts.LoadingScreen
 {
     public class LoadingScreenContext : Context
     {
-        public readonly static string SceneName = "LoadingScreenContext";
-
         [SerializeField] private LoadingScreenContextReferences loadingScreenContextReferences;
 
         public LoadingScreenContextReferences LoadingScreenContextReferences => loadingScreenContextReferences;

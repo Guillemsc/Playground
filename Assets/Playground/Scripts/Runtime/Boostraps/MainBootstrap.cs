@@ -3,6 +3,11 @@ using UnityEngine;
 using Playground.Flow.UseCases;
 using Playground.Services;
 using Juce.CoreUnity.Service;
+using Playground.Flow.UseCases.LoadServicesContext;
+using Playground.Flow.UseCases.LoadBaseCheats;
+using Playground.Flow.UseCases.LoadLocalizationData;
+using Playground.Flow.UseCases.LoadLoadingScreenContext;
+using Playground.Flow.UseCases.ShowLoadingScreen;
 using Playground.Content.LoadingScreen.UI;
 
 namespace Playground.Boostraps
@@ -16,19 +21,19 @@ namespace Playground.Boostraps
 
         private async Task Run()
         {
-            //GenerateFlowService();
-            //GenerateSharedService();
+            GenerateFlowService();
 
-            //FlowService flowService = ServicesProvider.GetService<FlowService>();
-            //FlowUseCases flowUseCases = flowService.FlowUseCases;
+            FlowService flowService = ServicesProvider.GetService<FlowService>();
+            FlowUseCases flowUseCases = flowService.FlowUseCases;
 
-            //await flowUseCases.LoadEssentialScenesFlowUseCase.Execute();
+            await flowUseCases.LoadServicesContextUseCase.Execute();
+            await flowUseCases.LoadLoadingScreenContextUseCase.Execute();
 
-            //flowUseCases.LoadBaseCheatsFlowUseCase.Execute();
+            ILoadingToken loadingToken = await flowUseCases.ShowLoadingScreenUseCase.Execute();
 
-            //await flowUseCases.LoadLocalizationDataFlowUseCase.Execute();
+            flowUseCases.LoadBaseCheatsUseCase.Execute();
 
-            //ILoadingToken loadingToken = await flowUseCases.ShowLoadingScreenFlowUseCase.Execute(instantly: true);
+            await flowUseCases.LoadLocalizationDataUseCase.Execute();
 
             //await flowUseCases.LoadUserDataFlowUseCase.Execute();
 
@@ -64,6 +69,24 @@ namespace Playground.Boostraps
             //    currentStageFlowData
             //    );
 
+            ILoadServicesContextUseCase loadServicesContextUseCase = new LoadServicesContextUseCase();
+
+            ILoadLoadingScreenContextUseCase loadLoadingScreenContextUseCase = new LoadLoadingScreenContextUseCase();
+
+            ILoadBaseCheatsUseCase loadBaseCheatsUseCase = new LoadBaseCheatsUseCase();
+
+            ILoadLocalizationDataUseCase loadLocalizationDataUseCase = new LoadLocalizationDataUseCase();
+
+            IShowLoadingScreenUseCase showLoadingScreenUseCase = new ShowLoadingScreenUseCase();
+
+            FlowUseCases flowUseCases = new FlowUseCases(
+                loadServicesContextUseCase,
+                loadLoadingScreenContextUseCase,
+                loadBaseCheatsUseCase,
+                loadLocalizationDataUseCase,
+                showLoadingScreenUseCase
+                );
+
             //FlowUseCases flowUseCases = new FlowUseCases(
             //    loadEssentialScenesFlowUseCase,
             //    loadBaseCheatsFlowUseCase,
@@ -80,8 +103,8 @@ namespace Playground.Boostraps
             //    backToMetaFromStageFlowUseCase
             //    );
 
-            //FlowService flowService = new FlowService(flowUseCases);
-            //ServicesProvider.Register(flowService);
+            FlowService flowService = new FlowService(flowUseCases);
+            ServicesProvider.Register(flowService);
         }
     }
 }

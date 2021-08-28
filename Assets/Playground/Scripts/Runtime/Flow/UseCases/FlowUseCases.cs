@@ -1,8 +1,19 @@
-﻿namespace Playground.Flow.UseCases
+﻿using Playground.Flow.UseCases.LoadBaseCheats;
+using Playground.Flow.UseCases.LoadLoadingScreenContext;
+using Playground.Flow.UseCases.LoadLocalizationData;
+using Playground.Flow.UseCases.LoadServicesContext;
+using Playground.Flow.UseCases.ShowLoadingScreen;
+
+namespace Playground.Flow.UseCases
 {
     public class FlowUseCases
     {
-        //public ILoadEssentialScenesFlowUseCase LoadEssentialScenesFlowUseCase { get; }
+        public ILoadServicesContextUseCase LoadServicesContextUseCase { get; }
+        public ILoadLoadingScreenContextUseCase LoadLoadingScreenContextUseCase { get; }
+        public ILoadBaseCheatsUseCase LoadBaseCheatsUseCase { get; }
+        public ILoadLocalizationDataUseCase LoadLocalizationDataUseCase { get; }
+        public IShowLoadingScreenUseCase ShowLoadingScreenUseCase { get; }
+
         //public ILoadBaseCheatsFlowUseCase LoadBaseCheatsFlowUseCase { get; }
         //public ISetStageCheatsActiveFlowUseCase SetStageCheatsActiveFlowUseCase { get; }
         //public ILoadLocalizationDataFlowUseCase LoadLocalizationDataFlowUseCase { get; }
@@ -15,6 +26,21 @@
         //public IPlayScenarioFlowUseCase PlayScenarioFlowUseCase { get; }
         //public IReplayScenarioFlowUseCase ReplayScenarioFlowUseCase { get; }
         //public IBackToMetaFromStageFlowUseCase BackToMetaFromStageFlowUseCase { get; }
+
+        public FlowUseCases(
+            ILoadServicesContextUseCase loadServicesContextUseCase,
+            ILoadLoadingScreenContextUseCase loadLoadingScreenContextUseCase,
+            ILoadBaseCheatsUseCase loadBaseCheatsUseCase,
+            ILoadLocalizationDataUseCase loadLocalizationDataUseCase,
+            IShowLoadingScreenUseCase showLoadingScreenUseCase
+            )
+        {
+            LoadServicesContextUseCase = loadServicesContextUseCase;
+            LoadLoadingScreenContextUseCase = loadLoadingScreenContextUseCase;
+            LoadBaseCheatsUseCase = loadBaseCheatsUseCase;
+            LoadLocalizationDataUseCase = loadLocalizationDataUseCase;
+            ShowLoadingScreenUseCase = showLoadingScreenUseCase;
+        }
 
         //public FlowUseCases(
         //    ILoadEssentialScenesFlowUseCase loadEssentialScenesFlowUseCase,
