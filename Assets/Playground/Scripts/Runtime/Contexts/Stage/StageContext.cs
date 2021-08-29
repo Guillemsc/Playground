@@ -1,118 +1,142 @@
-﻿using Juce.Core.CleanUp;
-using Juce.Core.Events;
+﻿using Juce.Core.Events;
+using Juce.Core.Loading;
 using Juce.CoreUnity.Contexts;
 using Juce.CoreUnity.Service;
 using Juce.CoreUnity.Services;
-using Playground.Configuration.Stage;
-using Playground.Content.LoadingScreen.UI;
 using Playground.Content.Stage.Logic.EntryPoint;
-using Playground.Content.Stage.Services;
+using Playground.Content.Stage.Setup;
 using Playground.Content.Stage.VisualLogic.EntryPoint;
 using Playground.Services;
 using Playground.Services.ViewStack;
+using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Playground.Contexts
+namespace Playground.Contexts.Stage
 {
-    public class StageContext //: Context
+    public class StageContext : Context
     {
-    //    public readonly static string SceneName = "StageContext";
+        [SerializeField] private StageContextReferences stageContextReferences;
 
-    //    [SerializeField] private StageContextReferences stageContextReferences;
+        protected override void Init()
+        {
+            ContextsProvider.Register(this);
+        }
 
-    //    private CleanUpActionsRepository cleanUpActionsRepository;
+        protected override void CleanUp()
+        {
+            ContextsProvider.Unregister(this);
+        }
 
-    //    public StageContextReferences StageContextReferences => stageContextReferences;
+        public Task LoadStage(StageSetup stageSetup)
+        {
+            TickablesService tickablesService = ServicesProvider.GetService<TickablesService>();
+            TimeService timeService = ServicesProvider.GetService<TimeService>();
+            UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
+            ConfigurationService configurationService = ServicesProvider.GetService<ConfigurationService>();
+            PersistenceService persistenceService = ServicesProvider.GetService<PersistenceService>();
 
-    //    protected override void Init()
-    //    {
-    //        cleanUpActionsRepository = new CleanUpActionsRepository();
+            EventDispatcherAndReceiver logicToViewEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
+            EventDispatcherAndReceiver viewToLogicEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
 
-    //        ContextsProvider.Register(this);
-    //    }
+            TaskCompletionSource<object> stageLoadedTaskCompletionSource = new TaskCompletionSource<object>();
 
-    //    protected override void CleanUp()
-    //    {
-    //        ContextsProvider.Unregister(this);
+            ILoadingToken stageLoadedToken = new CallbackLoadingToken(() => stageLoadedTaskCompletionSource.SetResult(default));
 
-    //        cleanUpActionsRepository.CleanUp();
-    //    }
+            StageLogicEntryPoint stageLogicEntryPoint = new StageLogicEntryPoint(
+                logicToViewEventDispatcherAndReceiver,
+                viewToLogicEventDispatcherAndReceiver
+                );
 
-    //    public void RunStage(
-    //        StageUIContext stageUIContext,
-    //        StageView stageView,
-    //        StageStarsConfiguration stageStarsConfiguration,
-    //        StageRewardsConfiguration stageRewardsConfiguration,
-    //        string carTypeId,
-    //        ILoadingToken loadingToken
-    //        )
-    //    {  
-    //        bool created = new CheckPointsRepositoryFactory().Create(
-    //            stageView.CheckPointsView, 
-    //            out CheckPointRepository checkPointRepository
-    //            );
+            StageVisualLogicEntryPoint stageVisualLogicEntryPoint = new StageVisualLogicEntryPoint(
+                stageLoadedToken,
+                viewToLogicEventDispatcherAndReceiver,
+                logicToViewEventDispatcherAndReceiver,
+                tickablesService,
+                timeService,
+                uiViewStackService,
+                persistenceService
+                );
 
-    //        if(!created)
-    //        {
-    //            UnityEngine.Debug.LogError($"Could not create {nameof(CheckPointRepository)}, at {nameof(StageContext)}");
-    //            return;
-    //        }
+            stageLogicEntryPoint.Execute();
 
-    //        TickablesService tickablesService = ServicesProvider.GetService<TickablesService>();
-    //        TimeService timeService = ServicesProvider.GetService<TimeService>();
-    //        UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
-    //        ConfigurationService configurationService = ServicesProvider.GetService<ConfigurationService>();
-    //        PersistenceService userService = ServicesProvider.GetService<PersistenceService>();
-    //        SharedService sharedService = ServicesProvider.GetService<SharedService>();
+            return stageLoadedTaskCompletionSource.Task;
+        }
 
-    //        PauseStageService pauseStageService = new PauseStageService(timeService);
-    //        ServicesProvider.Register(pauseStageService);
-    //        cleanUpActionsRepository.Add(() => ServicesProvider.Unregister(pauseStageService));
+        //    public void RunStage(
+        //        StageUIContext stageUIContext,
+        //        StageView stageView,
+        //        StageStarsConfiguration stageStarsConfiguration,
+        //        StageRewardsConfiguration stageRewardsConfiguration,
+        //        string carTypeId,
+        //        ILoadingToken loadingToken
+        //        )
+        //    {  
+        //        bool created = new CheckPointsRepositoryFactory().Create(
+        //            stageView.CheckPointsView, 
+        //            out CheckPointRepository checkPointRepository
+        //            );
 
-    //        EventDispatcherAndReceiver logicToViewEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
-    //        EventDispatcherAndReceiver viewToLogicEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
+        //        if(!created)
+        //        {
+        //            UnityEngine.Debug.LogError($"Could not create {nameof(CheckPointRepository)}, at {nameof(StageContext)}");
+        //            return;
+        //        }
 
-    //        EventDispatcherAndReceiverTickable logicToViewTickable = new EventDispatcherAndReceiverTickable(
-    //            logicToViewEventDispatcherAndReceiver
-    //            );
-    //        EventDispatcherAndReceiverTickable viewToLogicTickable = new EventDispatcherAndReceiverTickable(
-    //            viewToLogicEventDispatcherAndReceiver
-    //            );
+        //        TickablesService tickablesService = ServicesProvider.GetService<TickablesService>();
+        //        TimeService timeService = ServicesProvider.GetService<TimeService>();
+        //        UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
+        //        ConfigurationService configurationService = ServicesProvider.GetService<ConfigurationService>();
+        //        PersistenceService userService = ServicesProvider.GetService<PersistenceService>();
+        //        SharedService sharedService = ServicesProvider.GetService<SharedService>();
 
-    //        StageLogicEntryPoint stageLogicEntryPoint = new StageLogicEntryPoint(
-    //            logicToViewEventDispatcherAndReceiver,
-    //            viewToLogicEventDispatcherAndReceiver,
-    //            checkPointRepository
-    //            );
+        //        PauseStageService pauseStageService = new PauseStageService(timeService);
+        //        ServicesProvider.Register(pauseStageService);
+        //        cleanUpActionsRepository.Add(() => ServicesProvider.Unregister(pauseStageService));
 
-    //        StageVisualLogicEntryPoint stageVisualLogicEntryPoint = new StageVisualLogicEntryPoint(
-    //            loadingToken,
-    //            viewToLogicEventDispatcherAndReceiver,
-    //            logicToViewEventDispatcherAndReceiver,
-    //            tickablesService,
-    //            timeService,
-    //            uiViewStackService,
-    //            userService,
-    //            sharedService,
-    //            stageUIContext.StageUIContextReferences.ScreenCarControlsUIView,
-    //            stageUIContext.StageUIContextReferences.StageOverlayUIView,
-    //            stageUIContext.StageUIContextReferences.StageCompletedUIView,
-    //            stageView,
-    //            stageStarsConfiguration,
-    //            stageRewardsConfiguration,
-    //            configurationService.CarLibrary,
-    //            carTypeId,
-    //            stageContextReferences.FollowCarVirtualCamera,
-    //            cleanUpActionsRepository
-    //            );
+        //        EventDispatcherAndReceiver logicToViewEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
+        //        EventDispatcherAndReceiver viewToLogicEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
 
-    //        stageLogicEntryPoint.Execute();
+        //        EventDispatcherAndReceiverTickable logicToViewTickable = new EventDispatcherAndReceiverTickable(
+        //            logicToViewEventDispatcherAndReceiver
+        //            );
+        //        EventDispatcherAndReceiverTickable viewToLogicTickable = new EventDispatcherAndReceiverTickable(
+        //            viewToLogicEventDispatcherAndReceiver
+        //            );
 
-    //        tickablesService.AddTickable(logicToViewTickable);
-    //        cleanUpActionsRepository.Add(() => tickablesService.RemoveTickable(logicToViewTickable));
+        //        StageLogicEntryPoint stageLogicEntryPoint = new StageLogicEntryPoint(
+        //            logicToViewEventDispatcherAndReceiver,
+        //            viewToLogicEventDispatcherAndReceiver,
+        //            checkPointRepository
+        //            );
 
-    //        tickablesService.AddTickable(viewToLogicTickable);
-    //        cleanUpActionsRepository.Add(() => tickablesService.RemoveTickable(viewToLogicTickable));
-    //    }
+        //        StageVisualLogicEntryPoint stageVisualLogicEntryPoint = new StageVisualLogicEntryPoint(
+        //            loadingToken,
+        //            viewToLogicEventDispatcherAndReceiver,
+        //            logicToViewEventDispatcherAndReceiver,
+        //            tickablesService,
+        //            timeService,
+        //            uiViewStackService,
+        //            userService,
+        //            sharedService,
+        //            stageUIContext.StageUIContextReferences.ScreenCarControlsUIView,
+        //            stageUIContext.StageUIContextReferences.StageOverlayUIView,
+        //            stageUIContext.StageUIContextReferences.StageCompletedUIView,
+        //            stageView,
+        //            stageStarsConfiguration,
+        //            stageRewardsConfiguration,
+        //            configurationService.CarLibrary,
+        //            carTypeId,
+        //            stageContextReferences.FollowCarVirtualCamera,
+        //            cleanUpActionsRepository
+        //            );
+
+        //        stageLogicEntryPoint.Execute();
+
+        //        tickablesService.AddTickable(logicToViewTickable);
+        //        cleanUpActionsRepository.Add(() => tickablesService.RemoveTickable(logicToViewTickable));
+
+        //        tickablesService.AddTickable(viewToLogicTickable);
+        //        cleanUpActionsRepository.Add(() => tickablesService.RemoveTickable(viewToLogicTickable));
+        //    }
     }
 }

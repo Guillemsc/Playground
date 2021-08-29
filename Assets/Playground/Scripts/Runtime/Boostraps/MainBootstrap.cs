@@ -9,6 +9,10 @@ using Playground.Flow.UseCases.LoadLocalizationData;
 using Playground.Flow.UseCases.LoadLoadingScreenContext;
 using Playground.Flow.UseCases.ShowLoadingScreen;
 using Playground.Content.LoadingScreen.UI;
+using Playground.Flow.UseCases.LoadStageContext;
+using Juce.Core.Loading;
+using Playground.Flow.UseCases.LoadStage;
+using Playground.Content.Stage.Setup;
 
 namespace Playground.Boostraps
 {
@@ -34,6 +38,12 @@ namespace Playground.Boostraps
             flowUseCases.LoadBaseCheatsUseCase.Execute();
 
             await flowUseCases.LoadLocalizationDataUseCase.Execute();
+
+            await flowUseCases.LoadStageContextUseCase.Execute();
+
+            await flowUseCases.LoadStageUseCase.Execute(new StageSetup());
+
+            loadingToken.Complete();
 
             //await flowUseCases.LoadUserDataFlowUseCase.Execute();
 
@@ -73,18 +83,23 @@ namespace Playground.Boostraps
 
             ILoadLoadingScreenContextUseCase loadLoadingScreenContextUseCase = new LoadLoadingScreenContextUseCase();
 
+            ILoadStageContextUseCase loadStageContextUseCase = new LoadStageContextUseCase();
+            IShowLoadingScreenUseCase showLoadingScreenUseCase = new ShowLoadingScreenUseCase();
+
             ILoadBaseCheatsUseCase loadBaseCheatsUseCase = new LoadBaseCheatsUseCase();
 
             ILoadLocalizationDataUseCase loadLocalizationDataUseCase = new LoadLocalizationDataUseCase();
 
-            IShowLoadingScreenUseCase showLoadingScreenUseCase = new ShowLoadingScreenUseCase();
+            ILoadStageUseCase loadStageUseCase = new LoadStageUseCase();
 
             FlowUseCases flowUseCases = new FlowUseCases(
                 loadServicesContextUseCase,
                 loadLoadingScreenContextUseCase,
+                loadStageContextUseCase,
+                showLoadingScreenUseCase,
                 loadBaseCheatsUseCase,
                 loadLocalizationDataUseCase,
-                showLoadingScreenUseCase
+                loadStageUseCase
                 );
 
             //FlowUseCases flowUseCases = new FlowUseCases(

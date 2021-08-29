@@ -1,16 +1,12 @@
-﻿using Cinemachine;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Playground.Contexts
+namespace Playground.Contexts.Stage
 {
     [System.Serializable]
     public class StageContextReferences 
     {
-        [Header("References")]
-        [SerializeField] private Camera mainCamera = default;
-        [SerializeField] private CinemachineVirtualCamera followCarVirtualCamera = default;
+        [SerializeField] private Transform shipParent = default;
 
-        public Camera MainCamera => mainCamera;
-        public CinemachineVirtualCamera FollowCarVirtualCamera => followCarVirtualCamera;
+        public Transform ShipParent => shipParent;
     }
 }

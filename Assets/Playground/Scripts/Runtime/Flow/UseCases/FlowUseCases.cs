@@ -2,6 +2,8 @@
 using Playground.Flow.UseCases.LoadLoadingScreenContext;
 using Playground.Flow.UseCases.LoadLocalizationData;
 using Playground.Flow.UseCases.LoadServicesContext;
+using Playground.Flow.UseCases.LoadStage;
+using Playground.Flow.UseCases.LoadStageContext;
 using Playground.Flow.UseCases.ShowLoadingScreen;
 
 namespace Playground.Flow.UseCases
@@ -10,67 +12,29 @@ namespace Playground.Flow.UseCases
     {
         public ILoadServicesContextUseCase LoadServicesContextUseCase { get; }
         public ILoadLoadingScreenContextUseCase LoadLoadingScreenContextUseCase { get; }
+        public ILoadStageContextUseCase LoadStageContextUseCase { get; }
+        public IShowLoadingScreenUseCase ShowLoadingScreenUseCase { get; }
         public ILoadBaseCheatsUseCase LoadBaseCheatsUseCase { get; }
         public ILoadLocalizationDataUseCase LoadLocalizationDataUseCase { get; }
-        public IShowLoadingScreenUseCase ShowLoadingScreenUseCase { get; }
-
-        //public ILoadBaseCheatsFlowUseCase LoadBaseCheatsFlowUseCase { get; }
-        //public ISetStageCheatsActiveFlowUseCase SetStageCheatsActiveFlowUseCase { get; }
-        //public ILoadLocalizationDataFlowUseCase LoadLocalizationDataFlowUseCase { get; }
-        //public IShowLoadingScreenFlowUseCase ShowLoadingScreenFlowUseCase { get; }
-        //public ILoadUserDataFlowUseCase LoadUserDataFlowUseCase { get; }
-        //public ILoadAdsScenesFlowUseCase LoadAdsScenesFlowUseCase { get; }
-        //public ILoadMetaFlowUseCase LoadMetaFlowUseCase { get; }
-        //public IUnloadMetaFlowUseCase UnloadMetaFlowUseCase { get; }
-        //public ISetCurrentStageFlowUseCase SetCurrentStageFlowUseCase { get; }
-        //public IPlayScenarioFlowUseCase PlayScenarioFlowUseCase { get; }
-        //public IReplayScenarioFlowUseCase ReplayScenarioFlowUseCase { get; }
-        //public IBackToMetaFromStageFlowUseCase BackToMetaFromStageFlowUseCase { get; }
+        public ILoadStageUseCase LoadStageUseCase { get; }
 
         public FlowUseCases(
             ILoadServicesContextUseCase loadServicesContextUseCase,
             ILoadLoadingScreenContextUseCase loadLoadingScreenContextUseCase,
+            ILoadStageContextUseCase loadStageContextUseCase,
+            IShowLoadingScreenUseCase showLoadingScreenUseCase,
             ILoadBaseCheatsUseCase loadBaseCheatsUseCase,
             ILoadLocalizationDataUseCase loadLocalizationDataUseCase,
-            IShowLoadingScreenUseCase showLoadingScreenUseCase
+            ILoadStageUseCase loadStageUseCase
             )
         {
             LoadServicesContextUseCase = loadServicesContextUseCase;
             LoadLoadingScreenContextUseCase = loadLoadingScreenContextUseCase;
+            LoadStageContextUseCase = loadStageContextUseCase;
+            ShowLoadingScreenUseCase = showLoadingScreenUseCase;
             LoadBaseCheatsUseCase = loadBaseCheatsUseCase;
             LoadLocalizationDataUseCase = loadLocalizationDataUseCase;
-            ShowLoadingScreenUseCase = showLoadingScreenUseCase;
+            LoadStageUseCase = loadStageUseCase;
         }
-
-        //public FlowUseCases(
-        //    ILoadEssentialScenesFlowUseCase loadEssentialScenesFlowUseCase,
-        //    ILoadBaseCheatsFlowUseCase loadBaseCheatsFlowUseCase,
-        //    ISetStageCheatsActiveFlowUseCase setStageCheatsActiveFlowUseCase,
-        //    ILoadLocalizationDataFlowUseCase loadLocalizationDataFlowUseCase,
-        //    IShowLoadingScreenFlowUseCase showLoadingScreenFlowUseCase,
-        //    ILoadUserDataFlowUseCase loadUserDataFlowUseCase,
-        //    ILoadAdsScenesFlowUseCase loadAdsScenesFlowUseCase,
-        //    ILoadMetaFlowUseCase loadMetaFlowUseCase,
-        //    IUnloadMetaFlowUseCase unloadMetaFlowUseCase,
-        //    ISetCurrentStageFlowUseCase setCurrentStageFlowUseCase,
-        //    IPlayScenarioFlowUseCase playScenarioFlowUseCase,
-        //    IReplayScenarioFlowUseCase replayScenarioFlowUseCase,
-        //    IBackToMetaFromStageFlowUseCase backToMetaFromStageFlowUseCase
-        //    )
-        //{
-        //    LoadEssentialScenesFlowUseCase = loadEssentialScenesFlowUseCase;
-        //    LoadBaseCheatsFlowUseCase = loadBaseCheatsFlowUseCase;
-        //    SetStageCheatsActiveFlowUseCase = setStageCheatsActiveFlowUseCase;
-        //    LoadLocalizationDataFlowUseCase = loadLocalizationDataFlowUseCase;
-        //    ShowLoadingScreenFlowUseCase = showLoadingScreenFlowUseCase;
-        //    LoadUserDataFlowUseCase = loadUserDataFlowUseCase;
-        //    LoadAdsScenesFlowUseCase = loadAdsScenesFlowUseCase;
-        //    LoadMetaFlowUseCase = loadMetaFlowUseCase;
-        //    UnloadMetaFlowUseCase = unloadMetaFlowUseCase;
-        //    SetCurrentStageFlowUseCase = setCurrentStageFlowUseCase;
-        //    PlayScenarioFlowUseCase = playScenarioFlowUseCase;
-        //    ReplayScenarioFlowUseCase = replayScenarioFlowUseCase;
-        //    BackToMetaFromStageFlowUseCase = backToMetaFromStageFlowUseCase;
-        //}
     }
 }

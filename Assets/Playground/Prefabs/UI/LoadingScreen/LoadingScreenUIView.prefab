@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   executionMode: 0
-  loopMode: 0
+  loopMode: 2
   loopResetMode: 0
   loops: 0
   BindingPlayerComponents:
@@ -267,8 +267,8 @@ MonoBehaviour:
   - id: 3
   - id: 4
   - id: 5
-  bindingEnabled: 0
-  bindableDataUid: 
+  bindingEnabled: 1
+  bindableDataUid: f7112a9f-e05a-4007-a7d9-4c4299948623
   references:
     version: 1
     00000000:
@@ -277,25 +277,25 @@ MonoBehaviour:
         folded: 1
         enabled: 1
         target:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
           FallbackValue: {fileID: 3983120120041568176}
         interactable:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
           FallbackValue: 1
         blocksRaycast:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
           FallbackValue: 1
         delay:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
@@ -306,19 +306,19 @@ MonoBehaviour:
         folded: 1
         enabled: 1
         target:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
           FallbackValue: {fileID: 3983120120041568176}
         value:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
           FallbackValue: 1
         delay:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
@@ -329,31 +329,31 @@ MonoBehaviour:
         folded: 1
         enabled: 1
         target:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
           FallbackValue: {fileID: 5490382483040625449}
         value:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: {fileID: 6785679615359841215}
+          FallbackValue: {fileID: 2050108048020897442}
         delay:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
         duration:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0
+          FallbackValue: 0.4
         easing:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
@@ -363,8 +363,8 @@ MonoBehaviour:
             - serializedVersion: 3
               time: 0
               value: 0
-              inSlope: 0
-              outSlope: 1
+              inSlope: 2
+              outSlope: 2
               tangentMode: 0
               weightedMode: 0
               inWeight: 0
@@ -372,7 +372,7 @@ MonoBehaviour:
             - serializedVersion: 3
               time: 1
               value: 1
-              inSlope: 1
+              inSlope: 0
               outSlope: 0
               tangentMode: 0
               weightedMode: 0
@@ -387,7 +387,7 @@ MonoBehaviour:
         folded: 1
         enabled: 1
         delay:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
@@ -398,31 +398,31 @@ MonoBehaviour:
         folded: 1
         enabled: 1
         target:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
           FallbackValue: {fileID: 5490382483040625449}
         value:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
           FallbackValue: {fileID: 2050108048020897442}
         delay:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
         duration:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.3
+          FallbackValue: 0.4
         easing:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
@@ -453,34 +453,34 @@ MonoBehaviour:
     00000005:
       type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
-        folded: 0
+        folded: 1
         enabled: 1
         target:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
           FallbackValue: {fileID: 8910745066228354321}
         value:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
           FallbackValue: 1
         delay:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
           FallbackValue: 0.1
         duration:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
           FallbackValue: 0.35
         easing:
-          bindingEnabled: 0
+          bindingEnabled: 1
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 

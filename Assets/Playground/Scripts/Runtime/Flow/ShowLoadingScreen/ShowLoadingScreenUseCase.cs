@@ -1,5 +1,5 @@
-﻿using Juce.CoreUnity.Contexts;
-using Playground.Content.LoadingScreen.UI;
+﻿using Juce.Core.Loading;
+using Juce.CoreUnity.Contexts;
 using Playground.Contexts.LoadingScreen;
 using System;
 using System.Threading.Tasks;

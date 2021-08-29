@@ -1,4 +1,4 @@
-﻿using Playground.Content.LoadingScreen.UI;
+﻿using Juce.Core.Loading;
 using System.Threading.Tasks;
 
 namespace Playground.Flow.UseCases.ShowLoadingScreen
