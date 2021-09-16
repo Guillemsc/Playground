@@ -1,10 +1,12 @@
-﻿using Playground.Content.Stage.Logic.UseCases.CreateShip;
+﻿using Playground.Content.Stage.Logic.UseCases.TryCreateShip;
+using Playground.Content.Stage.Logic.UseCases.SetupStage;
 
 namespace Playground.Content.Stage.Logic.UseCases
 {
     public class UseCaseRepository
     {
-        public ICreateShipUseCase CreateShipUseCase { get; }
+        public ITryCreateShipUseCase CreateShipUseCase { get; }
+        public ISetupStageUseCase SetupStageUseCase { get; }
 
         //public ILoadStageUseCase LoadStageUseCase { get; }
         //public IStartStageUseCase StartStageUseCase { get; }
@@ -13,10 +15,12 @@ namespace Playground.Content.Stage.Logic.UseCases
         //public IIsStageCompletedUseCase IsStageCompletedUseCase { get; }
 
         public UseCaseRepository(
-            ICreateShipUseCase createShipUseCase
+            ITryCreateShipUseCase createShipUseCase,
+            ISetupStageUseCase setupStageUseCase
             )
         {
             CreateShipUseCase = createShipUseCase;
+            SetupStageUseCase = setupStageUseCase;
         }
 
         //public UseCaseRepository(

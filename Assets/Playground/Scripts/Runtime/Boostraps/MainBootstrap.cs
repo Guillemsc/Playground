@@ -41,7 +41,10 @@ namespace Playground.Boostraps
 
             await flowUseCases.LoadStageContextUseCase.Execute();
 
-            await flowUseCases.LoadStageUseCase.Execute(new StageSetup());
+            await flowUseCases.LoadStageUseCase.Execute(
+                new StageSetup(
+                    new ShipSetup(string.Empty)
+                ));
 
             loadingToken.Complete();
 

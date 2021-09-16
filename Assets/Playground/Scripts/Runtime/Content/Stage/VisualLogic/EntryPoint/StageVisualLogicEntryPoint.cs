@@ -2,6 +2,7 @@
 using Juce.Core.Loading;
 using Juce.Core.Sequencing;
 using Juce.CoreUnity.Services;
+using Playground.Content.Stage.Logic.Events;
 using Playground.Services;
 using Playground.Services.ViewStack;
 
@@ -20,6 +21,11 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             )
         {
             Sequencer sequencer = new Sequencer();
+
+            eventReceiver.Subscribe((SetupStageOutEvent setupStageOutEvent) =>
+            {
+                UnityEngine.Debug.Log("Setup!");
+            });
 
             stageLoadedToken.Complete();
         }

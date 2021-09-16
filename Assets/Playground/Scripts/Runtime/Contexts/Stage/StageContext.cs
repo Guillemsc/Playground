@@ -4,6 +4,7 @@ using Juce.CoreUnity.Contexts;
 using Juce.CoreUnity.Service;
 using Juce.CoreUnity.Services;
 using Playground.Content.Stage.Logic.EntryPoint;
+using Playground.Content.Stage.Logic.Setup;
 using Playground.Content.Stage.Setup;
 using Playground.Content.Stage.VisualLogic.EntryPoint;
 using Playground.Services;
@@ -42,9 +43,21 @@ namespace Playground.Contexts.Stage
 
             ILoadingToken stageLoadedToken = new CallbackLoadingToken(() => stageLoadedTaskCompletionSource.SetResult(default));
 
+            EventDispatcherAndReceiverTickable logicToViewTickable = new EventDispatcherAndReceiverTickable(
+                logicToViewEventDispatcherAndReceiver
+                );
+            EventDispatcherAndReceiverTickable viewToLogicTickable = new EventDispatcherAndReceiverTickable(
+                viewToLogicEventDispatcherAndReceiver
+                );
+
+            LogicStageSetup logicStageSetup = new LogicStageSetup(
+                new LogicShipSetup(stageSetup.ShipSetup.TypeId)
+                );
+
             StageLogicEntryPoint stageLogicEntryPoint = new StageLogicEntryPoint(
                 logicToViewEventDispatcherAndReceiver,
-                viewToLogicEventDispatcherAndReceiver
+                viewToLogicEventDispatcherAndReceiver,
+                logicStageSetup
                 );
 
             StageVisualLogicEntryPoint stageVisualLogicEntryPoint = new StageVisualLogicEntryPoint(
@@ -58,6 +71,9 @@ namespace Playground.Contexts.Stage
                 );
 
             stageLogicEntryPoint.Execute();
+
+            tickablesService.AddTickable(logicToViewTickable);
+            tickablesService.AddTickable(viewToLogicTickable);
 
             return stageLoadedTaskCompletionSource.Task;
         }
