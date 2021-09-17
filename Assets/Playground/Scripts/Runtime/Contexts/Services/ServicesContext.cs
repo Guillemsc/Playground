@@ -34,6 +34,7 @@ namespace Playground.Contexts.Services
             ServicesProvider.Register(uiViewStackService);
 
             configurationService = new ConfigurationService(
+                servicesContextReferences.StageConfiguration
                 );
             ServicesProvider.Register(configurationService);
 

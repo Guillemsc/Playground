@@ -1,17 +1,12 @@
 ﻿using System.Threading.Tasks;
 using UnityEngine;
-using Playground.Flow.UseCases;
-using Playground.Services;
-using Juce.CoreUnity.Service;
-using Playground.Content.LoadingScreen.UI;
-using Playground.Configuration.Stage;
+
 
 namespace Playground.Boostraps
 {
     public class StageBootstrap : MonoBehaviour
     {
-        [SerializeField] private StageConfiguration stageConfiguration = default;
-        [SerializeField] private string carTypeId = default;
+
 
         private void Awake()
         {

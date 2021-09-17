@@ -1,4 +1,4 @@
-﻿namespace Playground.Contexts
+﻿namespace Playground.Contexts.Meta
 {
     [System.Serializable]
     public class MetaContextReferences

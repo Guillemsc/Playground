@@ -1,21 +1,18 @@
 ﻿using Juce.CoreUnity.Service;
-using Playground.Configuration.DemoStages;
+using Playground.Configuration.Stage;
 
 namespace Playground.Services
 {
     public class ConfigurationService : IService
     {
-        //public CarLibrary CarLibrary { get; }
-        //public DemoStagesConfiguration DemoStagesConfiguration { get; }
+        public StageConfiguration StageConfiguration { get; }
 
-        //public ConfigurationService(
-        //    CarLibrary carLibrary,
-        //    DemoStagesConfiguration demoStagesConfiguration
-        //    )
-        //{
-        //    CarLibrary = carLibrary;
-        //    DemoStagesConfiguration = demoStagesConfiguration;
-        //}
+        public ConfigurationService(
+            StageConfiguration stageConfiguration
+            )
+        {
+            StageConfiguration = stageConfiguration;
+        }
 
         public void Init()
         {

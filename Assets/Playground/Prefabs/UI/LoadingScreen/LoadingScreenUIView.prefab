@@ -664,7 +664,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.2
+          FallbackValue: 0.1
         duration:
           bindingEnabled: 0
           wantsToBeBinded: 0

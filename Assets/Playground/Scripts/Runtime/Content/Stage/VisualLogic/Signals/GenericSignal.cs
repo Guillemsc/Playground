@@ -1,6 +1,6 @@
 ﻿using Juce.Core.Events.Generic;
 
-namespace Playground.Content.Stage.VisualLogic.View.Signals
+namespace Playground.Content.Stage.VisualLogic.Signals
 {
     public class GenericSignal<TSender, TEventArgs>
     {

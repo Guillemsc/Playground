@@ -1,7 +1,7 @@
 ﻿using Juce.CoreUnity.Contexts;
 using UnityEngine;
 
-namespace Playground.Contexts
+namespace Playground.Contexts.StageUI
 {
     public class StageUIContext : Context
     {

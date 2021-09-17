@@ -1,7 +1,7 @@
 ﻿using Playground.Content.LoadingScreen.UI;
 using UnityEngine;
 
-namespace Playground.Contexts
+namespace Playground.Contexts.LoadingScreen
 {
     [System.Serializable]
     public class LoadingScreenContextReferences

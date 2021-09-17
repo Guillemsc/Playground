@@ -13,6 +13,7 @@ using Playground.Flow.UseCases.LoadStageContext;
 using Juce.Core.Loading;
 using Playground.Flow.UseCases.LoadStage;
 using Playground.Content.Stage.Setup;
+using Playground.Flow.UseCases.LoadCamerasContext;
 
 namespace Playground.Boostraps
 {
@@ -32,6 +33,7 @@ namespace Playground.Boostraps
 
             await flowUseCases.LoadServicesContextUseCase.Execute();
             await flowUseCases.LoadLoadingScreenContextUseCase.Execute();
+            await flowUseCases.LoadCamerasContextUseCase.Execute();
 
             ILoadingToken loadingToken = await flowUseCases.ShowLoadingScreenUseCase.Execute();
 
@@ -84,6 +86,8 @@ namespace Playground.Boostraps
 
             ILoadServicesContextUseCase loadServicesContextUseCase = new LoadServicesContextUseCase();
 
+            ILoadCamerasContextUseCase loadCamerasContextUseCase = new LoadCamerasContextUseCase();
+
             ILoadLoadingScreenContextUseCase loadLoadingScreenContextUseCase = new LoadLoadingScreenContextUseCase();
 
             ILoadStageContextUseCase loadStageContextUseCase = new LoadStageContextUseCase();
@@ -97,6 +101,7 @@ namespace Playground.Boostraps
 
             FlowUseCases flowUseCases = new FlowUseCases(
                 loadServicesContextUseCase,
+                loadCamerasContextUseCase,
                 loadLoadingScreenContextUseCase,
                 loadStageContextUseCase,
                 showLoadingScreenUseCase,

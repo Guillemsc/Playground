@@ -67,7 +67,9 @@ namespace Playground.Contexts.Stage
                 tickablesService,
                 timeService,
                 uiViewStackService,
-                persistenceService
+                persistenceService,
+                configurationService.StageConfiguration,
+                stageContextReferences
                 );
 
             stageLogicEntryPoint.Execute();

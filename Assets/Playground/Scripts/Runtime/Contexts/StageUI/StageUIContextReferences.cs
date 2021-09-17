@@ -3,7 +3,7 @@ using Playground.Content.StageUI.UI.StageCompleted;
 using Playground.Content.StageUI.UI.StageOverlay;
 using UnityEngine;
 
-namespace Playground.Contexts
+namespace Playground.Contexts.StageUI
 {
     [System.Serializable]
     public class StageUIContextReferences

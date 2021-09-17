@@ -1,4 +1,4 @@
-﻿using Juce.CoreUnity.UI;
+﻿using Playground.Configuration.Stage;
 using UnityEngine;
 
 namespace Playground.Contexts.Services
@@ -8,6 +8,11 @@ namespace Playground.Contexts.Services
     {
         [SerializeField] private Canvas uiFrameCanvas = default;
 
+        [Header("Configuration")]
+        [SerializeField] private StageConfiguration stageConfiguration = default;
+
         public Canvas UIFrameCanvas => uiFrameCanvas;
+
+        public StageConfiguration StageConfiguration => stageConfiguration;
     }
 }

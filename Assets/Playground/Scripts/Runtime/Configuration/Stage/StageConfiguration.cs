@@ -1,20 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Playground.Configuration.Stage
 {
-    [CreateAssetMenu(fileName = "StageConfiguration", menuName = "Playground/Configuration/StageConfiguration", order = 1)]
+    [CreateAssetMenu(fileName = nameof(StageConfiguration), menuName = "Playground/Configuration/" + nameof(StageConfiguration), order = 1)]
     public class StageConfiguration : ScriptableObject
     {
-        [SerializeField] private string stageTypeId = default;
-        [SerializeField] private string stageName = default;
-        [SerializeField] private SceneReference stageSceneReference = default;
-        [SerializeField] private StageStarsConfiguration stageStarsConfiguration = default;
-        [SerializeField] private StageRewardsConfiguration stageRewardsConfiguration = default;
+        [SerializeField] private ShipConfiguration shipConfiguration = default;
 
-        public string StageTypeId => stageTypeId;
-        public string StageName => stageName;
-        public SceneReference StageSceneReference => stageSceneReference;
-        public StageStarsConfiguration StageStarsConfiguration => stageStarsConfiguration;
-        public StageRewardsConfiguration StageRewardsConfiguration => stageRewardsConfiguration;
+        public ShipConfiguration ShipConfiguration => shipConfiguration;
     }
 }
