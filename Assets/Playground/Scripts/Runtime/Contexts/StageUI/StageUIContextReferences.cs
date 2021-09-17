@@ -1,6 +1,4 @@
-﻿using Playground.Content.StageUI.UI.ScreenCarControls;
-using Playground.Content.StageUI.UI.StageCompleted;
-using Playground.Content.StageUI.UI.StageOverlay;
+﻿using Playground.Content.StageUI.UI.ActionInputDetection;
 using UnityEngine;
 
 namespace Playground.Contexts.StageUI
@@ -9,12 +7,8 @@ namespace Playground.Contexts.StageUI
     public class StageUIContextReferences
     {
         [Header("References")]
-        [SerializeField] private ScreenCarControlsUIView screenCarControlsUIView = default;
-        [SerializeField] private StageOverlayUIView stageOverlayUIView = default;
-        [SerializeField] private StageCompletedUIView stageCompletedUIView = default;
+        [SerializeField] private ActionInputDetectionUIView actionInputDetectionUIView = default;
 
-        public ScreenCarControlsUIView ScreenCarControlsUIView => screenCarControlsUIView;
-        public StageOverlayUIView StageOverlayUIView => stageOverlayUIView;
-        public StageCompletedUIView StageCompletedUIView => stageCompletedUIView;
+        public ActionInputDetectionUIView ActionInputDetectionUIView => actionInputDetectionUIView;
     }
 }

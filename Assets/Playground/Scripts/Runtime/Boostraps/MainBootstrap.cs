@@ -14,6 +14,7 @@ using Juce.Core.Loading;
 using Playground.Flow.UseCases.LoadStage;
 using Playground.Content.Stage.Setup;
 using Playground.Flow.UseCases.LoadCamerasContext;
+using Playground.Flow.UseCases.LoadStageUIContext;
 
 namespace Playground.Boostraps
 {
@@ -41,6 +42,7 @@ namespace Playground.Boostraps
 
             await flowUseCases.LoadLocalizationDataUseCase.Execute();
 
+            await flowUseCases.LoadStageUIContextUseCase.Execute();
             await flowUseCases.LoadStageContextUseCase.Execute();
 
             await flowUseCases.LoadStageUseCase.Execute(
@@ -90,7 +92,10 @@ namespace Playground.Boostraps
 
             ILoadLoadingScreenContextUseCase loadLoadingScreenContextUseCase = new LoadLoadingScreenContextUseCase();
 
+            ILoadStageUIContextUseCase loadStageUIContextUseCase = new LoadStageUIContextUseCase();
+
             ILoadStageContextUseCase loadStageContextUseCase = new LoadStageContextUseCase();
+
             IShowLoadingScreenUseCase showLoadingScreenUseCase = new ShowLoadingScreenUseCase();
 
             ILoadBaseCheatsUseCase loadBaseCheatsUseCase = new LoadBaseCheatsUseCase();
@@ -103,28 +108,13 @@ namespace Playground.Boostraps
                 loadServicesContextUseCase,
                 loadCamerasContextUseCase,
                 loadLoadingScreenContextUseCase,
+                loadStageUIContextUseCase,
                 loadStageContextUseCase,
                 showLoadingScreenUseCase,
                 loadBaseCheatsUseCase,
                 loadLocalizationDataUseCase,
                 loadStageUseCase
                 );
-
-            //FlowUseCases flowUseCases = new FlowUseCases(
-            //    loadEssentialScenesFlowUseCase,
-            //    loadBaseCheatsFlowUseCase,
-            //    setStageCheatsActiveFlowUseCase,
-            //    loadLocalizationDataFlowUseCase,
-            //    showLoadingScreenFlowUseCase,
-            //    loadUserDataFlowUseCase,
-            //    loadAdsScenesFlowUseCase,
-            //    loadMetaFlowUseCase,
-            //    unloadMetaFlowUseCase,
-            //    setCurrentStageFlowUseCase,
-            //    playScenarioFlowUseCase,
-            //    replayScenarioFlowUseCase,
-            //    backToMetaFromStageFlowUseCase
-            //    );
 
             FlowService flowService = new FlowService(flowUseCases);
             ServicesProvider.Register(flowService);

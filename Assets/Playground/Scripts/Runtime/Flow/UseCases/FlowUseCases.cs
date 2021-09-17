@@ -5,6 +5,7 @@ using Playground.Flow.UseCases.LoadLocalizationData;
 using Playground.Flow.UseCases.LoadServicesContext;
 using Playground.Flow.UseCases.LoadStage;
 using Playground.Flow.UseCases.LoadStageContext;
+using Playground.Flow.UseCases.LoadStageUIContext;
 using Playground.Flow.UseCases.ShowLoadingScreen;
 
 namespace Playground.Flow.UseCases
@@ -14,6 +15,7 @@ namespace Playground.Flow.UseCases
         public ILoadServicesContextUseCase LoadServicesContextUseCase { get; }
         public ILoadCamerasContextUseCase LoadCamerasContextUseCase { get; }
         public ILoadLoadingScreenContextUseCase LoadLoadingScreenContextUseCase { get; }
+        public ILoadStageUIContextUseCase LoadStageUIContextUseCase { get; }
         public ILoadStageContextUseCase LoadStageContextUseCase { get; }
         public IShowLoadingScreenUseCase ShowLoadingScreenUseCase { get; }
         public ILoadBaseCheatsUseCase LoadBaseCheatsUseCase { get; }
@@ -24,6 +26,7 @@ namespace Playground.Flow.UseCases
             ILoadServicesContextUseCase loadServicesContextUseCase,
             ILoadCamerasContextUseCase loadCamerasContextUseCase,
             ILoadLoadingScreenContextUseCase loadLoadingScreenContextUseCase,
+            ILoadStageUIContextUseCase loadStageUIContextUseCase,
             ILoadStageContextUseCase loadStageContextUseCase,
             IShowLoadingScreenUseCase showLoadingScreenUseCase,
             ILoadBaseCheatsUseCase loadBaseCheatsUseCase,
@@ -34,6 +37,7 @@ namespace Playground.Flow.UseCases
             LoadServicesContextUseCase = loadServicesContextUseCase;
             LoadCamerasContextUseCase = loadCamerasContextUseCase;
             LoadLoadingScreenContextUseCase = loadLoadingScreenContextUseCase;
+            LoadStageUIContextUseCase = loadStageUIContextUseCase;
             LoadStageContextUseCase = loadStageContextUseCase;
             ShowLoadingScreenUseCase = showLoadingScreenUseCase;
             LoadBaseCheatsUseCase = loadBaseCheatsUseCase;

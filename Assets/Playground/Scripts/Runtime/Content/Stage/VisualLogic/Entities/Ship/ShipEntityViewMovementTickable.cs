@@ -78,9 +78,6 @@ namespace Playground.Content.Stage.VisualLogic.Entities
 
             Vector3 newPosition = movementTransform.position;
 
-            //newPosition.x += Mathf.Sin(Mathf.Deg2Rad * -currentForwardAngle) * deltaTimeCurrentForwardSpeed;
-            //newPosition.y += Mathf.Cos(Mathf.Deg2Rad * -currentForwardAngle) * deltaTimeCurrentForwardSpeed;
-
             newPosition += movementTransform.up * deltaTimeCurrentForwardSpeed;
 
             movementTransform.position = newPosition;
