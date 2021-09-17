@@ -267,14 +267,38 @@ MonoBehaviour:
   - id: 3
   - id: 4
   - id: 5
+  - id: 6
   bindingEnabled: 0
   bindableDataUid: f7112a9f-e05a-4007-a7d9-4c4299948623
   references:
     version: 1
     00000000:
+      type: {class: GameObjectActiveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 1
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 3983120120041568176}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+    00000001:
       type: {class: TransformPositionToTransformPositionXComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
-        folded: 0
+        folded: 1
         enabled: 1
         target:
           bindingEnabled: 0
@@ -329,10 +353,10 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-    00000001:
+    00000002:
       type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
-        folded: 0
+        folded: 1
         enabled: 1
         target:
           bindingEnabled: 0
@@ -387,10 +411,10 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-    00000002:
+    00000003:
       type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
-        folded: 0
+        folded: 1
         enabled: 1
         delay:
           bindingEnabled: 0
@@ -398,10 +422,10 @@ MonoBehaviour:
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
-    00000003:
+    00000004:
       type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
-        folded: 0
+        folded: 1
         enabled: 1
         target:
           bindingEnabled: 0
@@ -456,10 +480,10 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-    00000004:
+    00000005:
       type: {class: TransformPositionToTransformPositionXComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
-        folded: 0
+        folded: 1
         enabled: 1
         target:
           bindingEnabled: 0
@@ -514,10 +538,10 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-    00000005:
+    00000006:
       type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
-        folded: 0
+        folded: 1
         enabled: 1
         delay:
           bindingEnabled: 0
@@ -580,6 +604,8 @@ MonoBehaviour:
   Components:
   - id: 0
   - id: 1
+  - id: 2
+  - id: 3
   bindingEnabled: 0
   bindableDataUid: 
   references:
@@ -700,6 +726,40 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
+    00000002:
+      type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+    00000003:
+      type: {class: GameObjectActiveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 3983120120041568176}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
 --- !u!1 &3983120120460372424
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ namespace Playground.Content.StageUI.UI.ActionInputDetection
 
         private void OnInputActionEvent(ActionInputDetectionUIView viewModel, PointerEventData pointerEventData)
         {
-           
+            useCases.InputActionReceivedUseCase.Execute();
         }
     }
 }

@@ -128,6 +128,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5244088208265226713}
   - component: {fileID: 6413619380215901151}
+  - component: {fileID: 6551935415118583708}
+  - component: {fileID: 8540911101744728325}
   m_Layer: 5
   m_Name: InputActionPointerCallbacks
   m_TagString: Untagged
@@ -167,6 +169,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerPointerUpOnPointerExit: 1
+--- !u!222 &6551935415118583708
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3103924337657845497}
+  m_CullTransparentMesh: 1
+--- !u!114 &8540911101744728325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3103924337657845497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e57c1ad4d4ce2ff4e87b0f73f1b81409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4143916967000260208
 GameObject:
   m_ObjectHideFlags: 0

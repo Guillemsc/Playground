@@ -1,4 +1,5 @@
 ﻿using Juce.CoreUnity.Service;
+using Playground.Content.StageUI.UI.ActionInputDetection.UseCases;
 using Playground.Services.ViewStack;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Playground.Content.StageUI.UI.ActionInputDetection
         private UIViewStackService uiViewStackService;
 
         private ActionInputDetectionUIViewModel viewModel;
+        private ActionInputDetectionUIEvents events;
         private ActionInputDetectionUIView view;
         private ActionInputDetectionUIUseCases useCases;
         private ActionInputDetectionUIController controller;
@@ -36,11 +38,17 @@ namespace Playground.Content.StageUI.UI.ActionInputDetection
         private void GenerateDependences()
         {
             viewModel = new ActionInputDetectionUIViewModel();
+            events = new ActionInputDetectionUIEvents();
         }
 
         private void GenerateUseCases()
         {
+            IInputActionReceivedUseCase inputActionReceivedUseCase = new InputActionReceivedUseCase(
+                events
+                );
+
             useCases = new ActionInputDetectionUIUseCases(
+                inputActionReceivedUseCase
                 );
         }
 
@@ -49,7 +57,7 @@ namespace Playground.Content.StageUI.UI.ActionInputDetection
             view = GetComponent<ActionInputDetectionUIView>();
 
             controller = new ActionInputDetectionUIController(viewModel, useCases);
-            interactor = new ActionInputDetectionUIInteractor(viewModel, useCases);
+            interactor = new ActionInputDetectionUIInteractor(viewModel, useCases, events);
 
             view.Init(viewModel);
 

@@ -15,18 +15,21 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
         private readonly ISequencerTimelines<StageTimeline> sequencerTimelines;
         private readonly ITryCreateShipViewUseCase tryCreateShipViewUseCase;
         private readonly ISetupCameraUseCase setupCameraUseCase;
+        private readonly ISetActionInputDetectionUIVisibleUseCase setActionInputDetectionUIVisibleUseCase;
         private readonly IStartShipMovementUseCase startShipMovementUseCase;
 
         public SetupStageUseCase(
             ISequencerTimelines<StageTimeline> sequencerTimelines,
             ITryCreateShipViewUseCase tryCreateShipViewUseCase,
             ISetupCameraUseCase setupCameraUseCase,
+            ISetActionInputDetectionUIVisibleUseCase setActionInputDetectionUIVisibleUseCase,
             IStartShipMovementUseCase startShipMovementUseCase
             )
         {
             this.sequencerTimelines = sequencerTimelines;
             this.tryCreateShipViewUseCase = tryCreateShipViewUseCase;
             this.setupCameraUseCase = setupCameraUseCase;
+            this.setActionInputDetectionUIVisibleUseCase = setActionInputDetectionUIVisibleUseCase;
             this.startShipMovementUseCase = startShipMovementUseCase;
         }
 
@@ -39,7 +42,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
             sequencer.Play((ct) => Run(shipEntitySnapshot, ct));
         }
 
-        public Task Run(
+        public async Task Run(
             ShipEntitySnapshot shipEntitySnapshot,
             CancellationToken cancellationToken
             )
@@ -51,14 +54,14 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
 
             if(!created)
             {
-                return Task.CompletedTask;
+                return;
             }
 
             setupCameraUseCase.Execute(shipEntityView);
 
             startShipMovementUseCase.Execute(shipEntityView);
 
-            return Task.CompletedTask;
+            await setActionInputDetectionUIVisibleUseCase.Execute(visible: true, instantly: false, cancellationToken);
         }
     }
 }

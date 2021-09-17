@@ -59,6 +59,10 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                 stageContextReferences.CinemachineVirtualCamera
                 );
 
+            ISetActionInputDetectionUIVisibleUseCase setActionInputDetectionUIVisibleUseCase = new SetActionInputDetectionUIVisibleUseCase(
+                uiViewStackService
+                );
+
             IStartShipMovementUseCase startShipMovementUseCase = new StartShipMovementUseCase(
                 shipEntityViewMovementTickable
                 );
@@ -67,6 +71,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                 sequencerTimelines,
                 tryCreateShipViewUseCase,
                 setupCameraUseCase,
+                setActionInputDetectionUIVisibleUseCase,
                 startShipMovementUseCase
                 );
 
