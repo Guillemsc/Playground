@@ -1,5 +1,6 @@
 ﻿using Juce.Core.Events;
 using Juce.Core.Factories;
+using Juce.Core.Repositories;
 using Playground.Content.Stage.Logic.Entities;
 using Playground.Content.Stage.Logic.Events;
 using Playground.Content.Stage.Logic.Snapshots;
@@ -11,12 +12,12 @@ namespace Playground.Content.Stage.Logic.UseCases.StartStage
     {
         private readonly IEventDispatcher eventDispatcher;
         private readonly StageState stageState;
-        private readonly IRepository<int, ShipEntity> shipEntityRepository;
+        private readonly IKeyValueRepository<int, ShipEntity> shipEntityRepository;
 
         public StartStageUseCase(
             IEventDispatcher eventDispatcher,
             StageState stageState,
-            IRepository<int, ShipEntity> shipEntityRepository
+            IKeyValueRepository<int, ShipEntity> shipEntityRepository
             )
         {
             this.eventDispatcher = eventDispatcher;

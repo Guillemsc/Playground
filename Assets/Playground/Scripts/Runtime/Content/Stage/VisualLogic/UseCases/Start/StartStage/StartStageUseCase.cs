@@ -1,5 +1,6 @@
 ﻿using Juce.Core.Disposables;
 using Juce.Core.Factories;
+using Juce.Core.Repositories;
 using Juce.Core.Sequencing;
 using Playground.Content.Stage.Logic.Snapshots;
 using Playground.Content.Stage.VisualLogic.Entities;
@@ -13,12 +14,12 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
     public class StartStageUseCase : IStartStageUseCase
     {
         private readonly ISequencerTimelines<StageTimeline> sequencerTimelines;
-        private readonly IRepository<int, IDisposable<ShipEntityView>> shipEntityViewRepository;
+        private readonly IKeyValueRepository<int, IDisposable<ShipEntityView>> shipEntityViewRepository;
         private readonly IStartShipMovementUseCase startShipMovementUseCase;
 
         public StartStageUseCase(
             ISequencerTimelines<StageTimeline> sequencerTimelines,
-            IRepository<int, IDisposable<ShipEntityView>> shipEntityViewRepository,
+            IKeyValueRepository<int, IDisposable<ShipEntityView>> shipEntityViewRepository,
             IStartShipMovementUseCase startShipMovementUseCase
             )
         {

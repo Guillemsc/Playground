@@ -10,6 +10,7 @@ using Playground.Content.Stage.Logic.UseCases.TryCreateShip;
 using Playground.Content.Stage.Logic.UseCases.SetupStage;
 using Playground.Content.Stage.Logic.UseCases.StartStage;
 using Playground.Content.Stage.Logic.State;
+using Juce.Core.Repositories;
 
 namespace Playground.Content.Stage.Logic.EntryPoint
 {
@@ -32,7 +33,7 @@ namespace Playground.Content.Stage.Logic.EntryPoint
             IIdGenerator idGenerator = new IncrementalIdGenerator();
 
             IFactory<LogicShipSetup, ShipEntity> shipEntityFactory = new ShipEntityFactory(idGenerator);
-            IRepository<int, ShipEntity> shipEntityRepository = new SimpleRepository<int, ShipEntity>();
+            IKeyValueRepository<int, ShipEntity> shipEntityRepository = new SimpleKeyValueRepository<int, ShipEntity>();
 
             StageState stageState = new StageState();
 

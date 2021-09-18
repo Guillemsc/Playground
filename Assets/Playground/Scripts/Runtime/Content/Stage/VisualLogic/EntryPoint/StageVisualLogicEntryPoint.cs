@@ -3,6 +3,7 @@ using Juce.Core.Disposables;
 using Juce.Core.Events;
 using Juce.Core.Factories;
 using Juce.Core.Loading;
+using Juce.Core.Repositories;
 using Juce.Core.Sequencing;
 using Juce.CoreUnity.Services;
 using Juce.CoreUnity.Time;
@@ -57,8 +58,8 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                     parent: stageContextReferences.ShipParent
                     );
 
-            IRepository<int, IDisposable<ShipEntityView>> shipEntityViewRepository 
-                = new SimpleRepository<int, IDisposable<ShipEntityView>>();
+            IKeyValueRepository<int, IDisposable<ShipEntityView>> shipEntityViewRepository 
+                = new SimpleKeyValueRepository<int, IDisposable<ShipEntityView>>();
 
             ShipEntityViewMovementTickable shipEntityViewMovementTickable = new ShipEntityViewMovementTickable(
                 timeService

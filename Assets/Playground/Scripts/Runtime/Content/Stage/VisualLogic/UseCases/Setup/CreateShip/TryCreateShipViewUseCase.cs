@@ -1,5 +1,6 @@
 ﻿using Juce.Core.Disposables;
 using Juce.Core.Factories;
+using Juce.Core.Repositories;
 using Playground.Content.Stage.Logic.Snapshots;
 using Playground.Content.Stage.VisualLogic.Entities;
 
@@ -8,11 +9,11 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.CreateShipView
     public class TryCreateShipViewUseCase : ITryCreateShipViewUseCase
     {
         private readonly IFactory<ShipEntityViewDefinition, IDisposable<ShipEntityView>> shipEntityViewFactory;
-        private readonly IRepository<int, IDisposable<ShipEntityView>> shipEntityViewRepository;
+        private readonly IKeyValueRepository<int, IDisposable<ShipEntityView>> shipEntityViewRepository;
 
         public TryCreateShipViewUseCase(
             IFactory<ShipEntityViewDefinition, IDisposable<ShipEntityView>> shipEntityViewFactory,
-            IRepository<int, IDisposable<ShipEntityView>> shipEntityViewRepository
+            IKeyValueRepository<int, IDisposable<ShipEntityView>> shipEntityViewRepository
             )
         {
             this.shipEntityViewFactory = shipEntityViewFactory;

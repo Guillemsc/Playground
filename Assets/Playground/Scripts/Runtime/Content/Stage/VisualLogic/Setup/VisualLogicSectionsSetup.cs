@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace Playground.Content.Stage.Setup
 {
-    public class SectionsSetup
+    public class VisualLogicSectionsSetup
     {
         public float DistanceBetweenSections { get; }
         public IReadOnlyList<SectionEntityView> Sections { get; }
 
-        public SectionsSetup(
+        public VisualLogicSectionsSetup(
             float distanceBetweenSections,
             IReadOnlyList<SectionEntityView> sections
             )

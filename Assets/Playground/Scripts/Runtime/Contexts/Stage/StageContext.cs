@@ -52,7 +52,11 @@ namespace Playground.Contexts.Stage
                 );
 
             VisualLogicStageSetup visualLogicStageSetup = new VisualLogicStageSetup(
-                new VisualLogicShipSetup(stageSetup.ShipSetup.ShipEntityView)
+                new VisualLogicShipSetup(stageSetup.ShipSetup.ShipEntityView),
+                new VisualLogicSectionsSetup(
+                    stageSetup.SectionsSetup.DistanceBetweenSections, 
+                    stageSetup.SectionsSetup.Sections
+                    )
                 );
 
             StageLogicEntryPoint stageLogicEntryPoint = new StageLogicEntryPoint(
