@@ -12,7 +12,7 @@ namespace Playground.Content.Stage.VisualLogic.Entities
 
         protected sealed override void Init(ShipEntityViewDefinition definition, ShipEntityView creation)
         {
-            creation.Init(definition.InstanceId, definition.TypeId);
+            creation.Init(definition.InstanceId);
         }
     }
 }

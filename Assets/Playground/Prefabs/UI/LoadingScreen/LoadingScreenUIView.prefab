@@ -462,8 +462,8 @@ MonoBehaviour:
             - serializedVersion: 3
               time: 0
               value: 0
-              inSlope: 0
-              outSlope: 1
+              inSlope: 2
+              outSlope: 2
               tangentMode: 0
               weightedMode: 0
               inWeight: 0
@@ -471,7 +471,7 @@ MonoBehaviour:
             - serializedVersion: 3
               time: 1
               value: 1
-              inSlope: 1
+              inSlope: 0
               outSlope: 0
               tangentMode: 0
               weightedMode: 0
@@ -483,7 +483,7 @@ MonoBehaviour:
     00000005:
       type: {class: TransformPositionToTransformPositionXComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
-        folded: 1
+        folded: 0
         enabled: 1
         target:
           bindingEnabled: 0
@@ -502,7 +502,7 @@ MonoBehaviour:
           wantsToBeBinded: 0
           binded: 0
           bindedVariableName: 
-          FallbackValue: 0.3
+          FallbackValue: 0.2
         duration:
           bindingEnabled: 0
           wantsToBeBinded: 0

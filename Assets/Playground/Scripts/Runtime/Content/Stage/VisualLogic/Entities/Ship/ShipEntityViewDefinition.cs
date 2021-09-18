@@ -3,15 +3,10 @@
     public readonly struct ShipEntityViewDefinition
     {
         public int InstanceId { get; }
-        public string TypeId { get; }
 
-        public ShipEntityViewDefinition(
-            int instanceId,
-            string typeId
-            )
+        public ShipEntityViewDefinition(int instanceId)
         {
             InstanceId = instanceId;
-            TypeId = typeId;
         }
     }
 }

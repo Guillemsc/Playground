@@ -5,15 +5,10 @@ namespace Playground.Content.Stage.VisualLogic.Entities
     public class ShipEntityView : MonoBehaviour
     {
         public int InstanceId { get; private set; }
-        public string TypeId { get; private set; }
 
-        public void Init(
-            int instanceId,
-            string typeId
-            )
+        public void Init(int instanceId)
         {
             InstanceId = instanceId;
-            TypeId = typeId;
         }
     }
 }

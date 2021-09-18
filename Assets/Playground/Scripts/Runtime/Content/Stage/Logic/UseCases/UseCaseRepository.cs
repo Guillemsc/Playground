@@ -1,5 +1,6 @@
 ﻿using Playground.Content.Stage.Logic.UseCases.TryCreateShip;
 using Playground.Content.Stage.Logic.UseCases.SetupStage;
+using Playground.Content.Stage.Logic.UseCases.StartStage;
 
 namespace Playground.Content.Stage.Logic.UseCases
 {
@@ -7,35 +8,18 @@ namespace Playground.Content.Stage.Logic.UseCases
     {
         public ITryCreateShipUseCase CreateShipUseCase { get; }
         public ISetupStageUseCase SetupStageUseCase { get; }
+        public IStartStageUseCase StartStageUseCase { get; }
 
-        //public ILoadStageUseCase LoadStageUseCase { get; }
-        //public IStartStageUseCase StartStageUseCase { get; }
-        //public ICheckPointCrossedUseCase CheckPointCrossedUseCase { get; }
-        //public IFinishLineCrossedUseCase FinishLineCrossedUseCase { get; }
-        //public IIsStageCompletedUseCase IsStageCompletedUseCase { get; }
 
         public UseCaseRepository(
             ITryCreateShipUseCase createShipUseCase,
-            ISetupStageUseCase setupStageUseCase
+            ISetupStageUseCase setupStageUseCase,
+            IStartStageUseCase startStageUseCase
             )
         {
             CreateShipUseCase = createShipUseCase;
             SetupStageUseCase = setupStageUseCase;
+            StartStageUseCase = startStageUseCase;
         }
-
-        //public UseCaseRepository(
-        //    ILoadStageUseCase loadStageUseCase,
-        //    IStartStageUseCase startStageUseCase,
-        //    ICheckPointCrossedUseCase checkPointCrossedUseCase,
-        //    IFinishLineCrossedUseCase finishLineCrossedUseCase,
-        //    IIsStageCompletedUseCase isStageCompletedUseCase
-        //    )
-        //{
-        //    LoadStageUseCase = loadStageUseCase;
-        //    StartStageUseCase = startStageUseCase;
-        //    CheckPointCrossedUseCase = checkPointCrossedUseCase;
-        //    FinishLineCrossedUseCase = finishLineCrossedUseCase;
-        //    IsStageCompletedUseCase = isStageCompletedUseCase;
-        //}
     }
 }

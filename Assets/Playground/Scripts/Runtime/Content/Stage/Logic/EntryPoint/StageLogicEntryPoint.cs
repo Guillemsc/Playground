@@ -8,6 +8,8 @@ using Playground.Content.Stage.Logic.StateMachine;
 using Playground.Content.Stage.Logic.UseCases;
 using Playground.Content.Stage.Logic.UseCases.TryCreateShip;
 using Playground.Content.Stage.Logic.UseCases.SetupStage;
+using Playground.Content.Stage.Logic.UseCases.StartStage;
+using Playground.Content.Stage.Logic.State;
 
 namespace Playground.Content.Stage.Logic.EntryPoint
 {
@@ -32,6 +34,8 @@ namespace Playground.Content.Stage.Logic.EntryPoint
             IFactory<LogicShipSetup, ShipEntity> shipEntityFactory = new ShipEntityFactory(idGenerator);
             IRepository<int, ShipEntity> shipEntityRepository = new SimpleRepository<int, ShipEntity>();
 
+            StageState stageState = new StageState();
+
             ITryCreateShipUseCase createShipUseCase = new TryCreateShipUseCase(
                 shipEntityFactory,
                 shipEntityRepository
@@ -40,12 +44,20 @@ namespace Playground.Content.Stage.Logic.EntryPoint
             ISetupStageUseCase setupStageUseCase = new SetupStageUseCase(
                 eventDispatcher,
                 logicStageSetup,
+                stageState,
                 createShipUseCase
+                );
+
+            IStartStageUseCase startStageUseCase = new StartStageUseCase(
+                eventDispatcher,
+                stageState,
+                shipEntityRepository
                 );
 
             useCaseRepository = new UseCaseRepository(
                 createShipUseCase,
-                setupStageUseCase
+                setupStageUseCase,
+                startStageUseCase
                 );
         }
 
@@ -54,6 +66,11 @@ namespace Playground.Content.Stage.Logic.EntryPoint
             StateMachine<LogicState> stateMachine = new StateMachine<LogicState>();
 
             stateMachine.RegisterState(LogicState.Setup, new SetupStateMachineAction(
+                useCaseRepository
+                ));
+
+            stateMachine.RegisterState(LogicState.WaitForStart, new WaitForStartStateMachineAction(
+                eventReceiver,
                 useCaseRepository
                 ));
 
@@ -66,7 +83,8 @@ namespace Playground.Content.Stage.Logic.EntryPoint
                 useCaseRepository
                 ));
 
-            stateMachine.RegisterConnection(LogicState.Setup, LogicState.Main);
+            stateMachine.RegisterConnection(LogicState.Setup, LogicState.WaitForStart);
+            stateMachine.RegisterConnection(LogicState.WaitForStart, LogicState.Main);
             stateMachine.RegisterConnection(LogicState.Main, LogicState.Dispose);
 
             stateMachine.Start(LogicState.Setup);

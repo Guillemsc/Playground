@@ -17,10 +17,8 @@ namespace Playground.Content.Stage.Logic.Entities
         {
             int instanceId = idGenerator.Generate();
 
-            creation = new ShipEntity(
-                instanceId,
-                definition.TypeId
-                );
+            creation = new ShipEntity(instanceId);
+
             return true;
         }
     }

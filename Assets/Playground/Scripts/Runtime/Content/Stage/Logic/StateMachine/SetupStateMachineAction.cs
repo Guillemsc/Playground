@@ -28,7 +28,7 @@ namespace Playground.Content.Stage.Logic.StateMachine
         {
             useCaseRepository.SetupStageUseCase.Execute();
 
-            stateMachine.SetNextState(LogicState.Main);
+            stateMachine.SetNextState(LogicState.WaitForStart);
         }
     }
 }

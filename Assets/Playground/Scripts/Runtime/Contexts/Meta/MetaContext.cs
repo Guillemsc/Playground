@@ -14,11 +14,7 @@ namespace Playground.Contexts.Meta
         protected override void Init()
         {
             ContextsProvider.Register(this);
-        }
-
-        protected override void CleanUp()
-        {
-            ContextsProvider.Unregister(this);
+            AddCleanupAction(() => ContextsProvider.Unregister(this));
         }
     }
 }

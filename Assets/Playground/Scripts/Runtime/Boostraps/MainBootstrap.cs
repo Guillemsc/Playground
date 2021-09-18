@@ -1,25 +1,29 @@
 ﻿using System.Threading.Tasks;
 using UnityEngine;
-using Playground.Flow.UseCases;
-using Playground.Services;
+using Juce.Core.Loading;
 using Juce.CoreUnity.Service;
+using Playground.Services;
+using Playground.Flow.UseCases;
 using Playground.Flow.UseCases.LoadServicesContext;
 using Playground.Flow.UseCases.LoadBaseCheats;
 using Playground.Flow.UseCases.LoadLocalizationData;
 using Playground.Flow.UseCases.LoadLoadingScreenContext;
 using Playground.Flow.UseCases.ShowLoadingScreen;
-using Playground.Content.LoadingScreen.UI;
 using Playground.Flow.UseCases.LoadStageContext;
-using Juce.Core.Loading;
 using Playground.Flow.UseCases.LoadStage;
-using Playground.Content.Stage.Setup;
 using Playground.Flow.UseCases.LoadCamerasContext;
 using Playground.Flow.UseCases.LoadStageUIContext;
+using Playground.Flow.UseCases.ReloadStage;
+using Playground.Content.Stage.Setup;
+using Playground.Configuration.Stage;
+using Playground.Flow.UseCases.State;
 
 namespace Playground.Boostraps
 {
     public class MainBootstrap : MonoBehaviour
     {
+        [SerializeField] private StageConfiguration defaultStageConfiguration = default;
+
         private void Awake()
         {
             Run().RunAsync();
@@ -45,10 +49,9 @@ namespace Playground.Boostraps
             await flowUseCases.LoadStageUIContextUseCase.Execute();
             await flowUseCases.LoadStageContextUseCase.Execute();
 
-            await flowUseCases.LoadStageUseCase.Execute(
-                new StageSetup(
-                    new ShipSetup(string.Empty)
-                ));
+            StageSetup stageSetup = defaultStageConfiguration.ToSetup();
+
+            await flowUseCases.LoadStageUseCase.Execute(stageSetup);
 
             loadingToken.Complete();
 
@@ -61,30 +64,7 @@ namespace Playground.Boostraps
 
         private void GenerateFlowService()
         {
-            //CurrentStageFlowData currentStageFlowData = new CurrentStageFlowData();
-
-            //ILoadEssentialScenesFlowUseCase loadEssentialScenesFlowUseCase = new LoadEssentialScenesFlowUseCase();
-            //ILoadBaseCheatsFlowUseCase loadBaseCheatsFlowUseCase = new LoadBaseCheatsFlowUseCase();
-            //ISetStageCheatsActiveFlowUseCase setStageCheatsActiveFlowUseCase = new SetStageCheatsActiveFlowUseCase();
-            //ILoadLocalizationDataFlowUseCase loadLocalizationDataFlowUseCase = new LoadLocalizationDataFlowUseCase();
-            //IShowLoadingScreenFlowUseCase showLoadingScreenFlowUseCase = new ShowLoadingScreenFlowUseCase();
-            //ILoadUserDataFlowUseCase loadUserDataFlowUseCase = new LoadUserDataFlowUseCase();
-            //ILoadAdsScenesFlowUseCase loadAdsScenesFlowUseCase = new LoadAdsScenesFlowUseCase();
-            //ILoadMetaFlowUseCase loadMetaFlowUseCase = new LoadMetaFlowUseCase();
-            //IUnloadMetaFlowUseCase unloadMetaFlowUseCase = new UnloadMetaFlowUseCase();
-            //ISetCurrentStageFlowUseCase setCurrentStageFlowUseCase = new SetCurrentStageFlowUseCase(currentStageFlowData);
-            //IPlayScenarioFlowUseCase playScenarioFlowUseCase = new MainBootstrapPlayScenarioFlowUseCase(
-            //    setStageCheatsActiveFlowUseCase,
-            //    currentStageFlowData
-            //    );
-            //IReplayScenarioFlowUseCase replayScenarioFlowUseCase = new ReplayScenarioFlowUseCase(
-            //    setStageCheatsActiveFlowUseCase,
-            //    currentStageFlowData
-            //    ); // Todo update
-            //IBackToMetaFromStageFlowUseCase backToMetaFromStageFlowUseCase = new BackToMetaFromStageFlowUseCase(
-            //    setStageCheatsActiveFlowUseCase,
-            //    currentStageFlowData
-            //    );
+            LastLoadedStageSetupState lastLoadedStageSetupState = new LastLoadedStageSetupState();
 
             ILoadServicesContextUseCase loadServicesContextUseCase = new LoadServicesContextUseCase();
 
@@ -102,7 +82,15 @@ namespace Playground.Boostraps
 
             ILoadLocalizationDataUseCase loadLocalizationDataUseCase = new LoadLocalizationDataUseCase();
 
-            ILoadStageUseCase loadStageUseCase = new LoadStageUseCase();
+            ILoadStageUseCase loadStageUseCase = new LoadStageUseCase(
+                lastLoadedStageSetupState
+                );
+
+            IReloadStageUseCase reloadStageUseCase = new ReloadStageUseCase(
+                lastLoadedStageSetupState,
+                showLoadingScreenUseCase,
+                loadStageUseCase
+                );
 
             FlowUseCases flowUseCases = new FlowUseCases(
                 loadServicesContextUseCase,
@@ -113,7 +101,8 @@ namespace Playground.Boostraps
                 showLoadingScreenUseCase,
                 loadBaseCheatsUseCase,
                 loadLocalizationDataUseCase,
-                loadStageUseCase
+                loadStageUseCase,
+                reloadStageUseCase
                 );
 
             FlowService flowService = new FlowService(flowUseCases);

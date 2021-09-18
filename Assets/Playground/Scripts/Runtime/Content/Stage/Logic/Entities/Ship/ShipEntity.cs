@@ -3,15 +3,10 @@
     public class ShipEntity
     {
         public int InstanceId { get; }
-        public string TypeId { get; }
 
-        public ShipEntity(
-            int instanceId, 
-            string typeId
-            )
+        public ShipEntity(int instanceId)
         {
             InstanceId = instanceId;
-            TypeId = typeId;
         }
     }
 }

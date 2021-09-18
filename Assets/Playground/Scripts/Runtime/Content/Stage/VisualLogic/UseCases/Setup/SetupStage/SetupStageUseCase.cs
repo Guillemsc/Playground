@@ -1,5 +1,7 @@
 ﻿using Juce.Core.Disposables;
+using Juce.Core.Loading;
 using Juce.Core.Sequencing;
+using Juce.CoreUnity.Time;
 using Playground.Content.Stage.Logic.Snapshots;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.Sequencing;
@@ -12,25 +14,28 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
 {
     public class SetupStageUseCase : ISetupStageUseCase
     {
+        private readonly ILoadingToken stageLoadedToken;
         private readonly ISequencerTimelines<StageTimeline> sequencerTimelines;
+        private readonly IUnityTimer unscaledUnityTimer;
         private readonly ITryCreateShipViewUseCase tryCreateShipViewUseCase;
         private readonly ISetupCameraUseCase setupCameraUseCase;
         private readonly ISetActionInputDetectionUIVisibleUseCase setActionInputDetectionUIVisibleUseCase;
-        private readonly IStartShipMovementUseCase startShipMovementUseCase;
 
         public SetupStageUseCase(
+            ILoadingToken stageLoadedToken,
             ISequencerTimelines<StageTimeline> sequencerTimelines,
+            IUnityTimer unscaledUnityTimer,
             ITryCreateShipViewUseCase tryCreateShipViewUseCase,
             ISetupCameraUseCase setupCameraUseCase,
-            ISetActionInputDetectionUIVisibleUseCase setActionInputDetectionUIVisibleUseCase,
-            IStartShipMovementUseCase startShipMovementUseCase
+            ISetActionInputDetectionUIVisibleUseCase setActionInputDetectionUIVisibleUseCase
             )
         {
+            this.stageLoadedToken = stageLoadedToken;
             this.sequencerTimelines = sequencerTimelines;
+            this.unscaledUnityTimer = unscaledUnityTimer;
             this.tryCreateShipViewUseCase = tryCreateShipViewUseCase;
             this.setupCameraUseCase = setupCameraUseCase;
             this.setActionInputDetectionUIVisibleUseCase = setActionInputDetectionUIVisibleUseCase;
-            this.startShipMovementUseCase = startShipMovementUseCase;
         }
 
         public void Execute(
@@ -59,7 +64,9 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
 
             setupCameraUseCase.Execute(shipEntityView);
 
-            startShipMovementUseCase.Execute(shipEntityView);
+            stageLoadedToken.Complete();
+
+            await unscaledUnityTimer.AwaitTime(0.5f, cancellationToken);
 
             await setActionInputDetectionUIVisibleUseCase.Execute(visible: true, instantly: false, cancellationToken);
         }

@@ -11,52 +11,38 @@ namespace Playground.Contexts.Services
     {
         [SerializeField] private ServicesContextReferences servicesContextReferences = default;
 
-        private TickablesService tickablesService;
-        private TimeService timeService;
-        private UIViewStackService uiViewStackService;
-        private ConfigurationService configurationService;
-        private PersistenceService userService;
-        private LocalizationService localizationService;
-
         protected override void Init()
         {
-            ContextsProvider.Register(this);
-
-            tickablesService = new TickablesService();
+            TickablesService tickablesService = new TickablesService();
             ServicesProvider.Register(tickablesService);
+            AddCleanupAction(() => ServicesProvider.Unregister(tickablesService));
 
-            timeService = new TimeService();
+            TimeService timeService = new TimeService();
             ServicesProvider.Register(timeService);
+            AddCleanupAction(() => ServicesProvider.Unregister(timeService));
 
-            uiViewStackService = new UIViewStackService(
+            UIViewStackService uiViewStackService = new UIViewStackService(
                 servicesContextReferences.UIFrameCanvas
                 );
             ServicesProvider.Register(uiViewStackService);
+            AddCleanupAction(() => ServicesProvider.Unregister(uiViewStackService));
 
-            configurationService = new ConfigurationService(
+            ConfigurationService configurationService = new ConfigurationService(
                 servicesContextReferences.StageConfiguration
                 );
             ServicesProvider.Register(configurationService);
+            AddCleanupAction(() => ServicesProvider.Unregister(configurationService));
 
-
-            userService = new PersistenceService();
+            PersistenceService userService = new PersistenceService();
             ServicesProvider.Register(userService);
+            AddCleanupAction(() => ServicesProvider.Unregister(userService));
 
-            localizationService = new LocalizationService();
+            LocalizationService localizationService = new LocalizationService();
             ServicesProvider.Register(localizationService);
-        }
+            AddCleanupAction(() => ServicesProvider.Unregister(localizationService));
 
-        protected override void CleanUp()
-        {
-            ServicesProvider.Unregister(uiViewStackService);
-            ServicesProvider.Unregister(tickablesService);
-            ServicesProvider.Unregister(timeService);
-            ServicesProvider.Unregister(uiViewStackService);
-            ServicesProvider.Unregister(configurationService);
-            ServicesProvider.Unregister(userService);
-            ServicesProvider.Unregister(localizationService);
-
-            ContextsProvider.Unregister(this);
+            ContextsProvider.Register(this);
+            AddCleanupAction(() => ContextsProvider.Unregister(this));
         }
 
         //private PersistenceService userService;

@@ -12,16 +12,12 @@ namespace Playground.Contexts
         protected override void Init()
         {
             ContextsProvider.Register(this);
+            AddCleanupAction(() => ContextsProvider.Unregister(this));
 
             if (!UnityEngine.Application.isEditor)
             {
                 Advertising.Initialize();
             }
-        }
-
-        protected override void CleanUp()
-        {
-            ContextsProvider.Unregister(this);
         }
 
         private void Update()

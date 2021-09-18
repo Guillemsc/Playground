@@ -3,6 +3,7 @@ using Playground.Content.Stage.Logic.Entities;
 using Playground.Content.Stage.Logic.Events;
 using Playground.Content.Stage.Logic.Setup;
 using Playground.Content.Stage.Logic.Snapshots;
+using Playground.Content.Stage.Logic.State;
 using Playground.Content.Stage.Logic.UseCases.TryCreateShip;
 
 namespace Playground.Content.Stage.Logic.UseCases.SetupStage
@@ -11,16 +12,19 @@ namespace Playground.Content.Stage.Logic.UseCases.SetupStage
     {
         private readonly IEventDispatcher eventDispatcher;
         private readonly LogicStageSetup logicStageSetup;
+        private readonly StageState stageState;
         private readonly ITryCreateShipUseCase tryCreateShipUseCase;
 
         public SetupStageUseCase(
             IEventDispatcher eventDispatcher,
             LogicStageSetup logicStageSetup,
+            StageState stageState,
             ITryCreateShipUseCase tryCreateShipUseCase
             )
         {
             this.logicStageSetup = logicStageSetup;
             this.eventDispatcher = eventDispatcher;
+            this.stageState = stageState;
             this.tryCreateShipUseCase = tryCreateShipUseCase;
         }
 
@@ -35,6 +39,8 @@ namespace Playground.Content.Stage.Logic.UseCases.SetupStage
             {
                 return;
             }
+
+            stageState.UsingShiptInstanceId = shipEntity.InstanceId;
 
             eventDispatcher.Dispatch(new SetupStageOutEvent(
                 ShipEntitySnapshot.ToSnapshot(shipEntity)

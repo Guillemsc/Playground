@@ -25,8 +25,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.CreateShipView
             )
         {
             ShipEntityViewDefinition definition = new ShipEntityViewDefinition(
-                shipEntitySnapshot.InstanceId,
-                shipEntitySnapshot.TypeId
+                shipEntitySnapshot.InstanceId
                 );
 
             bool created = shipEntityViewFactory.TryCreate(

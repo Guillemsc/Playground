@@ -1,25 +1,34 @@
-﻿using Juce.Core.Disposables;
+﻿using Juce.Core.CleanUp;
+using Juce.Core.Disposables;
 using Juce.Core.Events;
 using Juce.Core.Factories;
 using Juce.Core.Loading;
 using Juce.Core.Sequencing;
 using Juce.CoreUnity.Services;
+using Juce.CoreUnity.Time;
 using Playground.Configuration.Stage;
 using Playground.Content.Stage.Logic.Events;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.Sequencing;
+using Playground.Content.Stage.VisualLogic.Setup;
 using Playground.Content.Stage.VisualLogic.UseCases;
 using Playground.Content.Stage.VisualLogic.UseCases.CreateShipView;
+using Playground.Content.Stage.VisualLogic.UseCases.InputActionReceived;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupCamera;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupStage;
+using Playground.Content.Stage.VisualLogic.UseCases.StartStage;
+using Playground.Content.StageUI.UI.ActionInputDetection;
 using Playground.Contexts.Stage;
 using Playground.Services;
 using Playground.Services.ViewStack;
+using System;
 
 namespace Playground.Content.Stage.VisualLogic.EntryPoint
 {
     public class StageVisualLogicEntryPoint
     {
+        private readonly ICleanUpActionsRepository cleanUpActionsRepository = new CleanUpActionsRepository();
+
         private UseCaseRepository useCaseRepository;
 
         public StageVisualLogicEntryPoint(
@@ -30,15 +39,21 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             TimeService timeService,
             UIViewStackService uiViewStackService,
             PersistenceService persistenceService,
-            StageConfiguration stageConfiguration,
+            VisualLogicStageSetup visualLogicStageSetup,
             StageContextReferences stageContextReferences
             )
         {
+            ActionInputDetectionUIInteractor actionInputDetectionUIInteractor = uiViewStackService.GetInteractor<ActionInputDetectionUIInteractor>();
+
             ISequencerTimelines<StageTimeline> sequencerTimelines = new SequencerTimelines<StageTimeline>();
+            AddCleanupAction(sequencerTimelines.KillAll);
+
+            IUnityTimer unscaledTimer = new UnscaledUnityTimer();
+            unscaledTimer.Start();
 
             IFactory<ShipEntityViewDefinition, IDisposable<ShipEntityView>> shipEntityViewFactory 
                 = new ShipEntityViewFactory(
-                    stageConfiguration.ShipConfiguration.DefaultShipEntityView,
+                    visualLogicStageSetup.ShipSetup.ShipEntityView,
                     parent: stageContextReferences.ShipParent
                     );
 
@@ -49,6 +64,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                 timeService
                 );
             tickableService.AddTickable(shipEntityViewMovementTickable);
+            AddCleanupAction(() => tickableService.RemoveTickable(shipEntityViewMovementTickable));
 
             ITryCreateShipViewUseCase tryCreateShipViewUseCase = new TryCreateShipViewUseCase(
                 shipEntityViewFactory,
@@ -68,15 +84,28 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                 );
 
             ISetupStageUseCase setupStageUseCase = new SetupStageUseCase(
+                stageLoadedToken,
                 sequencerTimelines,
+                unscaledTimer,
                 tryCreateShipViewUseCase,
                 setupCameraUseCase,
-                setActionInputDetectionUIVisibleUseCase,
+                setActionInputDetectionUIVisibleUseCase
+                );
+
+            IStartStageUseCase startStageUseCase = new StartStageUseCase(
+                sequencerTimelines,
+                shipEntityViewRepository,
                 startShipMovementUseCase
                 );
 
+            IInputActionReceivedUseCase inputActionReceivedUseCase = new InputActionReceivedUseCase(
+                eventDispatcher
+                );
+
             useCaseRepository = new UseCaseRepository(
-                setupStageUseCase
+                setupStageUseCase,
+                startStageUseCase,
+                inputActionReceivedUseCase
                 );
 
             eventReceiver.Subscribe((SetupStageOutEvent setupStageOutEvent) =>
@@ -86,7 +115,30 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                     );
             });
 
-            stageLoadedToken.Complete();
+            eventReceiver.Subscribe((StartStageOutEvent startStageOutEvent) =>
+            {
+                useCaseRepository.StartStageUseCase.Execute(
+                    startStageOutEvent.ShipEntitySnapshot
+                    );
+            });
+
+            actionInputDetectionUIInteractor.InputActionReceived += (
+                ActionInputDetectionUIInteractor actionInputDetectionUIInteractor,
+                EventArgs eventArgs
+                ) =>
+            {
+                useCaseRepository.InputActionReceivedUseCase.Execute();
+            };
+        }
+
+        protected void AddCleanupAction(Action action)
+        {
+            cleanUpActionsRepository.Add(action);
+        }
+
+        public void CleanUp()
+        {
+            cleanUpActionsRepository.CleanUp();
         }
     }
 }

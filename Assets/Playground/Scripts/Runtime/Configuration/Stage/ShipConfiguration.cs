@@ -1,4 +1,5 @@
-﻿using Playground.Content.Stage.VisualLogic.Entities;
+﻿using Playground.Content.Stage.Setup;
+using Playground.Content.Stage.VisualLogic.Entities;
 using UnityEngine;
 
 namespace Playground.Configuration.Stage
@@ -6,8 +7,11 @@ namespace Playground.Configuration.Stage
     [CreateAssetMenu(fileName = nameof(ShipConfiguration), menuName = "Playground/Configuration/" + nameof(ShipConfiguration), order = 1)]
     public class ShipConfiguration : ScriptableObject
     {
-        [SerializeField] private ShipEntityView defaultShipEntityView = default;
+        [SerializeField] private ShipEntityView shipEntityView = default;
 
-        public ShipEntityView DefaultShipEntityView => defaultShipEntityView;
+        public ShipSetup ToSetup()
+        {
+            return new ShipSetup(shipEntityView);
+        }
     }
 }

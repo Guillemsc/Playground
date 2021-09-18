@@ -11,9 +11,11 @@ namespace Playground.Contexts.Stage
 
         [Header("Parents")]
         [SerializeField] private Transform shipParent = default;
+        [SerializeField] private Transform sectionsParent = default;
 
         public CinemachineVirtualCamera CinemachineVirtualCamera => cinemachineVirtualCamera;
 
         public Transform ShipParent => shipParent;
+        public Transform SectionsParent => sectionsParent;
     }
 }

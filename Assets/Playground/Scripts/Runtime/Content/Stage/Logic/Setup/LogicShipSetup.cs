@@ -2,13 +2,9 @@
 {
     public class LogicShipSetup
     {
-        public string TypeId { get; }
-
-        public LogicShipSetup(
-            string typeId
-            )
+        public LogicShipSetup()
         {
-            TypeId = typeId;
+         
         }
     }
 }

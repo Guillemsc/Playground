@@ -1,14 +1,16 @@
-﻿namespace Playground.Content.Stage.Setup
+﻿using Playground.Content.Stage.VisualLogic.Entities;
+
+namespace Playground.Content.Stage.Setup
 {
     public class ShipSetup
     {
-        public string TypeId { get; }
+        public ShipEntityView ShipEntityView { get; }
 
         public ShipSetup(
-            string typeId
+            ShipEntityView shipEntityView
             )
         {
-            TypeId = typeId;
+            ShipEntityView = shipEntityView;
         }
     }
 }
