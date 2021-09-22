@@ -17,7 +17,8 @@ namespace Playground.Contexts.Stage
         [SerializeField] private Transform shipParent = default;
         [SerializeField] private Transform sectionsParent = default;
 
-        [Header("Misc")]
+        [Header("Start Positions")]
+        [SerializeField] private Transform shipStartPosition = default;
         [SerializeField] private Transform sectionsStartPosition = default;
 
         public StageSettings StageSettings => stageSettings;
@@ -27,6 +28,7 @@ namespace Playground.Contexts.Stage
         public Transform ShipParent => shipParent;
         public Transform SectionsParent => sectionsParent;
 
+        public Transform ShipStartPosition => shipStartPosition;
         public Transform SectionsStartPosition => sectionsStartPosition;
     }
 }

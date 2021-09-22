@@ -7,7 +7,6 @@ namespace Playground.Content.Stage.VisualLogic.Entities
         [SerializeField] private Transform startPosition = default;
         [SerializeField] private Transform endPosition = default;
 
-        public int InstanceId { get; private set; }
         public string TypeId { get; private set; }
 
         public Transform StartPosition => startPosition;
@@ -27,11 +26,9 @@ namespace Playground.Content.Stage.VisualLogic.Entities
         }
 
         public void Init(
-            int instanceId,
             string typeId
             )
         {
-            InstanceId = instanceId;
             TypeId = typeId;
         }
     }

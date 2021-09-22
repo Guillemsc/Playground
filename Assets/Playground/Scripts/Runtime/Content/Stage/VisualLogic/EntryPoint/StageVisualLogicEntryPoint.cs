@@ -12,12 +12,16 @@ using Playground.Content.Stage.Logic.Events;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.Sequencing;
 using Playground.Content.Stage.VisualLogic.Setup;
+using Playground.Content.Stage.VisualLogic.Tickables;
 using Playground.Content.Stage.VisualLogic.UseCases;
 using Playground.Content.Stage.VisualLogic.UseCases.CreateShipView;
+using Playground.Content.Stage.VisualLogic.UseCases.GenerateSections;
 using Playground.Content.Stage.VisualLogic.UseCases.InputActionReceived;
+using Playground.Content.Stage.VisualLogic.UseCases.SetTickableSectionGeneratorActive;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupCamera;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupStage;
 using Playground.Content.Stage.VisualLogic.UseCases.StartStage;
+using Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSection;
 using Playground.Content.StageUI.UI.ActionInputDetection;
 using Playground.Contexts.Stage;
 using Playground.Services;
@@ -58,8 +62,16 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                     parent: stageContextReferences.ShipParent
                     );
 
-            IKeyValueRepository<int, IDisposable<ShipEntityView>> shipEntityViewRepository 
-                = new SimpleKeyValueRepository<int, IDisposable<ShipEntityView>>();
+            ISingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository 
+                = new SimpleSingleRepository<IDisposable<ShipEntityView>>();
+
+            IFactory<SectionEntityViewDefinition, IDisposable<SectionEntityView>> sectionEntityViewFactory
+                = new SectionEntityViewFactory(
+                    parent: stageContextReferences.SectionsParent
+                    );
+
+            IRepository<IDisposable<SectionEntityView>> sectionEntityViewRepository =
+                new SimpleRepository<IDisposable<SectionEntityView>>();
 
             ShipEntityViewMovementTickable shipEntityViewMovementTickable = new ShipEntityViewMovementTickable(
                 timeService
@@ -69,8 +81,31 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
 
             ITryCreateShipViewUseCase tryCreateShipViewUseCase = new TryCreateShipViewUseCase(
                 shipEntityViewFactory,
-                shipEntityViewRepository
+                shipEntityViewRepository,
+                stageContextReferences.ShipStartPosition
                 );
+
+            ITrySpawnRandomSectionUseCase trySpawnSectionsUseCase = new TrySpawnRandomSectionUseCase(
+                sectionEntityViewFactory,
+                sectionEntityViewRepository,
+                stageContextReferences.SectionsStartPosition,
+                visualLogicStageSetup.SectionsSetup
+                );
+
+            IGenerateSectionsUseCase generateSectionsUseCase = new GenerateSectionsUseCase(
+                shipEntityViewRepository,
+                sectionEntityViewRepository,
+                stageContextReferences.SectionsStartPosition,
+                visualLogicStageSetup.SectionsSetup,
+                stageContextReferences.StageSettings,
+                trySpawnSectionsUseCase
+                );
+
+            GenerateSectionsTickable generateSectionsTickable = new GenerateSectionsTickable(
+                generateSectionsUseCase
+                );
+            tickableService.AddTickable(generateSectionsTickable);
+            AddCleanupAction(() => tickableService.RemoveTickable(generateSectionsTickable));
 
             ISetupCameraUseCase setupCameraUseCase = new SetupCameraUseCase(
                 stageContextReferences.CinemachineVirtualCamera
@@ -89,13 +124,19 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                 sequencerTimelines,
                 unscaledTimer,
                 tryCreateShipViewUseCase,
+                generateSectionsUseCase,
                 setupCameraUseCase,
                 setActionInputDetectionUIVisibleUseCase
+                );
+
+            ISetTickableSectionGeneratorActiveUseCase setTickableSectionGeneratorActiveUseCase = new SetTickableSectionGeneratorActiveUseCase(
+                generateSectionsTickable
                 );
 
             IStartStageUseCase startStageUseCase = new StartStageUseCase(
                 sequencerTimelines,
                 shipEntityViewRepository,
+                setTickableSectionGeneratorActiveUseCase,
                 startShipMovementUseCase
                 );
 

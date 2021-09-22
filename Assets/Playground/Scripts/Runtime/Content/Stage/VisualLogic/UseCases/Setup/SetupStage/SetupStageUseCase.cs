@@ -6,7 +6,9 @@ using Playground.Content.Stage.Logic.Snapshots;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.Sequencing;
 using Playground.Content.Stage.VisualLogic.UseCases.CreateShipView;
+using Playground.Content.Stage.VisualLogic.UseCases.GenerateSections;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupCamera;
+using Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,6 +20,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
         private readonly ISequencerTimelines<StageTimeline> sequencerTimelines;
         private readonly IUnityTimer unscaledUnityTimer;
         private readonly ITryCreateShipViewUseCase tryCreateShipViewUseCase;
+        private readonly IGenerateSectionsUseCase generateSectionsUseCase;
         private readonly ISetupCameraUseCase setupCameraUseCase;
         private readonly ISetActionInputDetectionUIVisibleUseCase setActionInputDetectionUIVisibleUseCase;
 
@@ -26,6 +29,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
             ISequencerTimelines<StageTimeline> sequencerTimelines,
             IUnityTimer unscaledUnityTimer,
             ITryCreateShipViewUseCase tryCreateShipViewUseCase,
+            IGenerateSectionsUseCase generateSectionsUseCase,
             ISetupCameraUseCase setupCameraUseCase,
             ISetActionInputDetectionUIVisibleUseCase setActionInputDetectionUIVisibleUseCase
             )
@@ -34,6 +38,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
             this.sequencerTimelines = sequencerTimelines;
             this.unscaledUnityTimer = unscaledUnityTimer;
             this.tryCreateShipViewUseCase = tryCreateShipViewUseCase;
+            this.generateSectionsUseCase = generateSectionsUseCase;
             this.setupCameraUseCase = setupCameraUseCase;
             this.setActionInputDetectionUIVisibleUseCase = setActionInputDetectionUIVisibleUseCase;
         }
@@ -61,6 +66,8 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
             {
                 return;
             }
+
+            generateSectionsUseCase.Execute();
 
             setupCameraUseCase.Execute(shipEntityView);
 

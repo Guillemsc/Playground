@@ -3,21 +3,25 @@ using Juce.Core.Factories;
 using Juce.Core.Repositories;
 using Playground.Content.Stage.Logic.Snapshots;
 using Playground.Content.Stage.VisualLogic.Entities;
+using UnityEngine;
 
 namespace Playground.Content.Stage.VisualLogic.UseCases.CreateShipView
 {
     public class TryCreateShipViewUseCase : ITryCreateShipViewUseCase
     {
         private readonly IFactory<ShipEntityViewDefinition, IDisposable<ShipEntityView>> shipEntityViewFactory;
-        private readonly IKeyValueRepository<int, IDisposable<ShipEntityView>> shipEntityViewRepository;
+        private readonly ISingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository;
+        private readonly Transform shipStartPosition;
 
         public TryCreateShipViewUseCase(
             IFactory<ShipEntityViewDefinition, IDisposable<ShipEntityView>> shipEntityViewFactory,
-            IKeyValueRepository<int, IDisposable<ShipEntityView>> shipEntityViewRepository
+            ISingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository,
+            Transform shipStartPosition
             )
         {
             this.shipEntityViewFactory = shipEntityViewFactory;
             this.shipEntityViewRepository = shipEntityViewRepository;
+            this.shipStartPosition = shipStartPosition;
         }
 
         public bool Execute(
@@ -26,7 +30,8 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.CreateShipView
             )
         {
             ShipEntityViewDefinition definition = new ShipEntityViewDefinition(
-                shipEntitySnapshot.InstanceId
+                shipEntitySnapshot.InstanceId,
+                shipStartPosition.position
                 );
 
             bool created = shipEntityViewFactory.TryCreate(
@@ -39,7 +44,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.CreateShipView
                 return false;
             }
 
-            shipEntityViewRepository.Add(shipEntityView.Value.InstanceId, shipEntityView);
+            shipEntityViewRepository.Set(shipEntityView);
 
             return true;
         }

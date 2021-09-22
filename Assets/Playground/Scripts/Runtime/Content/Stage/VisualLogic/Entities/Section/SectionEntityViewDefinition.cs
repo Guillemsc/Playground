@@ -1,17 +1,19 @@
-﻿namespace Playground.Content.Stage.VisualLogic.Entities
+﻿using Juce.CoreUnity.Factories;
+
+namespace Playground.Content.Stage.VisualLogic.Entities
 {
-    public readonly struct SectionEntityViewDefinition
+    public readonly struct SectionEntityViewDefinition : MonoBehaviourUnknownPrefabFactoryDefinition<SectionEntityView>
     {
-        public int InstanceId { get; }
         public string TypeId { get; }
+        public SectionEntityView Prefab { get; }
 
         public SectionEntityViewDefinition(
-            int instanceId,
-            string typeId
+            string typeId,
+            SectionEntityView prefab
             )
         {
-            InstanceId = instanceId;
             TypeId = typeId;
+            Prefab = prefab;
         }
     }
 }
