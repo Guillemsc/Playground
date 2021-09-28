@@ -1,8 +1,10 @@
-﻿using Juce.Core.Events;
+﻿using Juce.Core.DI.Builder;
+using Juce.Core.DI.Container;
+using Juce.Core.Events;
 using Juce.Core.Loading;
 using Juce.CoreUnity.Contexts;
-using Juce.CoreUnity.Service;
 using Juce.CoreUnity.Services;
+using JuceUnity.Core.DI.Extensions;
 using Playground.Content.Stage.Logic.EntryPoint;
 using Playground.Content.Stage.Logic.Setup;
 using Playground.Content.Stage.Setup;
@@ -27,18 +29,12 @@ namespace Playground.Contexts.Stage
 
         public Task LoadStage(StageSetup stageSetup)
         {
-            TickablesService tickablesService = ServicesProvider.GetService<TickablesService>();
-            TimeService timeService = ServicesProvider.GetService<TimeService>();
-            UIViewStackService uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
-            ConfigurationService configurationService = ServicesProvider.GetService<ConfigurationService>();
-            PersistenceService persistenceService = ServicesProvider.GetService<PersistenceService>();
-
-            EventDispatcherAndReceiver logicToViewEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
-            EventDispatcherAndReceiver viewToLogicEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
-
             TaskCompletionSource<object> stageLoadedTaskCompletionSource = new TaskCompletionSource<object>();
 
             ILoadingToken stageLoadedToken = new CallbackLoadingToken(() => stageLoadedTaskCompletionSource.SetResult(default));
+
+            EventDispatcherAndReceiver logicToViewEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
+            EventDispatcherAndReceiver viewToLogicEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
 
             EventDispatcherAndReceiverTickable logicToViewTickable = new EventDispatcherAndReceiverTickable(
                 logicToViewEventDispatcherAndReceiver
@@ -46,6 +42,14 @@ namespace Playground.Contexts.Stage
             EventDispatcherAndReceiverTickable viewToLogicTickable = new EventDispatcherAndReceiverTickable(
                 viewToLogicEventDispatcherAndReceiver
                 );
+
+            IDIContainerBuilder containerBuilder = new DIContainerBuilder();
+
+            containerBuilder.Bind<TickablesService>().FromServicesProvider();
+            containerBuilder.Bind<TimeService>().FromServicesProvider();
+            containerBuilder.Bind<UIViewStackService>().FromServicesProvider();
+            containerBuilder.Bind<ConfigurationService>().FromServicesProvider();
+            containerBuilder.Bind<PersistenceService>().FromServicesProvider();
 
             LogicStageSetup logicStageSetup = new LogicStageSetup(
                 new LogicShipSetup()
@@ -59,26 +63,36 @@ namespace Playground.Contexts.Stage
                     )
                 );
 
-            StageLogicEntryPoint stageLogicEntryPoint = new StageLogicEntryPoint(
-                logicToViewEventDispatcherAndReceiver,
-                viewToLogicEventDispatcherAndReceiver,
-                logicStageSetup
-                );
+            containerBuilder.Bind<StageLogicEntryPoint>()
+                .FromFunction((c) => new StageLogicEntryPoint(
+                    logicToViewEventDispatcherAndReceiver,
+                    viewToLogicEventDispatcherAndReceiver,
+                    logicStageSetup
+                    ));
 
-            StageVisualLogicEntryPoint stageVisualLogicEntryPoint = new StageVisualLogicEntryPoint(
-                stageLoadedToken,
-                viewToLogicEventDispatcherAndReceiver,
-                logicToViewEventDispatcherAndReceiver,
-                tickablesService,
-                timeService,
-                uiViewStackService,
-                persistenceService,
-                visualLogicStageSetup,
-                stageContextReferences
-                );
-            AddCleanupAction(stageVisualLogicEntryPoint.CleanUp);
+            containerBuilder.Bind<StageVisualLogicEntryPoint>()
+                .FromFunction((c) => new StageVisualLogicEntryPoint(
+                    stageLoadedToken,
+                    viewToLogicEventDispatcherAndReceiver,
+                    logicToViewEventDispatcherAndReceiver,
+                    c.Resolve<TickablesService>(),
+                    c.Resolve<TimeService>(),
+                    c.Resolve<UIViewStackService>(),
+                    c.Resolve<PersistenceService>(),
+                    visualLogicStageSetup,
+                    stageContextReferences
+                    ))
+                .WhenDispose((c) => c.CleanUp());
+
+            IDIContainer container = containerBuilder.Build();
+            AddCleanupAction(container.Dispose);
+
+            StageLogicEntryPoint stageLogicEntryPoint = container.Resolve<StageLogicEntryPoint>();
+            StageVisualLogicEntryPoint stageVisualLogicEntryPoint = container.Resolve<StageVisualLogicEntryPoint>();
 
             stageLogicEntryPoint.Execute();
+
+            TickablesService tickablesService = container.Resolve<TickablesService>();
 
             tickablesService.AddTickable(logicToViewTickable);
             AddCleanupAction(() => tickablesService.RemoveTickable(logicToViewTickable));

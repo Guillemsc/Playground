@@ -1,25 +1,16 @@
 ﻿using Juce.Core.Events;
-using Juce.Core.Factories;
-using Juce.Core.Id;
 using Juce.Core.State;
-using Playground.Content.Stage.Logic.Entities;
 using Playground.Content.Stage.Logic.Setup;
 using Playground.Content.Stage.Logic.StateMachine;
-using Playground.Content.Stage.Logic.UseCases;
-using Playground.Content.Stage.Logic.UseCases.TryCreateShip;
-using Playground.Content.Stage.Logic.UseCases.SetupStage;
-using Playground.Content.Stage.Logic.UseCases.StartStage;
-using Playground.Content.Stage.Logic.State;
-using Juce.Core.Repositories;
+using Juce.Core.DI.Builder;
+using Playground.Content.Stage.Logic.Installers;
+using Juce.Core.DI.Container;
 
 namespace Playground.Content.Stage.Logic.EntryPoint
 {
     public class StageLogicEntryPoint
     {
-        private readonly IEventDispatcher eventDispatcher;
-        private readonly IEventReceiver eventReceiver;
-
-        private UseCaseRepository useCaseRepository;
+        private StateMachine<LogicState> stateMachine;
 
         public StageLogicEntryPoint(
             IEventDispatcher eventDispatcher,
@@ -27,67 +18,22 @@ namespace Playground.Content.Stage.Logic.EntryPoint
             LogicStageSetup logicStageSetup
             )
         {
-            this.eventDispatcher = eventDispatcher;
-            this.eventReceiver = eventReceiver;
+            IDIContainerBuilder containerBuilder = new DIContainerBuilder();
 
-            IIdGenerator idGenerator = new IncrementalIdGenerator();
+            containerBuilder.Bind<IEventDispatcher>().FromInstance(eventDispatcher);
+            containerBuilder.Bind<IEventReceiver>().FromInstance(eventReceiver);
+            containerBuilder.Bind<LogicStageSetup>().FromInstance(logicStageSetup);
 
-            IFactory<LogicShipSetup, ShipEntity> shipEntityFactory = new ShipEntityFactory(idGenerator);
-            IKeyValueRepository<int, ShipEntity> shipEntityRepository = new SimpleKeyValueRepository<int, ShipEntity>();
+            containerBuilder.Bind(new UseCasesInstaller());
+            containerBuilder.Bind(new StateMachineInstaller());
 
-            StageState stageState = new StageState();
+            IDIContainer container = containerBuilder.Build();
 
-            ITryCreateShipUseCase createShipUseCase = new TryCreateShipUseCase(
-                shipEntityFactory,
-                shipEntityRepository
-                );
-
-            ISetupStageUseCase setupStageUseCase = new SetupStageUseCase(
-                eventDispatcher,
-                logicStageSetup,
-                stageState,
-                createShipUseCase
-                );
-
-            IStartStageUseCase startStageUseCase = new StartStageUseCase(
-                eventDispatcher,
-                stageState,
-                shipEntityRepository
-                );
-
-            useCaseRepository = new UseCaseRepository(
-                createShipUseCase,
-                setupStageUseCase,
-                startStageUseCase
-                );
+            stateMachine = container.Resolve<StateMachine<LogicState>>();
         }
 
         public void Execute()
         {
-            StateMachine<LogicState> stateMachine = new StateMachine<LogicState>();
-
-            stateMachine.RegisterState(LogicState.Setup, new SetupStateMachineAction(
-                useCaseRepository
-                ));
-
-            stateMachine.RegisterState(LogicState.WaitForStart, new WaitForStartStateMachineAction(
-                eventReceiver,
-                useCaseRepository
-                ));
-
-            stateMachine.RegisterState(LogicState.Main, new MainStateMachineAction(
-                eventReceiver,
-                useCaseRepository
-                ));
-
-            stateMachine.RegisterState(LogicState.Dispose, new DisposeStateMachineAction(
-                useCaseRepository
-                ));
-
-            stateMachine.RegisterConnection(LogicState.Setup, LogicState.WaitForStart);
-            stateMachine.RegisterConnection(LogicState.WaitForStart, LogicState.Main);
-            stateMachine.RegisterConnection(LogicState.Main, LogicState.Dispose);
-
             stateMachine.Start(LogicState.Setup);
         }
     }

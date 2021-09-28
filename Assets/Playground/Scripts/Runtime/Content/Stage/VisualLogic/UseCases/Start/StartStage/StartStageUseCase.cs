@@ -4,7 +4,7 @@ using Juce.Core.Sequencing;
 using Playground.Content.Stage.Logic.Snapshots;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.Sequencing;
-using Playground.Content.Stage.VisualLogic.UseCases.SetTickableSectionGeneratorActive;
+using Playground.Content.Stage.VisualLogic.UseCases.SetSectionsTickablesActive;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupStage;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,19 +15,19 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
     {
         private readonly ISequencerTimelines<StageTimeline> sequencerTimelines;
         private readonly ISingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository;
-        private readonly ISetTickableSectionGeneratorActiveUseCase setTickableSectionGeneratorActiveUseCase;
+        private readonly ISetSectionsTickablesActiveUseCase setSectionsTickablesActiveUseCase;
         private readonly IStartShipMovementUseCase startShipMovementUseCase;
 
         public StartStageUseCase(
             ISequencerTimelines<StageTimeline> sequencerTimelines,
             ISingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository,
-            ISetTickableSectionGeneratorActiveUseCase setTickableSectionGeneratorActiveUseCase,
+            ISetSectionsTickablesActiveUseCase setSectionsTickablesActiveUseCase,
             IStartShipMovementUseCase startShipMovementUseCase
             )
         {
             this.sequencerTimelines = sequencerTimelines;
             this.shipEntityViewRepository = shipEntityViewRepository;
-            this.setTickableSectionGeneratorActiveUseCase = setTickableSectionGeneratorActiveUseCase;
+            this.setSectionsTickablesActiveUseCase = setSectionsTickablesActiveUseCase;
             this.startShipMovementUseCase = startShipMovementUseCase;
         }
 
@@ -52,7 +52,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
                 return Task.CompletedTask;
             }
 
-            setTickableSectionGeneratorActiveUseCase.Execute(active: true);
+            setSectionsTickablesActiveUseCase.Execute(active: true);
 
             startShipMovementUseCase.Execute(shipEntityView);
 

@@ -8,7 +8,6 @@ namespace Playground.Content.Stage.Logic.StateMachine
     public class MainStateMachineAction : IStateMachineStateAction<LogicState>
     {
         private readonly IEventReceiver eventReceiver;
-        private readonly UseCaseRepository useCaseRepository;
 
         private IStateMachine<LogicState> stateMachine;
 
@@ -17,12 +16,10 @@ namespace Playground.Content.Stage.Logic.StateMachine
         private IEventReference finishLineCrossedInEvent;
 
         public MainStateMachineAction(
-            IEventReceiver eventReceiver,
-            UseCaseRepository useCaseRepository
+            IEventReceiver eventReceiver
             )
         {
             this.eventReceiver = eventReceiver;
-            this.useCaseRepository = useCaseRepository;
         }
 
         public void OnEnter()

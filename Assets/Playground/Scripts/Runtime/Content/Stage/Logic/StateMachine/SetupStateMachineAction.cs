@@ -1,17 +1,18 @@
 ﻿using Juce.Core.State;
 using Playground.Content.Stage.Logic.UseCases;
+using Playground.Content.Stage.Logic.UseCases.SetupStage;
 
 namespace Playground.Content.Stage.Logic.StateMachine
 {
     public class SetupStateMachineAction : IStateMachineStateAction<LogicState>
     {
-        private readonly UseCaseRepository useCaseRepository;
+        private readonly ISetupStageUseCase setupStageUseCase;
 
         public SetupStateMachineAction(
-            UseCaseRepository useCaseRepository
+            ISetupStageUseCase setupStageUseCase
             )
         {
-            this.useCaseRepository = useCaseRepository;
+            this.setupStageUseCase = setupStageUseCase;
         }
 
         public void OnEnter()
@@ -26,7 +27,7 @@ namespace Playground.Content.Stage.Logic.StateMachine
 
         public void OnRun(IStateMachine<LogicState> stateMachine)
         {
-            useCaseRepository.SetupStageUseCase.Execute();
+            setupStageUseCase.Execute();
 
             stateMachine.SetNextState(LogicState.WaitForStart);
         }
