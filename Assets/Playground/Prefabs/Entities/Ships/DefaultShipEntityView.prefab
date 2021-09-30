@@ -59,7 +59,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.16272068}
+  m_Offset: {x: -0.003334552, y: -0.24775282}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -70,7 +70,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8075145, y: 0.7864821}
+  m_Size: {x: 0.894214, y: 0.95654637}
   m_EdgeRadius: 0
 --- !u!61 &7913576583554182813
 BoxCollider2D:
@@ -85,7 +85,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.002138704, y: 0.3694813}
+  m_Offset: {x: 0.0045304745, y: 0.3694813}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -96,7 +96,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.44393104, y: 0.25144547}
+  m_Size: {x: 0.5439689, y: 0.25144547}
   m_EdgeRadius: 0
 --- !u!60 &4043551042834629540
 PolygonCollider2D:
@@ -123,7 +123,7 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 1.06}
+    - - {x: 0, y: 1.1032118}
       - {x: -0.24, y: 0.819638}
       - {x: -0.24, y: 0.51451224}
       - {x: 0.24, y: 0.5145122}
@@ -153,8 +153,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2859530788360037613}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.308, z: 0}
-  m_LocalScale: {x: 0.6693, y: 0.748, z: 1}
+  m_LocalPosition: {x: 0, y: -0.396, z: 0}
+  m_LocalScale: {x: 0.72694427, y: 0.84524, z: 1.13}
   m_Children: []
   m_Father: {fileID: 8680395593942047762}
   m_RootOrder: 1
@@ -336,7 +336,7 @@ Transform:
   m_GameObject: {fileID: 4840045935483869934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.575, z: 0}
-  m_LocalScale: {x: 0.6693, y: 0.748, z: 1}
+  m_LocalScale: {x: 0.72953707, y: 0.8153201, z: 1.09}
   m_Children: []
   m_Father: {fileID: 8680395593942047762}
   m_RootOrder: 0

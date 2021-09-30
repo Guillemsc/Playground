@@ -1,7 +1,7 @@
 ﻿using Juce.Core.Disposables;
 using Playground.Content.Stage.VisualLogic.Entities;
 
-namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
+namespace Playground.Content.Stage.VisualLogic.UseCases.StartShipMovement
 {
     public class StartShipMovementUseCase : IStartShipMovementUseCase
     {
@@ -12,9 +12,9 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
             this.shipEntityViewMovementTickable = shipEntityViewMovementTickable;
         }
 
-        public void Execute(IDisposable<ShipEntityView> shipEntityView)
+        public void Execute(ShipEntityView shipEntityView)
         {
-            shipEntityViewMovementTickable.Start(shipEntityView.Value.transform);
+            shipEntityViewMovementTickable.Start(shipEntityView.transform);
             shipEntityViewMovementTickable.Enabled = true;
         }
     }

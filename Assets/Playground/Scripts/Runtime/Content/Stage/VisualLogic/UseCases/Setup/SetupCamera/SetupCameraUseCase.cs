@@ -1,21 +1,25 @@
 ﻿using Cinemachine;
-using Juce.Core.Disposables;
-using Playground.Content.Stage.VisualLogic.Entities;
+using UnityEngine;
 
 namespace Playground.Content.Stage.VisualLogic.UseCases.SetupCamera
 {
     public class SetupCameraUseCase : ISetupCameraUseCase
     {
         private readonly CinemachineVirtualCamera cinemachineVirtualCamera;
+        private readonly Transform cameraStartingTarget;
 
-        public SetupCameraUseCase(CinemachineVirtualCamera cinemachineVirtualCamera)
+        public SetupCameraUseCase(
+            CinemachineVirtualCamera cinemachineVirtualCamera,
+            Transform cameraStartingTarget
+            )
         {
             this.cinemachineVirtualCamera = cinemachineVirtualCamera;
+            this.cameraStartingTarget = cameraStartingTarget;
         }
 
-        public void Execute(IDisposable<ShipEntityView> shipEntityView)
+        public void Execute()
         {
-            cinemachineVirtualCamera.Follow = shipEntityView.Value.transform;
+            cinemachineVirtualCamera.Follow = cameraStartingTarget;
 
             cinemachineVirtualCamera.PreviousStateIsValid = false;
         }

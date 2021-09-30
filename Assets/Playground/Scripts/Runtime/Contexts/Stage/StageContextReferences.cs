@@ -20,6 +20,7 @@ namespace Playground.Contexts.Stage
         [Header("Start Positions")]
         [SerializeField] private Transform shipStartPosition = default;
         [SerializeField] private Transform sectionsStartPosition = default;
+        [SerializeField] private Transform cameraStartingTarget = default;
 
         public StageSettings StageSettings => stageSettings;
 
@@ -30,5 +31,6 @@ namespace Playground.Contexts.Stage
 
         public Transform ShipStartPosition => shipStartPosition;
         public Transform SectionsStartPosition => sectionsStartPosition;
+        public Transform CameraStartingTarget => cameraStartingTarget;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Juce.Core.Events.Generic;
 using Juce.CoreUnity.Physics;
+using System;
 using UnityEngine;
 
 namespace Playground.Content.Stage.VisualLogic.Entities
@@ -15,6 +16,12 @@ namespace Playground.Content.Stage.VisualLogic.Entities
         private void Awake()
         {
             physicsCallbacks.OnPhysicsTriggerEnter2D += OnPhysicsTriggerEnter2D;
+        }
+
+        protected void OnDestroy()
+        {
+            OnTrigger = null;
+            physicsCallbacks.OnPhysicsTriggerEnter2D -= OnPhysicsTriggerEnter2D;
         }
 
         public void Init(int instanceId)

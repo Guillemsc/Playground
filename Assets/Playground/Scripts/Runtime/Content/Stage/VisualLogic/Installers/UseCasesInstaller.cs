@@ -17,10 +17,15 @@ using Playground.Content.Stage.VisualLogic.UseCases.CreateShipView;
 using Playground.Content.Stage.VisualLogic.UseCases.DespawnSection;
 using Playground.Content.Stage.VisualLogic.UseCases.GenerateSections;
 using Playground.Content.Stage.VisualLogic.UseCases.InputActionReceived;
+using Playground.Content.Stage.VisualLogic.UseCases.ModifyCameraOnceStarts;
 using Playground.Content.Stage.VisualLogic.UseCases.SetSectionsTickablesActive;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupCamera;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupStage;
+using Playground.Content.Stage.VisualLogic.UseCases.ShipCollided;
+using Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithDeadlyCollision;
+using Playground.Content.Stage.VisualLogic.UseCases.StartShipMovement;
 using Playground.Content.Stage.VisualLogic.UseCases.StartStage;
+using Playground.Content.Stage.VisualLogic.UseCases.StopShipMovement;
 using Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSection;
 using Playground.Contexts.Stage;
 using Playground.Services;
@@ -94,12 +99,32 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                 .WhenInit((c, o) => tickableService.AddTickable(o))
                 .WhenDispose((o) => tickableService.RemoveTickable(o));
 
+            containerBuilder.Bind<IStartShipMovementUseCase>()
+                .FromFunction((c) => new StartShipMovementUseCase(
+                    c.Resolve<ShipEntityViewMovementTickable>()
+                    ));
+
+            containerBuilder.Bind<IStopShipMovementUseCase>()
+                .FromFunction((c) => new StopShipMovementUseCase(
+                    c.Resolve<ShipEntityViewMovementTickable>()
+                    ));
+
+            containerBuilder.Bind<IShipCollidedWithDeadlyCollisionUseCase>()
+                .FromFunction((c) => new ShipCollidedWithDeadlyCollisionUseCase(
+                    c.Resolve<IStopShipMovementUseCase>()
+                    ));
+
+            containerBuilder.Bind<IShipCollidedUseCase>()
+                .FromFunction((c) => new ShipCollidedUseCase(
+                    c.Resolve<IShipCollidedWithDeadlyCollisionUseCase>()
+                    ));
 
             containerBuilder.Bind<ITryCreateShipViewUseCase>()
                 .FromFunction((c) => new TryCreateShipViewUseCase(
                     c.Resolve<IFactory<ShipEntityViewDefinition, IDisposable<ShipEntityView>>>(),
                     c.Resolve<ISingleRepository<IDisposable<ShipEntityView>>>(),
-                    stageContextReferences.ShipStartPosition
+                    stageContextReferences.ShipStartPosition,
+                    c.Resolve<IShipCollidedUseCase>()
                     ));
 
             containerBuilder.Bind<ITrySpawnRandomSectionUseCase>()
@@ -149,17 +174,13 @@ namespace Playground.Content.Stage.VisualLogic.Installers
 
             containerBuilder.Bind<ISetupCameraUseCase>()
                 .FromFunction((c) => new SetupCameraUseCase(
-                    stageContextReferences.CinemachineVirtualCamera
+                    stageContextReferences.CinemachineVirtualCamera,
+                    stageContextReferences.CameraStartingTarget
                     ));
 
             containerBuilder.Bind<ISetActionInputDetectionUIVisibleUseCase>()
                 .FromFunction((c) => new SetActionInputDetectionUIVisibleUseCase(
                     uiViewStackService
-                    ));
-
-            containerBuilder.Bind<IStartShipMovementUseCase>()
-                .FromFunction((c) => new StartShipMovementUseCase(
-                    c.Resolve<ShipEntityViewMovementTickable>()
                     ));
 
             containerBuilder.Bind<ISetupStageUseCase>()
@@ -179,11 +200,17 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     c.Resolve<CleanSectionsTickable>()
                     ));
 
+            containerBuilder.Bind<IModifyCameraOnceStartsUseCase>()
+                .FromFunction((c) => new ModifyCameraOnceStartsUseCase(
+                    stageContextReferences.CinemachineVirtualCamera
+                    ));
+
             containerBuilder.Bind<IStartStageUseCase>()
                 .FromFunction((c) => new StartStageUseCase(
                     c.Resolve<ISequencerTimelines<StageTimeline>>(),
                     c.Resolve<ISingleRepository<IDisposable<ShipEntityView>>>(),
                     c.Resolve<ISetSectionsTickablesActiveUseCase>(),
+                    c.Resolve<IModifyCameraOnceStartsUseCase>(),
                     c.Resolve<IStartShipMovementUseCase>()
                     ));
 

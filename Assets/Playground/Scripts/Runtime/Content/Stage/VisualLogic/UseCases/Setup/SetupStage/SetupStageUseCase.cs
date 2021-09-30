@@ -69,7 +69,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
 
             generateSectionsUseCase.Execute();
 
-            setupCameraUseCase.Execute(shipEntityView);
+            setupCameraUseCase.Execute();
 
             stageLoadedToken.Complete();
 
