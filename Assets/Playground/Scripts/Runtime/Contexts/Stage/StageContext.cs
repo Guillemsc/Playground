@@ -100,6 +100,9 @@ namespace Playground.Contexts.Stage
             tickablesService.AddTickable(viewToLogicTickable);
             AddCleanupAction(() => tickablesService.RemoveTickable(viewToLogicTickable));
 
+            SRDebug.Instance.AddOptionContainer(stageLogicEntryPoint.StageLogicCheats);
+            AddCleanupAction(() => SRDebug.Instance.RemoveOptionContainer(stageLogicEntryPoint.StageLogicCheats));
+
             return stageLoadedTaskCompletionSource.Task;
         }
     }

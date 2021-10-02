@@ -9,6 +9,7 @@ using Playground.Content.Stage.VisualLogic.Installers;
 using Playground.Content.Stage.VisualLogic.Setup;
 using Playground.Content.Stage.VisualLogic.UseCases.InputActionReceived;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupStage;
+using Playground.Content.Stage.VisualLogic.UseCases.ShipDestroyed;
 using Playground.Content.Stage.VisualLogic.UseCases.StartStage;
 using Playground.Content.StageUI.UI.ActionInputDetection;
 using Playground.Contexts.Stage;
@@ -55,6 +56,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             ISetupStageUseCase setupStageUseCase = container.Resolve<ISetupStageUseCase>();
             IStartStageUseCase startStageUseCase = container.Resolve<IStartStageUseCase>();
             IInputActionReceivedUseCase inputActionReceivedUseCase = container.Resolve<IInputActionReceivedUseCase>();
+            IShipDestroyedUseCase shipDestroyedUseCase = container.Resolve<IShipDestroyedUseCase>();
 
             ActionInputDetectionUIInteractor actionInputDetectionUIInteractor = uiViewStackService.GetInteractor<ActionInputDetectionUIInteractor>();
 
@@ -70,6 +72,11 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                 startStageUseCase.Execute(
                     startStageOutEvent.ShipEntitySnapshot
                     );
+            });
+
+            eventReceiver.Subscribe((ShipDestroyedOutEvent shipDestroyedOutEvent) =>
+            {
+                shipDestroyedUseCase.Execute();
             });
 
             actionInputDetectionUIInteractor.InputActionReceived += (

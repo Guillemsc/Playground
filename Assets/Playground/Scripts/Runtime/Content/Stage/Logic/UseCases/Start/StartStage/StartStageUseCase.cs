@@ -12,12 +12,12 @@ namespace Playground.Content.Stage.Logic.UseCases.StartStage
     {
         private readonly IEventDispatcher eventDispatcher;
         private readonly StageState stageState;
-        private readonly IKeyValueRepository<int, ShipEntity> shipEntityRepository;
+        private readonly ISingleRepository<ShipEntity> shipEntityRepository;
 
         public StartStageUseCase(
             IEventDispatcher eventDispatcher,
             StageState stageState,
-            IKeyValueRepository<int, ShipEntity> shipEntityRepository
+            ISingleRepository<ShipEntity> shipEntityRepository
             )
         {
             this.eventDispatcher = eventDispatcher;
@@ -28,7 +28,6 @@ namespace Playground.Content.Stage.Logic.UseCases.StartStage
         public void Execute()
         {
             bool shipFound = shipEntityRepository.TryGet(
-                stageState.UsingShiptInstanceId,
                 out ShipEntity shipEntity
                 );
 

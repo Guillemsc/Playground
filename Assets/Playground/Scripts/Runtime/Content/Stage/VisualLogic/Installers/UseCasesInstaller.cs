@@ -23,6 +23,7 @@ using Playground.Content.Stage.VisualLogic.UseCases.SetupCamera;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupStage;
 using Playground.Content.Stage.VisualLogic.UseCases.ShipCollided;
 using Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithDeadlyCollision;
+using Playground.Content.Stage.VisualLogic.UseCases.ShipDestroyed;
 using Playground.Content.Stage.VisualLogic.UseCases.StartShipMovement;
 using Playground.Content.Stage.VisualLogic.UseCases.StartStage;
 using Playground.Content.Stage.VisualLogic.UseCases.StopShipMovement;
@@ -111,7 +112,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
 
             containerBuilder.Bind<IShipCollidedWithDeadlyCollisionUseCase>()
                 .FromFunction((c) => new ShipCollidedWithDeadlyCollisionUseCase(
-                    c.Resolve<IStopShipMovementUseCase>()
+                    eventDispatcher
                     ));
 
             containerBuilder.Bind<IShipCollidedUseCase>()
@@ -217,6 +218,11 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             containerBuilder.Bind<IInputActionReceivedUseCase>()
                 .FromFunction((c) => new InputActionReceivedUseCase(
                     eventDispatcher
+                    ));
+
+            containerBuilder.Bind<IShipDestroyedUseCase>()
+                .FromFunction((c) => new ShipDestroyedUseCase(
+                    c.Resolve<IStopShipMovementUseCase>()
                     ));
 
         }

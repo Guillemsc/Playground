@@ -1,39 +1,38 @@
 ﻿using Juce.Core.Events;
 using Juce.Core.State;
 using Playground.Content.Stage.Logic.Events;
-using Playground.Content.Stage.Logic.UseCases;
+using Playground.Content.Stage.Logic.UseCases.ShipCollidedWithDeadlyCollision;
 
 namespace Playground.Content.Stage.Logic.StateMachine
 {
     public class MainStateMachineAction : IStateMachineStateAction<LogicState>
     {
         private readonly IEventReceiver eventReceiver;
+        private readonly IShipCollidedWithDeadlyCollisionUseCase shipCollidedWithDeadlyCollisionUseCase;
 
         private IStateMachine<LogicState> stateMachine;
 
-        private IEventReference carAcceleratesOrBrakesInEvent;
-        private IEventReference checkPointCrossedInEvent;
-        private IEventReference finishLineCrossedInEvent;
+        private IEventReference shipCollidedWithDeadlyCollisionInEvent;
 
         public MainStateMachineAction(
-            IEventReceiver eventReceiver
+            IEventReceiver eventReceiver,
+            IShipCollidedWithDeadlyCollisionUseCase shipCollidedWithDeadlyCollisionUseCase
             )
         {
             this.eventReceiver = eventReceiver;
+            this.shipCollidedWithDeadlyCollisionUseCase = shipCollidedWithDeadlyCollisionUseCase;
         }
 
         public void OnEnter()
         {
-            //carAcceleratesOrBrakesInEvent = eventReceiver.Subscribe<CarAcceleratesOrBrakesInEvent>(CarAcceleratesOrBrakesInEvent);
-            //checkPointCrossedInEvent = eventReceiver.Subscribe<CheckPointCrossedInEvent>(CheckPointCrossedInEvent);
-            //finishLineCrossedInEvent = eventReceiver.Subscribe<FinishLineCrossedInEvent>(FinishLineCrossedInEvent);
+            shipCollidedWithDeadlyCollisionInEvent = eventReceiver.Subscribe<ShipCollidedWithDeadlyCollisionInEvent>(
+                ShipCollidedWithDeadlyCollisionInEvent
+                );
         }
 
         public void OnExit()
         {
-            //eventReceiver.Unsubscribe(carAcceleratesOrBrakesInEvent);
-            //eventReceiver.Unsubscribe(checkPointCrossedInEvent);
-            //eventReceiver.Unsubscribe(finishLineCrossedInEvent);
+            eventReceiver.Unsubscribe(shipCollidedWithDeadlyCollisionInEvent);
         }
 
         public void OnRun(IStateMachine<LogicState> stateMachine)
@@ -41,10 +40,10 @@ namespace Playground.Content.Stage.Logic.StateMachine
             this.stateMachine = stateMachine;
         }
 
-        //private void CarAcceleratesOrBrakesInEvent(CarAcceleratesOrBrakesInEvent ev)
-        //{
-        //    useCaseRepository.StartStageUseCase.Execute();
-        //}
+        private void ShipCollidedWithDeadlyCollisionInEvent(ShipCollidedWithDeadlyCollisionInEvent ev)
+        {
+            shipCollidedWithDeadlyCollisionUseCase.Execute(ev.ShipInstanceId);
+        }
 
         //private void CheckPointCrossedInEvent(CheckPointCrossedInEvent ev)
         //{

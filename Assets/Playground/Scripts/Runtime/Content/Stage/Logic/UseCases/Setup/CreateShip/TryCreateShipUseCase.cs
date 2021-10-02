@@ -8,11 +8,11 @@ namespace Playground.Content.Stage.Logic.UseCases.TryCreateShip
     public class TryCreateShipUseCase : ITryCreateShipUseCase
     {
         private readonly IFactory<LogicShipSetup, ShipEntity> shipEntityFactory;
-        private readonly IKeyValueRepository<int, ShipEntity> shipEntityRepository;
+        private readonly ISingleRepository<ShipEntity> shipEntityRepository;
 
         public TryCreateShipUseCase(
             IFactory<LogicShipSetup, ShipEntity> shipEntityFactory,
-            IKeyValueRepository<int, ShipEntity> shipEntityRepository
+            ISingleRepository<ShipEntity> shipEntityRepository
             )
         {
             this.shipEntityFactory = shipEntityFactory;
@@ -29,7 +29,7 @@ namespace Playground.Content.Stage.Logic.UseCases.TryCreateShip
                 return false;
             }
 
-            shipEntityRepository.Add(shipEntity.InstanceId, shipEntity);
+            shipEntityRepository.Set(shipEntity);
 
             return true;
         }

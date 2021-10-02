@@ -1,22 +1,23 @@
-﻿using Playground.Content.Stage.VisualLogic.Entities;
-using Playground.Content.Stage.VisualLogic.UseCases.StopShipMovement;
+﻿using Juce.Core.Events;
+using Playground.Content.Stage.Logic.Events;
+using Playground.Content.Stage.VisualLogic.Entities;
 
 namespace Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithDeadlyCollision
 {
     public class ShipCollidedWithDeadlyCollisionUseCase : IShipCollidedWithDeadlyCollisionUseCase
     {
-        private readonly IStopShipMovementUseCase stopShipMovementUseCase;
+        private readonly IEventDispatcher eventDispatcher;
 
         public ShipCollidedWithDeadlyCollisionUseCase(
-            IStopShipMovementUseCase stopShipMovementUseCase
+            IEventDispatcher eventDispatcher
             )
         {
-            this.stopShipMovementUseCase = stopShipMovementUseCase;
+            this.eventDispatcher = eventDispatcher;
         }
 
         public void Execute(ShipEntityView shipEntityView)
         {
-            stopShipMovementUseCase.Execute();
+            eventDispatcher.Dispatch(new ShipCollidedWithDeadlyCollisionInEvent(shipEntityView.InstanceId));
         }
     }
 }

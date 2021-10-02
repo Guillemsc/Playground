@@ -10,6 +10,7 @@ using Playground.Content.Stage.Logic.UseCases.TryCreateShip;
 using Playground.Content.Stage.Logic.UseCases.SetupStage;
 using Playground.Content.Stage.Logic.UseCases.StartStage;
 using Playground.Content.Stage.Logic.State;
+using Playground.Content.Stage.Logic.UseCases.ShipCollidedWithDeadlyCollision;
 
 namespace Playground.Content.Stage.Logic.Installers
 {
@@ -26,13 +27,13 @@ namespace Playground.Content.Stage.Logic.Installers
                     c.Resolve<IIdGenerator>()
                     ));
 
-            containerBuilder.Bind<IKeyValueRepository<int, ShipEntity>>()
-                .FromFunction((c) => new SimpleKeyValueRepository<int, ShipEntity>());
+            containerBuilder.Bind<ISingleRepository<ShipEntity>> ()
+                .FromFunction((c) => new SimpleSingleRepository<ShipEntity>());
 
             containerBuilder.Bind<ITryCreateShipUseCase>()
                 .FromFunction((c) => new TryCreateShipUseCase(
                     c.Resolve<IFactory<LogicShipSetup, ShipEntity>>(),
-                    c.Resolve<IKeyValueRepository<int, ShipEntity>>()
+                    c.Resolve<ISingleRepository<ShipEntity>>()
                     ));
 
             containerBuilder.Bind<ISetupStageUseCase>()
@@ -47,7 +48,13 @@ namespace Playground.Content.Stage.Logic.Installers
                 .FromFunction((c) => new StartStageUseCase(
                     c.Resolve<IEventDispatcher>(),
                     c.Resolve<StageState>(),
-                    c.Resolve<IKeyValueRepository<int, ShipEntity>>()
+                    c.Resolve<ISingleRepository<ShipEntity>>()
+                    ));
+
+            containerBuilder.Bind<IShipCollidedWithDeadlyCollisionUseCase>()
+                .FromFunction((c) => new ShipCollidedWithDeadlyCollisionUseCase(
+                    c.Resolve<IEventDispatcher>(),
+                    c.Resolve<ISingleRepository<ShipEntity>>()
                     ));
         }
     }

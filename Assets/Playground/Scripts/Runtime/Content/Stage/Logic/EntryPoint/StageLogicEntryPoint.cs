@@ -5,12 +5,15 @@ using Playground.Content.Stage.Logic.StateMachine;
 using Juce.Core.DI.Builder;
 using Playground.Content.Stage.Logic.Installers;
 using Juce.Core.DI.Container;
+using Playground.Cheats;
 
 namespace Playground.Content.Stage.Logic.EntryPoint
 {
     public class StageLogicEntryPoint
     {
         private StateMachine<LogicState> stateMachine;
+
+        public StageLogicCheats StageLogicCheats { get; }
 
         public StageLogicEntryPoint(
             IEventDispatcher eventDispatcher,
@@ -26,8 +29,11 @@ namespace Playground.Content.Stage.Logic.EntryPoint
 
             containerBuilder.Bind(new UseCasesInstaller());
             containerBuilder.Bind(new StateMachineInstaller());
+            containerBuilder.Bind(new CheatsInstaller());
 
             IDIContainer container = containerBuilder.Build();
+
+            StageLogicCheats = container.Resolve<StageLogicCheats>();
 
             stateMachine = container.Resolve<StateMachine<LogicState>>();
         }
