@@ -32,17 +32,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Playground/Scenes/Contexts/StageContext.unity
     guid: f8c4bd8502aa4e944ae7903c12847d05
-  - enabled: 1
-    path: Assets/Playground/Scenes/Stages/stg_0001_PARKING.unity
-    guid: 8788fe8aa14a7ef42b7a9146e7c018ea
-  - enabled: 1
-    path: Assets/Playground/Scenes/Stages/stg_TEST2_CONES.unity
-    guid: c0b52b65d221c0745aee4b7633edaf6b
-  - enabled: 1
-    path: Assets/Playground/Scenes/Stages/stg_0002_MOUNTAINS.unity
-    guid: 826b7f0dbd4f2104490b90bb1c3d35d6
-  - enabled: 1
-    path: Assets/Playground/Scenes/Stages/stg_TEST1_COMPLETITION.unity
-    guid: 6b186c23703235a40868c2d1681b5527
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 651086d05b036b845b5551c48fa68919, type: 2}

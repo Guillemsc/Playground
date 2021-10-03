@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0f2d07dbc3149438d3961b8d0d04f4, type: 3}
   m_Name: StageSettings
   m_EditorClassIdentifier: 
+  delayOnStageFinished: 0.6
   sectionsForwardSpawnDistance: 40
   sectionsBackwardDespawnDistance: 40
