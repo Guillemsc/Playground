@@ -52,11 +52,70 @@ MonoBehaviour:
   loopMode: 0
   loopResetMode: 0
   loops: 0
-  BindingPlayerComponents: []
+  Components:
+  - id: 0
   bindingEnabled: 0
   bindableDataUid: 
   references:
     version: 1
+    00000000:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 742938315154514203}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 0.9, y: 0.9, z: 0.9}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.1
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 2
+              outSlope: 2
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
 --- !u!1 &742938315154514202
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,11 +405,70 @@ MonoBehaviour:
   loopMode: 0
   loopResetMode: 0
   loops: 0
-  BindingPlayerComponents: []
+  Components:
+  - id: 0
   bindingEnabled: 0
   bindableDataUid: 
   references:
     version: 1
+    00000000:
+      type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 742938315154514203}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {x: 1, y: 1, z: 1}
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.1
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 0
+              inSlope: 2
+              outSlope: 2
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
 --- !u!1 &742938316776212324
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a09fcb0e8e43064581b19538d46ef89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  executeInstantlyOnAwake: 0
   tweenPlayersToPlay:
   - {fileID: 6959360991559969020}
   tweenPlayersToKill:
@@ -439,6 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a09fcb0e8e43064581b19538d46ef89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  executeInstantlyOnAwake: 0
   tweenPlayersToPlay:
   - {fileID: 4754462551480429475}
   tweenPlayersToKill:
