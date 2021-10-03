@@ -1,6 +1,7 @@
 ﻿using Juce.Core.Disposables;
 using Juce.Core.Loading;
 using Juce.Core.Sequencing;
+using Juce.Core.Time;
 using Juce.CoreUnity.Time;
 using Playground.Content.Stage.Logic.Snapshots;
 using Playground.Content.Stage.VisualLogic.Entities;
@@ -9,6 +10,7 @@ using Playground.Content.Stage.VisualLogic.UseCases.CreateShipView;
 using Playground.Content.Stage.VisualLogic.UseCases.GenerateSections;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupCamera;
 using Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSection;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,7 +20,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
     {
         private readonly ILoadingToken stageLoadedToken;
         private readonly ISequencerTimelines<StageTimeline> sequencerTimelines;
-        private readonly IUnityTimer unscaledUnityTimer;
+        private readonly ITimer timer;
         private readonly ITryCreateShipViewUseCase tryCreateShipViewUseCase;
         private readonly IGenerateSectionsUseCase generateSectionsUseCase;
         private readonly ISetupCameraUseCase setupCameraUseCase;
@@ -27,7 +29,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
         public SetupStageUseCase(
             ILoadingToken stageLoadedToken,
             ISequencerTimelines<StageTimeline> sequencerTimelines,
-            IUnityTimer unscaledUnityTimer,
+            ITimer timer,
             ITryCreateShipViewUseCase tryCreateShipViewUseCase,
             IGenerateSectionsUseCase generateSectionsUseCase,
             ISetupCameraUseCase setupCameraUseCase,
@@ -36,7 +38,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
         {
             this.stageLoadedToken = stageLoadedToken;
             this.sequencerTimelines = sequencerTimelines;
-            this.unscaledUnityTimer = unscaledUnityTimer;
+            this.timer = timer;
             this.tryCreateShipViewUseCase = tryCreateShipViewUseCase;
             this.generateSectionsUseCase = generateSectionsUseCase;
             this.setupCameraUseCase = setupCameraUseCase;
@@ -73,7 +75,8 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
 
             stageLoadedToken.Complete();
 
-            await unscaledUnityTimer.AwaitTime(0.5f, cancellationToken);
+            timer.Start();
+            await timer.AwaitTime(TimeSpan.FromSeconds(0.5f), cancellationToken);
 
             await setActionInputDetectionUIVisibleUseCase.Execute(visible: true, instantly: false, cancellationToken);
         }

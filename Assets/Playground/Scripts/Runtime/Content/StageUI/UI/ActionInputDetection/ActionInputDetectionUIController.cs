@@ -1,9 +1,10 @@
-﻿using Playground.Content.StageUI.UI.ActionInputDetection.UseCases;
+﻿using Juce.Core.Subscribables;
+using Playground.Content.StageUI.UI.ActionInputDetection.UseCases;
 using UnityEngine.EventSystems;
 
 namespace Playground.Content.StageUI.UI.ActionInputDetection
 {
-    public class ActionInputDetectionUIController
+    public class ActionInputDetectionUIController : ISubscribable
     {
         private readonly ActionInputDetectionUIViewModel viewModel;
         private readonly IInputActionReceivedUseCase inputActionReceivedUseCase;

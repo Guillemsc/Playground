@@ -1,4 +1,5 @@
 ﻿using Juce.Core.DI.Builder;
+using Juce.Core.DI.Extensions;
 using Juce.Core.DI.Installers;
 using JuceUnity.Core.DI.Extensions;
 using Playground.Content.StageUI.UI.ActionInputDetection.UseCases;
@@ -32,8 +33,7 @@ namespace Playground.Content.StageUI.UI.ActionInputDetection
                     c.Resolve<ActionInputDetectionUIViewModel>(),
                     c.Resolve<IInputActionReceivedUseCase>()
                     ))
-                .WhenInit((c, o) => o.Subscribe())
-                .WhenDispose((o) => o.Unsubscribe())
+                .LinkSubscribable()
                 .NonLazy(); 
 
             container.Bind<IActionInputDetectionUIInteractor, ActionInputDetectionUIInteractor>()
@@ -41,8 +41,7 @@ namespace Playground.Content.StageUI.UI.ActionInputDetection
                     c.Resolve<ActionInputDetectionUIViewModel>(),
                     c.Resolve<ActionInputDetectionUIEvents>()
                     ))
-                .WhenInit((c, o) => o.Subscribe())
-                .WhenDispose((o) => o.Unsubscribe())
+                .LinkSubscribable()
                 .NonLazy();
         }
 

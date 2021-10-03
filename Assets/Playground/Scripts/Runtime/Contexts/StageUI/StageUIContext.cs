@@ -21,6 +21,7 @@ namespace Playground.Contexts.StageUI
             containerBuilder.Bind(stageUIContextReferences.ActionInputDetectionUIInstaller);
 
             IDIContainer container = containerBuilder.Build();
+            AddCleanupAction(container.Dispose);
 
             ActionInputDetectionUIInteractor = container.Resolve<IActionInputDetectionUIInteractor>();
 

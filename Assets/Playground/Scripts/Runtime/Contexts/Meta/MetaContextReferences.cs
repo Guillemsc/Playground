@@ -1,15 +1,14 @@
-﻿namespace Playground.Contexts.Meta
+﻿using Playground.Content.Meta.UI.StageEnd;
+using UnityEngine;
+
+namespace Playground.Contexts.Meta
 {
     [System.Serializable]
     public class MetaContextReferences
     {
-        //[Header("References")]
-        //[SerializeField] private ScreenCarControlsUIView screenCarControlsUIView = default;
-        //[SerializeField] private StageOverlayUIView stageOverlayUIView = default;
-        //[SerializeField] private StageCompletedUIView stageCompletedUIView = default;
+        [Header("References")]
+        [SerializeField] private StageEndUIInstaller stageEndUIInstaller = default;
 
-        //public ScreenCarControlsUIView ScreenCarControlsUIView => screenCarControlsUIView;
-        //public StageOverlayUIView StageOverlayUIView => stageOverlayUIView;
-        //public StageCompletedUIView StageCompletedUIView => stageCompletedUIView;
+        public StageEndUIInstaller StageEndUIInstaller => stageEndUIInstaller;
     }
 }

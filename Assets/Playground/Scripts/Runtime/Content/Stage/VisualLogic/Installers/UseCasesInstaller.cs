@@ -8,6 +8,7 @@ using Juce.Core.Repositories;
 using Juce.Core.Sequencing;
 using Juce.CoreUnity.Services;
 using Juce.CoreUnity.Time;
+using Playground.Content.Stage.UseCases.StageFinished;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.Sequencing;
 using Playground.Content.Stage.VisualLogic.Setup;
@@ -37,6 +38,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
     public class UseCasesInstaller : IInstaller
     {
         private readonly ILoadingToken stageLoadedToken;
+        private readonly IStageFinishedUseCase stageFinishedUseCase;
         private readonly IEventDispatcher eventDispatcher;
         private readonly TickablesService tickableService;
         private readonly TimeService timeService;
@@ -47,6 +49,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
 
         public UseCasesInstaller(
             ILoadingToken stageLoadedToken,
+            IStageFinishedUseCase stageFinishedUseCase,
             IEventDispatcher eventDispatcher,
             TickablesService tickableService,
             TimeService timeService,
@@ -57,6 +60,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             )
         {
             this.stageLoadedToken = stageLoadedToken;
+            this.stageFinishedUseCase = stageFinishedUseCase;
             this.eventDispatcher = eventDispatcher;
             this.tickableService = tickableService;
             this.timeService = timeService;
@@ -71,10 +75,6 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             containerBuilder.Bind<ISequencerTimelines<StageTimeline>, SequencerTimelines<StageTimeline>>()
                  .FromNew()
                  .WhenDispose((o) => o.KillAll());
-
-            containerBuilder.Bind<IUnityTimer, UnscaledUnityTimer>()
-                .FromNew()
-                .WhenInit((c, o) => o.Start());
 
             containerBuilder.Bind<IFactory<ShipEntityViewDefinition, IDisposable<ShipEntityView>>>()
                 .FromFunction((c) => new ShipEntityViewFactory(
@@ -188,7 +188,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                 .FromFunction((c) => new SetupStageUseCase(
                     stageLoadedToken,
                     c.Resolve<ISequencerTimelines<StageTimeline>>(),
-                    c.Resolve<IUnityTimer>(),
+                    timeService.UnscaledTimeContext.NewTimer(),
                     c.Resolve<ITryCreateShipViewUseCase>(),
                     c.Resolve<IGenerateSectionsUseCase>(),
                     c.Resolve<ISetupCameraUseCase>(),
@@ -222,7 +222,12 @@ namespace Playground.Content.Stage.VisualLogic.Installers
 
             containerBuilder.Bind<IShipDestroyedUseCase>()
                 .FromFunction((c) => new ShipDestroyedUseCase(
-                    c.Resolve<IStopShipMovementUseCase>()
+                    c.Resolve<ISequencerTimelines<StageTimeline>>(),
+                    timeService.UnscaledTimeContext.NewTimer(),
+                    stageContextReferences.StageSettings,
+                    c.Resolve<IStopShipMovementUseCase>(),
+                    c.Resolve<ISetActionInputDetectionUIVisibleUseCase>(),
+                    stageFinishedUseCase
                     ));
 
         }

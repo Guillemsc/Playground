@@ -5,6 +5,7 @@ using Juce.Core.Events;
 using Juce.Core.Loading;
 using Juce.CoreUnity.Services;
 using Playground.Content.Stage.Logic.Events;
+using Playground.Content.Stage.UseCases.StageFinished;
 using Playground.Content.Stage.VisualLogic.Installers;
 using Playground.Content.Stage.VisualLogic.Setup;
 using Playground.Content.Stage.VisualLogic.UseCases.InputActionReceived;
@@ -27,6 +28,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
 
         public StageVisualLogicEntryPoint(
             ILoadingToken stageLoadedToken,
+            IStageFinishedUseCase stageFinishedUseCase,
             IEventDispatcher eventDispatcher,
             IEventReceiver eventReceiver,
             TickablesService tickableService,
@@ -42,6 +44,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
 
             containerBuilder.Bind(new UseCasesInstaller(
                 stageLoadedToken,
+                stageFinishedUseCase,
                 eventDispatcher,
                 tickableService,
                 timeService,

@@ -8,11 +8,13 @@ using JuceUnity.Core.DI.Extensions;
 using Playground.Content.Stage.Logic.EntryPoint;
 using Playground.Content.Stage.Logic.Setup;
 using Playground.Content.Stage.Setup;
+using Playground.Content.Stage.UseCases.StageFinished;
 using Playground.Content.Stage.VisualLogic.EntryPoint;
 using Playground.Content.Stage.VisualLogic.Setup;
 using Playground.Contexts.StageUI;
 using Playground.Services;
 using Playground.Services.ViewStack;
+using System;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -21,6 +23,8 @@ namespace Playground.Contexts.Stage
     public class StageContext : Context
     {
         [SerializeField] private StageContextReferences stageContextReferences;
+
+        public event Action OnStageFinished;
 
         protected override void Init()
         {
@@ -32,7 +36,11 @@ namespace Playground.Contexts.Stage
         {
             TaskCompletionSource<object> stageLoadedTaskCompletionSource = new TaskCompletionSource<object>();
 
-            ILoadingToken stageLoadedToken = new CallbackLoadingToken(() => stageLoadedTaskCompletionSource.SetResult(default));
+            ILoadingToken stageLoadedToken = new CallbackLoadingToken(
+                () => stageLoadedTaskCompletionSource.SetResult(default)
+                );
+
+            IStageFinishedUseCase stageFinishedUseCase = new StageFinishedUseCase(OnStageFinished);
 
             StageUIContext stageUIContext = ContextsProvider.GetContext<StageUIContext>();
 
@@ -76,6 +84,7 @@ namespace Playground.Contexts.Stage
             containerBuilder.Bind<StageVisualLogicEntryPoint>()
                 .FromFunction((c) => new StageVisualLogicEntryPoint(
                     stageLoadedToken,
+                    stageFinishedUseCase,
                     viewToLogicEventDispatcherAndReceiver,
                     logicToViewEventDispatcherAndReceiver,
                     c.Resolve<TickablesService>(),

@@ -12,6 +12,14 @@ namespace Playground.Services.ViewStack
         {
             Type type = view.GetType();
 
+            bool alreadyAdded = items.ContainsKey(type);
+
+            if(alreadyAdded)
+            {
+                throw new Exception($"{nameof(UIView)} of type {type.Name} was already " +
+                    $"added to {nameof(UIInteractorRepository)}");
+            }
+
             items.Add(type, uiInteractor);
         }
 

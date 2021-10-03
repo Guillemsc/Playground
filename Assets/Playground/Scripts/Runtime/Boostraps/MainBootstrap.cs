@@ -17,6 +17,7 @@ using Playground.Flow.UseCases.ReloadStage;
 using Playground.Content.Stage.Setup;
 using Playground.Configuration.Stage;
 using Playground.Flow.UseCases.State;
+using Playground.Flow.UseCases.LoadMetaContext;
 
 namespace Playground.Boostraps
 {
@@ -46,6 +47,7 @@ namespace Playground.Boostraps
 
             await flowUseCases.LoadLocalizationDataUseCase.Execute();
 
+            await flowUseCases.LoadMetaContextUseCase.Execute();
             await flowUseCases.LoadStageUIContextUseCase.Execute();
             await flowUseCases.LoadStageContextUseCase.Execute();
 
@@ -58,8 +60,6 @@ namespace Playground.Boostraps
             //await flowUseCases.LoadUserDataFlowUseCase.Execute();
 
             //await flowUseCases.LoadAdsScenesFlowUseCase.Execute();
-
-            //await flowUseCases.LoadMetaFlowUseCase.Execute(loadingToken);
         }
 
         private void GenerateFlowService()
@@ -71,6 +71,8 @@ namespace Playground.Boostraps
             ILoadCamerasContextUseCase loadCamerasContextUseCase = new LoadCamerasContextUseCase();
 
             ILoadLoadingScreenContextUseCase loadLoadingScreenContextUseCase = new LoadLoadingScreenContextUseCase();
+
+            ILoadMetaContextUseCase loadMetaContextUseCase = new LoadMetaContextUseCase();
 
             ILoadStageUIContextUseCase loadStageUIContextUseCase = new LoadStageUIContextUseCase();
 
@@ -96,6 +98,7 @@ namespace Playground.Boostraps
                 loadServicesContextUseCase,
                 loadCamerasContextUseCase,
                 loadLoadingScreenContextUseCase,
+                loadMetaContextUseCase,
                 loadStageUIContextUseCase,
                 loadStageContextUseCase,
                 showLoadingScreenUseCase,

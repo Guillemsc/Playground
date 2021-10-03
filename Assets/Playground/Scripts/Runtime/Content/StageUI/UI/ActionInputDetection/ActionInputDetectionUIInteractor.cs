@@ -1,10 +1,10 @@
 ﻿using Juce.Core.Events.Generic;
-using Juce.CoreUnity.UI;
+using Juce.Core.Subscribables;
 using System;
 
 namespace Playground.Content.StageUI.UI.ActionInputDetection
 {
-    public class ActionInputDetectionUIInteractor : IActionInputDetectionUIInteractor
+    public class ActionInputDetectionUIInteractor : IActionInputDetectionUIInteractor, ISubscribable
     {
         private readonly ActionInputDetectionUIViewModel viewModel;
         private readonly ActionInputDetectionUIEvents events;
