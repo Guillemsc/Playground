@@ -34,7 +34,8 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             UIViewStackService uiViewStackService,
             PersistenceService persistenceService,
             VisualLogicStageSetup visualLogicStageSetup,
-            StageContextReferences stageContextReferences
+            StageContextReferences stageContextReferences,
+            IActionInputDetectionUIInteractor actionInputDetectionUIInteractor
             )
         {
             IDIContainerBuilder containerBuilder = new DIContainerBuilder();
@@ -57,8 +58,6 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             IStartStageUseCase startStageUseCase = container.Resolve<IStartStageUseCase>();
             IInputActionReceivedUseCase inputActionReceivedUseCase = container.Resolve<IInputActionReceivedUseCase>();
             IShipDestroyedUseCase shipDestroyedUseCase = container.Resolve<IShipDestroyedUseCase>();
-
-            ActionInputDetectionUIInteractor actionInputDetectionUIInteractor = uiViewStackService.GetInteractor<ActionInputDetectionUIInteractor>();
 
             eventReceiver.Subscribe((SetupStageOutEvent setupStageOutEvent) =>
             {

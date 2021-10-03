@@ -1,19 +1,20 @@
-﻿using UnityEngine.EventSystems;
+﻿using Playground.Content.StageUI.UI.ActionInputDetection.UseCases;
+using UnityEngine.EventSystems;
 
 namespace Playground.Content.StageUI.UI.ActionInputDetection
 {
     public class ActionInputDetectionUIController
     {
         private readonly ActionInputDetectionUIViewModel viewModel;
-        private readonly ActionInputDetectionUIUseCases useCases;
+        private readonly IInputActionReceivedUseCase inputActionReceivedUseCase;
 
         public ActionInputDetectionUIController(
             ActionInputDetectionUIViewModel viewModel,
-            ActionInputDetectionUIUseCases useCases
+            IInputActionReceivedUseCase inputActionReceivedUseCase
             )
         {
             this.viewModel = viewModel;
-            this.useCases = useCases;
+            this.inputActionReceivedUseCase = inputActionReceivedUseCase;
         }
 
         public void Subscribe()
@@ -29,7 +30,7 @@ namespace Playground.Content.StageUI.UI.ActionInputDetection
 
         private void OnInputActionEvent(ActionInputDetectionUIView viewModel, PointerEventData pointerEventData)
         {
-            useCases.InputActionReceivedUseCase.Execute();
+            inputActionReceivedUseCase.Execute();
         }
     }
 }

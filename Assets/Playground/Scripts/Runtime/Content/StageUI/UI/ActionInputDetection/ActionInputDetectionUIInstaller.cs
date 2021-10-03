@@ -1,4 +1,6 @@
-﻿using Juce.CoreUnity.Service;
+﻿using Juce.Core.DI.Builder;
+using Juce.Core.DI.Installers;
+using JuceUnity.Core.DI.Extensions;
 using Playground.Content.StageUI.UI.ActionInputDetection.UseCases;
 using Playground.Services.ViewStack;
 using UnityEngine;
@@ -6,73 +8,50 @@ using UnityEngine;
 namespace Playground.Content.StageUI.UI.ActionInputDetection
 {
     [RequireComponent(typeof(ActionInputDetectionUIView))]
-    public class ActionInputDetectionUIInstaller : MonoBehaviour
+    public class ActionInputDetectionUIInstaller : MonoBehaviour, IInstaller
     {
-        private UIViewStackService uiViewStackService;
-
-        private ActionInputDetectionUIViewModel viewModel;
-        private ActionInputDetectionUIEvents events;
-        private ActionInputDetectionUIView view;
-        private ActionInputDetectionUIUseCases useCases;
-        private ActionInputDetectionUIController controller;
-        private ActionInputDetectionUIInteractor interactor;
-
-        private void Start()
+        public void Install(IDIContainerBuilder container)
         {
-            GatherDependences();
-            GenerateDependences();
-            GenerateUseCases();
-            Install();
+            container.Bind<ActionInputDetectionUIViewModel>().FromNew();
+            container.Bind<ActionInputDetectionUIEvents>().FromNew();
+
+            container.Bind<ActionInputDetectionUIView>()
+                .FromGameObject(gameObject)
+                .WhenInit((c, o) => o.Init(c.Resolve<ActionInputDetectionUIViewModel>()))
+                .WhenInit((c, o) => c.Resolve<UIViewStackService>().Register(
+                    c.Resolve<IActionInputDetectionUIInteractor>(), 
+                    o
+                    ))
+                .WhenDispose((c, o) => c.Resolve<UIViewStackService>().Unregister(o))
+                .NonLazy();
+
+            container.Bind(InstallUseCases);
+
+            container.Bind<ActionInputDetectionUIController>()
+                .FromFunction((c) => new ActionInputDetectionUIController(
+                    c.Resolve<ActionInputDetectionUIViewModel>(),
+                    c.Resolve<IInputActionReceivedUseCase>()
+                    ))
+                .WhenInit((c, o) => o.Subscribe())
+                .WhenDispose((o) => o.Unsubscribe())
+                .NonLazy(); 
+
+            container.Bind<IActionInputDetectionUIInteractor, ActionInputDetectionUIInteractor>()
+                .FromFunction((c) => new ActionInputDetectionUIInteractor(
+                    c.Resolve<ActionInputDetectionUIViewModel>(),
+                    c.Resolve<ActionInputDetectionUIEvents>()
+                    ))
+                .WhenInit((c, o) => o.Subscribe())
+                .WhenDispose((o) => o.Unsubscribe())
+                .NonLazy();
         }
 
-        private void OnDestroy()
+        private void InstallUseCases(IDIContainerBuilder container)
         {
-            Uninstall();
-        }
-
-        private void GatherDependences()
-        {
-            uiViewStackService = ServicesProvider.GetService<UIViewStackService>();
-        }
-
-        private void GenerateDependences()
-        {
-            viewModel = new ActionInputDetectionUIViewModel();
-            events = new ActionInputDetectionUIEvents();
-        }
-
-        private void GenerateUseCases()
-        {
-            IInputActionReceivedUseCase inputActionReceivedUseCase = new InputActionReceivedUseCase(
-                events
-                );
-
-            useCases = new ActionInputDetectionUIUseCases(
-                inputActionReceivedUseCase
-                );
-        }
-
-        private void Install()
-        {
-            view = GetComponent<ActionInputDetectionUIView>();
-
-            controller = new ActionInputDetectionUIController(viewModel, useCases);
-            interactor = new ActionInputDetectionUIInteractor(viewModel, useCases, events);
-
-            view.Init(viewModel);
-
-            controller.Subscribe();
-            interactor.Subscribe();
-
-            uiViewStackService.Register(interactor, view);
-        }
-
-        private void Uninstall()
-        {
-            controller.Unsubscribe();
-            interactor.Unsubscribe();
-
-            uiViewStackService.Unregister(view);
+            container.Bind<IInputActionReceivedUseCase>()
+                .FromFunction((c) => new InputActionReceivedUseCase(
+                    c.Resolve<ActionInputDetectionUIEvents>()
+                    ));
         }
     }
 }

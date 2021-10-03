@@ -1,6 +1,5 @@
 ﻿using Juce.Core.Events.Generic;
 using Juce.CoreUnity.Physics;
-using System;
 using UnityEngine;
 
 namespace Playground.Content.Stage.VisualLogic.Entities

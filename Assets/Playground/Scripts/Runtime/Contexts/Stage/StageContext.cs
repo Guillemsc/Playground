@@ -10,6 +10,7 @@ using Playground.Content.Stage.Logic.Setup;
 using Playground.Content.Stage.Setup;
 using Playground.Content.Stage.VisualLogic.EntryPoint;
 using Playground.Content.Stage.VisualLogic.Setup;
+using Playground.Contexts.StageUI;
 using Playground.Services;
 using Playground.Services.ViewStack;
 using System.Threading.Tasks;
@@ -32,6 +33,8 @@ namespace Playground.Contexts.Stage
             TaskCompletionSource<object> stageLoadedTaskCompletionSource = new TaskCompletionSource<object>();
 
             ILoadingToken stageLoadedToken = new CallbackLoadingToken(() => stageLoadedTaskCompletionSource.SetResult(default));
+
+            StageUIContext stageUIContext = ContextsProvider.GetContext<StageUIContext>();
 
             EventDispatcherAndReceiver logicToViewEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
             EventDispatcherAndReceiver viewToLogicEventDispatcherAndReceiver = new EventDispatcherAndReceiver();
@@ -80,7 +83,8 @@ namespace Playground.Contexts.Stage
                     c.Resolve<UIViewStackService>(),
                     c.Resolve<PersistenceService>(),
                     visualLogicStageSetup,
-                    stageContextReferences
+                    stageContextReferences,
+                    stageUIContext.ActionInputDetectionUIInteractor
                     ))
                 .WhenDispose((c) => c.CleanUp());
 

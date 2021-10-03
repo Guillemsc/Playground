@@ -4,22 +4,19 @@ using System;
 
 namespace Playground.Content.StageUI.UI.ActionInputDetection
 {
-    public class ActionInputDetectionUIInteractor : UIInteractor
+    public class ActionInputDetectionUIInteractor : IActionInputDetectionUIInteractor
     {
         private readonly ActionInputDetectionUIViewModel viewModel;
-        private readonly ActionInputDetectionUIUseCases useCases;
         private readonly ActionInputDetectionUIEvents events;
 
         public event GenericEvent<ActionInputDetectionUIInteractor, EventArgs> InputActionReceived;
 
         public ActionInputDetectionUIInteractor(
             ActionInputDetectionUIViewModel viewModel,
-            ActionInputDetectionUIUseCases useCases,
             ActionInputDetectionUIEvents events
             )
         {
             this.viewModel = viewModel;
-            this.useCases = useCases;
             this.events = events;
         }
 

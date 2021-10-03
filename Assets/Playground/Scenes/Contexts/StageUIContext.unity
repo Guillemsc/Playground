@@ -167,9 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageUIContextReferences:
-    screenCarControlsUIView: {fileID: 0}
-    stageOverlayUIView: {fileID: 0}
-    stageCompletedUIView: {fileID: 0}
+    actionInputDetectionUIInstaller: {fileID: 6148560717232220666}
 --- !u!1 &1738083889
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,3 +370,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1580985716179903572, guid: cfe8b7ac5027bed4394ea35b32d11c36, type: 3}
   m_PrefabInstance: {fileID: 6148560717232220664}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6148560717232220666 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5710590988494376857, guid: cfe8b7ac5027bed4394ea35b32d11c36, type: 3}
+  m_PrefabInstance: {fileID: 6148560717232220664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73fc58a3ef33654f8985443e082b62b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

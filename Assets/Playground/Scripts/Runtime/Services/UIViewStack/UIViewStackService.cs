@@ -67,20 +67,6 @@ namespace Playground.Services.ViewStack
             }
         }
 
-        public T GetInteractor<T>() where T : UIInteractor
-        {
-            bool found = registeredInteractorsRepository.TryGet<T>(out UIInteractor uiInteractor);
-
-            if (!found)
-            {
-                UnityEngine.Debug.LogError($"Tried to get {nameof(UIInteractor)} for view of type {typeof(T).Name}, " +
-                    $"but it was not registered, at {nameof(UIViewStackService)}");
-                return default;
-            }
-
-            return (T)uiInteractor;
-        }
-
         public ViewStackSequence New()
         {
             return new ViewStackSequence(

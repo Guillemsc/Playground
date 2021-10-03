@@ -7,8 +7,8 @@ namespace Playground.Contexts.StageUI
     public class StageUIContextReferences
     {
         [Header("References")]
-        [SerializeField] private ActionInputDetectionUIView actionInputDetectionUIView = default;
+        [SerializeField] private ActionInputDetectionUIInstaller actionInputDetectionUIInstaller = default;
 
-        public ActionInputDetectionUIView ActionInputDetectionUIView => actionInputDetectionUIView;
+        public ActionInputDetectionUIInstaller ActionInputDetectionUIInstaller => actionInputDetectionUIInstaller;
     }
 }
