@@ -42,6 +42,10 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
         {
             IDIContainerBuilder containerBuilder = new DIContainerBuilder();
 
+            containerBuilder.Bind(new UIInstaller(
+
+                ));
+
             containerBuilder.Bind(new UseCasesInstaller(
                 stageLoadedToken,
                 stageFinishedUseCase,
