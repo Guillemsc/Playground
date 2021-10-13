@@ -8,6 +8,7 @@ using Juce.Core.Repositories;
 using Juce.Core.Sequencing;
 using Juce.CoreUnity.Services;
 using Playground.Content.Stage.UseCases.StageFinished;
+using Playground.Content.Stage.VisualLogic.State;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.Sequencing;
 using Playground.Content.Stage.VisualLogic.Setup;
@@ -16,6 +17,7 @@ using Playground.Content.Stage.VisualLogic.Tickables;
 using Playground.Content.Stage.VisualLogic.UseCases.CleanSections;
 using Playground.Content.Stage.VisualLogic.UseCases.CreateShipView;
 using Playground.Content.Stage.VisualLogic.UseCases.DespawnSection;
+using Playground.Content.Stage.VisualLogic.UseCases.FinishStage;
 using Playground.Content.Stage.VisualLogic.UseCases.GenerateSections;
 using Playground.Content.Stage.VisualLogic.UseCases.GetDirectionSelectionValue;
 using Playground.Content.Stage.VisualLogic.UseCases.InputActionReceived;
@@ -36,6 +38,7 @@ using Playground.Content.StageUI.UI.DirectionSelector;
 using Playground.Contexts.Stage;
 using Playground.Services;
 using Playground.Services.ViewStack;
+using Playground.Content.Stage.VisualLogic.UseCases.ChangeShipDirection;
 
 namespace Playground.Content.Stage.VisualLogic.Installers
 {
@@ -80,6 +83,9 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                  .FromNew()
                  .WhenDispose((o) => o.KillAll());
 
+            containerBuilder.Bind<InputState>().FromNew();
+            containerBuilder.Bind<DirectionSelectionState>().FromNew();
+
             containerBuilder.Bind<IFactory<ShipEntityViewDefinition, IDisposable<ShipEntityView>>>()
                 .FromFunction((c) => new ShipEntityViewFactory(
                     visualLogicStageSetup.ShipSetup.ShipEntityView,
@@ -105,6 +111,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             containerBuilder.Bind<DirectionSelectionValueTickable>()
                 .FromFunction(c => new DirectionSelectionValueTickable(
                     timeService.ScaledTimeContext.NewTimer(),
+                    c.Resolve<DirectionSelectionState>(),
                     c.Resolve<IDirectionSelectorUIInteractor>(),
                     c.Resolve<IGetDirectionSelectionValueUseCase>()
                     ))
@@ -114,7 +121,8 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             containerBuilder.Bind<ShipEntityViewMovementTickable>()
                 .FromFunction(c => new ShipEntityViewMovementTickable(
                     timeService,
-                    c.Resolve<ShipStats>()
+                    c.Resolve<ShipStats>(),
+                    c.Resolve<DirectionSelectionState>()
                     ))
                 .WhenInit((c, o) => tickableService.AddTickable(o))
                 .WhenDispose((o) => tickableService.RemoveTickable(o));
@@ -238,6 +246,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             containerBuilder.Bind<IStartStageUseCase>()
                 .FromFunction((c) => new StartStageUseCase(
                     c.Resolve<ISequencerTimelines<StageTimeline>>(),
+                    c.Resolve<InputState>(),
                     c.Resolve<ISingleRepository<IDisposable<ShipEntityView>>>(),
                     c.Resolve<ISetSectionsTickablesActiveUseCase>(),
                     c.Resolve<IModifyCameraOnceStartsUseCase>(),
@@ -246,19 +255,33 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     c.Resolve<IStartDirectionSelectionUseCase>()
                     ));
 
-            containerBuilder.Bind<IInputActionReceivedUseCase>()
-                .FromFunction((c) => new InputActionReceivedUseCase(
-                    eventDispatcher
+            containerBuilder.Bind<IChangeShipDirectionUseCase>()
+                .FromFunction(c => new ChangeShipDirectionUseCase(
+                    c.Resolve<InputState>(),
+                    c.Resolve<DirectionSelectionState>(),
+                    c.Resolve<IDirectionSelectorUIInteractor>()
                     ));
 
+            containerBuilder.Bind<IInputActionReceivedUseCase>()
+                .FromFunction((c) => new InputActionReceivedUseCase(
+                    eventDispatcher,
+                    c.Resolve<IChangeShipDirectionUseCase>()
+                    ));
+
+            containerBuilder.Bind<IFinishStageUseCase>()
+                .FromFunction(c => new FinishStageUseCase(
+                    stageContextReferences.StageSettings,
+                    timeService.UnscaledTimeContext.NewTimer(),
+                    c.Resolve<ISetActionInputDetectionUIVisibleUseCase>(),
+                    c.Resolve<ISetDirectionSelectorUIVisibleUseCase>(),
+                    stageFinishedUseCase
+                    ));
+            
             containerBuilder.Bind<IShipDestroyedUseCase>()
                 .FromFunction((c) => new ShipDestroyedUseCase(
                     c.Resolve<ISequencerTimelines<StageTimeline>>(),
-                    timeService.UnscaledTimeContext.NewTimer(),
-                    stageContextReferences.StageSettings,
                     c.Resolve<IStopShipMovementUseCase>(),
-                    c.Resolve<ISetActionInputDetectionUIVisibleUseCase>(),
-                    stageFinishedUseCase
+                    c.Resolve<IFinishStageUseCase>()
                     ));
 
         }

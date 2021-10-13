@@ -1,4 +1,5 @@
-﻿using Playground.Content.StageUI.UI.DirectionSelector;
+﻿using Playground.Content.StageUI.UI.ActionInputDetection.UseCases.GetAnchoredFromNormalizedPosition;
+using Playground.Content.StageUI.UI.DirectionSelector;
 using UnityEngine;
 
 namespace Playground.Content.StageUI.UI.ActionInputDetection.UseCases.SetDirectionSelectionPosition
@@ -6,22 +7,21 @@ namespace Playground.Content.StageUI.UI.ActionInputDetection.UseCases.SetDirecti
     public class SetDirectionSelectionPositionUseCase : ISetDirectionSelectionPositionUseCase
     {
         private readonly DirectionSelectorUIViewModel directionSelectorUIViewModel;
-        private readonly RectTransform avaliableDirectionSpace;
+        private readonly IGetAnchoredFromNormalizedPositionUseCase getAnchoredFromNormalizedPositionUseCase;
 
         public SetDirectionSelectionPositionUseCase(
             DirectionSelectorUIViewModel directionSelectorUIViewModel,
-            RectTransform avaliableDirectionSpace
+            IGetAnchoredFromNormalizedPositionUseCase getAnchoredFromNormalizedPositionUseCase
             )
         {
             this.directionSelectorUIViewModel = directionSelectorUIViewModel;
-            this.avaliableDirectionSpace = avaliableDirectionSpace;
+            this.getAnchoredFromNormalizedPositionUseCase = getAnchoredFromNormalizedPositionUseCase;
         }
 
         public void Execute(float normalizedPosition)
         {
-            float normalizedAnchoredPosition = avaliableDirectionSpace.rect.width * normalizedPosition;
-
-            directionSelectorUIViewModel.DirectionSelectionAnchoredPositionX.Value = normalizedAnchoredPosition;
+            directionSelectorUIViewModel.DirectionSelectionAnchoredPositionX.Value =
+                getAnchoredFromNormalizedPositionUseCase.Execute(normalizedPosition);
         }
     }
 }

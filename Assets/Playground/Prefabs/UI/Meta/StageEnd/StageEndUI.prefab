@@ -256,11 +256,82 @@ MonoBehaviour:
   - id: 2
   - id: 3
   - id: 4
+  - id: 5
+  - id: 6
   bindingEnabled: 0
   bindableDataUid: 
   references:
     version: 1
     00000000:
+      type: {class: RectTransformAnchoredPositionYComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        target:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: {fileID: 6719854624656132985}
+        value:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: -150
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        duration:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+        easing:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue:
+            serializedVersion: 2
+            m_Curve:
+            - serializedVersion: 3
+              time: 0
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 34
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0
+              outSlope: 0
+              tangentMode: 34
+              weightedMode: 0
+              inWeight: 0
+              outWeight: 0
+            m_PreInfinity: 2
+            m_PostInfinity: 2
+            m_RotationOrder: 4
+    00000001:
+      type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        delay:
+          bindingEnabled: 0
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0
+    00000002:
       type: {class: GameObjectActiveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 0
@@ -283,7 +354,7 @@ MonoBehaviour:
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
-    00000001:
+    00000003:
       type: {class: UIAlphaComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 0
@@ -341,7 +412,7 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-    00000002:
+    00000004:
       type: {class: RectTransformAnchoredPositionYComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 0
@@ -399,7 +470,7 @@ MonoBehaviour:
             m_PreInfinity: 2
             m_PostInfinity: 2
             m_RotationOrder: 4
-    00000003:
+    00000005:
       type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 0
@@ -410,7 +481,7 @@ MonoBehaviour:
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
-    00000004:
+    00000006:
       type: {class: UIInteractableComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 0
@@ -651,7 +722,6 @@ MonoBehaviour:
   - id: 1
   - id: 2
   - id: 3
-  - id: 4
   bindingEnabled: 0
   bindableDataUid: 
   references:
@@ -744,64 +814,6 @@ MonoBehaviour:
             m_PostInfinity: 2
             m_RotationOrder: 4
     00000002:
-      type: {class: RectTransformAnchoredPositionYComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
-      data:
-        folded: 0
-        enabled: 1
-        target:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: {fileID: 6719854624656132985}
-        value:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: -171
-        delay:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0
-        duration:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue: 0.2
-        easing:
-          bindingEnabled: 0
-          wantsToBeBinded: 0
-          binded: 0
-          bindedVariableName: 
-          FallbackValue:
-            serializedVersion: 2
-            m_Curve:
-            - serializedVersion: 3
-              time: 0
-              value: 0
-              inSlope: -1.0883837
-              outSlope: -1.0883837
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0
-              outWeight: 0.056888815
-            - serializedVersion: 3
-              time: 1
-              value: 1
-              inSlope: 3.046484
-              outSlope: 3.046484
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0.033584952
-              outWeight: 0
-            m_PreInfinity: 2
-            m_PostInfinity: 2
-            m_RotationOrder: 4
-    00000003:
       type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 0
@@ -812,7 +824,7 @@ MonoBehaviour:
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
-    00000004:
+    00000003:
       type: {class: GameObjectActiveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 0

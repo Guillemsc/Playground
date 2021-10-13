@@ -4,6 +4,7 @@ using Juce.Core.Sequencing;
 using Playground.Content.Stage.Logic.Snapshots;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.Sequencing;
+using Playground.Content.Stage.VisualLogic.State;
 using Playground.Content.Stage.VisualLogic.UseCases.ModifyCameraOnceStarts;
 using Playground.Content.Stage.VisualLogic.UseCases.SetDirectionSelectorUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetSectionsTickablesActive;
@@ -17,6 +18,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
     public class StartStageUseCase : IStartStageUseCase
     {
         private readonly ISequencerTimelines<StageTimeline> sequencerTimelines;
+        private readonly InputState inputState;
         private readonly ISingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository;
         private readonly ISetSectionsTickablesActiveUseCase setSectionsTickablesActiveUseCase;
         private readonly IModifyCameraOnceStartsUseCase modifyCameraOnceStartsUseCase;
@@ -26,6 +28,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
 
         public StartStageUseCase(
             ISequencerTimelines<StageTimeline> sequencerTimelines,
+            InputState inputState,
             ISingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository,
             ISetSectionsTickablesActiveUseCase setSectionsTickablesActiveUseCase,
             IModifyCameraOnceStartsUseCase modifyCameraOnceStartsUseCase,
@@ -35,6 +38,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
             )
         {
             this.sequencerTimelines = sequencerTimelines;
+            this.inputState = inputState;
             this.shipEntityViewRepository = shipEntityViewRepository;
             this.setSectionsTickablesActiveUseCase = setSectionsTickablesActiveUseCase;
             this.modifyCameraOnceStartsUseCase = modifyCameraOnceStartsUseCase;
@@ -73,6 +77,8 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
             setDirectionSelectorUIVisibleUseCase.Execute(visible: true, instantly: false, cancellationToken).RunAsync();
 
             startDirectionSelectionUseCase.Execute();
+
+            inputState.CanChangeShipDirection = true;
 
             return Task.CompletedTask;
         }

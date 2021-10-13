@@ -1,4 +1,5 @@
 ﻿using Juce.Core.Tickable;
+using Playground.Content.Stage.VisualLogic.State;
 using Playground.Content.Stage.VisualLogic.Stats;
 using Playground.Services;
 using System;
@@ -9,26 +10,28 @@ namespace Playground.Content.Stage.VisualLogic.Entities
     public class ShipEntityViewMovementTickable : ActivableTickable
     {
         private const float Acceleration = 1.5f;
-        private const float RotationSpeed = 50f;
+        private const float RotationSpeed = 70f;
 
         private const float MaxForwardAngle = 60f;
 
         private readonly TimeService timeService;
         private readonly ShipStats shipStats;
+        private readonly DirectionSelectionState directionSelectionState;
 
         private Transform movementTransform;
 
-        private float targetForwardAngle = 0.0f;
         private float currentForwardAngle = 0.0f;
         private float currentForwardSpeed = 0.0f;
 
         public ShipEntityViewMovementTickable(
             TimeService timeService,
-            ShipStats shipStats
+            ShipStats shipStats,
+            DirectionSelectionState directionSelectionState
             ) : base(active: false)
         {
             this.timeService = timeService;
             this.shipStats = shipStats;
+            this.directionSelectionState = directionSelectionState;
         }
 
         public void Start(Transform movementTransform)
@@ -47,7 +50,10 @@ namespace Playground.Content.Stage.VisualLogic.Entities
 
             float deltaTime = timeService.ScaledTimeContext.DeltaTime;
 
-            targetForwardAngle = Mathf.Clamp(targetForwardAngle, -MaxForwardAngle, MaxForwardAngle);
+            float invertedNormalizedValue = 1 - directionSelectionState.LastSelectedDirecitonNormalizedValue;
+
+            float targetForwardAngle = (invertedNormalizedValue * MaxForwardAngle * 2) 
+                - MaxForwardAngle;
 
             float angleDifference = Mathf.DeltaAngle(currentForwardAngle, targetForwardAngle);
 
@@ -84,12 +90,12 @@ namespace Playground.Content.Stage.VisualLogic.Entities
         {
             if(Input.GetKey("a"))
             {
-                targetForwardAngle += 100f * Time.deltaTime;
+                directionSelectionState.LastSelectedDirecitonNormalizedValue -= 0.5f * Time.deltaTime;
             }
 
             if (Input.GetKey("d"))
             {
-                targetForwardAngle -= 100f * Time.deltaTime;
+                directionSelectionState.LastSelectedDirecitonNormalizedValue += 0.5f * Time.deltaTime;
             }
         }
     }
