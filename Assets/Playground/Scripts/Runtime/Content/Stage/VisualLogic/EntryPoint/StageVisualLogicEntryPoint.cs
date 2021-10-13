@@ -6,6 +6,7 @@ using Juce.Core.Loading;
 using Juce.CoreUnity.Services;
 using Playground.Content.Stage.Logic.Events;
 using Playground.Content.Stage.UseCases.StageFinished;
+using Playground.Content.Stage.VisualLogic.Cheats;
 using Playground.Content.Stage.VisualLogic.Installers;
 using Playground.Content.Stage.VisualLogic.Setup;
 using Playground.Content.Stage.VisualLogic.UseCases.InputActionReceived;
@@ -26,6 +27,8 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
 
         private IDIContainer container;
 
+        public StageVisualLogicCheats StageVisualLogicCheats { get; }
+
         public StageVisualLogicEntryPoint(
             ILoadingToken stageLoadedToken,
             IStageFinishedUseCase stageFinishedUseCase,
@@ -35,15 +38,17 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             TimeService timeService,
             UIViewStackService uiViewStackService,
             PersistenceService persistenceService,
-            VisualLogicStageSetup visualLogicStageSetup,
+            StageVisualLogicSetup visualLogicStageSetup,
             StageContextReferences stageContextReferences,
-            IActionInputDetectionUIInteractor actionInputDetectionUIInteractor
+            IDIContainer stageUiContainer
             )
         {
             IDIContainerBuilder containerBuilder = new DIContainerBuilder();
 
-            containerBuilder.Bind(new UIInstaller(
+            containerBuilder.Bind(stageUiContainer);
 
+            containerBuilder.Bind(new StatsInstaller(
+                visualLogicStageSetup
                 ));
 
             containerBuilder.Bind(new UseCasesInstaller(
@@ -58,13 +63,19 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
                 stageContextReferences
                 ));
 
+            containerBuilder.Bind(new CheatsInstaller());
+
             container = containerBuilder.Build();
             AddCleanupAction(container.Dispose);
+
+            StageVisualLogicCheats = container.Resolve<StageVisualLogicCheats>();
 
             ISetupStageUseCase setupStageUseCase = container.Resolve<ISetupStageUseCase>();
             IStartStageUseCase startStageUseCase = container.Resolve<IStartStageUseCase>();
             IInputActionReceivedUseCase inputActionReceivedUseCase = container.Resolve<IInputActionReceivedUseCase>();
             IShipDestroyedUseCase shipDestroyedUseCase = container.Resolve<IShipDestroyedUseCase>();
+
+            IActionInputDetectionUIInteractor actionInputDetectionUIInteractor = container.Resolve<IActionInputDetectionUIInteractor>();
 
             eventReceiver.Subscribe((SetupStageOutEvent setupStageOutEvent) =>
             {

@@ -5,7 +5,9 @@ using Playground.Content.Stage.Logic.Snapshots;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.Sequencing;
 using Playground.Content.Stage.VisualLogic.UseCases.ModifyCameraOnceStarts;
+using Playground.Content.Stage.VisualLogic.UseCases.SetDirectionSelectorUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetSectionsTickablesActive;
+using Playground.Content.Stage.VisualLogic.UseCases.StartDirectionSelection;
 using Playground.Content.Stage.VisualLogic.UseCases.StartShipMovement;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,13 +21,17 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
         private readonly ISetSectionsTickablesActiveUseCase setSectionsTickablesActiveUseCase;
         private readonly IModifyCameraOnceStartsUseCase modifyCameraOnceStartsUseCase;
         private readonly IStartShipMovementUseCase startShipMovementUseCase;
+        private readonly ISetDirectionSelectorUIVisibleUseCase setDirectionSelectorUIVisibleUseCase;
+        private readonly IStartDirectionSelectionUseCase startDirectionSelectionUseCase;
 
         public StartStageUseCase(
             ISequencerTimelines<StageTimeline> sequencerTimelines,
             ISingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository,
             ISetSectionsTickablesActiveUseCase setSectionsTickablesActiveUseCase,
             IModifyCameraOnceStartsUseCase modifyCameraOnceStartsUseCase,
-            IStartShipMovementUseCase startShipMovementUseCase
+            IStartShipMovementUseCase startShipMovementUseCase,
+            ISetDirectionSelectorUIVisibleUseCase setDirectionSelectorUIVisibleUseCase,
+            IStartDirectionSelectionUseCase startDirectionSelectionUseCase
             )
         {
             this.sequencerTimelines = sequencerTimelines;
@@ -33,6 +39,8 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
             this.setSectionsTickablesActiveUseCase = setSectionsTickablesActiveUseCase;
             this.modifyCameraOnceStartsUseCase = modifyCameraOnceStartsUseCase;
             this.startShipMovementUseCase = startShipMovementUseCase;
+            this.setDirectionSelectorUIVisibleUseCase = setDirectionSelectorUIVisibleUseCase;
+            this.startDirectionSelectionUseCase = startDirectionSelectionUseCase;
         }
 
         public void Execute(
@@ -61,6 +69,10 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
             modifyCameraOnceStartsUseCase.Execute(shipEntityView.Value);
 
             startShipMovementUseCase.Execute(shipEntityView.Value);
+
+            setDirectionSelectorUIVisibleUseCase.Execute(visible: true, instantly: false, cancellationToken).RunAsync();
+
+            startDirectionSelectionUseCase.Execute();
 
             return Task.CompletedTask;
         }

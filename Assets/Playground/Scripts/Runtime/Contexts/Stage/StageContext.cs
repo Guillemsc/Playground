@@ -62,15 +62,23 @@ namespace Playground.Contexts.Stage
             containerBuilder.Bind<ConfigurationService>().FromServicesProvider();
             containerBuilder.Bind<PersistenceService>().FromServicesProvider();
 
-            LogicStageSetup logicStageSetup = new LogicStageSetup(
-                new LogicShipSetup()
+            StageLogicSetup logicStageSetup = new StageLogicSetup(
+                new ShipLogicSetup()
                 );
 
-            VisualLogicStageSetup visualLogicStageSetup = new VisualLogicStageSetup(
-                new VisualLogicShipSetup(stageSetup.ShipSetup.ShipEntityView),
-                new VisualLogicSectionsSetup(
+            StageVisualLogicSetup visualLogicStageSetup = new StageVisualLogicSetup(
+                new ShipVisualLogicSetup(
+                    stageSetup.ShipSetup.ShipEntityView,
+                    stageSetup.ShipSetup.ShipMaxSpeed
+                    ),
+
+                new SectionsVisualLogicSetup(
                     stageSetup.SectionsSetup.DistanceBetweenSections, 
                     stageSetup.SectionsSetup.Sections
+                    ),
+
+                new DirectionSelectorSetup(
+                    stageSetup.DirectionSelectorSetup.BaseSpeedMultiplier
                     )
                 );
 
@@ -93,7 +101,7 @@ namespace Playground.Contexts.Stage
                     c.Resolve<PersistenceService>(),
                     visualLogicStageSetup,
                     stageContextReferences,
-                    stageUIContext.ActionInputDetectionUIInteractor
+                    stageUIContext.Container
                     ))
                 .WhenDispose((c) => c.CleanUp());
 
@@ -115,6 +123,9 @@ namespace Playground.Contexts.Stage
 
             SRDebug.Instance.AddOptionContainer(stageLogicEntryPoint.StageLogicCheats);
             AddCleanupAction(() => SRDebug.Instance.RemoveOptionContainer(stageLogicEntryPoint.StageLogicCheats));
+
+            SRDebug.Instance.AddOptionContainer(stageVisualLogicEntryPoint.StageVisualLogicCheats);
+            AddCleanupAction(() => SRDebug.Instance.RemoveOptionContainer(stageVisualLogicEntryPoint.StageVisualLogicCheats));
 
             return stageLoadedTaskCompletionSource.Task;
         }

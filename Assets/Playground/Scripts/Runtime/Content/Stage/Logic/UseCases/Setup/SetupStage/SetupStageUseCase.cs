@@ -11,13 +11,13 @@ namespace Playground.Content.Stage.Logic.UseCases.SetupStage
     public class SetupStageUseCase : ISetupStageUseCase
     {
         private readonly IEventDispatcher eventDispatcher;
-        private readonly LogicStageSetup logicStageSetup;
+        private readonly StageLogicSetup logicStageSetup;
         private readonly StageState stageState;
         private readonly ITryCreateShipUseCase tryCreateShipUseCase;
 
         public SetupStageUseCase(
             IEventDispatcher eventDispatcher,
-            LogicStageSetup logicStageSetup,
+            StageLogicSetup logicStageSetup,
             StageState stageState,
             ITryCreateShipUseCase tryCreateShipUseCase
             )

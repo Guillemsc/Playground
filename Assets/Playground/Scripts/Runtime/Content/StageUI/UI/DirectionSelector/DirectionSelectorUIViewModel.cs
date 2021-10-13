@@ -2,6 +2,7 @@
 {
     public class DirectionSelectorUIViewModel
     {
-
+        public ObservableVariable<float> DirectionSelectionAnchoredPositionX { get; } 
+            = new ObservableVariable<float>();
     }
 }

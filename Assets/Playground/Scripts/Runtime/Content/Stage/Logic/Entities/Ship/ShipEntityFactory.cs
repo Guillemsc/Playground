@@ -4,7 +4,7 @@ using Playground.Content.Stage.Logic.Setup;
 
 namespace Playground.Content.Stage.Logic.Entities
 {
-    public class ShipEntityFactory : IFactory<LogicShipSetup, ShipEntity>
+    public class ShipEntityFactory : IFactory<ShipLogicSetup, ShipEntity>
     {
         private readonly IIdGenerator idGenerator;
 
@@ -13,7 +13,7 @@ namespace Playground.Content.Stage.Logic.Entities
             this.idGenerator = idGenerator;
         }
 
-        public bool TryCreate(LogicShipSetup definition, out ShipEntity creation)
+        public bool TryCreate(ShipLogicSetup definition, out ShipEntity creation)
         {
             int instanceId = idGenerator.Generate();
 

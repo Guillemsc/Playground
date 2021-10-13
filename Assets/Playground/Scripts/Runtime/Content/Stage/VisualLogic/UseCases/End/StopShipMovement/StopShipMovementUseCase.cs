@@ -15,7 +15,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StopShipMovement
 
         public void Execute()
         {
-            shipEntityViewMovementTickable.Enabled = false;
+            shipEntityViewMovementTickable.Active = false;
         }
     }
 }

@@ -12,13 +12,13 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSection
         private readonly IFactory<SectionEntityViewDefinition, IDisposable<SectionEntityView>> sectionEntityViewFactory;
         private readonly IRepository<IDisposable<SectionEntityView>> sectionEntityViewRepository;
         private readonly Transform sectionsStartPosition;
-        private readonly VisualLogicSectionsSetup visualLogicSectionsSetup;
+        private readonly SectionsVisualLogicSetup visualLogicSectionsSetup;
 
         public TrySpawnRandomSectionUseCase(
             IFactory<SectionEntityViewDefinition, IDisposable<SectionEntityView>> sectionEntityViewFactory,
             IRepository<IDisposable<SectionEntityView>> sectionEntityViewRepository,
             Transform sectionsStartPosition,
-            VisualLogicSectionsSetup visualLogicSectionsSetup
+            SectionsVisualLogicSetup visualLogicSectionsSetup
             )
         {
             this.sectionEntityViewFactory = sectionEntityViewFactory;

@@ -2,14 +2,13 @@
 using Juce.Core.Loading;
 using Juce.Core.Sequencing;
 using Juce.Core.Time;
-using Juce.CoreUnity.Time;
 using Playground.Content.Stage.Logic.Snapshots;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.Sequencing;
 using Playground.Content.Stage.VisualLogic.UseCases.CreateShipView;
 using Playground.Content.Stage.VisualLogic.UseCases.GenerateSections;
+using Playground.Content.Stage.VisualLogic.UseCases.SetDirectionSelectorUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupCamera;
-using Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSection;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

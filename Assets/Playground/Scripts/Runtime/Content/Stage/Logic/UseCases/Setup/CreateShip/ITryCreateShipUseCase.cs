@@ -5,6 +5,6 @@ namespace Playground.Content.Stage.Logic.UseCases.TryCreateShip
 {
     public interface ITryCreateShipUseCase
     {
-        bool Execute(LogicShipSetup setup, out ShipEntity shipEntity);
+        bool Execute(ShipLogicSetup setup, out ShipEntity shipEntity);
     }
 }

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipConfiguration: {fileID: 11400000, guid: 534864beff4e83c4798d5bc4932e10c8, type: 2}
   sectionsConfiguration: {fileID: 11400000, guid: eded60e899aa590489a8fa0e375addf4, type: 2}
+  directionSelectorConfiguration: {fileID: 11400000, guid: 707113e6bcf0f9a40948945c0983b6d1, type: 2}

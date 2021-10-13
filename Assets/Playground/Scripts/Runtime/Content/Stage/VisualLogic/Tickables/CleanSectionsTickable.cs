@@ -3,24 +3,17 @@ using Playground.Content.Stage.VisualLogic.UseCases.CleanSections;
 
 namespace Playground.Content.Stage.VisualLogic.Tickables
 {
-    public class CleanSectionsTickable : ITickable
+    public class CleanSectionsTickable : ActivableTickable
     {
         private readonly ICleanSectionsUseCase cleanSectionsUseCase;
 
-        public bool Active { get; set; } = false;
-
-        public CleanSectionsTickable(ICleanSectionsUseCase cleanSectionsUseCase)
+        public CleanSectionsTickable(ICleanSectionsUseCase cleanSectionsUseCase) : base (active: false)
         {
             this.cleanSectionsUseCase = cleanSectionsUseCase;
         }
 
-        public void Tick()
+        protected override void ActivableTick()
         {
-            if (!Active)
-            {
-                return;
-            }
-
             cleanSectionsUseCase.Execute();
         }
     }

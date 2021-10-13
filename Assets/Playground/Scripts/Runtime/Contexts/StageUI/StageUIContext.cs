@@ -4,6 +4,7 @@ using Juce.CoreUnity.Contexts;
 using Playground.Content.StageUI.Installers;
 using Playground.Content.StageUI.UI.ActionInputDetection;
 using Playground.Content.StageUI.UI.DirectionSelector;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Playground.Contexts.StageUI
@@ -12,8 +13,7 @@ namespace Playground.Contexts.StageUI
     {
         [SerializeField] private StageUIContextReferences stageUIContextReferences;
 
-        public IActionInputDetectionUIInteractor ActionInputDetectionUIInteractor { get; private set; }
-        public IDirectionSelectorUIInteractor DirectionSelectorUIInteractor { get; private set; }
+        public IDIContainer Container { get; private set; }
 
         protected override void Init()
         {
@@ -29,11 +29,20 @@ namespace Playground.Contexts.StageUI
             IDIContainer container = containerBuilder.Build();
             AddCleanupAction(container.Dispose);
 
-            ActionInputDetectionUIInteractor = container.Resolve<IActionInputDetectionUIInteractor>();
-            DirectionSelectorUIInteractor = container.Resolve<IDirectionSelectorUIInteractor>();
+            CreateFinalContainer(container);
 
             ContextsProvider.Register(this);
             AddCleanupAction(() => ContextsProvider.Unregister(this));
+        }
+
+        private void CreateFinalContainer(IDIContainer container)
+        {
+            IDIContainerBuilder finalContainerBuilder = new DIContainerBuilder();
+
+            finalContainerBuilder.Bind<IActionInputDetectionUIInteractor>().FromContainer(container);
+            finalContainerBuilder.Bind<IDirectionSelectorUIInteractor>().FromContainer(container);
+
+            Container = finalContainerBuilder.Build();
         }
     }
 }

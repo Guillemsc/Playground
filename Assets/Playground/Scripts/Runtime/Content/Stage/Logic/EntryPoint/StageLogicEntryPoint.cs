@@ -18,14 +18,14 @@ namespace Playground.Content.Stage.Logic.EntryPoint
         public StageLogicEntryPoint(
             IEventDispatcher eventDispatcher,
             IEventReceiver eventReceiver,
-            LogicStageSetup logicStageSetup
+            StageLogicSetup logicStageSetup
             )
         {
             IDIContainerBuilder containerBuilder = new DIContainerBuilder();
 
             containerBuilder.Bind<IEventDispatcher>().FromInstance(eventDispatcher);
             containerBuilder.Bind<IEventReceiver>().FromInstance(eventReceiver);
-            containerBuilder.Bind<LogicStageSetup>().FromInstance(logicStageSetup);
+            containerBuilder.Bind<StageLogicSetup>().FromInstance(logicStageSetup);
 
             containerBuilder.Bind(new UseCasesInstaller());
             containerBuilder.Bind(new StateMachineInstaller());

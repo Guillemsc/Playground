@@ -18,7 +18,7 @@ namespace Playground.Cheats
             this.isImmortalityActiveCheatUseCase = isImmortalityActiveCheatUseCase;
         }
 
-        [Category("Immortality")]
+        [Category("Logic")]
         public bool Immortality
         {
             get => isImmortalityActiveCheatUseCase.Execute();

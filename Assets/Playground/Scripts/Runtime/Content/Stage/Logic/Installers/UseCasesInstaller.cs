@@ -22,7 +22,7 @@ namespace Playground.Content.Stage.Logic.Installers
 
             containerBuilder.Bind<IIdGenerator, IncrementalIdGenerator>().FromNew();
 
-            containerBuilder.Bind<IFactory<LogicShipSetup, ShipEntity>>()
+            containerBuilder.Bind<IFactory<ShipLogicSetup, ShipEntity>>()
                 .FromFunction((c) => new ShipEntityFactory(
                     c.Resolve<IIdGenerator>()
                     ));
@@ -32,14 +32,14 @@ namespace Playground.Content.Stage.Logic.Installers
 
             containerBuilder.Bind<ITryCreateShipUseCase>()
                 .FromFunction((c) => new TryCreateShipUseCase(
-                    c.Resolve<IFactory<LogicShipSetup, ShipEntity>>(),
+                    c.Resolve<IFactory<ShipLogicSetup, ShipEntity>>(),
                     c.Resolve<ISingleRepository<ShipEntity>>()
                     ));
 
             containerBuilder.Bind<ISetupStageUseCase>()
                 .FromFunction((c) => new SetupStageUseCase(
                     c.Resolve<IEventDispatcher>(),
-                    c.Resolve<LogicStageSetup>(),
+                    c.Resolve<StageLogicSetup>(),
                     c.Resolve<StageState>(),
                     c.Resolve<ITryCreateShipUseCase>()
                     ));

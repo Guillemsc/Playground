@@ -7,11 +7,11 @@ namespace Playground.Content.Stage.Logic.UseCases.TryCreateShip
 {
     public class TryCreateShipUseCase : ITryCreateShipUseCase
     {
-        private readonly IFactory<LogicShipSetup, ShipEntity> shipEntityFactory;
+        private readonly IFactory<ShipLogicSetup, ShipEntity> shipEntityFactory;
         private readonly ISingleRepository<ShipEntity> shipEntityRepository;
 
         public TryCreateShipUseCase(
-            IFactory<LogicShipSetup, ShipEntity> shipEntityFactory,
+            IFactory<ShipLogicSetup, ShipEntity> shipEntityFactory,
             ISingleRepository<ShipEntity> shipEntityRepository
             )
         {
@@ -19,7 +19,7 @@ namespace Playground.Content.Stage.Logic.UseCases.TryCreateShip
             this.shipEntityRepository = shipEntityRepository;
         }
 
-        public bool Execute(LogicShipSetup setup, out ShipEntity shipEntity)
+        public bool Execute(ShipLogicSetup setup, out ShipEntity shipEntity)
         {
             bool couldCreate = shipEntityFactory.TryCreate(setup, out shipEntity);
 

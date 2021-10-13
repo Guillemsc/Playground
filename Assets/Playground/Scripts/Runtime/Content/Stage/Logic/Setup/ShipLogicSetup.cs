@@ -1,8 +1,8 @@
 ﻿namespace Playground.Content.Stage.Logic.Setup
 {
-    public class LogicShipSetup
+    public class ShipLogicSetup
     {
-        public LogicShipSetup()
+        public ShipLogicSetup()
         {
          
         }

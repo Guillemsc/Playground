@@ -7,28 +7,32 @@ using Juce.Core.Loading;
 using Juce.Core.Repositories;
 using Juce.Core.Sequencing;
 using Juce.CoreUnity.Services;
-using Juce.CoreUnity.Time;
 using Playground.Content.Stage.UseCases.StageFinished;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.Sequencing;
 using Playground.Content.Stage.VisualLogic.Setup;
+using Playground.Content.Stage.VisualLogic.Stats;
 using Playground.Content.Stage.VisualLogic.Tickables;
 using Playground.Content.Stage.VisualLogic.UseCases.CleanSections;
 using Playground.Content.Stage.VisualLogic.UseCases.CreateShipView;
 using Playground.Content.Stage.VisualLogic.UseCases.DespawnSection;
 using Playground.Content.Stage.VisualLogic.UseCases.GenerateSections;
+using Playground.Content.Stage.VisualLogic.UseCases.GetDirectionSelectionValue;
 using Playground.Content.Stage.VisualLogic.UseCases.InputActionReceived;
 using Playground.Content.Stage.VisualLogic.UseCases.ModifyCameraOnceStarts;
+using Playground.Content.Stage.VisualLogic.UseCases.SetDirectionSelectorUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetSectionsTickablesActive;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupCamera;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupStage;
 using Playground.Content.Stage.VisualLogic.UseCases.ShipCollided;
 using Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithDeadlyCollision;
 using Playground.Content.Stage.VisualLogic.UseCases.ShipDestroyed;
+using Playground.Content.Stage.VisualLogic.UseCases.StartDirectionSelection;
 using Playground.Content.Stage.VisualLogic.UseCases.StartShipMovement;
 using Playground.Content.Stage.VisualLogic.UseCases.StartStage;
 using Playground.Content.Stage.VisualLogic.UseCases.StopShipMovement;
 using Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSection;
+using Playground.Content.StageUI.UI.DirectionSelector;
 using Playground.Contexts.Stage;
 using Playground.Services;
 using Playground.Services.ViewStack;
@@ -44,7 +48,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
         private readonly TimeService timeService;
         private readonly UIViewStackService uiViewStackService;
         private readonly PersistenceService persistenceService;
-        private readonly VisualLogicStageSetup visualLogicStageSetup;
+        private readonly StageVisualLogicSetup visualLogicStageSetup;
         private readonly StageContextReferences stageContextReferences;
 
         public UseCasesInstaller(
@@ -55,7 +59,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             TimeService timeService,
             UIViewStackService uiViewStackService,
             PersistenceService persistenceService,
-            VisualLogicStageSetup visualLogicStageSetup,
+            StageVisualLogicSetup visualLogicStageSetup,
             StageContextReferences stageContextReferences
             )
         {
@@ -93,9 +97,24 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             containerBuilder.Bind<IRepository<IDisposable<SectionEntityView>>, SimpleRepository<IDisposable<SectionEntityView>>>()
                 .FromNew();
 
+            containerBuilder.Bind<IGetDirectionSelectionValueUseCase>()
+                .FromFunction(c => new GetDirectionSelectionValueUseCase(
+                    visualLogicStageSetup.DirectionSelectorSetup
+                    ));
+
+            containerBuilder.Bind<DirectionSelectionValueTickable>()
+                .FromFunction(c => new DirectionSelectionValueTickable(
+                    timeService.ScaledTimeContext.NewTimer(),
+                    c.Resolve<IDirectionSelectorUIInteractor>(),
+                    c.Resolve<IGetDirectionSelectionValueUseCase>()
+                    ))
+                .WhenInit((c, o) => tickableService.AddTickable(o))
+                .WhenDispose((o) => tickableService.RemoveTickable(o));
+
             containerBuilder.Bind<ShipEntityViewMovementTickable>()
-                .FromFunction((c) => new ShipEntityViewMovementTickable(
-                    timeService
+                .FromFunction(c => new ShipEntityViewMovementTickable(
+                    timeService,
+                    c.Resolve<ShipStats>()
                     ))
                 .WhenInit((c, o) => tickableService.AddTickable(o))
                 .WhenDispose((o) => tickableService.RemoveTickable(o));
@@ -184,6 +203,11 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     uiViewStackService
                     ));
 
+            containerBuilder.Bind<ISetDirectionSelectorUIVisibleUseCase>()
+                .FromFunction(c => new SetDirectionSelectorUIVisibleUseCase(
+                    uiViewStackService
+                    ));
+
             containerBuilder.Bind<ISetupStageUseCase>()
                 .FromFunction((c) => new SetupStageUseCase(
                     stageLoadedToken,
@@ -206,13 +230,20 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     stageContextReferences.CinemachineVirtualCamera
                     ));
 
+            containerBuilder.Bind<IStartDirectionSelectionUseCase>()
+                .FromFunction(c => new StartDirectionSelectionUseCase(
+                    c.Resolve<DirectionSelectionValueTickable>()
+                    ));
+
             containerBuilder.Bind<IStartStageUseCase>()
                 .FromFunction((c) => new StartStageUseCase(
                     c.Resolve<ISequencerTimelines<StageTimeline>>(),
                     c.Resolve<ISingleRepository<IDisposable<ShipEntityView>>>(),
                     c.Resolve<ISetSectionsTickablesActiveUseCase>(),
                     c.Resolve<IModifyCameraOnceStartsUseCase>(),
-                    c.Resolve<IStartShipMovementUseCase>()
+                    c.Resolve<IStartShipMovementUseCase>(),
+                    c.Resolve<ISetDirectionSelectorUIVisibleUseCase>(),
+                    c.Resolve<IStartDirectionSelectionUseCase>()
                     ));
 
             containerBuilder.Bind<IInputActionReceivedUseCase>()
