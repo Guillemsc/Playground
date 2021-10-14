@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: DefaultShipConfiguration
   m_EditorClassIdentifier: 
   shipEntityView: {fileID: 1665005866244266005, guid: 8f40c81619fe34146a06ab742a78c837, type: 3}
+  shipMaxSpeed: 3
