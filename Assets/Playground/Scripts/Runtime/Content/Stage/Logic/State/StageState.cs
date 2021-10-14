@@ -2,6 +2,6 @@
 {
     public class StageState
     {
-        public int UsingShiptInstanceId { get; set; }
+        public int UsingShipInstanceId { get; set; }
     }
 }

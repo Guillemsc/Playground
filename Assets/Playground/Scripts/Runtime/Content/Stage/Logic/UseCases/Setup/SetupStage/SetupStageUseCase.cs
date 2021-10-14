@@ -40,7 +40,7 @@ namespace Playground.Content.Stage.Logic.UseCases.SetupStage
                 return;
             }
 
-            stageState.UsingShiptInstanceId = shipEntity.InstanceId;
+            stageState.UsingShipInstanceId = shipEntity.InstanceId;
 
             eventDispatcher.Dispatch(new SetupStageOutEvent(
                 ShipEntitySnapshot.ToSnapshot(shipEntity)
