@@ -11,7 +11,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.GenerateSections
 {
     public class GenerateSectionsUseCase : IGenerateSectionsUseCase
     {
-        private readonly ISingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository;
+        private readonly IReadOnlySingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository;
         private readonly IRepository<IDisposable<SectionEntityView>> sectionEntityViewRepository;
         private readonly Transform sectionsStartPosition;
         private readonly SectionsVisualLogicSetup visualLogicSectionsSetup;
@@ -19,7 +19,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.GenerateSections
         private readonly ITrySpawnRandomSectionUseCase trySpawnRandomSectionUseCase;
 
         public GenerateSectionsUseCase(
-            ISingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository,
+            IReadOnlySingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository,
             IRepository<IDisposable<SectionEntityView>> sectionEntityViewRepository,
             Transform sectionsStartPosition,
  

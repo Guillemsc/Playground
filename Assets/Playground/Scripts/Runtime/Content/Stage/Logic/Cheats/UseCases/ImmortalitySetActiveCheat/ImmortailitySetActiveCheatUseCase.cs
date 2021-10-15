@@ -6,10 +6,10 @@ namespace Playground.Content.Stage.Logic.Cheats.UseCases.ImmortailitySetActiveCh
 {
     public class ImmortailitySetActiveCheatUseCase : IImmortailitySetActiveCheatUseCase
     {
-        private readonly ISingleRepository<ShipEntity> shipEntityRepository;
+        private readonly IReadOnlySingleRepository<ShipEntity> shipEntityRepository;
 
         public ImmortailitySetActiveCheatUseCase(
-            ISingleRepository<ShipEntity> shipEntityRepository
+            IReadOnlySingleRepository<ShipEntity> shipEntityRepository
             )
         {
             this.shipEntityRepository = shipEntityRepository;

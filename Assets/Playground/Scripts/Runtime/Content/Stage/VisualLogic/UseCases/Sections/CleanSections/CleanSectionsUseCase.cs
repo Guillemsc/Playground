@@ -8,13 +8,13 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.CleanSections
 {
     public class CleanSectionsUseCase : ICleanSectionsUseCase
     {
-        private readonly ISingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository;
+        private readonly IReadOnlySingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository;
         private readonly IRepository<IDisposable<SectionEntityView>> sectionEntityViewRepository;
         private readonly StageSettings stageSettings;
         private readonly IDespawnSectionUseCase despawnSectionUseCase;
 
         public CleanSectionsUseCase(
-            ISingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository,
+            IReadOnlySingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository,
             IRepository<IDisposable<SectionEntityView>> sectionEntityViewRepository,
             StageSettings stageSettings,
             IDespawnSectionUseCase despawnSectionUseCase

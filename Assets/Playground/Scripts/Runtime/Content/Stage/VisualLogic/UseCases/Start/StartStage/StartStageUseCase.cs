@@ -19,7 +19,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
     {
         private readonly ISequencerTimelines<StageTimeline> sequencerTimelines;
         private readonly InputState inputState;
-        private readonly ISingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository;
+        private readonly IReadOnlySingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository;
         private readonly ISetSectionsTickablesActiveUseCase setSectionsTickablesActiveUseCase;
         private readonly IModifyCameraOnceStartsUseCase modifyCameraOnceStartsUseCase;
         private readonly IStartShipMovementUseCase startShipMovementUseCase;
@@ -29,7 +29,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
         public StartStageUseCase(
             ISequencerTimelines<StageTimeline> sequencerTimelines,
             InputState inputState,
-            ISingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository,
+            IReadOnlySingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository,
             ISetSectionsTickablesActiveUseCase setSectionsTickablesActiveUseCase,
             IModifyCameraOnceStartsUseCase modifyCameraOnceStartsUseCase,
             IStartShipMovementUseCase startShipMovementUseCase,

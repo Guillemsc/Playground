@@ -8,11 +8,11 @@ namespace Playground.Content.Stage.Logic.UseCases.ShipCollidedWithDeadlyCollisio
     public class ShipCollidedWithDeadlyCollisionUseCase : IShipCollidedWithDeadlyCollisionUseCase
     {
         private readonly IEventDispatcher eventDispatcher;
-        private readonly ISingleRepository<ShipEntity> shipEntityRepository;
+        private readonly IReadOnlySingleRepository<ShipEntity> shipEntityRepository;
 
         public ShipCollidedWithDeadlyCollisionUseCase(
             IEventDispatcher eventDispatcher,
-            ISingleRepository<ShipEntity> shipEntityRepository
+            IReadOnlySingleRepository<ShipEntity> shipEntityRepository
             )
         {
             this.eventDispatcher = eventDispatcher;

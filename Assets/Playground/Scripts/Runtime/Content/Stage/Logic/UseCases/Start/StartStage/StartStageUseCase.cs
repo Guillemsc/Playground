@@ -12,12 +12,12 @@ namespace Playground.Content.Stage.Logic.UseCases.StartStage
     {
         private readonly IEventDispatcher eventDispatcher;
         private readonly StageState stageState;
-        private readonly ISingleRepository<ShipEntity> shipEntityRepository;
+        private readonly IReadOnlySingleRepository<ShipEntity> shipEntityRepository;
 
         public StartStageUseCase(
             IEventDispatcher eventDispatcher,
             StageState stageState,
-            ISingleRepository<ShipEntity> shipEntityRepository
+            IReadOnlySingleRepository<ShipEntity> shipEntityRepository
             )
         {
             this.eventDispatcher = eventDispatcher;

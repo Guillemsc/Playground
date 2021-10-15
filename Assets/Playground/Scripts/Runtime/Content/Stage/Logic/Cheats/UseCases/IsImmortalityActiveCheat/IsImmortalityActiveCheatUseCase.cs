@@ -6,10 +6,10 @@ namespace Playground.Content.Stage.Logic.Cheats.UseCases.IsImmortalityActiveChea
 {
     public class IsImmortalityActiveCheatUseCase : IIsImmortalityActiveCheatUseCase
     {
-        private readonly ISingleRepository<ShipEntity> shipEntityRepository;
+        private readonly IReadOnlySingleRepository<ShipEntity> shipEntityRepository;
 
         public IsImmortalityActiveCheatUseCase(
-            ISingleRepository<ShipEntity> shipEntityRepository
+            IReadOnlySingleRepository<ShipEntity> shipEntityRepository
             )
         {
             this.shipEntityRepository = shipEntityRepository;
