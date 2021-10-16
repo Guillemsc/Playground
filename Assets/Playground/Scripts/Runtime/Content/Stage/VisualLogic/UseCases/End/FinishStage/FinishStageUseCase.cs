@@ -2,6 +2,7 @@
 using Playground.Configuration.Stage;
 using Playground.Content.Stage.UseCases.StageFinished;
 using Playground.Content.Stage.VisualLogic.UseCases.SetDirectionSelectorUIVisible;
+using Playground.Content.Stage.VisualLogic.UseCases.SetEffectsUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupCamera;
 using System;
 using System.Threading;
@@ -15,6 +16,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.FinishStage
         private readonly ITimer timer;
         private readonly ISetActionInputDetectionUIVisibleUseCase setActionInputDetectionUIVisibleUseCase;
         private readonly ISetDirectionSelectorUIVisibleUseCase setDirectionSelectorUIVisibleUseCase;
+        private readonly ISetEffectsUIVisibleUseCase setEffectsUIVisibleUseCase;
         private readonly IStageFinishedUseCase stageFinishedUseCase;
 
         public FinishStageUseCase(
@@ -22,6 +24,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.FinishStage
             ITimer timer,
             ISetActionInputDetectionUIVisibleUseCase setActionInputDetectionUIVisibleUseCase,
             ISetDirectionSelectorUIVisibleUseCase setDirectionSelectorUIVisibleUseCase,
+            ISetEffectsUIVisibleUseCase setEffectsUIVisibleUseCase,
             IStageFinishedUseCase stageFinishedUseCase
             )
         {
@@ -29,6 +32,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.FinishStage
             this.timer = timer;
             this.setActionInputDetectionUIVisibleUseCase = setActionInputDetectionUIVisibleUseCase;
             this.setDirectionSelectorUIVisibleUseCase = setDirectionSelectorUIVisibleUseCase;
+            this.setEffectsUIVisibleUseCase = setEffectsUIVisibleUseCase;
             this.stageFinishedUseCase = stageFinishedUseCase;
         }
 
@@ -40,10 +44,17 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.FinishStage
                 cancellationToken
                 ).RunAsync();
 
-            await setDirectionSelectorUIVisibleUseCase.Execute(
-                visible: false,
-                instantly: false,
-                cancellationToken
+            await Task.WhenAll(
+                setDirectionSelectorUIVisibleUseCase.Execute(
+                    visible: false,
+                    instantly: false,
+                    cancellationToken
+                    ),
+                setEffectsUIVisibleUseCase.Execute(
+                    visible: false,
+                    instantly: false,
+                    cancellationToken
+                    )
                 );
 
             timer.Start();

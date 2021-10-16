@@ -44,6 +44,8 @@ using Playground.Content.Stage.VisualLogic.Effects;
 using Playground.Content.Stage.VisualLogic.UseCases.RemoveEffect;
 using Playground.Content.Stage.VisualLogic.UseCases.AddEffect;
 using Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithEffect;
+using Playground.Content.StageUI.UI.Effects;
+using Playground.Content.Stage.VisualLogic.UseCases.SetEffectsUIVisible;
 
 namespace Playground.Content.Stage.VisualLogic.Installers
 {
@@ -242,6 +244,11 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     uiViewStackService
                     ));
 
+            containerBuilder.Bind<ISetEffectsUIVisibleUseCase>()
+                .FromFunction(c => new SetEffectsUIVisibleUseCase(
+                    uiViewStackService
+                    ));
+
             containerBuilder.Bind<ISetupStageUseCase>()
                 .FromFunction((c) => new SetupStageUseCase(
                     stageLoadedToken,
@@ -278,6 +285,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     c.Resolve<IModifyCameraOnceStartsUseCase>(),
                     c.Resolve<IStartShipMovementUseCase>(),
                     c.Resolve<ISetDirectionSelectorUIVisibleUseCase>(),
+                    c.Resolve<ISetEffectsUIVisibleUseCase>(),
                     c.Resolve<IStartDirectionSelectionUseCase>()
                     ));
 
@@ -300,6 +308,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     timeService.UnscaledTimeContext.NewTimer(),
                     c.Resolve<ISetActionInputDetectionUIVisibleUseCase>(),
                     c.Resolve<ISetDirectionSelectorUIVisibleUseCase>(),
+                    c.Resolve<ISetEffectsUIVisibleUseCase>(),
                     stageFinishedUseCase
                     ));
             
@@ -313,13 +322,15 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             // Effects
             containerBuilder.Bind<IRemoveEffectUseCase>()
                 .FromFunction(c => new RemoveEffectUseCase(
-                    c.Resolve<IRepository<IDisposable<EffectWithTriggerExpirator>>>()
+                    c.Resolve<IRepository<IDisposable<EffectWithTriggerExpirator>>>(),
+                    c.Resolve<IEffectsUIInteractor>()
                     ));
 
             containerBuilder.Bind<IAddEffectUseCase>()
                 .FromFunction(c => new AddEffectUseCase(
                     c.Resolve<IFactory<EffectConfiguration, IDisposable<EffectWithTriggerExpirator>>>(),
                     c.Resolve<IRepository<IDisposable<EffectWithTriggerExpirator>>>(),
+                    c.Resolve<IEffectsUIInteractor>(),
                     c.Resolve<IRemoveEffectUseCase>()
                     ));
 

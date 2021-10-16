@@ -4,6 +4,7 @@ using Juce.Core.Repositories;
 using Playground.Configuration.Stage;
 using Playground.Content.Stage.VisualLogic.Effects;
 using Playground.Content.Stage.VisualLogic.UseCases.RemoveEffect;
+using Playground.Content.StageUI.UI.Effects;
 
 namespace Playground.Content.Stage.VisualLogic.UseCases.AddEffect
 {
@@ -11,16 +12,19 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.AddEffect
     {
         private readonly IFactory<EffectConfiguration, IDisposable<EffectWithTriggerExpirator>> effectsFactory;
         private readonly IRepository<IDisposable<EffectWithTriggerExpirator>> effectsRepository;
+        private readonly IEffectsUIInteractor effectsUIInteractor;
         private readonly IRemoveEffectUseCase removeEffectUseCase;
 
         public AddEffectUseCase(
             IFactory<EffectConfiguration, IDisposable<EffectWithTriggerExpirator>> effectsFactory,
             IRepository<IDisposable<EffectWithTriggerExpirator>> effectsRepository,
+            IEffectsUIInteractor effectsUIInteractor,
             IRemoveEffectUseCase removeEffectUseCase
             )
         {
             this.effectsFactory = effectsFactory;
             this.effectsRepository = effectsRepository;
+            this.effectsUIInteractor = effectsUIInteractor;
             this.removeEffectUseCase = removeEffectUseCase;
         }
 
@@ -36,6 +40,8 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.AddEffect
             }
 
             effectsRepository.Add(creation);
+
+            effectsUIInteractor.AddEffect(effectConfiguraiton, creation.Value);
 
             creation.Value.OnExpired += () => removeEffectUseCase.Execute(creation);
         }
