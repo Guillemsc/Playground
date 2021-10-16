@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Playground.Configuration.Stage
 {
-    [CreateAssetMenu(fileName = nameof(ShipConfiguration), menuName = "Playground/Configuration/" + nameof(ShipConfiguration), order = 1)]
+    [CreateAssetMenu(fileName = nameof(ShipConfiguration), menuName = "Playground/Configuration/Stage/" + nameof(ShipConfiguration), order = 1)]
     public class ShipConfiguration : ScriptableObject
     {
         [Header("Prefab")]

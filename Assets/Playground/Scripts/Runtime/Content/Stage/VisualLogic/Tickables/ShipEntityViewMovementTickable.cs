@@ -68,8 +68,30 @@ namespace Playground.Content.Stage.VisualLogic.Entities
                 angleToChange -= RotationSpeed;
             }
 
-            currentForwardSpeed += Acceleration * deltaTime;
-            currentForwardSpeed = Math.Min(currentForwardSpeed, shipStats.MovementMaxSpeed.ModifiedValue);
+            float accelerationDeltaTime = Acceleration * deltaTime;
+
+            if(currentForwardSpeed > shipStats.MovementMaxSpeed.ModifiedValue)
+            {
+                if(currentForwardSpeed - accelerationDeltaTime < shipStats.MovementMaxSpeed.ModifiedValue)
+                {
+                    currentForwardSpeed = shipStats.MovementMaxSpeed.ModifiedValue;
+                }
+                else
+                {
+                    currentForwardSpeed -= accelerationDeltaTime;
+                }
+            }
+            else
+            {
+                if (currentForwardSpeed + accelerationDeltaTime > shipStats.MovementMaxSpeed.ModifiedValue)
+                {
+                    currentForwardSpeed = shipStats.MovementMaxSpeed.ModifiedValue;
+                }
+                else
+                {
+                    currentForwardSpeed += accelerationDeltaTime;
+                }
+            }
 
             float deltaTimeAngleToChange = angleToChange * deltaTime;
             float deltaTimeCurrentForwardSpeed = currentForwardSpeed * deltaTime;

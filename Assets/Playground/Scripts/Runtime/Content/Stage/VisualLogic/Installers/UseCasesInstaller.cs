@@ -39,6 +39,11 @@ using Playground.Contexts.Stage;
 using Playground.Services;
 using Playground.Services.ViewStack;
 using Playground.Content.Stage.VisualLogic.UseCases.ChangeShipDirection;
+using Playground.Configuration.Stage;
+using Playground.Content.Stage.VisualLogic.Effects;
+using Playground.Content.Stage.VisualLogic.UseCases.RemoveEffect;
+using Playground.Content.Stage.VisualLogic.UseCases.AddEffect;
+using Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithEffect;
 
 namespace Playground.Content.Stage.VisualLogic.Installers
 {
@@ -103,6 +108,21 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             containerBuilder.Bind<IRepository<IDisposable<SectionEntityView>>, SimpleRepository<IDisposable<SectionEntityView>>>()
                 .FromNew();
 
+            containerBuilder.Bind<TimeTriggersTickable>()
+                .FromNew()
+                .WhenInit((c, o) => tickableService.AddTickable(o))
+                .WhenDispose((o) => tickableService.RemoveTickable(o));
+
+            containerBuilder.Bind<IFactory<EffectConfiguration, IDisposable<EffectWithTriggerExpirator>>>()
+                .FromFunction(c => new EffectsFactory(
+                    c.Resolve<TimeTriggersTickable>(),
+                    c.Resolve<ShipStats>(),
+                    timeService.ScaledTimeContext
+                    ));
+
+            containerBuilder.Bind<IRepository<IDisposable<EffectWithTriggerExpirator>>, SimpleRepository<IDisposable<EffectWithTriggerExpirator>>>()
+                .FromNew();
+
             containerBuilder.Bind<IGetDirectionSelectionValueUseCase>()
                 .FromFunction(c => new GetDirectionSelectionValueUseCase(
                     visualLogicStageSetup.DirectionSelectorSetup
@@ -142,9 +162,15 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     eventDispatcher
                     ));
 
+            containerBuilder.Bind<IShipCollidedWithEffectUseCase>()
+                .FromFunction(c => new ShipCollidedWithEffectUseCase(
+                    c.Resolve<IAddEffectUseCase>()
+                    ));
+
             containerBuilder.Bind<IShipCollidedUseCase>()
                 .FromFunction((c) => new ShipCollidedUseCase(
-                    c.Resolve<IShipCollidedWithDeadlyCollisionUseCase>()
+                    c.Resolve<IShipCollidedWithDeadlyCollisionUseCase>(),
+                    c.Resolve<IShipCollidedWithEffectUseCase>()
                     ));
 
             containerBuilder.Bind<ITryCreateShipViewUseCase>()
@@ -282,6 +308,19 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     c.Resolve<ISequencerTimelines<StageTimeline>>(),
                     c.Resolve<IStopShipMovementUseCase>(),
                     c.Resolve<IFinishStageUseCase>()
+                    ));
+
+            // Effects
+            containerBuilder.Bind<IRemoveEffectUseCase>()
+                .FromFunction(c => new RemoveEffectUseCase(
+                    c.Resolve<IRepository<IDisposable<EffectWithTriggerExpirator>>>()
+                    ));
+
+            containerBuilder.Bind<IAddEffectUseCase>()
+                .FromFunction(c => new AddEffectUseCase(
+                    c.Resolve<IFactory<EffectConfiguration, IDisposable<EffectWithTriggerExpirator>>>(),
+                    c.Resolve<IRepository<IDisposable<EffectWithTriggerExpirator>>>(),
+                    c.Resolve<IRemoveEffectUseCase>()
                     ));
 
         }
