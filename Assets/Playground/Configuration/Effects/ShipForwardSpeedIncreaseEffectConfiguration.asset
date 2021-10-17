@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15726784c81e3c148822e2bbccc0002d, type: 3}
   m_Name: ShipForwardSpeedIncreaseEffectConfiguration
   m_EditorClassIdentifier: 
-  ammount: 5
+  ammount: 3
   duration: 2
