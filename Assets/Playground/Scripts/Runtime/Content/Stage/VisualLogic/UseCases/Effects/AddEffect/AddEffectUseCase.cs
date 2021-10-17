@@ -3,8 +3,10 @@ using Juce.Core.Factories;
 using Juce.Core.Repositories;
 using Playground.Configuration.Stage;
 using Playground.Content.Stage.VisualLogic.Effects;
+using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.UseCases.RemoveEffect;
 using Playground.Content.StageUI.UI.Effects;
+using System.Threading;
 
 namespace Playground.Content.Stage.VisualLogic.UseCases.AddEffect
 {
@@ -28,9 +30,11 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.AddEffect
             this.removeEffectUseCase = removeEffectUseCase;
         }
 
-        public void Execute(EffectConfiguration effectConfiguraiton)
+        public void Execute(EffectEntityView effectEntityView)
         {
-            bool created = effectsFactory.TryCreate(effectConfiguraiton, out IDisposable<EffectWithTriggerExpirator> creation);
+            EffectConfiguration effectConfiguration = effectEntityView.EffectConfiguration;
+
+            bool created = effectsFactory.TryCreate(effectConfiguration, out IDisposable<EffectWithTriggerExpirator> creation);
 
             if(!created)
             {
@@ -41,7 +45,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.AddEffect
 
             effectsRepository.Add(creation);
 
-            effectsUIInteractor.AddEffect(effectConfiguraiton, creation.Value);
+            effectsUIInteractor.AddEffect(effectEntityView, creation.Value);
 
             creation.Value.OnExpired += () => removeEffectUseCase.Execute(creation);
         }

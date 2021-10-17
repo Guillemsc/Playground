@@ -20,10 +20,13 @@ namespace Playground.Content.StageUI.UI.Effects.UseCases.TrySpawnEffectEntry
             this.repository = repository;
         }
 
-        public bool Execute(out IDisposable<EffectUIEntry> result)
+        public bool Execute(
+            EffectUIEntryFactoryDefinition effectUIEntryFactoryDefinition,
+            out IDisposable<EffectUIEntry> result
+            )
         {
             bool created = factory.TryCreate(
-                new EffectUIEntryFactoryDefinition(),
+                effectUIEntryFactoryDefinition,
                 out result
                 );
 

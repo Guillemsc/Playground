@@ -10,6 +10,7 @@ using Playground.Content.Stage.VisualLogic.UseCases.SetDirectionSelectorUIVisibl
 using Playground.Content.Stage.VisualLogic.UseCases.SetEffectsUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetSectionsTickablesActive;
 using Playground.Content.Stage.VisualLogic.UseCases.StartDirectionSelection;
+using Playground.Content.Stage.VisualLogic.UseCases.StartShip;
 using Playground.Content.Stage.VisualLogic.UseCases.StartShipMovement;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
         private readonly ISetSectionsTickablesActiveUseCase setSectionsTickablesActiveUseCase;
         private readonly IModifyCameraOnceStartsUseCase modifyCameraOnceStartsUseCase;
         private readonly IStartShipMovementUseCase startShipMovementUseCase;
+        private readonly IStartShipUseCase startShipUseCase;
         private readonly ISetDirectionSelectorUIVisibleUseCase setDirectionSelectorUIVisibleUseCase;
         private readonly ISetEffectsUIVisibleUseCase setEffectsUIVisibleUseCase;
         private readonly IStartDirectionSelectionUseCase startDirectionSelectionUseCase;
@@ -35,6 +37,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
             ISetSectionsTickablesActiveUseCase setSectionsTickablesActiveUseCase,
             IModifyCameraOnceStartsUseCase modifyCameraOnceStartsUseCase,
             IStartShipMovementUseCase startShipMovementUseCase,
+            IStartShipUseCase startShipUseCase,
             ISetDirectionSelectorUIVisibleUseCase setDirectionSelectorUIVisibleUseCase,
             ISetEffectsUIVisibleUseCase setEffectsUIVisibleUseCase,
             IStartDirectionSelectionUseCase startDirectionSelectionUseCase
@@ -46,6 +49,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
             this.setSectionsTickablesActiveUseCase = setSectionsTickablesActiveUseCase;
             this.modifyCameraOnceStartsUseCase = modifyCameraOnceStartsUseCase;
             this.startShipMovementUseCase = startShipMovementUseCase;
+            this.startShipUseCase = startShipUseCase;
             this.setDirectionSelectorUIVisibleUseCase = setDirectionSelectorUIVisibleUseCase;
             this.setEffectsUIVisibleUseCase = setEffectsUIVisibleUseCase;
             this.startDirectionSelectionUseCase = startDirectionSelectionUseCase;
@@ -69,12 +73,16 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
 
             if (!shipEntityFound)
             {
+                UnityEngine.Debug.LogError($"{nameof(ShipEntityView)} not found, " +
+                    $"at {nameof(StartStageUseCase)}");
                 return Task.CompletedTask;
             }
 
             setSectionsTickablesActiveUseCase.Execute(active: true);
 
             modifyCameraOnceStartsUseCase.Execute(shipEntityView.Value);
+
+            startShipUseCase.Execute(shipEntityView.Value, cancellationToken).RunAsync();
 
             startShipMovementUseCase.Execute(shipEntityView.Value);
 

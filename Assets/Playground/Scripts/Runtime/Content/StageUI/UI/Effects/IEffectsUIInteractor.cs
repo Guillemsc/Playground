@@ -1,13 +1,15 @@
 ﻿using Juce.CoreUnity.UI;
-using Playground.Configuration.Stage;
 using Playground.Content.Stage.VisualLogic.Effects;
+using Playground.Content.Stage.VisualLogic.Entities;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Playground.Content.StageUI.UI.Effects
 {
     public interface IEffectsUIInteractor : UIInteractor
     {
         void AddEffect(
-            EffectConfiguration effectConfiguration,
+            EffectEntityView effectEntityView,
             EffectWithTriggerExpirator effectWithTriggerExpirator
             );
 

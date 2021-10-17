@@ -1,8 +1,11 @@
 ﻿using Juce.Core.Subscribables;
 using Playground.Configuration.Stage;
 using Playground.Content.Stage.VisualLogic.Effects;
+using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.StageUI.UI.Effects.UseCases.EffectAdded;
 using Playground.Content.StageUI.UI.Effects.UseCases.EffectExpired;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Playground.Content.StageUI.UI.Effects
 {
@@ -39,11 +42,11 @@ namespace Playground.Content.StageUI.UI.Effects
         }
 
         public void AddEffect(
-            EffectConfiguration effectConfiguration, 
+            EffectEntityView effectEntityView, 
             EffectWithTriggerExpirator effectWithTriggerExpirator
             )
         {
-            effectAddedUseCase.Execute(effectConfiguration, effectWithTriggerExpirator);
+            effectAddedUseCase.Execute(effectEntityView, effectWithTriggerExpirator);
         }
 
         public void ExpireEffect(EffectWithTriggerExpirator effectWithTriggerExpirator)

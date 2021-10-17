@@ -4,6 +4,7 @@ using Juce.Core.DI.Installers;
 using Juce.Core.Disposables;
 using Juce.Core.Factories;
 using Juce.Core.Repositories;
+using Juce.Core.Sequencing;
 using Juce.CoreUnity.Layout;
 using JuceUnity.Core.DI.Extensions;
 using Playground.Content.Stage.VisualLogic.Effects;
@@ -62,6 +63,8 @@ namespace Playground.Content.StageUI.UI.Effects
 
         private void InstallUseCases(IDIContainerBuilder container)
         {
+            container.Bind<ISequencer, Sequencer>().FromNew();
+
             container.Bind<IFactory<EffectUIEntryFactoryDefinition, IDisposable<EffectUIEntry>>>()
                 .FromFunction(c => new EffectUIEntryFactory(
                     effectUIEntryPrefab
@@ -87,6 +90,7 @@ namespace Playground.Content.StageUI.UI.Effects
 
             container.Bind<IEffectAddedUseCase>()
                 .FromFunction(c => new EffectAddedUseCase(
+                    c.Resolve<ISequencer>(),
                     manualHorizontalLayout,
                     c.Resolve<IKeyValueRepository<EffectWithTriggerExpirator, IDisposable<EffectUIEntry>>>(),
                     c.Resolve<ITrySpawnEffectEntryUseCase>()
@@ -94,6 +98,7 @@ namespace Playground.Content.StageUI.UI.Effects
 
             container.Bind<IEffectExpiredUseCase>()
                 .FromFunction(c => new EffectExpiredUseCase(
+                    c.Resolve<ISequencer>(),
                     manualHorizontalLayout,
                     c.Resolve<IKeyValueRepository<EffectWithTriggerExpirator, IDisposable<EffectUIEntry>>>(),
                     c.Resolve<IDespawnEffectEntryUseCase>()

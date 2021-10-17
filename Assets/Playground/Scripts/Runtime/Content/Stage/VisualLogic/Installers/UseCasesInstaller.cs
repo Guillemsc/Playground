@@ -46,6 +46,8 @@ using Playground.Content.Stage.VisualLogic.UseCases.AddEffect;
 using Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithEffect;
 using Playground.Content.StageUI.UI.Effects;
 using Playground.Content.Stage.VisualLogic.UseCases.SetEffectsUIVisible;
+using Playground.Content.Stage.VisualLogic.UseCases.KillShip;
+using Playground.Content.Stage.VisualLogic.UseCases.StartShip;
 
 namespace Playground.Content.Stage.VisualLogic.Installers
 {
@@ -157,6 +159,14 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             containerBuilder.Bind<IStopShipMovementUseCase>()
                 .FromFunction((c) => new StopShipMovementUseCase(
                     c.Resolve<ShipEntityViewMovementTickable>()
+                    ));
+
+            containerBuilder.Bind<IStartShipUseCase>()
+                .FromFunction(c => new StartShipUseCase(
+                    ));
+
+            containerBuilder.Bind<IKillShipUseCase>()
+                .FromFunction(c => new KillShipUseCase(
                     ));
 
             containerBuilder.Bind<IShipCollidedWithDeadlyCollisionUseCase>()
@@ -284,6 +294,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     c.Resolve<ISetSectionsTickablesActiveUseCase>(),
                     c.Resolve<IModifyCameraOnceStartsUseCase>(),
                     c.Resolve<IStartShipMovementUseCase>(),
+                    c.Resolve<IStartShipUseCase>(),
                     c.Resolve<ISetDirectionSelectorUIVisibleUseCase>(),
                     c.Resolve<ISetEffectsUIVisibleUseCase>(),
                     c.Resolve<IStartDirectionSelectionUseCase>()
@@ -315,7 +326,9 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             containerBuilder.Bind<IShipDestroyedUseCase>()
                 .FromFunction((c) => new ShipDestroyedUseCase(
                     c.Resolve<ISequencerTimelines<StageTimeline>>(),
+                    c.Resolve<ISingleRepository<IDisposable<ShipEntityView>>>(),
                     c.Resolve<IStopShipMovementUseCase>(),
+                    c.Resolve<IKillShipUseCase>(),
                     c.Resolve<IFinishStageUseCase>()
                     ));
 

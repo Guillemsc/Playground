@@ -26,7 +26,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithEffect
                 return;
             }
 
-            addEffectUseCase.Execute(effectEntityView.EffectConfiguration);
+            addEffectUseCase.Execute(effectEntityView);
         }
     }
 }

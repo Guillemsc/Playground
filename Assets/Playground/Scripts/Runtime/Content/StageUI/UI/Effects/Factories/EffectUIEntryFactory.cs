@@ -12,7 +12,10 @@ namespace Playground.Content.StageUI.UI.Effects.Factories
 
         protected override void Init(EffectUIEntryFactoryDefinition definition, EffectUIEntry creation)
         {
-         
+            creation.Init(
+                definition.BackgroundSprite,
+                definition.IconSprite
+                );
         }
     }
 }
