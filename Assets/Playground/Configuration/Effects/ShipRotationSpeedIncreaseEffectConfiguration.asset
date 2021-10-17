@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ShipRotationSpeedIncreaseEffectConfiguration
   m_EditorClassIdentifier: 
   ammount: 40
-  duration: 4
+  duration: 6

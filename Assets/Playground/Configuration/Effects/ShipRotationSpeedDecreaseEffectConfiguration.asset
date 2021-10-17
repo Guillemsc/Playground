@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c6a2001b5caa04e8ea3e95bf959f42, type: 3}
   m_Name: ShipRotationSpeedDecreaseEffectConfiguration
   m_EditorClassIdentifier: 
-  ammount: 40
-  duration: 3
+  ammount: 50
+  duration: 6

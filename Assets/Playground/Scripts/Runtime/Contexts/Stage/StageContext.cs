@@ -79,6 +79,7 @@ namespace Playground.Contexts.Stage
                     ),
 
                 new EffectsVisualLogicSetup(
+                    stageSetup.EffectsSetup.SpawnPercentageProbabiliby,
                     stageSetup.EffectsSetup.Effects
                     ),
 

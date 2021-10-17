@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc859e19df8a5544b97a0ba75171694f, type: 3}
   m_Name: EffectsConfiguration
   m_EditorClassIdentifier: 
+  spawnPercentageProbabiliby: 31.8
   effectsEntityViews:
   - {fileID: 1231190882139205595, guid: 8ef9bf455cbc96244a48ed82261db62f, type: 3}
   - {fileID: 1231190882139205595, guid: 4d63354c1bb8f814f89634b2d6349f8f, type: 3}

@@ -32,6 +32,13 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSectionEff
                 return;
             }
 
+            float randomProbability = Random.Range(0, 100f);
+
+            if(randomProbability > effectsVisualLogicSetup.SpawnPercentageProbabiliby)
+            {
+                return;
+            }
+
             int randomIndex = Random.Range(0, effectsVisualLogicSetup.Effects.Count);
 
             EffectEntityView prefab = effectsVisualLogicSetup.Effects[randomIndex];
