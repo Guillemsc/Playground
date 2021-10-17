@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15726784c81e3c148822e2bbccc0002d, type: 3}
-  m_Name: ShipSpeedIncreaseEffectConfiguration
+  m_Script: {fileID: 11500000, guid: 364b4251096d9dc46acbd9d5c64019a0, type: 3}
+  m_Name: ShipForwardSpeedDecreaseEffectConfiguration
   m_EditorClassIdentifier: 
-  ammount: 5
+  ammount: 2
   duration: 3

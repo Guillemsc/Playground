@@ -17,7 +17,7 @@ namespace Playground.Content.Stage.VisualLogic.Entities
         public Transform StartPosition => startPosition;
         public Transform EndPosition => endPosition;
 
-        public IReadOnlyList<Transform> Spawners => default;
+        public IReadOnlyList<Transform> Spawners => spawners;
 
         private void OnDrawGizmos()
         {

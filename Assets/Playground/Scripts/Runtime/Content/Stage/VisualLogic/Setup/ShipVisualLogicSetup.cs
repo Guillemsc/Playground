@@ -6,14 +6,17 @@ namespace Playground.Content.Stage.VisualLogic.Setup
     {
         public ShipEntityView ShipEntityView { get; }
         public float ShipMaxSpeed { get; }
+        public float ShipRotationSpeed { get; }
 
         public ShipVisualLogicSetup(
             ShipEntityView shipEntityView,
-            float shipMaxSpeed
+            float shipMaxSpeed,
+            float shipRotationSpeed
             )
         {
             ShipEntityView = shipEntityView;
             ShipMaxSpeed = shipMaxSpeed;
+            ShipRotationSpeed = shipRotationSpeed;
         }
     }
 }

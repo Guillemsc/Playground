@@ -10,7 +10,6 @@ namespace Playground.Content.Stage.VisualLogic.Entities
     public class ShipEntityViewMovementTickable : ActivableTickable
     {
         private const float Acceleration = 1.5f;
-        private const float RotationSpeed = 70f;
 
         private const float MaxForwardAngle = 60f;
 
@@ -61,20 +60,20 @@ namespace Playground.Content.Stage.VisualLogic.Entities
 
             if (angleDifference > 0)
             {
-                angleToChange += RotationSpeed;
+                angleToChange += shipStats.RotationSpeed.ModifiedValue;
             }
             else if (angleDifference < 0)
             {
-                angleToChange -= RotationSpeed;
+                angleToChange -= shipStats.RotationSpeed.ModifiedValue;
             }
 
             float accelerationDeltaTime = Acceleration * deltaTime;
 
-            if(currentForwardSpeed > shipStats.MovementMaxSpeed.ModifiedValue)
+            if(currentForwardSpeed > shipStats.ForwardMaxSpeed.ModifiedValue)
             {
-                if(currentForwardSpeed - accelerationDeltaTime < shipStats.MovementMaxSpeed.ModifiedValue)
+                if(currentForwardSpeed - accelerationDeltaTime < shipStats.ForwardMaxSpeed.ModifiedValue)
                 {
-                    currentForwardSpeed = shipStats.MovementMaxSpeed.ModifiedValue;
+                    currentForwardSpeed = shipStats.ForwardMaxSpeed.ModifiedValue;
                 }
                 else
                 {
@@ -83,9 +82,9 @@ namespace Playground.Content.Stage.VisualLogic.Entities
             }
             else
             {
-                if (currentForwardSpeed + accelerationDeltaTime > shipStats.MovementMaxSpeed.ModifiedValue)
+                if (currentForwardSpeed + accelerationDeltaTime > shipStats.ForwardMaxSpeed.ModifiedValue)
                 {
-                    currentForwardSpeed = shipStats.MovementMaxSpeed.ModifiedValue;
+                    currentForwardSpeed = shipStats.ForwardMaxSpeed.ModifiedValue;
                 }
                 else
                 {

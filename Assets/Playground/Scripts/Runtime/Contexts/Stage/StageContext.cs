@@ -69,7 +69,8 @@ namespace Playground.Contexts.Stage
             StageVisualLogicSetup visualLogicStageSetup = new StageVisualLogicSetup(
                 new ShipVisualLogicSetup(
                     stageSetup.ShipSetup.ShipEntityView,
-                    stageSetup.ShipSetup.ShipMaxSpeed
+                    stageSetup.ShipSetup.ShipMaxSpeed,
+                    stageSetup.ShipSetup.ShipRotationSpeed
                     ),
 
                 new SectionsVisualLogicSetup(

@@ -53,7 +53,7 @@ namespace Playground.Content.StageUI.UI.Effects.UseCases.EffectExpired
 
             despawnEffectEntryUseCase.Execute(entry);
 
-            manualHorizontalLayout.Refresh();
+            manualHorizontalLayout?.Refresh();
         }
     }
 }

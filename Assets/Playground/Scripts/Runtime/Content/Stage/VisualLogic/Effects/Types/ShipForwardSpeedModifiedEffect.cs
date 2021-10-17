@@ -3,13 +3,13 @@ using Playground.Content.Stage.VisualLogic.Stats;
 
 namespace Playground.Content.Stage.VisualLogic.Effects
 {
-    public class ShipSpeedModifiedEffect : IEffect
+    public class ShipForwardSpeedModifiedEffect : IEffect
     {
         private readonly ShipStats shipStats;
 
         private readonly StatModifier<float> speedStatModifier;
 
-        public ShipSpeedModifiedEffect(
+        public ShipForwardSpeedModifiedEffect(
             ShipStats shipStats,
             float ammount
             )
@@ -21,12 +21,12 @@ namespace Playground.Content.Stage.VisualLogic.Effects
 
         public void Enable()
         {
-            shipStats.MovementMaxSpeed.Add(speedStatModifier);
+            shipStats.ForwardMaxSpeed.Add(speedStatModifier);
         }
 
         public void Disable()
         {
-            shipStats.MovementMaxSpeed.Remove(speedStatModifier);
+            shipStats.ForwardMaxSpeed.Remove(speedStatModifier);
         }
     }
 }

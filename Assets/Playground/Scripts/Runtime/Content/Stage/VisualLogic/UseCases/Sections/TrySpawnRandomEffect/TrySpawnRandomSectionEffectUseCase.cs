@@ -5,15 +5,15 @@ using Playground.Content.Stage.Setup;
 using Playground.Content.Stage.VisualLogic.Entities;
 using UnityEngine;
 
-namespace Playground.Content.Stage.VisualLogic.UseCases.TrySpawnSectionEffect
+namespace Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSectionEffect
 {
-    public class TrySpawnSectionEffectUseCase : ITrySpawnSectionEffectUseCase
+    public class TrySpawnRandomSectionEffectUseCase : ITrySpawnRandomSectionEffectUseCase
     {
         private readonly IFactory<EffectEntityViewDefinition, IDisposable<EffectEntityView>> effectEntityViewFactory;
         private readonly IRepository<IDisposable<EffectEntityView>> effectEntityViewRepository;
         private readonly EffectsVisualLogicSetup effectsVisualLogicSetup;
 
-        public TrySpawnSectionEffectUseCase(
+        public TrySpawnRandomSectionEffectUseCase(
             IFactory<EffectEntityViewDefinition, IDisposable<EffectEntityView>> effectEntityViewFactory,
             IRepository<IDisposable<EffectEntityView>> effectEntityViewRepository,
             EffectsVisualLogicSetup effectsVisualLogicSetup
@@ -50,6 +50,8 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.TrySpawnSectionEffect
             }
 
             effectEntityViewRepository.Add(effectEntityView);
+
+            effectEntityView.Value.transform.SetParent(position, worldPositionStays: false);
         }
     }
 }

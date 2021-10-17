@@ -4,13 +4,16 @@ namespace Playground.Content.Stage.VisualLogic.Stats
 {
     public class ShipStats
     {
-        public FloatStat MovementMaxSpeed { get; }
+        public FloatStat ForwardMaxSpeed { get; }
+        public FloatStat RotationSpeed { get; }
 
         public ShipStats(
-            FloatStat movementMaxSpeed
+            FloatStat forwardMaxSpeed,
+            FloatStat rotationSpeed
             )
         {
-            MovementMaxSpeed = movementMaxSpeed;
+            ForwardMaxSpeed = forwardMaxSpeed;
+            RotationSpeed = rotationSpeed;
         }
     }
 }

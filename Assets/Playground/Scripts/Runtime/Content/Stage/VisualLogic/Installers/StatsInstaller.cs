@@ -20,9 +20,12 @@ namespace Playground.Content.Stage.VisualLogic.Installers
 
         public void Install(IDIContainerBuilder container)
         {
+            MinFloatBounds zeroMinFloatBounds = new MinFloatBounds(0f);
+
             container.Bind<ShipStats>()
                 .FromFunction(c => new ShipStats(
-                    new FloatStat(visualLogicStageSetup.ShipSetup.ShipMaxSpeed, new MinFloatBounds(0f))
+                    new FloatStat(visualLogicStageSetup.ShipSetup.ShipMaxSpeed, zeroMinFloatBounds),
+                    new FloatStat(visualLogicStageSetup.ShipSetup.ShipRotationSpeed, zeroMinFloatBounds)
                     ));
         }
     }

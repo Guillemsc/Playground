@@ -12,12 +12,14 @@ namespace Playground.Configuration.Stage
 
         [Header("Stats")]
         [SerializeField] private float shipMaxSpeed = default;
+        [SerializeField] private float shipRotationSpeed = default;
 
         public ShipSetup ToSetup()
         {
             return new ShipSetup(
                 shipEntityView,
-                shipMaxSpeed
+                shipMaxSpeed,
+                shipRotationSpeed
                 );
         }
     }

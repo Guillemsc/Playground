@@ -5,7 +5,7 @@ namespace Playground.Content.Stage.VisualLogic.Entities
 {
     public class EffectEntityViewFactory : MonoBehaviourUnknownPrefabFactory<EffectEntityViewDefinition, EffectEntityView>
     {
-        public EffectEntityViewFactory(Transform parent) : base(parent)
+        public EffectEntityViewFactory()
         {
 
         }

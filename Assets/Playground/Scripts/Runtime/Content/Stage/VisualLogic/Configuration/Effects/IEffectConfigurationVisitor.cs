@@ -2,7 +2,9 @@
 {
     public interface IEffectConfigurationVisitor
     {
-        void Visit(ShipSpeedIncreaseEffectConfiguration visitor);
-        void Visit(ShipSpeedDecreaseEffectConfiguration visitor);
+        void Visit(ShipForwardSpeedIncreaseEffectConfiguration visitor);
+        void Visit(ShipForwardSpeedDecreaseEffectConfiguration visitor);
+        void Visit(ShipRotationSpeedIncreaseEffectConfiguration visitor);
+        void Visit(ShipRotationSpeedDecreaseEffectConfiguration visitor);
     }
 }

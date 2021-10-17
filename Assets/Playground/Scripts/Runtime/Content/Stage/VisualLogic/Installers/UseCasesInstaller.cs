@@ -48,6 +48,7 @@ using Playground.Content.StageUI.UI.Effects;
 using Playground.Content.Stage.VisualLogic.UseCases.SetEffectsUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.KillShip;
 using Playground.Content.Stage.VisualLogic.UseCases.StartShip;
+using Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSectionEffect;
 
 namespace Playground.Content.Stage.VisualLogic.Installers
 {
@@ -95,6 +96,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             containerBuilder.Bind<InputState>().FromNew();
             containerBuilder.Bind<DirectionSelectionState>().FromNew();
 
+            // Ship
             containerBuilder.Bind<IFactory<ShipEntityViewDefinition, IDisposable<ShipEntityView>>>()
                 .FromFunction((c) => new ShipEntityViewFactory(
                     visualLogicStageSetup.ShipSetup.ShipEntityView,
@@ -104,12 +106,20 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             containerBuilder.Bind<ISingleRepository<IDisposable<ShipEntityView>>, SimpleSingleRepository<IDisposable<ShipEntityView>>>()
                 .FromNew();
 
+            // Sections
             containerBuilder.Bind<IFactory<SectionEntityViewDefinition, IDisposable<SectionEntityView>>>()
                 .FromFunction((c) => new SectionEntityViewFactory(
                     parent: stageContextReferences.SectionsParent
                     ));
 
             containerBuilder.Bind<IRepository<IDisposable<SectionEntityView>>, SimpleRepository<IDisposable<SectionEntityView>>>()
+                .FromNew();
+
+            // Effects
+            containerBuilder.Bind<IFactory<EffectEntityViewDefinition, IDisposable<EffectEntityView>>>()
+                .FromFunction(c => new EffectEntityViewFactory());
+
+            containerBuilder.Bind<IRepository<IDisposable<EffectEntityView>>, SimpleRepository<IDisposable<EffectEntityView>>>()
                 .FromNew();
 
             containerBuilder.Bind<TimeTriggersTickable>()
@@ -193,12 +203,20 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     c.Resolve<IShipCollidedUseCase>()
                     ));
 
+            containerBuilder.Bind<ITrySpawnRandomSectionEffectUseCase>()
+                .FromFunction((c) => new TrySpawnRandomSectionEffectUseCase(
+                    c.Resolve<IFactory<EffectEntityViewDefinition, IDisposable<EffectEntityView>>>(),
+                    c.Resolve<IRepository<IDisposable<EffectEntityView>>>(),
+                    visualLogicStageSetup.EffectsSetup
+                    ));
+
             containerBuilder.Bind<ITrySpawnRandomSectionUseCase>()
                 .FromFunction((c) => new TrySpawnRandomSectionUseCase(
                     c.Resolve<IFactory<SectionEntityViewDefinition, IDisposable<SectionEntityView>>>(),
                     c.Resolve<IRepository<IDisposable<SectionEntityView>>>(),
                     stageContextReferences.SectionsStartPosition,
-                    visualLogicStageSetup.SectionsSetup
+                    visualLogicStageSetup.SectionsSetup,
+                    c.Resolve<ITrySpawnRandomSectionEffectUseCase>()
                     ));
 
             containerBuilder.Bind<IDespawnSectionUseCase>()

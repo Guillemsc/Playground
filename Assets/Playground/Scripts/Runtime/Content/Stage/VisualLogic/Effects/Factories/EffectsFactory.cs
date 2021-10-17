@@ -40,9 +40,9 @@ namespace Playground.Content.Stage.VisualLogic.Effects
             return creation != null;
         }
 
-        public void Visit(ShipSpeedIncreaseEffectConfiguration visitor)
+        public void Visit(ShipForwardSpeedIncreaseEffectConfiguration visitor)
         {
-            IEffect effect = new ShipSpeedModifiedEffect(
+            IEffect effect = new ShipForwardSpeedModifiedEffect(
                 shipStats,
                 visitor.Ammount
                 );
@@ -52,28 +52,15 @@ namespace Playground.Content.Stage.VisualLogic.Effects
                 TimeSpan.FromSeconds(visitor.Duration)
                 );
 
-            EffectWithTriggerExpirator effectWithTriggerExpirator = new EffectWithTriggerExpirator(
+            newCreation = GenerateEffectWithTimeTriggerExpiratorDisposable(
                 effect,
                 trigger
                 );
-
-            effectWithTriggerExpirator.Enable();
-
-            timeTriggersTickable.Add(trigger);
-
-            newCreation = new Disposable<EffectWithTriggerExpirator>(
-                effectWithTriggerExpirator,
-                (o) =>
-                {
-                    effectWithTriggerExpirator.Disable();
-
-                    timeTriggersTickable.Remove(trigger);
-                });
         }
 
-        public void Visit(ShipSpeedDecreaseEffectConfiguration visitor)
+        public void Visit(ShipForwardSpeedDecreaseEffectConfiguration visitor)
         {
-            IEffect effect = new ShipSpeedModifiedEffect(
+            IEffect effect = new ShipForwardSpeedModifiedEffect(
                 shipStats,
                 -visitor.Ammount
                 );
@@ -83,22 +70,69 @@ namespace Playground.Content.Stage.VisualLogic.Effects
                 TimeSpan.FromSeconds(visitor.Duration)
                 );
 
-            EffectWithTriggerExpirator effectWithTriggerExpirator = new EffectWithTriggerExpirator(
+            newCreation = GenerateEffectWithTimeTriggerExpiratorDisposable(
                 effect,
                 trigger
+                );
+        }
+
+        public void Visit(ShipRotationSpeedIncreaseEffectConfiguration visitor)
+        {
+            IEffect effect = new ShipRotationSpeedModifiedEffect(
+               shipStats,
+               visitor.Ammount
+               );
+
+            TimeTrigger trigger = new TimeTrigger(
+                timeContext.NewTimer(),
+                TimeSpan.FromSeconds(visitor.Duration)
+                );
+
+            newCreation = GenerateEffectWithTimeTriggerExpiratorDisposable(
+                effect,
+                trigger
+                );
+        }
+
+        public void Visit(ShipRotationSpeedDecreaseEffectConfiguration visitor)
+        {
+            IEffect effect = new ShipRotationSpeedModifiedEffect(
+               shipStats,
+               -visitor.Ammount
+               );
+
+            TimeTrigger trigger = new TimeTrigger(
+                timeContext.NewTimer(),
+                TimeSpan.FromSeconds(visitor.Duration)
+                );
+
+            newCreation = GenerateEffectWithTimeTriggerExpiratorDisposable(
+                effect,
+                trigger
+                );
+        }
+
+        private IDisposable<EffectWithTriggerExpirator> GenerateEffectWithTimeTriggerExpiratorDisposable(
+            IEffect effect,
+            TimeTrigger timeTrigger
+            )
+        {
+            EffectWithTriggerExpirator effectWithTriggerExpirator = new EffectWithTriggerExpirator(
+                effect,
+                timeTrigger
                 );
 
             effectWithTriggerExpirator.Enable();
 
-            timeTriggersTickable.Add(trigger);
+            timeTriggersTickable.Add(timeTrigger);
 
-            newCreation = new Disposable<EffectWithTriggerExpirator>(
+            return new Disposable<EffectWithTriggerExpirator>(
                 effectWithTriggerExpirator,
                 (o) =>
                 {
                     effectWithTriggerExpirator.Disable();
 
-                    timeTriggersTickable.Remove(trigger);
+                    timeTriggersTickable.Remove(timeTrigger);
                 });
         }
     }

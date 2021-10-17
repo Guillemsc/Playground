@@ -25,7 +25,7 @@ namespace Playground.Content.Stage.VisualLogic.Cheats.UseCases.SetShipSpeedCheat
             {
                 added = true;
 
-                shipStats.MovementMaxSpeed.Add(statModifier);
+                shipStats.ForwardMaxSpeed.Add(statModifier);
             }
 
             statModifier.ModificationValue = speed;
