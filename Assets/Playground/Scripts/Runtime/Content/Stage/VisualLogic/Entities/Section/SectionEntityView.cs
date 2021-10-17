@@ -1,16 +1,23 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Playground.Content.Stage.VisualLogic.Entities
 {
     public class SectionEntityView : MonoBehaviour
     {
+        [Header("Positions")]
         [SerializeField] private Transform startPosition = default;
         [SerializeField] private Transform endPosition = default;
+
+        [Header("Spawners")]
+        [SerializeField] private List<Transform> spawners = default;
 
         public string TypeId { get; private set; }
 
         public Transform StartPosition => startPosition;
         public Transform EndPosition => endPosition;
+
+        public IReadOnlyList<Transform> Spawners => default;
 
         private void OnDrawGizmos()
         {

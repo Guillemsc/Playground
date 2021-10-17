@@ -77,6 +77,10 @@ namespace Playground.Contexts.Stage
                     stageSetup.SectionsSetup.Sections
                     ),
 
+                new EffectsVisualLogicSetup(
+                    stageSetup.EffectsSetup.Effects
+                    ),
+
                 new DirectionSelectorSetup(
                     stageSetup.DirectionSelectorSetup.BaseSpeedMultiplier
                     )

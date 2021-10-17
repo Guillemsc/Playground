@@ -8,6 +8,7 @@ namespace Playground.Configuration.Stage
     {
         [SerializeField] private ShipConfiguration shipConfiguration = default;
         [SerializeField] private SectionsConfiguration sectionsConfiguration = default;
+        [SerializeField] private EffectsConfiguration effectsConfiguration = default;
         [SerializeField] private DirectionSelectorConfiguration directionSelectorConfiguration = default;
 
         public StageSetup ToSetup()
@@ -15,6 +16,7 @@ namespace Playground.Configuration.Stage
             return new StageSetup(
                 shipConfiguration.ToSetup(),
                 sectionsConfiguration.ToSetup(),
+                effectsConfiguration.ToSetup(),
                 directionSelectorConfiguration.ToSetup()
                 );
         }
