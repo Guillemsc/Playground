@@ -47,10 +47,6 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
 
             containerBuilder.Bind(stageUiContainer);
 
-            containerBuilder.Bind(new StatsInstaller(
-                visualLogicStageSetup
-                ));
-
             containerBuilder.Bind(new UseCasesInstaller(
                 stageLoadedToken,
                 stageFinishedUseCase,

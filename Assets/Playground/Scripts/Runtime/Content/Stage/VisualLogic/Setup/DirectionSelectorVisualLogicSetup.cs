@@ -1,4 +1,4 @@
-﻿namespace Playground.Content.Stage.Setup
+﻿namespace Playground.Content.Stage.VisualLogic.Setup
 {
     public class DirectionSelectorVisualLogicSetup
     {

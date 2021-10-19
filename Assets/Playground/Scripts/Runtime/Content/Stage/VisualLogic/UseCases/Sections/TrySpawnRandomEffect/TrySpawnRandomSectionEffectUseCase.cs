@@ -1,8 +1,8 @@
 ﻿using Juce.Core.Disposables;
 using Juce.Core.Factories;
 using Juce.Core.Repositories;
-using Playground.Content.Stage.Setup;
 using Playground.Content.Stage.VisualLogic.Entities;
+using Playground.Content.Stage.VisualLogic.Setup;
 using UnityEngine;
 
 namespace Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSectionEffect

@@ -1,14 +1,14 @@
-﻿using Playground.Content.Stage.Setup;
+﻿using Playground.Content.Stage.VisualLogic.Setup;
 using UnityEngine;
 
 namespace Playground.Content.Stage.VisualLogic.UseCases.GetDirectionSelectionValue
 {
     public class GetDirectionSelectionValueUseCase : IGetDirectionSelectionValueUseCase
     {
-        private readonly DirectionSelectorSetup directionSelectorSetup;
+        private readonly DirectionSelectorVisualLogicSetup directionSelectorSetup;
 
         public GetDirectionSelectionValueUseCase(
-            DirectionSelectorSetup directionSelectorSetup
+            DirectionSelectorVisualLogicSetup directionSelectorSetup
             )
         {
             this.directionSelectorSetup = directionSelectorSetup;

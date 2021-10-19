@@ -1,7 +1,7 @@
 ﻿using Playground.Content.Stage.VisualLogic.Entities;
 using System.Collections.Generic;
 
-namespace Playground.Content.Stage.Setup
+namespace Playground.Content.Stage.VisualLogic.Setup
 {
     public class EffectsVisualLogicSetup
     {

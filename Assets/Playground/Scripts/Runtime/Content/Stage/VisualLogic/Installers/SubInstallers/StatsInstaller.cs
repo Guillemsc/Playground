@@ -1,24 +1,17 @@
 ﻿using Juce.Core.Bounds.Int;
 using Juce.Core.DI.Builder;
-using Juce.Core.DI.Installers;
 using Juce.Core.Stats;
 using Playground.Content.Stage.VisualLogic.Setup;
 using Playground.Content.Stage.VisualLogic.Stats;
 
 namespace Playground.Content.Stage.VisualLogic.Installers
 {
-    public class StatsInstaller : IInstaller
+    public static class StatsInstaller 
     {
-        private readonly StageVisualLogicSetup visualLogicStageSetup;
-
-        public StatsInstaller(
+        public static void InstallStats(
+            this IDIContainerBuilder container,
             StageVisualLogicSetup visualLogicStageSetup
             )
-        {
-            this.visualLogicStageSetup = visualLogicStageSetup;
-        }
-
-        public void Install(IDIContainerBuilder container)
         {
             MinFloatBounds zeroMinFloatBounds = new MinFloatBounds(0f);
 

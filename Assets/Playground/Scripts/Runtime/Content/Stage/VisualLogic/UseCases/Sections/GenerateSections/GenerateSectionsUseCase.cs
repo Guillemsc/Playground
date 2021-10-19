@@ -1,9 +1,8 @@
-﻿using Cinemachine;
-using Juce.Core.Disposables;
+﻿using Juce.Core.Disposables;
 using Juce.Core.Repositories;
 using Playground.Configuration.Stage;
-using Playground.Content.Stage.Setup;
 using Playground.Content.Stage.VisualLogic.Entities;
+using Playground.Content.Stage.VisualLogic.Setup;
 using Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSection;
 using UnityEngine;
 

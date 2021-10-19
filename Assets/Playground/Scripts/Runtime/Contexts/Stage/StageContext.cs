@@ -78,12 +78,17 @@ namespace Playground.Contexts.Stage
                     stageSetup.SectionsSetup.Sections
                     ),
 
+                new PointGoalsVisualLogicSetup(
+                    stageSetup.PointGoalsSetup.DistanceBetweenPointGoals,
+                    stageSetup.PointGoalsSetup.Prefab
+                    ),
+
                 new EffectsVisualLogicSetup(
                     stageSetup.EffectsSetup.SpawnPercentageProbabiliby,
                     stageSetup.EffectsSetup.Effects
                     ),
 
-                new DirectionSelectorSetup(
+                new DirectionSelectorVisualLogicSetup(
                     stageSetup.DirectionSelectorSetup.BaseSpeedMultiplier
                     )
                 );
