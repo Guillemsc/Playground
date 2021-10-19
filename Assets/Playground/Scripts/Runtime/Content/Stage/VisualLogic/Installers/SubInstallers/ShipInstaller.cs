@@ -14,6 +14,7 @@ using Playground.Content.Stage.VisualLogic.UseCases.KillShip;
 using Playground.Content.Stage.VisualLogic.UseCases.ShipCollided;
 using Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithDeadlyCollision;
 using Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithEffect;
+using Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithPointGoal;
 using Playground.Content.Stage.VisualLogic.UseCases.StartShip;
 using Playground.Content.Stage.VisualLogic.UseCases.StartShipMovement;
 using Playground.Content.Stage.VisualLogic.UseCases.StopShipMovement;
@@ -79,10 +80,15 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     c.Resolve<IAddEffectUseCase>()
                     ));
 
+            container.Bind<IShipCollidedWithPointGoalUseCase>()
+                .FromFunction(c => new ShipCollidedWithPointGoalUseCase(
+                    ));
+
             container.Bind<IShipCollidedUseCase>()
                 .FromFunction((c) => new ShipCollidedUseCase(
                     c.Resolve<IShipCollidedWithDeadlyCollisionUseCase>(),
-                    c.Resolve<IShipCollidedWithEffectUseCase>()
+                    c.Resolve<IShipCollidedWithEffectUseCase>(),
+                    c.Resolve<IShipCollidedWithPointGoalUseCase>()
                     ));
 
             container.Bind<ITryCreateShipViewUseCase>()

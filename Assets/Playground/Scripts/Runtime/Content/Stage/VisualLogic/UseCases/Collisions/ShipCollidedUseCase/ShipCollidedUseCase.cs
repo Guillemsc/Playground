@@ -2,6 +2,7 @@
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithDeadlyCollision;
 using Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithEffect;
+using Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithPointGoal;
 
 namespace Playground.Content.Stage.VisualLogic.UseCases.ShipCollided
 {
@@ -9,14 +10,17 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.ShipCollided
     {
         private readonly IShipCollidedWithDeadlyCollisionUseCase shipCollidedWithDeadlyCollisionUseCase;
         private readonly IShipCollidedWithEffectUseCase shipCollidedWithEffectUseCase;
+        private readonly IShipCollidedWithPointGoalUseCase shipCollidedWithPointGoalUseCase;
 
         public ShipCollidedUseCase(
             IShipCollidedWithDeadlyCollisionUseCase shipCollidedWithDeadlyCollisionUseCase,
-            IShipCollidedWithEffectUseCase shipCollidedWithEffectUseCase
+            IShipCollidedWithEffectUseCase shipCollidedWithEffectUseCase,
+            IShipCollidedWithPointGoalUseCase shipCollidedWithPointGoalUseCase
             )
         {
             this.shipCollidedWithDeadlyCollisionUseCase = shipCollidedWithDeadlyCollisionUseCase;
             this.shipCollidedWithEffectUseCase = shipCollidedWithEffectUseCase;
+            this.shipCollidedWithPointGoalUseCase = shipCollidedWithPointGoalUseCase;
         }
 
         public void Execute(ShipEntityView shipEntityView, Collider2DData collider2DData)
@@ -35,6 +39,15 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.ShipCollided
             if (effectEntityView != null)
             {
                 shipCollidedWithEffectUseCase.Execute(effectEntityView);
+
+                return;
+            }
+
+            PointGoalEntityView pointGoalEntityView = collider2DData.Collider2D.gameObject.GetComponentInParent<PointGoalEntityView>();
+
+            if (pointGoalEntityView != null)
+            {
+                shipCollidedWithPointGoalUseCase.Execute(pointGoalEntityView);
 
                 return;
             }
