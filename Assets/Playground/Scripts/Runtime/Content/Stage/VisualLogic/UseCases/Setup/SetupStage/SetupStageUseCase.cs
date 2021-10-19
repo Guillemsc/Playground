@@ -6,6 +6,7 @@ using Playground.Content.Stage.Logic.Snapshots;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.Sequencing;
 using Playground.Content.Stage.VisualLogic.UseCases.CreateShipView;
+using Playground.Content.Stage.VisualLogic.UseCases.GeneratePointGoals;
 using Playground.Content.Stage.VisualLogic.UseCases.GenerateSections;
 using Playground.Content.Stage.VisualLogic.UseCases.SetDirectionSelectorUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupCamera;
@@ -22,6 +23,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
         private readonly ITimer timer;
         private readonly ITryCreateShipViewUseCase tryCreateShipViewUseCase;
         private readonly IGenerateSectionsUseCase generateSectionsUseCase;
+        private readonly IGeneratePointGoalsUseCase generatePointGoalsUseCase;
         private readonly ISetupCameraUseCase setupCameraUseCase;
         private readonly ISetActionInputDetectionUIVisibleUseCase setActionInputDetectionUIVisibleUseCase;
 
@@ -31,6 +33,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
             ITimer timer,
             ITryCreateShipViewUseCase tryCreateShipViewUseCase,
             IGenerateSectionsUseCase generateSectionsUseCase,
+            IGeneratePointGoalsUseCase generatePointGoalsUseCase,
             ISetupCameraUseCase setupCameraUseCase,
             ISetActionInputDetectionUIVisibleUseCase setActionInputDetectionUIVisibleUseCase
             )
@@ -40,6 +43,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
             this.timer = timer;
             this.tryCreateShipViewUseCase = tryCreateShipViewUseCase;
             this.generateSectionsUseCase = generateSectionsUseCase;
+            this.generatePointGoalsUseCase = generatePointGoalsUseCase;
             this.setupCameraUseCase = setupCameraUseCase;
             this.setActionInputDetectionUIVisibleUseCase = setActionInputDetectionUIVisibleUseCase;
         }
@@ -69,6 +73,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.SetupStage
             }
 
             generateSectionsUseCase.Execute();
+            generatePointGoalsUseCase.Execute();
 
             setupCameraUseCase.Execute();
 

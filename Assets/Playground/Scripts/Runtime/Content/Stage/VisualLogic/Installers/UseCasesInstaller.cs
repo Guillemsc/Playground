@@ -33,6 +33,8 @@ using Playground.Content.Stage.VisualLogic.UseCases.SetEffectsUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.KillShip;
 using Playground.Content.Stage.VisualLogic.UseCases.StartShip;
 using Playground.Content.StageUI.UI.DirectionSelector;
+using Playground.Content.Stage.VisualLogic.UseCases.SetPointGoalsTickablesActive;
+using Playground.Content.Stage.VisualLogic.UseCases.GeneratePointGoals;
 
 namespace Playground.Content.Stage.VisualLogic.Installers
 {
@@ -97,6 +99,12 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                 stageContextReferences
                 );
 
+            containerBuilder.InstallPointGoals(
+                tickableService,
+                visualLogicStageSetup,
+                stageContextReferences
+                );
+
             containerBuilder.InstallEffects(
                 tickableService,
                 timeService
@@ -123,6 +131,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     timeService.UnscaledTimeContext.NewTimer(),
                     c.Resolve<ITryCreateShipViewUseCase>(),
                     c.Resolve<IGenerateSectionsUseCase>(),
+                    c.Resolve<IGeneratePointGoalsUseCase>(),
                     c.Resolve<ISetupCameraUseCase>(),
                     c.Resolve<ISetActionInputDetectionUIVisibleUseCase>()
                     ));
@@ -133,6 +142,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     c.Resolve<InputState>(),
                     c.Resolve<ISingleRepository<IDisposable<ShipEntityView>>>(),
                     c.Resolve<ISetSectionsTickablesActiveUseCase>(),
+                    c.Resolve<ISetPointGoalsTickablesActiveUseCase>(),
                     c.Resolve<IModifyCameraOnceStartsUseCase>(),
                     c.Resolve<IStartShipMovementUseCase>(),
                     c.Resolve<IStartShipUseCase>(),

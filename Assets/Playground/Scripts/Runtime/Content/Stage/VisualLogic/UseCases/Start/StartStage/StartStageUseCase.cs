@@ -8,6 +8,7 @@ using Playground.Content.Stage.VisualLogic.State;
 using Playground.Content.Stage.VisualLogic.UseCases.ModifyCameraOnceStarts;
 using Playground.Content.Stage.VisualLogic.UseCases.SetDirectionSelectorUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetEffectsUIVisible;
+using Playground.Content.Stage.VisualLogic.UseCases.SetPointGoalsTickablesActive;
 using Playground.Content.Stage.VisualLogic.UseCases.SetSectionsTickablesActive;
 using Playground.Content.Stage.VisualLogic.UseCases.StartDirectionSelection;
 using Playground.Content.Stage.VisualLogic.UseCases.StartShip;
@@ -23,6 +24,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
         private readonly InputState inputState;
         private readonly IReadOnlySingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository;
         private readonly ISetSectionsTickablesActiveUseCase setSectionsTickablesActiveUseCase;
+        private readonly ISetPointGoalsTickablesActiveUseCase setPointGoalsTickablesActiveUseCase;
         private readonly IModifyCameraOnceStartsUseCase modifyCameraOnceStartsUseCase;
         private readonly IStartShipMovementUseCase startShipMovementUseCase;
         private readonly IStartShipUseCase startShipUseCase;
@@ -35,6 +37,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
             InputState inputState,
             IReadOnlySingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository,
             ISetSectionsTickablesActiveUseCase setSectionsTickablesActiveUseCase,
+            ISetPointGoalsTickablesActiveUseCase setPointGoalsTickablesActiveUseCase,
             IModifyCameraOnceStartsUseCase modifyCameraOnceStartsUseCase,
             IStartShipMovementUseCase startShipMovementUseCase,
             IStartShipUseCase startShipUseCase,
@@ -47,6 +50,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
             this.inputState = inputState;
             this.shipEntityViewRepository = shipEntityViewRepository;
             this.setSectionsTickablesActiveUseCase = setSectionsTickablesActiveUseCase;
+            this.setPointGoalsTickablesActiveUseCase = setPointGoalsTickablesActiveUseCase;
             this.modifyCameraOnceStartsUseCase = modifyCameraOnceStartsUseCase;
             this.startShipMovementUseCase = startShipMovementUseCase;
             this.startShipUseCase = startShipUseCase;
@@ -79,6 +83,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
             }
 
             setSectionsTickablesActiveUseCase.Execute(active: true);
+            setPointGoalsTickablesActiveUseCase.Execute(active: true);
 
             modifyCameraOnceStartsUseCase.Execute(shipEntityView.Value);
 

@@ -15,3 +15,5 @@ MonoBehaviour:
   delayOnStageFinished: 0.6
   sectionsForwardSpawnDistance: 40
   sectionsBackwardDespawnDistance: 40
+  pointGoalsForwardSpawnDistance: 40
+  pointGoalsBackwardDespawnDistance: 40
