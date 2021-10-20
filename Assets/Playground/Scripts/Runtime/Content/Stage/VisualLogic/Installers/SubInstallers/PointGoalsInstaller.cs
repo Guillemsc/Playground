@@ -5,10 +5,12 @@ using Juce.Core.Repositories;
 using Juce.CoreUnity.Services;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.Setup;
+using Playground.Content.Stage.VisualLogic.State;
 using Playground.Content.Stage.VisualLogic.Tickables;
 using Playground.Content.Stage.VisualLogic.UseCases.CleanPointGoals;
 using Playground.Content.Stage.VisualLogic.UseCases.DespawnPointGoal;
 using Playground.Content.Stage.VisualLogic.UseCases.GeneratePointGoals;
+using Playground.Content.Stage.VisualLogic.UseCases.SetPointGoalAsCollected;
 using Playground.Content.Stage.VisualLogic.UseCases.SetPointGoalsTickablesActive;
 using Playground.Content.Stage.VisualLogic.UseCases.TrySpawnPointGoal;
 using Playground.Contexts.Stage;
@@ -36,7 +38,8 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             container.Bind<ITrySpawnPointGoalUseCase>()
                 .FromFunction(c => new TrySpawnPointGoalUseCase(
                     c.Resolve<IFactory<PointGoalEntityViewDefinition, IDisposable<PointGoalEntityView>>>(),
-                    c.Resolve<IRepository<IDisposable<PointGoalEntityView>>>()
+                    c.Resolve<IRepository<IDisposable<PointGoalEntityView>>>(),
+                    c.Resolve<PointsState>()
                     ));
 
             container.Bind<IDespawnPointGoalUseCase>()
@@ -80,6 +83,11 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                 .FromFunction(c => new SetPointGoalsTickablesActiveUseCase(
                     c.Resolve<GeneratePointGoalsTickable>(),
                     c.Resolve<CleanPointGoalsTickable>()
+                    ));
+
+            container.Bind<ISetPointGoalAsCollectedUseCase>()
+                .FromFunction(c => new SetPointGoalAsCollectedUseCase(
+                     c.Resolve<IRepository<IDisposable<PointGoalEntityView>>>()
                     ));
         }
     }

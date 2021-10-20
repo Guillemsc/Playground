@@ -7,6 +7,7 @@ using Juce.Core.DI.Container;
 using Playground.Content.Stage.Logic.UseCases.SetupStage;
 using Playground.Content.Stage.Logic.UseCases.StartStage;
 using Playground.Content.Stage.Logic.UseCases.ShipCollidedWithDeadlyCollision;
+using Playground.Content.Stage.Logic.UseCases.ShipCollidedWithPointGoal;
 
 namespace Playground.Content.Stage.Logic.Installers
 {
@@ -28,7 +29,8 @@ namespace Playground.Content.Stage.Logic.Installers
             containerBuilder.Bind<MainStateMachineAction>()
                 .FromFunction((c) => new MainStateMachineAction(
                     c.Resolve<IEventReceiver>(),
-                    c.Resolve<IShipCollidedWithDeadlyCollisionUseCase>()
+                    c.Resolve<IShipCollidedWithDeadlyCollisionUseCase>(),
+                    c.Resolve<IShipCollidedWithPointGoalUseCase>()
                     ));
 
             containerBuilder.Bind<DisposeStateMachineAction>()

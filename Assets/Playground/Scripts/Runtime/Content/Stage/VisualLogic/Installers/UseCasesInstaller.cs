@@ -36,6 +36,9 @@ using Playground.Content.StageUI.UI.DirectionSelector;
 using Playground.Content.Stage.VisualLogic.UseCases.SetPointGoalsTickablesActive;
 using Playground.Content.Stage.VisualLogic.UseCases.GeneratePointGoals;
 using Playground.Content.Stage.VisualLogic.UseCases.SetPointsUIVisible;
+using Playground.Content.Stage.VisualLogic.UseCases.PointsChanged;
+using Playground.Content.StageUI.UI.Points;
+using Playground.Content.Stage.VisualLogic.UseCases.SetPointGoalAsCollected;
 
 namespace Playground.Content.Stage.VisualLogic.Installers
 {
@@ -184,6 +187,14 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     c.Resolve<IStopShipMovementUseCase>(),
                     c.Resolve<IKillShipUseCase>(),
                     c.Resolve<IFinishStageUseCase>()
+                    ));
+
+            containerBuilder.Bind<IPointsChangedUseCase>()
+                .FromFunction(c => new PointsChangedUseCase(
+                    c.Resolve<ISequencerTimelines <StageTimeline>>(),
+                    c.Resolve<PointsState>(),
+                    c.Resolve<IPointsUIInteractor>(),
+                    c.Resolve<ISetPointGoalAsCollectedUseCase>()
                     ));
 
         }

@@ -1,33 +1,36 @@
-﻿using Playground.Content.Stage.VisualLogic.Entities;
+﻿using Juce.Core.Events;
+using Playground.Content.Stage.Logic.Events;
+using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.State;
-using Playground.Content.StageUI.UI.Points;
 
 namespace Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithPointGoal
 {
     public class ShipCollidedWithPointGoalUseCase : IShipCollidedWithPointGoalUseCase
     {
+        private readonly IEventDispatcher eventDispatcher;
         private readonly PointsState pointsState;
-        private readonly IPointsUIInteractor pointsUIInteractor;
 
         public ShipCollidedWithPointGoalUseCase(
-            PointsState pointsState,
-            IPointsUIInteractor pointsUIInteractor
+            IEventDispatcher eventDispatcher,
+            PointsState pointsState
             )
         {
+            this.eventDispatcher = eventDispatcher;
             this.pointsState = pointsState;
-            this.pointsUIInteractor = pointsUIInteractor;
         }
 
         public void Execute(PointGoalEntityView pointGoalEntityView)
         {
-            if(pointsState.CurrentPoints >= pointGoalEntityView.PointValue)
+            if(pointGoalEntityView.PointIndex <= pointsState.LastCollectedPointIndex)
             {
                 return;
             }
 
-            pointsState.CurrentPoints = pointGoalEntityView.PointValue;
+            pointsState.LastCollectedPointIndex = pointGoalEntityView.PointIndex;
 
-            pointsUIInteractor.SetPoints(pointsState.CurrentPoints);
+            eventDispatcher.Dispatch(new ShipCollidedWithPointGoalInEvent(
+                pointsAmmount: 1
+                ));
         }
     }
 }

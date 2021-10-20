@@ -83,8 +83,8 @@ namespace Playground.Content.Stage.VisualLogic.Installers
 
             container.Bind<IShipCollidedWithPointGoalUseCase>()
                 .FromFunction(c => new ShipCollidedWithPointGoalUseCase(
-                    c.Resolve<PointsState>(),
-                    c.Resolve<IPointsUIInteractor>()
+                    eventDispatcher,
+                    c.Resolve<PointsState>()
                     ));
 
             container.Bind<IShipCollidedUseCase>()

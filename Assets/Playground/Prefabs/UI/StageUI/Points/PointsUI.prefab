@@ -725,11 +725,23 @@ MonoBehaviour:
   Components:
   - id: 0
   - id: 1
+  - id: 2
   bindingEnabled: 1
   bindableDataUid: 4f4a0377-9750-4164-b76f-f1584fedc1ab
   references:
     version: 1
     00000000:
+      type: {class: WaitAllAboveComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
+      data:
+        folded: 0
+        enabled: 1
+        delay:
+          bindingEnabled: 1
+          wantsToBeBinded: 0
+          binded: 0
+          bindedVariableName: 
+          FallbackValue: 0.15
+    00000001:
       type: {class: TextMeshProTextComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 0
@@ -752,7 +764,7 @@ MonoBehaviour:
           binded: 0
           bindedVariableName: 
           FallbackValue: 0
-    00000001:
+    00000002:
       type: {class: TransformLocalScaleComponent, ns: Juce.TweenPlayer.Components, asm: Juce.TweenPlayer.Runtime}
       data:
         folded: 0

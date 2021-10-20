@@ -2,13 +2,13 @@
 {
     public readonly struct PointGoalEntityViewDefinition 
     {
-        public int PointValue { get; }
+        public int PointIndex { get; }
 
         public PointGoalEntityViewDefinition(
-             int pointValue
+             int pointIndex
             )
         {
-            PointValue = pointValue;
+            PointIndex = pointIndex;
         }
     }
 }

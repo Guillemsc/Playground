@@ -3,7 +3,6 @@
     public interface ITrySpawnPointGoalUseCase
     {
         bool Execute(
-            int pointValue,
             float position
             );
     }

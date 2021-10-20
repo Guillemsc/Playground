@@ -11,6 +11,7 @@ using Playground.Content.Stage.Logic.UseCases.SetupStage;
 using Playground.Content.Stage.Logic.UseCases.StartStage;
 using Playground.Content.Stage.Logic.State;
 using Playground.Content.Stage.Logic.UseCases.ShipCollidedWithDeadlyCollision;
+using Playground.Content.Stage.Logic.UseCases.ShipCollidedWithPointGoal;
 
 namespace Playground.Content.Stage.Logic.Installers
 {
@@ -55,6 +56,12 @@ namespace Playground.Content.Stage.Logic.Installers
                 .FromFunction((c) => new ShipCollidedWithDeadlyCollisionUseCase(
                     c.Resolve<IEventDispatcher>(),
                     c.Resolve<ISingleRepository<ShipEntity>>()
+                    ));
+
+            containerBuilder.Bind<IShipCollidedWithPointGoalUseCase>()
+                .FromFunction(c => new ShipCollidedWithPointGoalUseCase(
+                    c.Resolve<IEventDispatcher>(),
+                    c.Resolve<StageState>()
                     ));
         }
     }

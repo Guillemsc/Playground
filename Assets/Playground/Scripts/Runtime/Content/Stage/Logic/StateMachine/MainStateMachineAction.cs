@@ -2,6 +2,7 @@
 using Juce.Core.State;
 using Playground.Content.Stage.Logic.Events;
 using Playground.Content.Stage.Logic.UseCases.ShipCollidedWithDeadlyCollision;
+using Playground.Content.Stage.Logic.UseCases.ShipCollidedWithPointGoal;
 
 namespace Playground.Content.Stage.Logic.StateMachine
 {
@@ -9,18 +10,22 @@ namespace Playground.Content.Stage.Logic.StateMachine
     {
         private readonly IEventReceiver eventReceiver;
         private readonly IShipCollidedWithDeadlyCollisionUseCase shipCollidedWithDeadlyCollisionUseCase;
+        private readonly IShipCollidedWithPointGoalUseCase shipCollidedWithPointGoalUseCase;
 
         private IStateMachine<LogicState> stateMachine;
 
         private IEventReference shipCollidedWithDeadlyCollisionInEvent;
+        private IEventReference shipCollidedWithPointGoalInEvent;
 
         public MainStateMachineAction(
             IEventReceiver eventReceiver,
-            IShipCollidedWithDeadlyCollisionUseCase shipCollidedWithDeadlyCollisionUseCase
+            IShipCollidedWithDeadlyCollisionUseCase shipCollidedWithDeadlyCollisionUseCase,
+            IShipCollidedWithPointGoalUseCase shipCollidedWithPointGoalUseCase
             )
         {
             this.eventReceiver = eventReceiver;
             this.shipCollidedWithDeadlyCollisionUseCase = shipCollidedWithDeadlyCollisionUseCase;
+            this.shipCollidedWithPointGoalUseCase = shipCollidedWithPointGoalUseCase;
         }
 
         public void OnEnter()
@@ -28,11 +33,16 @@ namespace Playground.Content.Stage.Logic.StateMachine
             shipCollidedWithDeadlyCollisionInEvent = eventReceiver.Subscribe<ShipCollidedWithDeadlyCollisionInEvent>(
                 ShipCollidedWithDeadlyCollisionInEvent
                 );
+
+            shipCollidedWithPointGoalInEvent = eventReceiver.Subscribe<ShipCollidedWithPointGoalInEvent>(
+                ShipCollidedWithPointGoalInEvent
+                );
         }
 
         public void OnExit()
         {
             eventReceiver.Unsubscribe(shipCollidedWithDeadlyCollisionInEvent);
+            eventReceiver.Unsubscribe(shipCollidedWithPointGoalInEvent);
         }
 
         public void OnRun(IStateMachine<LogicState> stateMachine)
@@ -45,23 +55,9 @@ namespace Playground.Content.Stage.Logic.StateMachine
             shipCollidedWithDeadlyCollisionUseCase.Execute(ev.ShipInstanceId);
         }
 
-        //private void CheckPointCrossedInEvent(CheckPointCrossedInEvent ev)
-        //{
-        //    useCaseRepository.CheckPointCrossedUseCase.Execute(ev.CheckPointIndex);
-        //}
-
-        //private void FinishLineCrossedInEvent(FinishLineCrossedInEvent ev)
-        //{
-        //    useCaseRepository.FinishLineCrossedUseCase.Execute();
-
-        //    bool completed = useCaseRepository.IsStageCompletedUseCase.Execute();
-
-        //    if(!completed)
-        //    {
-        //        return;
-        //    }
-
-        //    stateMachine.SetNextState(LogicState.Dispose);
-        //}
+        private void ShipCollidedWithPointGoalInEvent(ShipCollidedWithPointGoalInEvent ev)
+        {
+            shipCollidedWithPointGoalUseCase.Execute(ev.PointsAmmount);
+        }
     }
 }

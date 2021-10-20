@@ -1,14 +1,23 @@
-﻿using UnityEngine;
+﻿using Juce.TweenPlayer;
+using System.Threading;
+using UnityEngine;
 
 namespace Playground.Content.Stage.VisualLogic.Entities
 {
     public class PointGoalEntityView : MonoBehaviour
     {
-        public int PointValue { get; private set; }
+        [SerializeField] private TweenPlayer collectedTween = default;
 
-        public void Init(int pointValue)
+        public int PointIndex { get; private set; }
+
+        public void Init(int pointIndex)
         {
-            PointValue = pointValue;
+            PointIndex = pointIndex;
+        }
+
+        public void SetCollected()
+        {
+            collectedTween.Play(CancellationToken.None).RunAsync();
         }
     }
 }

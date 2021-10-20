@@ -15,7 +15,7 @@ namespace Playground.Content.Stage.VisualLogic.Entities
 
         protected sealed override void Init(PointGoalEntityViewDefinition definition, PointGoalEntityView creation)
         {
-            creation.Init(definition.PointValue);
+            creation.Init(definition.PointIndex);
         }
     }
 }
