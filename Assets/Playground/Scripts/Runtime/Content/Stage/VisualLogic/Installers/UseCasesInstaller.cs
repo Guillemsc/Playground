@@ -35,6 +35,7 @@ using Playground.Content.Stage.VisualLogic.UseCases.StartShip;
 using Playground.Content.StageUI.UI.DirectionSelector;
 using Playground.Content.Stage.VisualLogic.UseCases.SetPointGoalsTickablesActive;
 using Playground.Content.Stage.VisualLogic.UseCases.GeneratePointGoals;
+using Playground.Content.Stage.VisualLogic.UseCases.SetPointsUIVisible;
 
 namespace Playground.Content.Stage.VisualLogic.Installers
 {
@@ -148,6 +149,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     c.Resolve<IStartShipUseCase>(),
                     c.Resolve<ISetDirectionSelectorUIVisibleUseCase>(),
                     c.Resolve<ISetEffectsUIVisibleUseCase>(),
+                    c.Resolve<ISetPointsUIVisibleUseCase>(),
                     c.Resolve<IStartDirectionSelectionUseCase>()
                     ));
 
@@ -171,6 +173,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     c.Resolve<ISetActionInputDetectionUIVisibleUseCase>(),
                     c.Resolve<ISetDirectionSelectorUIVisibleUseCase>(),
                     c.Resolve<ISetEffectsUIVisibleUseCase>(),
+                    c.Resolve<ISetPointsUIVisibleUseCase>(),
                     stageFinishedUseCase
                     ));
             

@@ -5,6 +5,7 @@ using Playground.Content.StageUI.Installers;
 using Playground.Content.StageUI.UI.ActionInputDetection;
 using Playground.Content.StageUI.UI.DirectionSelector;
 using Playground.Content.StageUI.UI.Effects;
+using Playground.Content.StageUI.UI.Points;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +26,8 @@ namespace Playground.Contexts.StageUI
             containerBuilder.Bind(
                 stageUIContextReferences.ActionInputDetectionUIInstaller,
                 stageUIContextReferences.DirectionSelectorUIInstaller,
-                stageUIContextReferences.EffectsUIInstaller
+                stageUIContextReferences.EffectsUIInstaller,
+                stageUIContextReferences.PointsUIInstaller
                 );
 
             IDIContainer container = containerBuilder.Build();
@@ -44,6 +46,7 @@ namespace Playground.Contexts.StageUI
             finalContainerBuilder.Bind<IActionInputDetectionUIInteractor>().FromContainer(container);
             finalContainerBuilder.Bind<IDirectionSelectorUIInteractor>().FromContainer(container);
             finalContainerBuilder.Bind<IEffectsUIInteractor>().FromContainer(container);
+            finalContainerBuilder.Bind<IPointsUIInteractor>().FromContainer(container);
 
             Container = finalContainerBuilder.Build();
         }

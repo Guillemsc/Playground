@@ -20,10 +20,15 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.TrySpawnPointGoal
             this.pointGoalEntityViewRepository = pointGoalEntityViewRepository;
         }
 
-        public bool Execute(float position)
+        public bool Execute(
+            int pointValue,
+            float position
+            )
         {
             bool created = pointGoalEntityViewFactory.TryCreate(
-                new PointGoalEntityViewDefinition(),
+                new PointGoalEntityViewDefinition(
+                    pointValue
+                    ),
                 out IDisposable<PointGoalEntityView> creation
                 );
 

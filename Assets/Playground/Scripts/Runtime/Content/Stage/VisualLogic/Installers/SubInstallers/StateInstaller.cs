@@ -11,6 +11,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
         {
             container.Bind<InputState>().FromNew();
             container.Bind<DirectionSelectionState>().FromNew();
+            container.Bind<PointsState>().FromNew();
         }
     }
 }

@@ -17,6 +17,8 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.GeneratePointGoals
         private readonly StageSettings stageSettings;
         private readonly ITrySpawnPointGoalUseCase trySpawnPointGoalUseCase;
 
+        private int spawnedPoints;
+
         public GeneratePointGoalsUseCase(
             IReadOnlySingleRepository<IDisposable<ShipEntityView>> shipEntityViewRepository,
             IRepository<IDisposable<PointGoalEntityView>> pointGoalsEntityViewRepository,
@@ -47,7 +49,9 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.GeneratePointGoals
             {
                 if (pointGoalsEntityViewRepository.Items.Count == 0)
                 {
-                    trySpawnPointGoalUseCase.Execute(sectionsStartPosition.position.y);
+                    spawnedPoints = 1;
+
+                    trySpawnPointGoalUseCase.Execute(spawnedPoints, sectionsStartPosition.position.y);
 
                     continue;
                 }
@@ -64,7 +68,9 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.GeneratePointGoals
                     break;
                 }
 
-                trySpawnPointGoalUseCase.Execute(nextPosition);
+                ++spawnedPoints;
+
+                trySpawnPointGoalUseCase.Execute(spawnedPoints, nextPosition);
             }
         }
     }

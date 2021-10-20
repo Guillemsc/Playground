@@ -3,6 +3,7 @@ using Playground.Configuration.Stage;
 using Playground.Content.Stage.UseCases.StageFinished;
 using Playground.Content.Stage.VisualLogic.UseCases.SetDirectionSelectorUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetEffectsUIVisible;
+using Playground.Content.Stage.VisualLogic.UseCases.SetPointsUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupCamera;
 using System;
 using System.Threading;
@@ -17,6 +18,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.FinishStage
         private readonly ISetActionInputDetectionUIVisibleUseCase setActionInputDetectionUIVisibleUseCase;
         private readonly ISetDirectionSelectorUIVisibleUseCase setDirectionSelectorUIVisibleUseCase;
         private readonly ISetEffectsUIVisibleUseCase setEffectsUIVisibleUseCase;
+        private readonly ISetPointsUIVisibleUseCase setPointsUIVisibleUseCase;
         private readonly IStageFinishedUseCase stageFinishedUseCase;
 
         public FinishStageUseCase(
@@ -25,6 +27,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.FinishStage
             ISetActionInputDetectionUIVisibleUseCase setActionInputDetectionUIVisibleUseCase,
             ISetDirectionSelectorUIVisibleUseCase setDirectionSelectorUIVisibleUseCase,
             ISetEffectsUIVisibleUseCase setEffectsUIVisibleUseCase,
+            ISetPointsUIVisibleUseCase setPointsUIVisibleUseCase,
             IStageFinishedUseCase stageFinishedUseCase
             )
         {
@@ -33,6 +36,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.FinishStage
             this.setActionInputDetectionUIVisibleUseCase = setActionInputDetectionUIVisibleUseCase;
             this.setDirectionSelectorUIVisibleUseCase = setDirectionSelectorUIVisibleUseCase;
             this.setEffectsUIVisibleUseCase = setEffectsUIVisibleUseCase;
+            this.setPointsUIVisibleUseCase = setPointsUIVisibleUseCase;
             this.stageFinishedUseCase = stageFinishedUseCase;
         }
 
@@ -51,6 +55,11 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.FinishStage
                     cancellationToken
                     ),
                 setEffectsUIVisibleUseCase.Execute(
+                    visible: false,
+                    instantly: false,
+                    cancellationToken
+                    ),
+                setPointsUIVisibleUseCase.Execute(
                     visible: false,
                     instantly: false,
                     cancellationToken

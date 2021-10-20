@@ -18,6 +18,7 @@ using Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithPointGoal;
 using Playground.Content.Stage.VisualLogic.UseCases.StartShip;
 using Playground.Content.Stage.VisualLogic.UseCases.StartShipMovement;
 using Playground.Content.Stage.VisualLogic.UseCases.StopShipMovement;
+using Playground.Content.StageUI.UI.Points;
 using Playground.Contexts.Stage;
 using Playground.Services;
 
@@ -82,6 +83,8 @@ namespace Playground.Content.Stage.VisualLogic.Installers
 
             container.Bind<IShipCollidedWithPointGoalUseCase>()
                 .FromFunction(c => new ShipCollidedWithPointGoalUseCase(
+                    c.Resolve<PointsState>(),
+                    c.Resolve<IPointsUIInteractor>()
                     ));
 
             container.Bind<IShipCollidedUseCase>()

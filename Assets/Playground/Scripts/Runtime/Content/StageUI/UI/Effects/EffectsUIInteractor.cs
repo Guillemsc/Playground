@@ -1,11 +1,8 @@
 ﻿using Juce.Core.Subscribables;
-using Playground.Configuration.Stage;
 using Playground.Content.Stage.VisualLogic.Effects;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.StageUI.UI.Effects.UseCases.EffectAdded;
 using Playground.Content.StageUI.UI.Effects.UseCases.EffectExpired;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Playground.Content.StageUI.UI.Effects
 {

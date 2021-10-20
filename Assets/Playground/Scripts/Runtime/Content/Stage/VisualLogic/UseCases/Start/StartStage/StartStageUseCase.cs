@@ -9,6 +9,7 @@ using Playground.Content.Stage.VisualLogic.UseCases.ModifyCameraOnceStarts;
 using Playground.Content.Stage.VisualLogic.UseCases.SetDirectionSelectorUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetEffectsUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetPointGoalsTickablesActive;
+using Playground.Content.Stage.VisualLogic.UseCases.SetPointsUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetSectionsTickablesActive;
 using Playground.Content.Stage.VisualLogic.UseCases.StartDirectionSelection;
 using Playground.Content.Stage.VisualLogic.UseCases.StartShip;
@@ -30,6 +31,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
         private readonly IStartShipUseCase startShipUseCase;
         private readonly ISetDirectionSelectorUIVisibleUseCase setDirectionSelectorUIVisibleUseCase;
         private readonly ISetEffectsUIVisibleUseCase setEffectsUIVisibleUseCase;
+        private readonly ISetPointsUIVisibleUseCase setPointsUIVisibleUseCase;
         private readonly IStartDirectionSelectionUseCase startDirectionSelectionUseCase;
 
         public StartStageUseCase(
@@ -43,6 +45,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
             IStartShipUseCase startShipUseCase,
             ISetDirectionSelectorUIVisibleUseCase setDirectionSelectorUIVisibleUseCase,
             ISetEffectsUIVisibleUseCase setEffectsUIVisibleUseCase,
+            ISetPointsUIVisibleUseCase setPointsUIVisibleUseCase,
             IStartDirectionSelectionUseCase startDirectionSelectionUseCase
             )
         {
@@ -56,6 +59,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
             this.startShipUseCase = startShipUseCase;
             this.setDirectionSelectorUIVisibleUseCase = setDirectionSelectorUIVisibleUseCase;
             this.setEffectsUIVisibleUseCase = setEffectsUIVisibleUseCase;
+            this.setPointsUIVisibleUseCase = setPointsUIVisibleUseCase;
             this.startDirectionSelectionUseCase = startDirectionSelectionUseCase;
         }
 
@@ -93,6 +97,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.StartStage
 
             setDirectionSelectorUIVisibleUseCase.Execute(visible: true, instantly: false, cancellationToken).RunAsync();
             setEffectsUIVisibleUseCase.Execute(visible: true, instantly: false, cancellationToken).RunAsync();
+            setPointsUIVisibleUseCase.Execute(visible: true, instantly: false, cancellationToken).RunAsync();
 
             startDirectionSelectionUseCase.Execute();
 
