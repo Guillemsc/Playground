@@ -16,7 +16,6 @@ using Playground.Content.Stage.VisualLogic.UseCases.FinishStage;
 using Playground.Content.Stage.VisualLogic.UseCases.GenerateSections;
 using Playground.Content.Stage.VisualLogic.UseCases.InputActionReceived;
 using Playground.Content.Stage.VisualLogic.UseCases.ModifyCameraOnceStarts;
-using Playground.Content.Stage.VisualLogic.UseCases.SetDirectionSelectorUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetSectionsTickablesActive;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupCamera;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupStage;
@@ -29,13 +28,11 @@ using Playground.Contexts.Stage;
 using Playground.Services;
 using Playground.Services.ViewStack;
 using Playground.Content.Stage.VisualLogic.UseCases.ChangeShipDirection;
-using Playground.Content.Stage.VisualLogic.UseCases.SetEffectsUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.KillShip;
 using Playground.Content.Stage.VisualLogic.UseCases.StartShip;
 using Playground.Content.StageUI.UI.DirectionSelector;
 using Playground.Content.Stage.VisualLogic.UseCases.SetPointGoalsTickablesActive;
 using Playground.Content.Stage.VisualLogic.UseCases.GeneratePointGoals;
-using Playground.Content.Stage.VisualLogic.UseCases.SetPointsUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.PointsChanged;
 using Playground.Content.StageUI.UI.Points;
 using Playground.Content.Stage.VisualLogic.UseCases.SetPointGoalAsCollected;
@@ -120,6 +117,8 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                 timeService,
                 visualLogicStageSetup
                 );
+
+            containerBuilder.InstallToasterTexts();
 
             containerBuilder.InstallUI(
                 uiViewStackService

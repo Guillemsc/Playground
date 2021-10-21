@@ -2,6 +2,6 @@
 {
     public interface IToasterTextsUIInteractor
     {
-  
+        void PlayToasterText(string text);
     }
 }
