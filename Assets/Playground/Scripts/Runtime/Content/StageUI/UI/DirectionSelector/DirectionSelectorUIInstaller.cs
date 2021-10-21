@@ -28,11 +28,6 @@ namespace Playground.Content.StageUI.UI.DirectionSelector
             container.Bind<DirectionSelectorUIView>()
                 .FromGameObject(gameObject)
                 .WhenInit((c, o) => o.Init(c.Resolve<DirectionSelectorUIViewModel>()))
-                .WhenInit((c, o) => c.Resolve<UIViewStackService>().Register(
-                    c.Resolve<IDirectionSelectorUIInteractor>(),
-                    o
-                    ))
-                .WhenDispose((c, o) => c.Resolve<UIViewStackService>().Unregister(o))
                 .LinkSubscribable()
                 .NonLazy();
 

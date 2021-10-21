@@ -20,17 +20,12 @@ namespace Playground.Content.StageUI.UI.Points
 
         public void Subscribe()
         {
-
+            SetPoints(points: 0, instantly: true);
         }
 
         public void Unsubscribe()
         {
 
-        }
-
-        public void Refresh()
-        {
-            SetPoints(points: 0, instantly: true);
         }
 
         public void SetPoints(int points, bool instantly = false)

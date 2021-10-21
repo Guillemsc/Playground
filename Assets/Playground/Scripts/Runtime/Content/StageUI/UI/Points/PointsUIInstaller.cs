@@ -22,11 +22,6 @@ namespace Playground.Content.StageUI.UI.Points
             container.Bind<PointsUIView>()
                 .FromGameObject(gameObject)
                 .WhenInit((c, o) => o.Init(c.Resolve<PointsUIViewModel>()))
-                .WhenInit((c, o) => c.Resolve<UIViewStackService>().Register(
-                    c.Resolve<IPointsUIInteractor>(),
-                    o
-                    ))
-                .WhenDispose((c, o) => c.Resolve<UIViewStackService>().Unregister(o))
                 .NonLazy();
 
             container.Bind(InstallUseCases);

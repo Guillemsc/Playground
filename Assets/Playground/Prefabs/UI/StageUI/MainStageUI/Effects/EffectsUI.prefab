@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a09fcb0e8e43064581b19538d46ef89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  executeInstantlyOnAwake: 1
+  executeInstantlyOnAwake: 0
   tweenPlayersToPlay:
   - {fileID: 8266767965086805212}
   tweenPlayersToKill:

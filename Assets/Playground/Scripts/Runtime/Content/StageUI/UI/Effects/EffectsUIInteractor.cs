@@ -33,11 +33,6 @@ namespace Playground.Content.StageUI.UI.Effects
 
         }
 
-        public void Refresh()
-        {
-          
-        }
-
         public void AddEffect(
             EffectEntityView effectEntityView, 
             EffectWithTriggerExpirator effectWithTriggerExpirator

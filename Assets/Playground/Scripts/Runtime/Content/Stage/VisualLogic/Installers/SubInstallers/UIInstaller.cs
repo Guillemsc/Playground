@@ -1,6 +1,7 @@
 ﻿using Juce.Core.DI.Builder;
 using Playground.Content.Stage.VisualLogic.UseCases.SetDirectionSelectorUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetEffectsUIVisible;
+using Playground.Content.Stage.VisualLogic.UseCases.SetMainStageUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetPointsUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupCamera;
 using Playground.Services.ViewStack;
@@ -19,21 +20,10 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     uiViewStackService
                     ));
 
-            container.Bind<ISetDirectionSelectorUIVisibleUseCase>()
-                .FromFunction(c => new SetDirectionSelectorUIVisibleUseCase(
+            container.Bind<ISetMainStageUIVisibleUseCase>()
+                .FromFunction(c => new SetMainStageUIVisibleUseCase(
                     uiViewStackService
                     ));
-
-            container.Bind<ISetEffectsUIVisibleUseCase>()
-                .FromFunction(c => new SetEffectsUIVisibleUseCase(
-                    uiViewStackService
-                    ));
-
-            container.Bind<ISetPointsUIVisibleUseCase>()
-                  .FromFunction(c => new SetPointsUIVisibleUseCase(
-                    uiViewStackService
-                    ));
-
         }
     }
 }

@@ -35,11 +35,6 @@ namespace Playground.Content.StageUI.UI.Effects
             container.Bind<EffectsUIView>()
                 .FromGameObject(gameObject)
                 .WhenInit((c, o) => o.Init(c.Resolve<EffectsUIViewModel>()))
-                .WhenInit((c, o) => c.Resolve<UIViewStackService>().Register(
-                    c.Resolve<IEffectsUIInteractor>(),
-                    o
-                    ))
-                .WhenDispose((c, o) => c.Resolve<UIViewStackService>().Unregister(o))
                 .NonLazy();
 
             container.Bind(InstallUseCases);

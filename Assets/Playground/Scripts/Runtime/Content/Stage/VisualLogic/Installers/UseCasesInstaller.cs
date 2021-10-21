@@ -39,6 +39,7 @@ using Playground.Content.Stage.VisualLogic.UseCases.SetPointsUIVisible;
 using Playground.Content.Stage.VisualLogic.UseCases.PointsChanged;
 using Playground.Content.StageUI.UI.Points;
 using Playground.Content.Stage.VisualLogic.UseCases.SetPointGoalAsCollected;
+using Playground.Content.Stage.VisualLogic.UseCases.SetMainStageUIVisible;
 
 namespace Playground.Content.Stage.VisualLogic.Installers
 {
@@ -150,9 +151,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     c.Resolve<IModifyCameraOnceStartsUseCase>(),
                     c.Resolve<IStartShipMovementUseCase>(),
                     c.Resolve<IStartShipUseCase>(),
-                    c.Resolve<ISetDirectionSelectorUIVisibleUseCase>(),
-                    c.Resolve<ISetEffectsUIVisibleUseCase>(),
-                    c.Resolve<ISetPointsUIVisibleUseCase>(),
+                    c.Resolve<ISetMainStageUIVisibleUseCase>(),
                     c.Resolve<IStartDirectionSelectionUseCase>()
                     ));
 
@@ -174,9 +173,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     stageContextReferences.StageSettings,
                     timeService.UnscaledTimeContext.NewTimer(),
                     c.Resolve<ISetActionInputDetectionUIVisibleUseCase>(),
-                    c.Resolve<ISetDirectionSelectorUIVisibleUseCase>(),
-                    c.Resolve<ISetEffectsUIVisibleUseCase>(),
-                    c.Resolve<ISetPointsUIVisibleUseCase>(),
+                    c.Resolve<ISetMainStageUIVisibleUseCase>(),
                     stageFinishedUseCase
                     ));
             

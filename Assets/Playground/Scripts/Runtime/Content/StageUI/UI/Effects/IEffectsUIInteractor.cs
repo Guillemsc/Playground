@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Playground.Content.StageUI.UI.Effects
 {
-    public interface IEffectsUIInteractor : UIInteractor
+    public interface IEffectsUIInteractor 
     {
         void AddEffect(
             EffectEntityView effectEntityView,

@@ -6,7 +6,7 @@ using Playground.Content.StageUI.UI.ActionInputDetection;
 using Playground.Content.StageUI.UI.DirectionSelector;
 using Playground.Content.StageUI.UI.Effects;
 using Playground.Content.StageUI.UI.Points;
-using System.Collections.Generic;
+using Playground.Content.StageUI.UI.ToasterTexts;
 using UnityEngine;
 
 namespace Playground.Contexts.StageUI
@@ -25,9 +25,11 @@ namespace Playground.Contexts.StageUI
 
             containerBuilder.Bind(
                 stageUIContextReferences.ActionInputDetectionUIInstaller,
+                stageUIContextReferences.MainStageUIInstaller,
                 stageUIContextReferences.DirectionSelectorUIInstaller,
                 stageUIContextReferences.EffectsUIInstaller,
-                stageUIContextReferences.PointsUIInstaller
+                stageUIContextReferences.PointsUIInstaller,
+                stageUIContextReferences.ToasterTextsUIInstaller
                 );
 
             IDIContainer container = containerBuilder.Build();
@@ -47,6 +49,7 @@ namespace Playground.Contexts.StageUI
             finalContainerBuilder.Bind<IDirectionSelectorUIInteractor>().FromContainer(container);
             finalContainerBuilder.Bind<IEffectsUIInteractor>().FromContainer(container);
             finalContainerBuilder.Bind<IPointsUIInteractor>().FromContainer(container);
+            finalContainerBuilder.Bind<IToasterTextsUIInteractor>().FromContainer(container);
 
             Container = finalContainerBuilder.Build();
         }

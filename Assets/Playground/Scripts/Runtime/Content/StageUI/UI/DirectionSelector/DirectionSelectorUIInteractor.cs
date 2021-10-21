@@ -23,17 +23,12 @@ namespace Playground.Content.StageUI.UI.DirectionSelector
 
         public void Subscribe()
         {
-       
+            setCurrentSelectedPositionUseCase.Execute(normalizedPosition: 0.5f, instantly: true);
         }
 
         public void Unsubscribe()
         {
           
-        }
-
-        public void Refresh()
-        {
-            setCurrentSelectedPositionUseCase.Execute(normalizedPosition: 0.5f, instantly: true);
         }
 
         public void SetDirectionSelectionPosition(float normalizedPosition)
