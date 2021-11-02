@@ -8,6 +8,7 @@ using Playground.Content.Stage.Logic.UseCases.SetupStage;
 using Playground.Content.Stage.Logic.UseCases.StartStage;
 using Playground.Content.Stage.Logic.UseCases.ShipCollidedWithDeadlyCollision;
 using Playground.Content.Stage.Logic.UseCases.ShipCollidedWithPointGoal;
+using Playground.Content.Stage.Logic.UseCases.ShipCollidedWithCoin;
 
 namespace Playground.Content.Stage.Logic.Installers
 {
@@ -30,7 +31,8 @@ namespace Playground.Content.Stage.Logic.Installers
                 .FromFunction((c) => new MainStateMachineAction(
                     c.Resolve<IEventReceiver>(),
                     c.Resolve<IShipCollidedWithDeadlyCollisionUseCase>(),
-                    c.Resolve<IShipCollidedWithPointGoalUseCase>()
+                    c.Resolve<IShipCollidedWithPointGoalUseCase>(),
+                    c.Resolve<IShipCollidedWithCoinUseCase>()
                     ));
 
             containerBuilder.Bind<DisposeStateMachineAction>()

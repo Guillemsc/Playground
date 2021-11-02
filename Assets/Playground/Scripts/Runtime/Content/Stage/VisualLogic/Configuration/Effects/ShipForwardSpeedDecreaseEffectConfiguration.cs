@@ -5,6 +5,7 @@ namespace Playground.Configuration.Stage
     [CreateAssetMenu(fileName = nameof(ShipForwardSpeedDecreaseEffectConfiguration), menuName = "Playground/Configuration/Effect/ShipForwardSpeedDecrease", order = 1)]
     public class ShipForwardSpeedDecreaseEffectConfiguration : EffectConfiguration
     {
+        [Header("Specific")]
         [SerializeField, Min(0)] private float ammount = default;
         [SerializeField, Min(0)] private float duration = default;
 

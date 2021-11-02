@@ -95,6 +95,13 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                 stageContextReferences
                 );
 
+            containerBuilder.InstallEffects(
+                tickableService,
+                timeService
+                );
+
+            containerBuilder.InstallCoins();
+
             containerBuilder.InstallSections(
                 tickableService,
                 visualLogicStageSetup,
@@ -105,11 +112,6 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                 tickableService,
                 visualLogicStageSetup,
                 stageContextReferences
-                );
-
-            containerBuilder.InstallEffects(
-                tickableService,
-                timeService
                 );
 
             containerBuilder.InstallDirectionSelector(

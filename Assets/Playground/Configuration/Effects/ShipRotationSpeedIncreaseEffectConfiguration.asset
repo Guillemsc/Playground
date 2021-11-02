@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b20b2eee77ecf04e8e1cd1caf846ad5, type: 3}
   m_Name: ShipRotationSpeedIncreaseEffectConfiguration
   m_EditorClassIdentifier: 
+  effectNameTid: + Rotation
   ammount: 40
   duration: 6

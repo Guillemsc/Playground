@@ -5,6 +5,7 @@ namespace Playground.Configuration.Stage
     [CreateAssetMenu(fileName = nameof(ShipRotationSpeedIncreaseEffectConfiguration), menuName = "Playground/Configuration/Effect/ShipRotationSpeedIncrease", order = 1)]
     public class ShipRotationSpeedIncreaseEffectConfiguration : EffectConfiguration
     {
+        [Header("Specific")]
         [SerializeField, Min(0)] private float ammount = default;
         [SerializeField, Min(0)] private float duration = default;
 

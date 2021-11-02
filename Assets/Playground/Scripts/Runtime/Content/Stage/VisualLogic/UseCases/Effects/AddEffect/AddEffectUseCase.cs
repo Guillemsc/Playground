@@ -51,7 +51,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.AddEffect
 
             effectsUIInteractor.AddEffect(effectEntityView, creation.Value);
 
-            playToasterTextUseCase.Execute("Effect!");
+            playToasterTextUseCase.Execute(effectConfiguration.EffectNameTid);
 
             creation.Value.OnExpired += () => removeEffectUseCase.Execute(creation);
         }

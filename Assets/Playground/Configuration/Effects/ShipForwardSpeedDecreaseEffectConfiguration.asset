@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364b4251096d9dc46acbd9d5c64019a0, type: 3}
   m_Name: ShipForwardSpeedDecreaseEffectConfiguration
   m_EditorClassIdentifier: 
+  effectNameTid: '- Speed'
   ammount: 1
   duration: 4

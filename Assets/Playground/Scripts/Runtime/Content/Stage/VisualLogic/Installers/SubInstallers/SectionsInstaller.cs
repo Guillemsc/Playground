@@ -12,6 +12,8 @@ using Playground.Content.Stage.VisualLogic.UseCases.GenerateSections;
 using Playground.Content.Stage.VisualLogic.UseCases.SetSectionsTickablesActive;
 using Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSection;
 using Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSectionEffect;
+using Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSectionElement;
+using Playground.Content.Stage.VisualLogic.UseCases.TrySpawnSectionCoin;
 using Playground.Contexts.Stage;
 
 namespace Playground.Content.Stage.VisualLogic.Installers
@@ -36,8 +38,19 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             container.Bind<ITrySpawnRandomSectionEffectUseCase>()
                 .FromFunction((c) => new TrySpawnRandomSectionEffectUseCase(
                     c.Resolve<IFactory<EffectEntityViewDefinition, IDisposable<EffectEntityView>>>(),
-                    c.Resolve<IRepository<IDisposable<EffectEntityView>>>(),
                     visualLogicStageSetup.EffectsSetup
+                    ));
+
+            container.Bind<ITrySpawnSectionCoinUseCase>()
+                .FromFunction(c => new TrySpawnSectionCoinUseCase(
+                    c.Resolve<IFactory<CoinEntityViewDefinition, IDisposable<CoinEntityView>>>(),
+                    visualLogicStageSetup.CoinsSetup
+                    ));
+
+            container.Bind<ITrySpawnRandomSectionElementUseCase>()
+                .FromFunction(c => new TrySpawnRandomSectionElementUseCase(
+                    c.Resolve<ITrySpawnRandomSectionEffectUseCase>(),
+                    c.Resolve<ITrySpawnSectionCoinUseCase>()
                     ));
 
             container.Bind<ITrySpawnRandomSectionUseCase>()
@@ -46,7 +59,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                     c.Resolve<IRepository<IDisposable<SectionEntityView>>>(),
                     stageContextReferences.SectionsStartPosition,
                     visualLogicStageSetup.SectionsSetup,
-                    c.Resolve<ITrySpawnRandomSectionEffectUseCase>()
+                    c.Resolve<ITrySpawnRandomSectionElementUseCase>()
                     ));
 
             container.Bind<IDespawnSectionUseCase>()

@@ -10,17 +10,14 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSectionEff
     public class TrySpawnRandomSectionEffectUseCase : ITrySpawnRandomSectionEffectUseCase
     {
         private readonly IFactory<EffectEntityViewDefinition, IDisposable<EffectEntityView>> effectEntityViewFactory;
-        private readonly IRepository<IDisposable<EffectEntityView>> effectEntityViewRepository;
         private readonly EffectsVisualLogicSetup effectsVisualLogicSetup;
 
         public TrySpawnRandomSectionEffectUseCase(
             IFactory<EffectEntityViewDefinition, IDisposable<EffectEntityView>> effectEntityViewFactory,
-            IRepository<IDisposable<EffectEntityView>> effectEntityViewRepository,
             EffectsVisualLogicSetup effectsVisualLogicSetup
             )
         {
             this.effectEntityViewFactory = effectEntityViewFactory;
-            this.effectEntityViewRepository = effectEntityViewRepository;
             this.effectsVisualLogicSetup = effectsVisualLogicSetup;
         }
 
@@ -55,8 +52,6 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSectionEff
                 UnityEngine.Debug.LogError("Effect could not be created");
                 return;
             }
-
-            effectEntityViewRepository.Add(effectEntityView);
 
             effectEntityView.Value.transform.SetParent(position, worldPositionStays: false);
         }

@@ -16,4 +16,5 @@ MonoBehaviour:
   sectionsConfiguration: {fileID: 11400000, guid: eded60e899aa590489a8fa0e375addf4, type: 2}
   pointGoalsConfiguration: {fileID: 11400000, guid: d11604e47aa1c304dbba15ae828c6eb4, type: 2}
   effectsConfiguration: {fileID: 11400000, guid: 55e7ec3dfeefcf84daa2cf04b5a63a75, type: 2}
+  coinsConfiguration: {fileID: 11400000, guid: fa865dad0e48c4f4696ca53ecf949afc, type: 2}
   directionSelectorConfiguration: {fileID: 11400000, guid: 707113e6bcf0f9a40948945c0983b6d1, type: 2}

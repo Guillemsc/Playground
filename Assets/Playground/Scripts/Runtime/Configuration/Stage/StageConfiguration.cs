@@ -10,6 +10,7 @@ namespace Playground.Configuration.Stage
         [SerializeField] private SectionsConfiguration sectionsConfiguration = default;
         [SerializeField] private PointGoalsConfiguration pointGoalsConfiguration = default;
         [SerializeField] private EffectsConfiguration effectsConfiguration = default;
+        [SerializeField] private CoinsConfiguration coinsConfiguration = default;
         [SerializeField] private DirectionSelectorConfiguration directionSelectorConfiguration = default;
 
         public StageSetup ToSetup()
@@ -19,6 +20,7 @@ namespace Playground.Configuration.Stage
                 sectionsConfiguration.ToSetup(),
                 pointGoalsConfiguration.ToSetup(),
                 effectsConfiguration.ToSetup(),
+                coinsConfiguration.ToSetup(),
                 directionSelectorConfiguration.ToSetup()
                 );
         }

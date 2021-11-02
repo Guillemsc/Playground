@@ -88,6 +88,11 @@ namespace Playground.Contexts.Stage
                     stageSetup.EffectsSetup.Effects
                     ),
 
+                new CoinsVisualLogicSetup(
+                    stageSetup.CoinsSetup.SpawnPercentageProbabiliby,
+                    stageSetup.CoinsSetup.Prefab
+                    ),
+
                 new DirectionSelectorVisualLogicSetup(
                     stageSetup.DirectionSelectorSetup.BaseSpeedMultiplier
                     )

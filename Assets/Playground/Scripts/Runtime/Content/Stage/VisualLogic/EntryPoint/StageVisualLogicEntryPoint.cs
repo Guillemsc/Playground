@@ -9,6 +9,7 @@ using Playground.Content.Stage.UseCases.StageFinished;
 using Playground.Content.Stage.VisualLogic.Cheats;
 using Playground.Content.Stage.VisualLogic.Installers;
 using Playground.Content.Stage.VisualLogic.Setup;
+using Playground.Content.Stage.VisualLogic.UseCases.CoinsChanged;
 using Playground.Content.Stage.VisualLogic.UseCases.InputActionReceived;
 using Playground.Content.Stage.VisualLogic.UseCases.PointsChanged;
 using Playground.Content.Stage.VisualLogic.UseCases.SetupStage;
@@ -72,6 +73,7 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             IInputActionReceivedUseCase inputActionReceivedUseCase = container.Resolve<IInputActionReceivedUseCase>();
             IShipDestroyedUseCase shipDestroyedUseCase = container.Resolve<IShipDestroyedUseCase>();
             IPointsChangedUseCase pointsChangedUseCase = container.Resolve<IPointsChangedUseCase>();
+            ICoinsChangedUseCase coinsChangedUseCase = container.Resolve<ICoinsChangedUseCase>();
 
             IActionInputDetectionUIInteractor actionInputDetectionUIInteractor = container.Resolve<IActionInputDetectionUIInteractor>();
 
@@ -97,6 +99,11 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             eventReceiver.Subscribe((PointsChangedOutEvent pointsChangedOutEvent) =>
             {
                 pointsChangedUseCase.Execute(pointsChangedOutEvent.CurrentPoints);
+            });
+
+            eventReceiver.Subscribe((CoinsChangedOutEvent coinsChangedOutEvent) =>
+            {
+                coinsChangedUseCase.Execute(coinsChangedOutEvent.CurrentCoins);
             });
 
             actionInputDetectionUIInteractor.InputActionReceived += (

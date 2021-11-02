@@ -28,9 +28,6 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             container.Bind<IFactory<EffectEntityViewDefinition, IDisposable<EffectEntityView>>>()
                 .FromFunction(c => new EffectEntityViewFactory());
 
-            container.Bind<IRepository<IDisposable<EffectEntityView>>, SimpleRepository<IDisposable<EffectEntityView>>>()
-                .FromNew();
-
             container.Bind<TimeTriggersTickable>()
                 .FromNew()
                 .WhenInit((c, o) => tickablesService.AddTickable(o))

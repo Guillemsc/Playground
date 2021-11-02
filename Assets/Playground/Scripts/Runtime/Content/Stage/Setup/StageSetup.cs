@@ -6,6 +6,7 @@
         public SectionsSetup SectionsSetup { get; }
         public PointGoalsSetup PointGoalsSetup { get; }
         public EffectsSetup EffectsSetup { get; }
+        public CoinsSetup CoinsSetup { get; }
         public DirectionSelectorSetup DirectionSelectorSetup { get; }
 
         public StageSetup(
@@ -13,6 +14,7 @@
             SectionsSetup sectionsSetup,
             PointGoalsSetup pointGoalsSetup,
             EffectsSetup effectsSetup,
+            CoinsSetup coinsSetup,
             DirectionSelectorSetup directionSelectorSetup
             )
         {
@@ -20,6 +22,7 @@
             SectionsSetup = sectionsSetup;
             PointGoalsSetup = pointGoalsSetup;
             EffectsSetup = effectsSetup;
+            CoinsSetup = coinsSetup;
             DirectionSelectorSetup = directionSelectorSetup;
         }
     }

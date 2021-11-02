@@ -4,5 +4,6 @@
     {
         public int UsingShipInstanceId { get; set; }
         public int CurrentPoints { get; set; }
+        public int CurrentCoins { get; set; }
     }
 }

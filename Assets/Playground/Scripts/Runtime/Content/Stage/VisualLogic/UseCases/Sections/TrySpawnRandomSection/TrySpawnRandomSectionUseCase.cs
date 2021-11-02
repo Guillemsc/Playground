@@ -3,7 +3,7 @@ using Juce.Core.Factories;
 using Juce.Core.Repositories;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.Setup;
-using Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSectionEffect;
+using Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSectionElement;
 using UnityEngine;
 
 namespace Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSection
@@ -14,21 +14,21 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSection
         private readonly IRepository<IDisposable<SectionEntityView>> sectionEntityViewRepository;
         private readonly Transform sectionsStartPosition;
         private readonly SectionsVisualLogicSetup visualLogicSectionsSetup;
-        private readonly ITrySpawnRandomSectionEffectUseCase trySpawnSectionEffectUseCase;
+        private readonly ITrySpawnRandomSectionElementUseCase trySpawnRandomSectionElementUseCase;
 
         public TrySpawnRandomSectionUseCase(
             IFactory<SectionEntityViewDefinition, IDisposable<SectionEntityView>> sectionEntityViewFactory,
             IRepository<IDisposable<SectionEntityView>> sectionEntityViewRepository,
             Transform sectionsStartPosition,
             SectionsVisualLogicSetup visualLogicSectionsSetup,
-             ITrySpawnRandomSectionEffectUseCase trySpawnSectionEffectUseCase
+            ITrySpawnRandomSectionElementUseCase trySpawnRandomSectionElementUseCase
             )
         {
             this.sectionEntityViewFactory = sectionEntityViewFactory;
             this.sectionEntityViewRepository = sectionEntityViewRepository;
             this.sectionsStartPosition = sectionsStartPosition;
             this.visualLogicSectionsSetup = visualLogicSectionsSetup;
-            this.trySpawnSectionEffectUseCase = trySpawnSectionEffectUseCase;
+            this.trySpawnRandomSectionElementUseCase = trySpawnRandomSectionElementUseCase;
         }
 
         public void Execute(float position)
@@ -67,7 +67,7 @@ namespace Playground.Content.Stage.VisualLogic.UseCases.TrySpawnRandomSection
 
             foreach(Transform spawner in sectionEntityView.Value.Spawners)
             {
-                trySpawnSectionEffectUseCase.Execute(spawner);
+                trySpawnRandomSectionElementUseCase.Execute(spawner);
             }
         }
     }

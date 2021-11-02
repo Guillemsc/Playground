@@ -7,6 +7,7 @@ namespace Playground.Content.Stage.VisualLogic.Setup
         public SectionsVisualLogicSetup SectionsSetup { get; }
         public PointGoalsVisualLogicSetup PointGoalsSetup { get; }
         public EffectsVisualLogicSetup EffectsSetup { get; }
+        public CoinsVisualLogicSetup CoinsSetup { get; }
         public DirectionSelectorVisualLogicSetup DirectionSelectorSetup { get; }
 
         public StageVisualLogicSetup(
@@ -14,6 +15,7 @@ namespace Playground.Content.Stage.VisualLogic.Setup
             SectionsVisualLogicSetup sectionsSetup,
             PointGoalsVisualLogicSetup pointGoalsSetup,
             EffectsVisualLogicSetup effectsSetup,
+            CoinsVisualLogicSetup coinsSetup,
             DirectionSelectorVisualLogicSetup directionSelectorSetup
             )
         {
@@ -21,6 +23,7 @@ namespace Playground.Content.Stage.VisualLogic.Setup
             SectionsSetup = sectionsSetup;
             PointGoalsSetup = pointGoalsSetup;
             EffectsSetup = effectsSetup;
+            CoinsSetup = coinsSetup;
             DirectionSelectorSetup = directionSelectorSetup;
         }
     }
