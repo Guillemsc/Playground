@@ -49,6 +49,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
 
             container.Bind<ITrySpawnRandomSectionElementUseCase>()
                 .FromFunction(c => new TrySpawnRandomSectionElementUseCase(
+                    visualLogicStageSetup.SectionsSetup,
                     c.Resolve<ITrySpawnRandomSectionEffectUseCase>(),
                     c.Resolve<ITrySpawnSectionCoinUseCase>()
                     ));

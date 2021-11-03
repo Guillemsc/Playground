@@ -1,19 +1,21 @@
-﻿using Playground.Content.Stage.VisualLogic.State;
+﻿using Playground.Content.StageUI.UI.Coins;
 
 namespace Playground.Content.Stage.VisualLogic.UseCases.CoinsChanged
 {
     public class CoinsChangedUseCase : ICoinsChangedUseCase
     {
-        private readonly CoinsState coinsState;
+        private readonly ICoinsUIInteractor coinsUIInteractor;
 
-        public CoinsChangedUseCase(CoinsState coinsState)
+        public CoinsChangedUseCase(
+            ICoinsUIInteractor coinsUIInteractor
+            )
         {
-            this.coinsState = coinsState;
+            this.coinsUIInteractor = coinsUIInteractor;
         }
 
         public void Execute(int currentPoints)
         {
-
+            coinsUIInteractor.SetCoins(currentPoints);
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using Juce.CoreUnity.UI;
-
-namespace Playground.Content.StageUI.UI.Points
+﻿namespace Playground.Content.StageUI.UI.Points
 {
     public interface IPointsUIInteractor 
     {

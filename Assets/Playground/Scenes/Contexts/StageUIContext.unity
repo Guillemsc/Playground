@@ -177,6 +177,7 @@ MonoBehaviour:
     directionSelectorUIInstaller: {fileID: 1266308355578279724}
     effectsUIInstaller: {fileID: 8266767964531423175}
     pointsUIInstaller: {fileID: 508918814202756898}
+    coinsUIInstaller: {fileID: 2975031658863902446}
     toasterTextsUIInstaller: {fileID: 2975031658863902445}
 --- !u!1 &1738083889
 GameObject:
@@ -418,6 +419,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec766e9b9cff3bb46a73265e9a240b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2975031658863902446 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 833018185027857497, guid: 395d992b218226846a845cf6e966cf29, type: 3}
+  m_PrefabInstance: {fileID: 2975031658863902443}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1449b7fce3cd8a4fb3c2fc062213ef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6148560717232220664

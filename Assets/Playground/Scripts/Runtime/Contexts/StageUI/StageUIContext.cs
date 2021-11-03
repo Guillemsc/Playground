@@ -3,6 +3,7 @@ using Juce.Core.DI.Container;
 using Juce.CoreUnity.Contexts;
 using Playground.Content.StageUI.Installers;
 using Playground.Content.StageUI.UI.ActionInputDetection;
+using Playground.Content.StageUI.UI.Coins;
 using Playground.Content.StageUI.UI.DirectionSelector;
 using Playground.Content.StageUI.UI.Effects;
 using Playground.Content.StageUI.UI.Points;
@@ -29,6 +30,7 @@ namespace Playground.Contexts.StageUI
                 stageUIContextReferences.DirectionSelectorUIInstaller,
                 stageUIContextReferences.EffectsUIInstaller,
                 stageUIContextReferences.PointsUIInstaller,
+                stageUIContextReferences.CoinsUIInstaller,
                 stageUIContextReferences.ToasterTextsUIInstaller
                 );
 
@@ -49,6 +51,7 @@ namespace Playground.Contexts.StageUI
             finalContainerBuilder.Bind<IDirectionSelectorUIInteractor>().FromContainer(container);
             finalContainerBuilder.Bind<IEffectsUIInteractor>().FromContainer(container);
             finalContainerBuilder.Bind<IPointsUIInteractor>().FromContainer(container);
+            finalContainerBuilder.Bind<ICoinsUIInteractor>().FromContainer(container);
             finalContainerBuilder.Bind<IToasterTextsUIInteractor>().FromContainer(container);
 
             Container = finalContainerBuilder.Build();

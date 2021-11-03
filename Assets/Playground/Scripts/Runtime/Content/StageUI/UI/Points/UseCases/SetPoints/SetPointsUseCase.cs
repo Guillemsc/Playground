@@ -3,7 +3,7 @@ using Playground.Content.StageUI.UI.Points.TweenData;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Playground.Content.StageUI.UI.Effects.UseCases.SetPoints
+namespace Playground.Content.StageUI.UI.Points.UseCases.SetPoints
 {
     public class SetPointsUseCase : ISetPointsUseCase
     {

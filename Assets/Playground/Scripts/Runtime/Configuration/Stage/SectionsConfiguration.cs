@@ -11,11 +11,17 @@ namespace Playground.Configuration.Stage
         [SerializeField, Min(0)] private float distanceBetweenSections = default;
         [SerializeField] private List<SectionEntityView> sectionEntityViews = default;
 
+        [Header("Spawn elements probabilities")]
+        [SerializeField, Range(0, 100)] private float spawnEffectProbabilty = default;
+        [SerializeField, Range(0, 100)] private float spawnCoinProbabilty = default;
+
         public SectionsSetup ToSetup()
         {
             return new SectionsSetup(
                 distanceBetweenSections,
-                sectionEntityViews
+                sectionEntityViews,
+                spawnEffectProbabilty,
+                spawnCoinProbabilty
                 );
         }
     }

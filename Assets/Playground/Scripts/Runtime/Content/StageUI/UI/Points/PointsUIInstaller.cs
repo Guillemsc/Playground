@@ -3,8 +3,7 @@ using Juce.Core.DI.Extensions;
 using Juce.Core.DI.Installers;
 using Juce.TweenPlayer;
 using JuceUnity.Core.DI.Extensions;
-using Playground.Content.StageUI.UI.Effects.UseCases.SetPoints;
-using Playground.Services.ViewStack;
+using Playground.Content.StageUI.UI.Points.UseCases.SetPoints;
 using UnityEngine;
 
 namespace Playground.Content.StageUI.UI.Points

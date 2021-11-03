@@ -4,7 +4,6 @@ namespace Playground.Content.StageUI.UI.Points
 {
     public class PointsUIView : UIView
     {
-
         private PointsUIViewModel viewModel;
 
         private void Awake()

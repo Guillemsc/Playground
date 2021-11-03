@@ -2,8 +2,8 @@
 using Juce.Core.Disposables;
 using Juce.Core.Factories;
 using Playground.Content.Stage.VisualLogic.Entities;
-using Playground.Content.Stage.VisualLogic.State;
 using Playground.Content.Stage.VisualLogic.UseCases.CoinsChanged;
+using Playground.Content.StageUI.UI.Coins;
 
 namespace Playground.Content.Stage.VisualLogic.Installers
 {
@@ -13,15 +13,12 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             this IDIContainerBuilder container
             )
         {
-            container.Bind<CoinsState>()
-                .FromNew();
-
             container.Bind<IFactory<CoinEntityViewDefinition, IDisposable<CoinEntityView>>>()
                 .FromFunction(c => new CoinEntityViewFactory());
 
             container.Bind<ICoinsChangedUseCase>()
                 .FromFunction(c => new CoinsChangedUseCase(
-                    c.Resolve<CoinsState>()
+                    c.Resolve<ICoinsUIInteractor>()
                     ));
         }
     }

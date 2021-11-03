@@ -1,5 +1,5 @@
 ﻿using Juce.Core.Subscribables;
-using Playground.Content.StageUI.UI.Effects.UseCases.SetPoints;
+using Playground.Content.StageUI.UI.Points.UseCases.SetPoints;
 using System.Threading;
 
 namespace Playground.Content.StageUI.UI.Points

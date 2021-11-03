@@ -75,7 +75,9 @@ namespace Playground.Contexts.Stage
 
                 new SectionsVisualLogicSetup(
                     stageSetup.SectionsSetup.DistanceBetweenSections, 
-                    stageSetup.SectionsSetup.Sections
+                    stageSetup.SectionsSetup.Sections,
+                    stageSetup.SectionsSetup.SpawnEffectProbabilty,
+                    stageSetup.SectionsSetup.SpawnCoinProbabilty
                     ),
 
                 new PointGoalsVisualLogicSetup(

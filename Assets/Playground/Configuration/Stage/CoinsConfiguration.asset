@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CoinsConfiguration
   m_EditorClassIdentifier: 
   spawnPercentageProbabiliby: 100
-  prefab: {fileID: 0}
+  prefab: {fileID: 4915092685560944105, guid: 8a5facd1a98fb054a88e9b5ec05f8322, type: 3}

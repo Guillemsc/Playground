@@ -1,7 +1,6 @@
 ﻿using Juce.Core.Events;
 using Playground.Content.Stage.Logic.Events;
 using Playground.Content.Stage.VisualLogic.Entities;
-using Playground.Content.Stage.VisualLogic.State;
 
 namespace Playground.Content.Stage.VisualLogic.UseCases.ShipCollidedWithCoin
 {

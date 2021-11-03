@@ -1,12 +1,12 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Playground.Content.StageUI.UI.Points.UseCases.SetPoints
+namespace Playground.Content.StageUI.UI.Coins.UseCases.SetPoints
 {
-    public interface ISetPointsUseCase
+    public interface ISetCoinsUseCase
     {
         Task Execute(
-            int points,
+            int coins,
             bool instantly,
             CancellationToken cancellationToken
             );

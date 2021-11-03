@@ -15,3 +15,5 @@ MonoBehaviour:
   distanceBetweenSections: 2
   sectionEntityViews:
   - {fileID: 5895556990295113287, guid: 3d0f777dc9149cc45bcb38978fe827e0, type: 3}
+  spawnEffectProbabilty: 80
+  spawnCoinProbabilty: 20
