@@ -3,7 +3,8 @@ using Juce.Core.DI.Builder;
 using Juce.Core.DI.Container;
 using Juce.Core.Events;
 using Juce.Core.Loading;
-using Juce.CoreUnity.Services;
+using Juce.CoreUnity.Tickables;
+using Juce.CoreUnity.Time;
 using Playground.Content.Stage.Logic.Events;
 using Playground.Content.Stage.UseCases.StageFinished;
 using Playground.Content.Stage.VisualLogic.Cheats;
@@ -18,6 +19,7 @@ using Playground.Content.Stage.VisualLogic.UseCases.StartStage;
 using Playground.Content.StageUI.UI.ActionInputDetection;
 using Playground.Contexts.Stage;
 using Playground.Services;
+using Playground.Services.Persistence;
 using Playground.Services.ViewStack;
 using System;
 
@@ -37,11 +39,11 @@ namespace Playground.Content.Stage.VisualLogic.EntryPoint
             IEventDispatcher eventDispatcher,
             IEventReceiver eventReceiver,
             TickablesService tickableService,
-            TimeService timeService,
+            ITimeService timeService,
             UIViewStackService uiViewStackService,
             PersistenceService persistenceService,
             StageVisualLogicSetup visualLogicStageSetup,
-            StageContextReferences stageContextReferences,
+            StageContextInstance stageContextReferences,
             IDIContainer stageUiContainer
             )
         {

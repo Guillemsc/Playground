@@ -1,4 +1,5 @@
 ﻿using Juce.CoreUnity.Service;
+using Juce.CoreUnity.Time;
 using Playground.Services;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace Playground.Content.Stage.Services
 {
     public class PauseStageService : IService
     {
-        private readonly TimeService timeService;
+        private readonly ITimeService timeService;
 
         public bool Paused { get; private set; }
 

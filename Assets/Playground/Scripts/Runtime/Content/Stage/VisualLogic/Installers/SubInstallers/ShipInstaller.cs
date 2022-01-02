@@ -3,7 +3,8 @@ using Juce.Core.Disposables;
 using Juce.Core.Events;
 using Juce.Core.Factories;
 using Juce.Core.Repositories;
-using Juce.CoreUnity.Services;
+using Juce.CoreUnity.Tickables;
+using Juce.CoreUnity.Time;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.Setup;
 using Playground.Content.Stage.VisualLogic.State;
@@ -31,9 +32,9 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             this IDIContainerBuilder container,
             IEventDispatcher eventDispatcher,
             TickablesService tickablesService,
-            TimeService timeService,
+            ITimeService timeService,
             StageVisualLogicSetup visualLogicStageSetup,
-            StageContextReferences stageContextReferences
+            StageContextInstance stageContextReferences
             )
         {
             container.Bind<IFactory<ShipEntityViewDefinition, IDisposable<ShipEntityView>>>()

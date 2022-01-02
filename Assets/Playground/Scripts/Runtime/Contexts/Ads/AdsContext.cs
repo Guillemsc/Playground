@@ -3,56 +3,56 @@ using Juce.CoreUnity.Contexts;
 
 namespace Playground.Contexts
 {
-    public class AdsContext : Context
+    public class AdsContext : IAdsContext
     {
-        public readonly static string SceneName = "AdsContext";
+        //public readonly static string SceneName = "AdsContext";
 
-        private bool needsInitialization = true;
+        //private bool needsInitialization = true;
 
-        protected override void Init()
-        {
-            ContextsProvider.Register(this);
-            AddCleanupAction(() => ContextsProvider.Unregister(this));
+        //protected override void Init()
+        //{
+        //    ContextsProvider.Register<IAdsContext>(this);
+        //    AddCleanupAction(() => ContextsProvider.Unregister<IAdsContext>());
 
-            if (!UnityEngine.Application.isEditor)
-            {
-                Advertising.Initialize();
-            }
-        }
+        //    if (!UnityEngine.Application.isEditor)
+        //    {
+        //        Advertising.Initialize();
+        //    }
+        //}
 
-        private void Update()
-        {
-            TryInitialize();
-        }
+        //private void Update()
+        //{
+        //    TryInitialize();
+        //}
 
-        private void TryInitialize()
-        {
-            if (UnityEngine.Application.isEditor)
-            {
-                return;
-            }
+        //private void TryInitialize()
+        //{
+        //    if (UnityEngine.Application.isEditor)
+        //    {
+        //        return;
+        //    }
 
-            if (!needsInitialization)
-            {
-                return;
-            }
+        //    if (!needsInitialization)
+        //    {
+        //        return;
+        //    }
 
-            bool isInitalized = Advertising.IsInitialized();
+        //    bool isInitalized = Advertising.IsInitialized();
 
-            if (!isInitalized)
-            {
-                return;
-            }
+        //    if (!isInitalized)
+        //    {
+        //        return;
+        //    }
 
-            if (needsInitialization)
-            {
-                Advertising.LoadInterstitialAd();
-                Advertising.GrantDataPrivacyConsent(AdNetwork.AdColony);
+        //    if (needsInitialization)
+        //    {
+        //        Advertising.LoadInterstitialAd();
+        //        Advertising.GrantDataPrivacyConsent(AdNetwork.AdColony);
 
-                UnityEngine.Debug.Log($"{nameof(AdsContext)} initialized");
+        //        UnityEngine.Debug.Log($"{nameof(AdsContext)} initialized");
 
-                needsInitialization = false;
-            }
-        }
+        //        needsInitialization = false;
+        //    }
+        //}
     }
 }

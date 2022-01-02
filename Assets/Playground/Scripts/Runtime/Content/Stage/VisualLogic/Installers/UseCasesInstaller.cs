@@ -5,7 +5,7 @@ using Juce.Core.Events;
 using Juce.Core.Loading;
 using Juce.Core.Repositories;
 using Juce.Core.Sequencing;
-using Juce.CoreUnity.Services;
+using Juce.CoreUnity.Tickables;
 using Playground.Content.Stage.UseCases.StageFinished;
 using Playground.Content.Stage.VisualLogic.State;
 using Playground.Content.Stage.VisualLogic.Entities;
@@ -37,6 +37,8 @@ using Playground.Content.Stage.VisualLogic.UseCases.PointsChanged;
 using Playground.Content.StageUI.UI.Points;
 using Playground.Content.Stage.VisualLogic.UseCases.SetPointGoalAsCollected;
 using Playground.Content.Stage.VisualLogic.UseCases.SetMainStageUIVisible;
+using Juce.CoreUnity.Time;
+using Playground.Services.Persistence;
 
 namespace Playground.Content.Stage.VisualLogic.Installers
 {
@@ -46,22 +48,22 @@ namespace Playground.Content.Stage.VisualLogic.Installers
         private readonly IStageFinishedUseCase stageFinishedUseCase;
         private readonly IEventDispatcher eventDispatcher;
         private readonly TickablesService tickableService;
-        private readonly TimeService timeService;
+        private readonly ITimeService timeService;
         private readonly UIViewStackService uiViewStackService;
         private readonly PersistenceService persistenceService;
         private readonly StageVisualLogicSetup visualLogicStageSetup;
-        private readonly StageContextReferences stageContextReferences;
+        private readonly StageContextInstance stageContextReferences;
 
         public UseCasesInstaller(
             ILoadingToken stageLoadedToken,
             IStageFinishedUseCase stageFinishedUseCase,
             IEventDispatcher eventDispatcher,
             TickablesService tickableService,
-            TimeService timeService,
+            ITimeService timeService,
             UIViewStackService uiViewStackService,
             PersistenceService persistenceService,
             StageVisualLogicSetup visualLogicStageSetup,
-            StageContextReferences stageContextReferences
+            StageContextInstance stageContextReferences
             )
         {
             this.stageLoadedToken = stageLoadedToken;
@@ -173,6 +175,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
                 .FromFunction(c => new FinishStageUseCase(
                     stageContextReferences.StageSettings,
                     timeService.UnscaledTimeContext.NewTimer(),
+                    c.Resolve<PointsState>(),
                     c.Resolve<ISetActionInputDetectionUIVisibleUseCase>(),
                     c.Resolve<ISetMainStageUIVisibleUseCase>(),
                     stageFinishedUseCase

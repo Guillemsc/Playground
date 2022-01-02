@@ -652,18 +652,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1706782233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98bf8d3f935b55e4e94944df748d94c1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6728cb6daf6eb7b419f84eed456a21a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageContextReferences:
-    stageSettings: {fileID: 11400000, guid: 5d5c1202976c1cf439016608a2483720, type: 2}
-    cinemachineVirtualCamera: {fileID: 1249290225}
-    shipParent: {fileID: 1170287676}
-    sectionsParent: {fileID: 645075450}
-    pointGoalsParent: {fileID: 1986658637}
-    shipStartPosition: {fileID: 348467300}
-    sectionsStartPosition: {fileID: 734238347}
-    cameraStartingTarget: {fileID: 893715650}
+  stageSettings: {fileID: 11400000, guid: 5d5c1202976c1cf439016608a2483720, type: 2}
+  cinemachineVirtualCamera: {fileID: 1249290225}
+  shipParent: {fileID: 1170287676}
+  sectionsParent: {fileID: 645075450}
+  pointGoalsParent: {fileID: 1986658637}
+  shipStartPosition: {fileID: 348467300}
+  sectionsStartPosition: {fileID: 734238347}
+  cameraStartingTarget: {fileID: 893715650}
 --- !u!114 &1706782235
 MonoBehaviour:
   m_ObjectHideFlags: 0

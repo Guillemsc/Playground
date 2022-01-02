@@ -6,24 +6,24 @@ using UnityEngine;
 
 namespace Playground.Contexts.Meta
 {
-    public class MetaContext : Context
+    public class MetaContext : IMetaContext
     {
-        [SerializeField] private MetaContextReferences metaContextReferences;
+        //[SerializeField] private MetaContextReferences metaContextReferences;
 
-        public MetaContextReferences MetaContextReferences => metaContextReferences;
+        //public MetaContextReferences MetaContextReferences => metaContextReferences;
 
-        protected override void Init()
-        {
-            IDIContainerBuilder containerBuilder = new DIContainerBuilder();
+        //protected override void Init()
+        //{
+        //    IDIContainerBuilder containerBuilder = new DIContainerBuilder();
 
-            containerBuilder.Bind(new ServicesInstaller());
-            containerBuilder.Bind(metaContextReferences.StageEndUIInstaller);
+        //    containerBuilder.Bind(new ServicesInstaller());
+        //    containerBuilder.Bind(metaContextReferences.StageEndUIInstaller);
 
-            IDIContainer container = containerBuilder.Build();
-            AddCleanupAction(container.Dispose);
+        //    IDIContainer container = containerBuilder.Build();
+        //    AddCleanupAction(container.Dispose);
 
-            ContextsProvider.Register(this);
-            AddCleanupAction(() => ContextsProvider.Unregister(this));
-        }
+        //    ContextsProvider.Register<IMetaContext>(this);
+        //    AddCleanupAction(() => ContextsProvider.Unregister<IMetaContext>());
+        //}
     }
 }

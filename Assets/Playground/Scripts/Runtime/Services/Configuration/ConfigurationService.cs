@@ -1,9 +1,8 @@
-﻿using Juce.CoreUnity.Service;
-using Playground.Configuration.Stage;
+﻿using Playground.Configuration.Stage;
 
-namespace Playground.Services
+namespace Playground.Services.Configuration
 {
-    public class ConfigurationService : IService
+    public class ConfigurationService : IConfigurationService
     {
         public StageConfiguration StageConfiguration { get; }
 
@@ -12,16 +11,6 @@ namespace Playground.Services
             )
         {
             StageConfiguration = stageConfiguration;
-        }
-
-        public void Init()
-        {
-
-        }
-
-        public void CleanUp()
-        {
-
         }
     }
 }

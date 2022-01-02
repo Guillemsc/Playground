@@ -7,31 +7,33 @@ namespace Playground.Utils.Localization
     {
         public static string GetValue(string tid)
         {
-            bool found = ServicesProvider.TryGetService(out LocalizationService localizationService);
+            //bool found = ServicesProvider.TryGetService(out LocalizationService localizationService);
 
-            if (!found)
-            {
-                return "Error";
-            }
+            //if (!found)
+            //{
+            //    return "Error";
+            //}
 
-            return localizationService.GetValue(tid);
+            //return localizationService.GetValue(tid);
+
+            return "";
         }
 
         public static string[] GetValues(string[] tids)
         {
-            bool found = ServicesProvider.TryGetService(out LocalizationService localizationService);
+            //bool found = ServicesProvider.TryGetService(out LocalizationService localizationService);
 
-            if (!found)
-            {
-                return new string[] { "Error" };
-            }
+            //if (!found)
+            //{
+            //    return new string[] { "Error" };
+            //}
 
             string[] values = new string[tids.Length];
 
-            for(int i = 0; i < tids.Length; ++i)
-            {
-                values[i] = localizationService.GetValue(tids[i]);
-            }
+            //for(int i = 0; i < tids.Length; ++i)
+            //{
+            //    values[i] = localizationService.GetValue(tids[i]);
+            //}
 
             return values;
         }

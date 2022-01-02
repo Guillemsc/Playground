@@ -59,7 +59,7 @@ namespace Playground.Services.ViewStack
                 UIFrame.Instance.PushForeground(uiView);
             }
 
-            bool interactorFound = uiInteractorRepository.TryGet(viewType, out UIInteractor interactor);
+            bool interactorFound = uiInteractorRepository.TryGet(viewType, out IUIInteractor interactor);
 
             if (interactorFound)
             {

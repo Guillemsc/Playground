@@ -2,6 +2,7 @@
 using Juce.Core.DI.Extensions;
 using Juce.Core.DI.Installers;
 using JuceUnity.Core.DI.Extensions;
+using Playground.Content.Meta.UI.StageEnd.UseCases.Init;
 using Playground.Content.Meta.UI.StageEnd.UseCases.PlayAgain;
 using Playground.Services;
 using Playground.Services.ViewStack;
@@ -29,7 +30,7 @@ namespace Playground.Content.Meta.UI.StageEnd
             container.Bind(InstallUseCases);
 
             container.Bind<StageEndUIController>()
-                .FromFunction((c) => new StageEndUIController(
+                .FromFunction(c => new StageEndUIController(
                     c.Resolve<StageEndUIViewModel>(),
                     c.Resolve<IPlayAgainUseCase>()
                     ))
@@ -37,8 +38,9 @@ namespace Playground.Content.Meta.UI.StageEnd
                 .NonLazy();
 
             container.Bind<IStageEndUIInteractor, StageEndUIInteractor>()
-                .FromFunction((c) => new StageEndUIInteractor(
-                    c.Resolve<StageEndUIViewModel>()
+                .FromFunction(c => new StageEndUIInteractor(
+                    c.Resolve<StageEndUIViewModel>(),
+                    c.Resolve<IInitUseCase>()
                     ))
                 .LinkSubscribable()
                 .NonLazy();
@@ -46,8 +48,13 @@ namespace Playground.Content.Meta.UI.StageEnd
 
         private void InstallUseCases(IDIContainerBuilder container)
         {
+            container.Bind<IInitUseCase>()
+                .FromFunction(c => new InitUseCase(
+                    c.Resolve<StageEndUIViewModel>()
+                    ));
+
             container.Bind<IPlayAgainUseCase>()
-                .FromFunction((c) => new PlayAgainUseCase(
+                .FromFunction(c => new PlayAgainUseCase(
                     c.Resolve<FlowService>(),
                     c.Resolve<UIViewStackService>()
                     ));

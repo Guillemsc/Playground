@@ -4,7 +4,7 @@ using System;
 
 namespace Playground.Content.StageUI.UI.ActionInputDetection
 {
-    public interface IActionInputDetectionUIInteractor : UIInteractor
+    public interface IActionInputDetectionUIInteractor : IUIInteractor
     {
         public event GenericEvent<ActionInputDetectionUIInteractor, EventArgs> InputActionReceived;
     }

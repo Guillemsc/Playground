@@ -10,8 +10,8 @@ namespace Playground.Content.Meta.Installers
     {
         public void Install(IDIContainerBuilder container)
         {
-            container.Bind<FlowService>().FromServicesProvider();
-            container.Bind<UIViewStackService>().FromServicesProvider();
+            //container.Bind<FlowService>().FromServicesProvider();
+            //container.Bind<UIViewStackService>().FromServicesProvider();
         }
     }
 }

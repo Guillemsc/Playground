@@ -8,20 +8,20 @@ namespace Playground.Flow.UseCases.LoadLocalizationData
     {
         public async Task Execute()
         {
-            LocalizationService localizationService = ServicesProvider.GetService<LocalizationService>();
+            //LocalizationService localizationService = ServicesProvider.GetService<LocalizationService>();
 
-            bool couldLoad = await localizationService.Load();
+            //bool couldLoad = await localizationService.Load();
 
-            if (!couldLoad)
-            {
-                UnityEngine.Debug.LogError($"Localization data could not be loaded, " +
-                    $"at {nameof(LoadLocalizationDataUseCase)}");
-                return;
-            }
+            //if (!couldLoad)
+            //{
+            //    UnityEngine.Debug.LogError($"Localization data could not be loaded, " +
+            //        $"at {nameof(LoadLocalizationDataUseCase)}");
+            //    return;
+            //}
 
-            UnityEngine.Debug.Log($"Localization data successfully loaded");
+            //UnityEngine.Debug.Log($"Localization data successfully loaded");
 
-            localizationService.SetLanguage(LocalizationService.DefaultLanguage);
+            //localizationService.SetLanguage(LocalizationService.DefaultLanguage);
         }
     }
 }

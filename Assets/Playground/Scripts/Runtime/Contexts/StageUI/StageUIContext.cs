@@ -12,49 +12,49 @@ using UnityEngine;
 
 namespace Playground.Contexts.StageUI
 {
-    public class StageUIContext : Context
+    public class StageUIContext : IStageUIContext
     {
-        [SerializeField] private StageUIContextReferences stageUIContextReferences;
+        //[SerializeField] private StageUIContextReferences stageUIContextReferences;
 
         public IDIContainer Container { get; private set; }
 
-        protected override void Init()
-        {
-            IDIContainerBuilder containerBuilder = new DIContainerBuilder();
+        //protected override void Init()
+        //{
+        //    IDIContainerBuilder containerBuilder = new DIContainerBuilder();
 
-            containerBuilder.Bind(new ServicesInstaller());
+        //    containerBuilder.Bind(new ServicesInstaller());
 
-            containerBuilder.Bind(
-                stageUIContextReferences.ActionInputDetectionUIInstaller,
-                stageUIContextReferences.MainStageUIInstaller,
-                stageUIContextReferences.DirectionSelectorUIInstaller,
-                stageUIContextReferences.EffectsUIInstaller,
-                stageUIContextReferences.PointsUIInstaller,
-                stageUIContextReferences.CoinsUIInstaller,
-                stageUIContextReferences.ToasterTextsUIInstaller
-                );
+        //    containerBuilder.Bind(
+        //        stageUIContextReferences.ActionInputDetectionUIInstaller,
+        //        stageUIContextReferences.MainStageUIInstaller,
+        //        stageUIContextReferences.DirectionSelectorUIInstaller,
+        //        stageUIContextReferences.EffectsUIInstaller,
+        //        stageUIContextReferences.PointsUIInstaller,
+        //        stageUIContextReferences.CoinsUIInstaller,
+        //        stageUIContextReferences.ToasterTextsUIInstaller
+        //        );
 
-            IDIContainer container = containerBuilder.Build();
-            AddCleanupAction(container.Dispose);
+        //    IDIContainer container = containerBuilder.Build();
+        //    AddCleanupAction(container.Dispose);
 
-            CreateFinalContainer(container);
+        //    CreateFinalContainer(container);
 
-            ContextsProvider.Register(this);
-            AddCleanupAction(() => ContextsProvider.Unregister(this));
-        }
+        //    ContextsProvider.Register<IStageUIContext>(this);
+        //    AddCleanupAction(() => ContextsProvider.Unregister<IStageUIContext>());
+        //}
 
-        private void CreateFinalContainer(IDIContainer container)
-        {
-            IDIContainerBuilder finalContainerBuilder = new DIContainerBuilder();
+        //private void CreateFinalContainer(IDIContainer container)
+        //{
+        //    IDIContainerBuilder finalContainerBuilder = new DIContainerBuilder();
 
-            finalContainerBuilder.Bind<IActionInputDetectionUIInteractor>().FromContainer(container);
-            finalContainerBuilder.Bind<IDirectionSelectorUIInteractor>().FromContainer(container);
-            finalContainerBuilder.Bind<IEffectsUIInteractor>().FromContainer(container);
-            finalContainerBuilder.Bind<IPointsUIInteractor>().FromContainer(container);
-            finalContainerBuilder.Bind<ICoinsUIInteractor>().FromContainer(container);
-            finalContainerBuilder.Bind<IToasterTextsUIInteractor>().FromContainer(container);
+        //    finalContainerBuilder.Bind<IActionInputDetectionUIInteractor>().FromContainer(container);
+        //    finalContainerBuilder.Bind<IDirectionSelectorUIInteractor>().FromContainer(container);
+        //    finalContainerBuilder.Bind<IEffectsUIInteractor>().FromContainer(container);
+        //    finalContainerBuilder.Bind<IPointsUIInteractor>().FromContainer(container);
+        //    finalContainerBuilder.Bind<ICoinsUIInteractor>().FromContainer(container);
+        //    finalContainerBuilder.Bind<IToasterTextsUIInteractor>().FromContainer(container);
 
-            Container = finalContainerBuilder.Build();
-        }
+        //    Container = finalContainerBuilder.Build();
+        //}
     }
 }

@@ -1,5 +1,4 @@
-﻿using Juce.CoreUnity.Service;
-using Juce.Loc.Data;
+﻿using Juce.Loc.Data;
 using Juce.Loc.Requests;
 using Juce.Loc.Results;
 using System;
@@ -7,29 +6,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Playground.Services
+namespace Playground.Services.Localization
 {
-    public class LocalizationService : IService
+    public class LocalizationService : ILocalizationService
     {
-        public static string DefaultLanguage = "english";
+        public static readonly string DefaultLanguage = "english";
 
         private LocalizationData localizationData;
         private LanguageLocalizationData languageLocalizationData;
 
-        public IReadOnlyList<string> Languages { get; private set; } = Array.Empty<string>();
-        public int CurrentLanguageIndex { get; private set; }
-
         public event Action OnLanguageChanged;
 
-        public void Init()
-        {
-
-        }
-
-        public void CleanUp()
-        {
-
-        }
+        public IReadOnlyList<string> Languages { get; private set; } = Array.Empty<string>();
+        public int CurrentLanguageIndex { get; private set; }
 
         public async Task<bool> Load()
         {

@@ -26,17 +26,17 @@ namespace Playground.Flow.UseCases.ReloadStage
 
         public async Task Execute()
         {
-            ILoadingToken loadingToken = await showLoadingScreenUseCase.Execute();
+            //ILoadingToken loadingToken = await showLoadingScreenUseCase.Execute();
 
-            await StageContextLoader.Unload();
-            await StageUIContextLoader.Unload();
+            //await StageContextLoader.Unload();
+            //await StageUIContextLoader.Unload();
 
-            await StageUIContextLoader.Load();
-            await StageContextLoader.Load();
+            //await StageUIContextLoader.Load();
+            //await StageContextLoader.Load();
 
-            await loadStageUseCase.Execute(lastLoadedStageSetupState.StageSetup);
+            //await loadStageUseCase.Execute(lastLoadedStageSetupState.StageSetup);
 
-            loadingToken.Complete();
+            //loadingToken.Complete();
         }
     }
 }

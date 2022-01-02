@@ -2,18 +2,17 @@
 using Juce.Core.Disposables;
 using Juce.Core.Factories;
 using Juce.Core.Repositories;
-using Juce.CoreUnity.Services;
+using Juce.CoreUnity.Tickables;
+using Juce.CoreUnity.Time;
 using Playground.Configuration.Stage;
 using Playground.Content.Stage.VisualLogic.Effects;
 using Playground.Content.Stage.VisualLogic.Entities;
-using Playground.Content.Stage.VisualLogic.Setup;
 using Playground.Content.Stage.VisualLogic.Stats;
 using Playground.Content.Stage.VisualLogic.Tickables;
 using Playground.Content.Stage.VisualLogic.UseCases.AddEffect;
 using Playground.Content.Stage.VisualLogic.UseCases.PlayToasterText;
 using Playground.Content.Stage.VisualLogic.UseCases.RemoveEffect;
 using Playground.Content.StageUI.UI.Effects;
-using Playground.Services;
 
 namespace Playground.Content.Stage.VisualLogic.Installers
 {
@@ -22,7 +21,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
         public static void InstallEffects(
             this IDIContainerBuilder container,
             TickablesService tickablesService,
-            TimeService timeService
+            ITimeService timeService
             )
         {
             container.Bind<IFactory<EffectEntityViewDefinition, IDisposable<EffectEntityView>>>()

@@ -1,4 +1,5 @@
 ﻿using Juce.Core.Tickable;
+using Juce.CoreUnity.Time;
 using Playground.Content.Stage.VisualLogic.State;
 using Playground.Content.Stage.VisualLogic.Stats;
 using Playground.Services;
@@ -13,7 +14,7 @@ namespace Playground.Content.Stage.VisualLogic.Entities
 
         private const float MaxForwardAngle = 60f;
 
-        private readonly TimeService timeService;
+        private readonly ITimeService timeService;
         private readonly ShipStats shipStats;
         private readonly DirectionSelectionState directionSelectionState;
 
@@ -23,7 +24,7 @@ namespace Playground.Content.Stage.VisualLogic.Entities
         private float currentForwardSpeed = 0.0f;
 
         public ShipEntityViewMovementTickable(
-            TimeService timeService,
+            ITimeService timeService,
             ShipStats shipStats,
             DirectionSelectionState directionSelectionState
             ) : base(active: false)

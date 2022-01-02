@@ -168,17 +168,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1659972769}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a61368f46513e446be5d89d0989137b, type: 3}
+  m_Script: {fileID: 11500000, guid: 96307d202cf0aa2469151cc9cf907aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageUIContextReferences:
-    actionInputDetectionUIInstaller: {fileID: 6148560717232220666}
-    mainStageUIInstaller: {fileID: 2975031658863902444}
-    directionSelectorUIInstaller: {fileID: 1266308355578279724}
-    effectsUIInstaller: {fileID: 8266767964531423175}
-    pointsUIInstaller: {fileID: 508918814202756898}
-    coinsUIInstaller: {fileID: 2975031658863902446}
-    toasterTextsUIInstaller: {fileID: 2975031658863902445}
+  actionInputDetectionUIInstaller: {fileID: 6148560717232220666}
+  mainStageUIInstaller: {fileID: 2975031658863902444}
+  directionSelectorUIInstaller: {fileID: 1266308355578279724}
+  effectsUIInstaller: {fileID: 8266767964531423175}
+  pointsUIInstaller: {fileID: 508918814202756898}
+  coinsUIInstaller: {fileID: 2975031658863902446}
+  toasterTextsUIInstaller: {fileID: 2975031658863902445}
 --- !u!1 &1738083889
 GameObject:
   m_ObjectHideFlags: 0

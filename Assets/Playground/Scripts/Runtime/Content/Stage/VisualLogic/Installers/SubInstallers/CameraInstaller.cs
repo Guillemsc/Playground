@@ -10,7 +10,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
     {
         public static void InstallCamera(
             this IDIContainerBuilder container,
-            StageContextReferences stageContextReferences
+            StageContextInstance stageContextReferences
             )
         {
             container.Bind<ISetupCameraUseCase>()

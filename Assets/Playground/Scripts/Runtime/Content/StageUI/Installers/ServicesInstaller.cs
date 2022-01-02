@@ -9,7 +9,7 @@ namespace Playground.Content.StageUI.Installers
     {
         public void Install(IDIContainerBuilder container)
         {
-            container.Bind<UIViewStackService>().FromServicesProvider();
+            //container.Bind<UIViewStackService>().FromServicesProvider();
         }
     }
 }

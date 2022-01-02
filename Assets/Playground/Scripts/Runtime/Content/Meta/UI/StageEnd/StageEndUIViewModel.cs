@@ -7,5 +7,11 @@ namespace Playground.Content.Meta.UI.StageEnd
     {
         public ObservableEvent<StageEndUIView, PointerEventData> OnPlayAgainEvent { get; }
             = new ObservableEvent<StageEndUIView, PointerEventData>();
+
+        public ObservableVariable<string> CurrentPointsVariable { get; }
+            = new ObservableVariable<string>();
+
+        public ObservableVariable<string> BestPointsVariable { get; }
+            = new ObservableVariable<string>();
     }
 }

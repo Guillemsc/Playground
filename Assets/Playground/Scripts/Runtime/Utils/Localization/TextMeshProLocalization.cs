@@ -1,5 +1,6 @@
 ﻿using Juce.CoreUnity.Service;
 using Playground.Services;
+using Playground.Services.Localization;
 using UnityEngine;
 
 namespace Playground.Utils.Localization
@@ -37,14 +38,14 @@ namespace Playground.Utils.Localization
 
         private void TryRegisterLanguageChange()
         {
-            bool found = ServicesProvider.TryGetService(out LocalizationService localizationService);
+            //bool found = ServicesProvider.TryGetService(out LocalizationService localizationService);
 
-            if (!found)
-            {
-                return;
-            }
+            //if (!found)
+            //{
+            //    return;
+            //}
 
-            localizationService.OnLanguageChanged += OnLanguageChanged;
+            //localizationService.OnLanguageChanged += OnLanguageChanged;
         }
 
         private void TryUnregisterLanguageChange()
@@ -54,14 +55,14 @@ namespace Playground.Utils.Localization
                 return;
             }
 
-            bool found = ServicesProvider.TryGetService(out LocalizationService localizationService);
+            //bool found = ServicesProvider.TryGetService(out LocalizationService localizationService);
 
-            if (!found)
-            {
-                return;
-            }
+            //if (!found)
+            //{
+            //    return;
+            //}
 
-            localizationService.OnLanguageChanged -= OnLanguageChanged;
+            //localizationService.OnLanguageChanged -= OnLanguageChanged;
         }
 
         private void Refresh()
@@ -78,14 +79,14 @@ namespace Playground.Utils.Localization
                 return;
             }
 
-            bool found = ServicesProvider.TryGetService(out LocalizationService localizationService);
+            //bool found = ServicesProvider.TryGetService(out LocalizationService localizationService);
 
-            if(!found)
-            {
-                return;
-            }
+            //if(!found)
+            //{
+            //    return;
+            //}
 
-            text.text = GetLocalizedText(localizationService);
+            //text.text = GetLocalizedText(localizationService);
         }
 
         private string GetLocalizedText(LocalizationService localizationService)

@@ -265,11 +265,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1358438014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3961a49c7e4836544837cbfc38b95845, type: 3}
+  m_Script: {fileID: 11500000, guid: 7001ec5112392564687dfdb7163c51d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreenContextReferences:
-    loadingScreenUIView: {fileID: 176931649}
+  loadingScreenUIView: {fileID: 176931649}
 --- !u!4 &1358438016
 Transform:
   m_ObjectHideFlags: 0

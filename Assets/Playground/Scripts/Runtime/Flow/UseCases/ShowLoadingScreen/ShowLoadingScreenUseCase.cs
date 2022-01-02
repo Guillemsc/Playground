@@ -10,20 +10,20 @@ namespace Playground.Flow.UseCases.ShowLoadingScreen
     {
         public async Task<ILoadingToken> Execute()
         {
-            LoadingScreenContext loadingScreenContext = ContextsProvider.GetContext<LoadingScreenContext>();
+            //LoadingScreenContext loadingScreenContext = ContextsProvider.GetContext<LoadingScreenContext>();
 
-            await loadingScreenContext.LoadingScreenContextReferences.LoadingScreenUIView.Show(
-                instantly: false, 
-                cancellationToken: default
-                );
+            //await loadingScreenContext.LoadingScreenContextReferences.LoadingScreenUIView.Show(
+            //    instantly: false, 
+            //    cancellationToken: default
+            //    );
 
-            GC.Collect();
+            //GC.Collect();
 
-            ILoadingToken loadingToken = new CallbackLoadingToken(
-                () => loadingScreenContext.LoadingScreenContextReferences.LoadingScreenUIView.Hide(instantly: false)
-                );
+            //ILoadingToken loadingToken = new CallbackLoadingToken(
+            //    () => loadingScreenContext.LoadingScreenContextReferences.LoadingScreenUIView.Hide(instantly: false)
+            //    );
 
-            return loadingToken;
+            return null;
         }
     }
 }

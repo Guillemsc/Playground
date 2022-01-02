@@ -6,9 +6,9 @@ namespace Playground.Services.ViewStack
 {
     public class UIInteractorRepository
     {
-        private readonly Dictionary<Type, UIInteractor> items = new Dictionary<Type, UIInteractor>();
+        private readonly Dictionary<Type, IUIInteractor> items = new Dictionary<Type, IUIInteractor>();
 
-        public void Add(UIView view, UIInteractor uiInteractor)
+        public void Add(UIView view, IUIInteractor uiInteractor)
         {
             Type type = view.GetType();
 
@@ -30,16 +30,16 @@ namespace Playground.Services.ViewStack
             items.Remove(type);
         }
 
-        public bool TryGet(Type type, out UIInteractor uiInteractor)
+        public bool TryGet(Type type, out IUIInteractor uiInteractor)
         {
             return items.TryGetValue(type, out uiInteractor);
         }
 
-        public bool TryGet<T>(out UIInteractor uiInteractor) where T : UIInteractor
+        public bool TryGet<T>(out IUIInteractor uiInteractor) where T : IUIInteractor
         {
             Type type = typeof(T);
 
-            foreach(KeyValuePair<Type, UIInteractor> item in items)
+            foreach(KeyValuePair<Type, IUIInteractor> item in items)
             {
                 if(item.Value.GetType() == type)
                 {

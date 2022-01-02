@@ -1,7 +1,7 @@
 ﻿using Juce.Core.Disposables;
 using Juce.Core.Factories;
 using Juce.Core.Time;
-using Juce.CoreUnity.Services;
+using Juce.CoreUnity.Tickables;
 using Playground.Configuration.Stage;
 using Playground.Content.Stage.VisualLogic.Stats;
 using Playground.Content.Stage.VisualLogic.Tickables;

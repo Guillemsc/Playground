@@ -2,7 +2,7 @@
 using Juce.Core.Disposables;
 using Juce.Core.Factories;
 using Juce.Core.Repositories;
-using Juce.CoreUnity.Services;
+using Juce.CoreUnity.Tickables;
 using Playground.Content.Stage.VisualLogic.Entities;
 using Playground.Content.Stage.VisualLogic.Setup;
 using Playground.Content.Stage.VisualLogic.State;
@@ -23,7 +23,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
             this IDIContainerBuilder container,
             TickablesService tickablesService,
             StageVisualLogicSetup visualLogicStageSetup,
-            StageContextReferences stageContextReferences
+            StageContextInstance stageContextReferences
             )
         {
             container.Bind<IFactory<PointGoalEntityViewDefinition, IDisposable<PointGoalEntityView>>>()

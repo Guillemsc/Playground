@@ -2,8 +2,8 @@
 
 namespace Playground.Content.Meta.UI.StageEnd
 {
-    public interface IStageEndUIInteractor : UIInteractor
+    public interface IStageEndUIInteractor : IUIInteractor
     {
-      
+        void Init(int currentPoints);
     }
 }

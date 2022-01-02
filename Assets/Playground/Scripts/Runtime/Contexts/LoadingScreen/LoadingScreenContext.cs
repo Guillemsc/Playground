@@ -1,18 +1,23 @@
-﻿using Juce.CoreUnity.Contexts;
-using UnityEngine;
+﻿using Juce.Core.Loading;
+using Playground.Contexts.LoadingScreen.UseCases.Show;
+using System.Threading.Tasks;
 
 namespace Playground.Contexts.LoadingScreen
 {
-    public class LoadingScreenContext : Context
+    public class LoadingScreenContext : ILoadingScreenContext
     {
-        [SerializeField] private LoadingScreenContextReferences loadingScreenContextReferences;
+        private readonly IShowUseCase showUseCase;
 
-        public LoadingScreenContextReferences LoadingScreenContextReferences => loadingScreenContextReferences;
-
-        protected override void Init()
+        public LoadingScreenContext(
+            IShowUseCase showUseCase
+            )
         {
-            ContextsProvider.Register(this);
-            AddCleanupAction(() => ContextsProvider.Unregister(this));
+            this.showUseCase = showUseCase;
+        }
+
+        public Task<ILoadingToken> Show()
+        {
+            return showUseCase.Execute();
         }
     }
 }

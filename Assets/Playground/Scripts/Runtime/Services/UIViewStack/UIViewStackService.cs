@@ -1,27 +1,19 @@
-﻿using Juce.Core.Sequencing;
-using Juce.CoreUnity.Service;
+﻿using Juce.Core.Repositories;
+using Juce.Core.Sequencing;
 using Juce.CoreUnity.UI;
-using UnityEngine;
+using System;
 
 namespace Playground.Services.ViewStack
 {
-    public class UIViewStackService : IService
+    public class UIViewStackService : IUIViewStackService
     {
         private readonly UIViewRepository registeredViewsRepository = new UIViewRepository();
         private readonly UIInteractorRepository registeredInteractorsRepository = new UIInteractorRepository();
+        private readonly IKeyValueRepository<Type, IUIInteractor> interactorsRepository = new SimpleKeyValueRepository<Type, IUIInteractor>();
         private readonly ViewContexRepository viewContexRepository = new ViewContexRepository();
         private readonly ViewQueueRepository viewQueueRepository = new ViewQueueRepository();
 
         private readonly Sequencer sequencer = new Sequencer();
-
-        private readonly Canvas canvas;
-
-        public Canvas Canvas => canvas;
-
-        public UIViewStackService(Canvas canvas)
-        {
-            this.canvas = canvas;
-        }
 
         public void Init()
         {
@@ -33,9 +25,10 @@ namespace Playground.Services.ViewStack
            
         }
 
-        public void Register(UIInteractor uiInteractor, UIView uiView)
+        public void Register<T>(T uiInteractor, UIView uiView) where T : IUIInteractor
         {
             registeredInteractorsRepository.Add(uiView, uiInteractor);
+            interactorsRepository.Add(typeof(T), uiInteractor);
             registeredViewsRepository.Add(uiView);
 
             UIFrame.Instance.Register(uiView);
@@ -64,6 +57,13 @@ namespace Playground.Services.ViewStack
                     viewContexRepository.Remove(viewContext);
                 }
             }
+        }
+
+        public TInteractor GetInteractor<TInteractor>() where TInteractor : IUIInteractor
+        {
+            interactorsRepository.TryGet(typeof(TInteractor), out IUIInteractor interactor);
+
+            return (TInteractor)interactor;
         }
 
         public ViewStackSequence New()

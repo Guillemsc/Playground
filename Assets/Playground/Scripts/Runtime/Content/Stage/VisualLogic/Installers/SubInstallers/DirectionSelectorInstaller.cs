@@ -1,5 +1,6 @@
 ﻿using Juce.Core.DI.Builder;
-using Juce.CoreUnity.Services;
+using Juce.CoreUnity.Tickables;
+using Juce.CoreUnity.Time;
 using Playground.Content.Stage.VisualLogic.Setup;
 using Playground.Content.Stage.VisualLogic.State;
 using Playground.Content.Stage.VisualLogic.Tickables;
@@ -15,7 +16,7 @@ namespace Playground.Content.Stage.VisualLogic.Installers
         public static void InstallDirectionSelector(
             this IDIContainerBuilder container,
             TickablesService tickablesService,
-            TimeService timeService,
+            ITimeService timeService,
             StageVisualLogicSetup visualLogicStageSetup
             )
         {

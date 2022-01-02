@@ -2,6 +2,6 @@
 {
     public interface IStageFinishedUseCase
     {
-        void Execute();
+        void Execute(int currentPoints);
     }
 }

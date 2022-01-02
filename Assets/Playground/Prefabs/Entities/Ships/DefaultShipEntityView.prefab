@@ -5360,6 +5360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ef6096a7669654489b5445d8387734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showProgressBars: 0
   executionMode: 0
   loopMode: 0
   loopResetMode: 0
@@ -5540,7 +5541,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -10399,6 +10400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ef6096a7669654489b5445d8387734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showProgressBars: 0
   executionMode: 0
   loopMode: 0
   loopResetMode: 0
@@ -10682,6 +10684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ef6096a7669654489b5445d8387734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showProgressBars: 0
   executionMode: 1
   loopMode: 2
   loopResetMode: 0
